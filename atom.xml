@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>爱学兮的小江</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-02-15T09:10:23.108Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>刘振江</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文章资源test</title>
+    <link href="http://yoursite.com/2019/02/15/%E6%96%87%E7%AB%A0%E8%B5%84%E6%BA%90test/"/>
+    <id>http://yoursite.com/2019/02/15/文章资源test/</id>
+    <published>2019-02-15T08:54:24.000Z</published>
+    <updated>2019-02-15T09:10:23.108Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="文章资源测试"><a href="#文章资源测试" class="headerlink" title="文章资源测试"></a>文章资源测试</h3><h2 id="要使用绝对路径，否则-在首页中图片显示，当在文章页不显示"><a href="#要使用绝对路径，否则-在首页中图片显示，当在文章页不显示" class="headerlink" title="要使用绝对路径，否则 在首页中图片显示，当在文章页不显示"></a>要使用绝对路径，否则 在首页中图片显示，当在文章页不显示</h2><p><img src="/image/多特征分析-重新设计02.png" alt="图片"><br><img src="/image/预警查询_密度监控.png" alt="图片2"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;文章资源测试&quot;&gt;&lt;a href=&quot;#文章资源测试&quot; class=&quot;headerlink&quot; title=&quot;文章资源测试&quot;&gt;&lt;/a&gt;文章资源测试&lt;/h3&gt;&lt;h2 id=&quot;要使用绝对路径，否则-在首页中图片显示，当在文章页不显示&quot;&gt;&lt;a href=&quot;#要使用绝对路径，否
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2019/02/15/hello-world/"/>
+    <id>http://yoursite.com/2019/02/15/hello-world/</id>
+    <published>2019-02-15T07:27:08.000Z</published>
+    <updated>2019-02-15T10:32:10.718Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="hello-nihao"><a href="#hello-nihao" class="headerlink" title="hello nihao"></a>hello nihao</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>demo</title>
+    <link href="http://yoursite.com/2019/02/15/demo/"/>
+    <id>http://yoursite.com/2019/02/15/demo/</id>
+    <published>2019-02-15T07:27:08.000Z</published>
+    <updated>2019-02-15T10:13:26.901Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><!-- vscode-markdown-toc --><ul><li><ol><li><a href="#">标题</a><ul><li>1.1. <a href="#ID">标题 ID</a></li><li>1.2. <a href="#2">标题 2 个影人</a></li></ul></li></ol></li><li><ol start="2"><li><a href="#dd">强调dd</a></li></ol></li><li><ol start="3"><li><a href="#3333222">数学3333222</a><ul><li>3.1. <a href="#dddd">dddd</a></li></ul></li></ol></li><li><ol start="4"><li><a href="#writing">部署测试，部署在writing分支上</a></li></ol></li></ul><!-- vscode-markdown-toc-config    numbering=true    autoSave=true    /vscode-markdown-toc-config --><!-- /vscode-markdown-toc --><h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. <a name></a>标题</h2><h3 id="1-1-标题-ID"><a href="#1-1-标题-ID" class="headerlink" title="1.1. 标题 ID"></a>1.1. <a name="ID"></a>标题 ID</h3><h3 id="1-2-标题-2-个影人"><a href="#1-2-标题-2-个影人" class="headerlink" title="1.2. 标题 2 个影人"></a>1.2. <a name="2"></a>标题 2 个影人</h3><h2 id="2-强调dd"><a href="#2-强调dd" class="headerlink" title="2. 强调dd"></a>2. <a name="dd"></a>强调dd</h2><p><strong>粗体</strong><br>_斜体_<br><strong>粗体</strong><br><strong>ddd</strong><br> <code>ddd</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li style="list-style: none"><input type="checkbox" checked> 未成内容</li><li style="list-style: none"><input type="checkbox"> 已完成</li><li style="list-style: none"><input type="checkbox"> yi</li></ul><h2 id="3-数学3333222"><a href="#3-数学3333222" class="headerlink" title="3. 数学3333222"></a>3. <a name="3333222"></a>数学3333222</h2><p>$$f(x) = sin(x) + 12 $$<br><strong>nob</strong></p><ul><li style="list-style: none"><input type="checkbox" checked> nihao</li></ul><h4 id="3-1-dddd"><a href="#3-1-dddd" class="headerlink" title="3.1. dddd"></a>3.1. <a name="dddd"></a>dddd</h4><ul><li>one<ul><li>nihao</li></ul></li><li>ddd</li></ul><table><thead><tr><th>一个普通标题</th><th>一个普通标题</th><th>一个普通标题</th></tr></thead><tbody><tr><td>短文本</td><td>中等文本</td><td>稍微长一点的文本</td></tr><tr><td>稍微长一点的文本</td><td>短文本</td><td>中等文本</td></tr></tbody></table><table><thead><tr><th style="text-align:center">nihao</th><th style="text-align:center">nihao</th></tr></thead><tbody><tr><td style="text-align:center">d</td><td style="text-align:center">d</td></tr></tbody></table><p><del>ddd</del></p><h2 id="4-部署测试，部署在writing分支上"><a href="#4-部署测试，部署在writing分支上" class="headerlink" title="4. 部署测试，部署在writing分支上"></a>4. <a name="writing"></a>部署测试，部署在writing分支上</h2>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h1&gt;&lt;!-- vscode-markdown-toc --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;#&quot;&gt;标题&lt;/a&gt;&lt;ul&gt;
+&lt;li
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
