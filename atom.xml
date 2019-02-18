@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-18T07:02:03.016Z</updated>
+  <updated>2019-02-18T10:48:31.648Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vscode插件推荐</title>
+    <link href="http://yoursite.com/2019/02/18/vscode%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
+    <id>http://yoursite.com/2019/02/18/vscode插件推荐/</id>
+    <published>2019-02-18T08:37:33.000Z</published>
+    <updated>2019-02-18T10:48:31.648Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="VSCode-插件"><a href="#VSCode-插件" class="headerlink" title="VSCode 插件"></a>VSCode 插件</h2><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> ，微软出品，一款免费的、开源的、轻量级的编辑器，支持插件扩展。正因此，受到越来越多前端开发者的追捧。vSCode 插件丰富多样，安装/卸载方便，运用的好，能大大提高开发效率。<br>在<a href="https://marketplace.visualstudio.com/vscode" target="_blank" rel="noopener">官方插件市场</a>,不但可搜索特定插件，还有历史安装量排名，每周/月安装趋势，每日特色好玩插件推荐。</p><h2 id="常用插件推荐"><a href="#常用插件推荐" class="headerlink" title="常用插件推荐"></a>常用插件推荐</h2><ul><li><a href="https://marketplace.visualstudio.com/items?itemName=nonoroazoro.syncing" target="_blank" rel="noopener">Syncing</a><br>使用<strong>GitHub Gist</strong>，跨平台，跨设备同步 所有 VSCode 设置（包含安装的插件）。公司电脑 Vscode 设置文件，上传 GitHub Gist，家里电脑 vscode<br>下载同步，不再重新设置，重新一个个安装插件。</li><li><a href="https://marketplace.visualstudio.com/items?itemName=steoates.autoimport" target="_blank" rel="noopener">Auto Import</a><br>自动查找、解析并提示所有可用于导入的包、代码。<strong>import</strong> 导入包的提示。</li><li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" rel="noopener">Auto Close Tag</a><br>自动添加 HTML/XML 关闭标签</li><li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_blank" rel="noopener">AUtoRename Tag</a><br>自动重命名成对的 HTML/XML 标签</li><li><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer" target="_blank" rel="noopener">Bracket Pair Colorizer</a><br>用颜色来标识匹配的括号。多层括号，相同曾经括号颜色相同</li><li><a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow" target="_blank" rel="noopener">indent-rainbow</a><br>不同层次缩减使用不同颜色的空格点，使缩减更容易阅读<br><img src="https://raw.githubusercontent.com/oderwat/vscode-indent-rainbow/master/assets/example.png" alt="indent-rainbow"></li><li><a href="https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete" target="_blank" rel="noopener">Path Autocomplete</a><br>文件路径自动补全、提示</li><li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" rel="noopener">Prettier-Code Formater</a><br> 使用 prettier 格式化代码<br>-<a href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight" target="_blank" rel="noopener">TODO Highlight</a><br>高亮文件中的 TODO、FIXME 等注释标记</li><li><a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree" target="_blank" rel="noopener">TODO TREE</a><br> 在树视图中显示 TODO、FIXME 等注释标记</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;VSCode-插件&quot;&gt;&lt;a href=&quot;#VSCode-插件&quot; class=&quot;headerlink&quot; title=&quot;VSCode 插件&quot;&gt;&lt;/a&gt;VSCode 插件&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://code.visualstudio.com/&quot; t
+      
+    
+    </summary>
+    
+      <category term="技术总结" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="vscode插件" scheme="http://yoursite.com/tags/vscode%E6%8F%92%E4%BB%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>文章资源test</title>
@@ -75,7 +100,7 @@
     <link href="http://yoursite.com/2019/02/15/hello-world/"/>
     <id>http://yoursite.com/2019/02/15/hello-world/</id>
     <published>2019-02-15T07:27:08.000Z</published>
-    <updated>2019-02-18T07:03:03.342Z</updated>
+    <updated>2019-02-18T08:16:01.996Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="hello-nihao"><a href="#hello-nihao" class="headerlink" title="hello nihao"></a>hello nihao</h3>]]></content>
     
@@ -88,7 +113,7 @@
     
     </summary>
     
-      <category term="博客工具" scheme="http://yoursite.com/categories/%E5%8D%9A%E5%AE%A2%E5%B7%A5%E5%85%B7/"/>
+      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
     
     
       <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
