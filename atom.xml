@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-18T12:15:28.917Z</updated>
+  <updated>2019-02-19T03:02:32.516Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git基础(2)-创建仓库/更新记录</title>
+    <link href="http://yoursite.com/2019/02/19/git%E5%9F%BA%E7%A1%80-2-%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93-%E6%9B%B4%E6%96%B0%E8%AE%B0%E5%BD%95/"/>
+    <id>http://yoursite.com/2019/02/19/git基础-2-创建仓库-更新记录/</id>
+    <published>2019-02-19T01:21:34.000Z</published>
+    <updated>2019-02-19T03:02:32.516Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><ol><li><p>在现有目录初始化仓库</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git init</span><br></pre></td></tr></table></figure><p><code>git init</code> 命令将在此目录下创建一个名为<code>.git</code>的子目录，该目录包含 Git 仓库的必须文件。如果再一个非空文件夹中初始化 Git 仓库，需要通过 <code>git add</code> 命令实现对指定文件的跟踪，然后执行 <code>git commit</code> 提交</p></li><li><p>克隆现有仓库</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git clone https://github.com/Better-Jiang/Better-Jiang.github.io</span><br></pre></td></tr></table></figure><p>执行 <code>git clone [url] [rpName]</code>命令，默认配置下，会拉取远程 Git 仓库中的每一个文件的每一个版本，克隆了该 Git 仓库服务器上的几乎所有数据。</p></li></ol><h2 id="更新记录到仓库"><a href="#更新记录到仓库" class="headerlink" title="更新记录到仓库"></a>更新记录到仓库</h2><h3 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h3><p>工作目录下的文件只有 2 中状态：<strong>已跟踪</strong>、<strong>未跟踪（Untracked）</strong></p><ul><li>已跟踪： 指那些已经纳入了版本控制的文件,在上一次快照中有它的记录。其状态可能处于未修改（Unmodified），已修改（Modified），放入暂存区（Staged）。</li><li><p>未跟踪（Untracked）：指既不在上次快照的记录中，也没有放入暂存区的文件。一般未新加入的文件，还没执行<code>git add</code>命令.<br>git 文件生命周期：</p><p><img src="../image/gitLifeCycle.png" alt="git文件生命周期"></p></li></ul><h3 id="检查当前文件状态"><a href="#检查当前文件状态" class="headerlink" title="检查当前文件状态"></a>检查当前文件状态</h3><p><code>git status</code> 命令，查看当前目录文件状处于什么态.</p><ul><li><p>目录干净（working directory clean），所有已跟踪的文件在上次提交后都未被更改过。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line">Your branch is up to date with 'origin/master'.</span><br><span class="line"></span><br><span class="line">nothing to commit, working tree clean</span><br></pre></td></tr></table></figure></li><li><p>未跟踪的文件（Untracked files），Git 在之前的快照（提交）中没有该文件。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> echo 'My Project' &gt; README</span><br><span class="line"><span class="meta"> $</span> git status</span><br><span class="line"> On branch master</span><br><span class="line"> Untracked files:</span><br><span class="line"> (use "git add &lt;file&gt;..." to include in what will be committed)</span><br><span class="line"> README</span><br><span class="line"> nothing added to commit but untracked files present (use "git add" to</span><br><span class="line"> track)</span><br></pre></td></tr></table></figure></li><li><p>跟踪新文件，但未提交（Changes to be committed），处于暂存状态<br>使用<code>git add</code>命令 开始跟踪一个文件，是已暂存状态</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git add README</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git status</span><br><span class="line"> On branch master</span><br><span class="line"> Changes to be committed:</span><br><span class="line"> (use "git reset HEAD &lt;file&gt;..." to unstage)</span><br><span class="line"> new file: README</span><br></pre></td></tr></table></figure></li><li><p>暂存已修改文件<br> 修改一个已被跟踪的文件，然后运<br>行 命令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line"></span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">(use "git reset HEAD &lt;file&gt;..." to unstage)</span><br><span class="line">new file: README</span><br><span class="line">Changes not staged for commit:</span><br><span class="line">(use "git add &lt;file&gt;..." to update what will be committed)</span><br><span class="line">(use "git checkout -- &lt;file&gt;..." to discard changes in working</span><br><span class="line">directory)</span><br><span class="line">modified: CONTRIBUTING.md</span><br></pre></td></tr></table></figure><p>文件<code>CONTRIBUTING.md</code> 在<code>Changes not staged for commit</code>这行下面，说明已跟踪的文件被修改了，但没有放入暂存区。要暂存此次更新，需要再此执行<code>git add</code>命令。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git add CONTRIBUTING.md</span><br><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line">(use &quot;git reset HEAD &lt;file&gt;...&quot; to unstage)</span><br><span class="line">new file: README</span><br><span class="line">modified: CONTRIBUTING.md</span><br></pre></td></tr></table></figure><p>git add 将<code>CONTRIBUTING.md</code>文件放到暂存区，此时两个文件都是已暂存，下次执行提交时就会一并记录到仓库。</p></li></ul><h3 id="git-add-git-commit-理解"><a href="#git-add-git-commit-理解" class="headerlink" title="git add / git commit 理解"></a>git add / git commit 理解</h3><p><code>git add</code>命令有多个功能,1.可以用它开始跟踪新文件并放入暂存区；2. 把已跟踪的且被修改过的文件放入暂存区 3. 合并时把有冲突的文件标记未已解决状态…..<br>可理解为 <strong>添加内柔到下一次提交中</strong>， 而非 <strong>将一个文件添加到项目中</strong><br><code>git commit</code>命令，将暂存区的所有文件（git add 命令后的那个版本）提交到版本库中的当前分支上。如果执行了<code>git add</code> 命令之后又做了修改文件，需要重新运行<code>git add</code> 把最新的版本暂存起来。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;创建仓库&quot;&gt;&lt;a href=&quot;#创建仓库&quot; class=&quot;headerlink&quot; title=&quot;创建仓库&quot;&gt;&lt;/a&gt;创建仓库&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在现有目录初始化仓库&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table
+      
+    
+    </summary>
+    
+      <category term="技术总结" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>git基础(1)-git常规环境配置</title>
@@ -47,9 +74,9 @@
     <link href="http://yoursite.com/2019/02/18/vscode%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/"/>
     <id>http://yoursite.com/2019/02/18/vscode插件推荐/</id>
     <published>2019-02-18T08:37:33.000Z</published>
-    <updated>2019-02-18T10:48:31.648Z</updated>
+    <updated>2019-02-19T10:42:22.650Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="VSCode-插件"><a href="#VSCode-插件" class="headerlink" title="VSCode 插件"></a>VSCode 插件</h2><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> ，微软出品，一款免费的、开源的、轻量级的编辑器，支持插件扩展。正因此，受到越来越多前端开发者的追捧。vSCode 插件丰富多样，安装/卸载方便，运用的好，能大大提高开发效率。<br>在<a href="https://marketplace.visualstudio.com/vscode" target="_blank" rel="noopener">官方插件市场</a>,不但可搜索特定插件，还有历史安装量排名，每周/月安装趋势，每日特色好玩插件推荐。</p><h2 id="常用插件推荐"><a href="#常用插件推荐" class="headerlink" title="常用插件推荐"></a>常用插件推荐</h2><ul><li><a href="https://marketplace.visualstudio.com/items?itemName=nonoroazoro.syncing" target="_blank" rel="noopener">Syncing</a><br>使用<strong>GitHub Gist</strong>，跨平台，跨设备同步 所有 VSCode 设置（包含安装的插件）。公司电脑 Vscode 设置文件，上传 GitHub Gist，家里电脑 vscode<br>下载同步，不再重新设置，重新一个个安装插件。</li><li><a href="https://marketplace.visualstudio.com/items?itemName=steoates.autoimport" target="_blank" rel="noopener">Auto Import</a><br>自动查找、解析并提示所有可用于导入的包、代码。<strong>import</strong> 导入包的提示。</li><li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" rel="noopener">Auto Close Tag</a><br>自动添加 HTML/XML 关闭标签</li><li><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_blank" rel="noopener">AUtoRename Tag</a><br>自动重命名成对的 HTML/XML 标签</li><li><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer" target="_blank" rel="noopener">Bracket Pair Colorizer</a><br>用颜色来标识匹配的括号。多层括号，相同曾经括号颜色相同</li><li><a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow" target="_blank" rel="noopener">indent-rainbow</a><br>不同层次缩减使用不同颜色的空格点，使缩减更容易阅读<br><img src="https://raw.githubusercontent.com/oderwat/vscode-indent-rainbow/master/assets/example.png" alt="indent-rainbow"></li><li><a href="https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete" target="_blank" rel="noopener">Path Autocomplete</a><br>文件路径自动补全、提示</li><li><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" rel="noopener">Prettier-Code Formater</a><br> 使用 prettier 格式化代码<br>-<a href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight" target="_blank" rel="noopener">TODO Highlight</a><br>高亮文件中的 TODO、FIXME 等注释标记</li><li><a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree" target="_blank" rel="noopener">TODO TREE</a><br> 在树视图中显示 TODO、FIXME 等注释标记</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="VSCode-插件"><a href="#VSCode-插件" class="headerlink" title="VSCode 插件"></a>VSCode 插件</h2><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> ，微软出品，一款免费的、开源的、轻量级的编辑器，支持插件扩展。正因此，受到越来越多前端开发者的追捧。vSCode 插件丰富多样，安装/卸载方便，运用的好，能大大提高开发效率。<br>在<a href="https://marketplace.visualstudio.com/vscode" target="_blank" rel="noopener">官方插件市场</a>,不但可搜索特定插件，还有历史安装量排名，每周/月安装趋势，每日特色好玩插件推荐。</p><h2 id="常用插件推荐"><a href="#常用插件推荐" class="headerlink" title="常用插件推荐"></a>常用插件推荐</h2><ul><li><p><a href="https://marketplace.visualstudio.com/items?itemName=nonoroazoro.syncing" target="_blank" rel="noopener">Syncing</a><br>使用<strong>GitHub Gist</strong>，跨平台，跨设备同步 所有 VSCode 设置（包含安装的插件）</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=steoates.autoimport" target="_blank" rel="noopener">Auto Import</a><br>自动查找、解析并提示所有可用于导入的包、代码。<strong>import</strong> 导入包的提示。</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag" target="_blank" rel="noopener">Auto Close Tag</a><br>自动添加 HTML/XML 关闭标签</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-rename-tag" target="_blank" rel="noopener">AUtoRename Tag</a><br>自动重命名成对的 HTML/XML 标签</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer" target="_blank" rel="noopener">Bracket Pair Colorizer</a><br>用颜色来标识匹配的括号。多层括号，相同曾经括号颜色相同</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow" target="_blank" rel="noopener">indent-rainbow</a><br>不同层次缩减使用不同颜色的空格点，使缩减更容易阅读<br><img src="https://raw.githubusercontent.com/oderwat/vscode-indent-rainbow/master/assets/example.png" alt="indent-rainbow"></p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=ionutvmi.path-autocomplete" target="_blank" rel="noopener">Path Autocomplete</a><br>文件路径自动补全、提示</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode" target="_blank" rel="noopener">Prettier-Code Formater</a><br>使用 prettier 格式化代码,部分规则可自行配置</p><p>-<a href="https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight" target="_blank" rel="noopener">TODO Highlight</a><br>高亮文件中的 TODO、FIXME 等注释标记</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree" target="_blank" rel="noopener">TODO TREE</a><br> 在树视图中显示 TODO、FIXME 等注释标记</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome" target="_blank" rel="noopener">Debugger for Chrome</a><br>在 chrome 调试 javaScript 代码</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense" target="_blank" rel="noopener">npm intellisense</a><br>提示、并自动完成导入语句中的存在的 npm 模块<br><img src="https://raw.githubusercontent.com/ChristianKohler/NpmIntellisense/master/images/auto_complete.gif" alt="npm intellisense"></p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=softwaredotcom.swdc-vscode" target="_blank" rel="noopener">Code Time</a><br> 编码时间统计</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=gencer.html-slim-scss-css-class-completion" target="_blank" rel="noopener">IntelliSense for Css Scss class name</a><br>css 中 class 命名 智能提示</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=abusaidm.html-snippets" target="_blank" rel="noopener">HTML Snippets</a><br>HTML 代码片段</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=ecmel.vscode-html-css" target="_blank" rel="noopener">HTML CSS Support</a><br>CSS 提示</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek" target="_blank" rel="noopener">CSS Peek</a><br> 在 html 中参看/跳转到 css 所定义的样式</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets" target="_blank" rel="noopener">Vue VSCode Snippets</a><br> vue 代码片段</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=hollowtree.vue-snippets" target="_blank" rel="noopener">Vue 2 Snippets</a><br>Vue 2 的代码片段</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=dariofuzinato.vue-peek" target="_blank" rel="noopener">Vue Peek</a><br> 查看/跳转到 组件</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur" target="_blank" rel="noopener">vetur</a><br>vue 工具包，包括语法高亮、代码片段、错误检查、格式化等</p></li><li><p><a href="https://marketplace.visualstudio.com/items?itemName=wmaurer.change-case" target="_blank" rel="noopener">change-case</a><br>变量名命名风格切换</p></li></ul>]]></content>
     
     <summary type="html">
     
@@ -93,6 +120,31 @@
   </entry>
   
   <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2019/02/15/hello-world/"/>
+    <id>http://yoursite.com/2019/02/15/hello-world/</id>
+    <published>2019-02-15T07:27:08.000Z</published>
+    <updated>2019-02-18T08:16:01.996Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="hello-nihao"><a href="#hello-nihao" class="headerlink" title="hello nihao"></a>hello nihao</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>demo</title>
     <link href="http://yoursite.com/2019/02/15/demo/"/>
     <id>http://yoursite.com/2019/02/15/demo/</id>
@@ -118,31 +170,6 @@
     
     
       <category term="测试文章" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/02/15/hello-world/"/>
-    <id>http://yoursite.com/2019/02/15/hello-world/</id>
-    <published>2019-02-15T07:27:08.000Z</published>
-    <updated>2019-02-18T08:16:01.996Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="hello-nihao"><a href="#hello-nihao" class="headerlink" title="hello nihao"></a>hello nihao</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
