@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>git基础(3)-查看提交历史 | better-jiang</title>
+  <meta name="description" content="git log 命令查看提交历史，通过带不同参数来控制显示的内容和方式。  不用任何参数 git log 会按 提交时间（最晚在前）显示所有提交记录，包括 SHA-1 校验和、作者名字 、电子邮件地址、提交时间、提交说明。 12345678910111213$ git logcommit ca82a6dff817ec66f44342007202690a93763949Author: Scott C">
+<meta name="keywords" content="Git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git基础(3)-查看提交历史">
+<meta property="og:url" content="http://yoursite.com/2019/02/20/git基础-3-查看提交历史/index.html">
+<meta property="og:site_name" content="爱学兮的小江">
+<meta property="og:description" content="git log 命令查看提交历史，通过带不同参数来控制显示的内容和方式。  不用任何参数 git log 会按 提交时间（最晚在前）显示所有提交记录，包括 SHA-1 校验和、作者名字 、电子邮件地址、提交时间、提交说明。 12345678910111213$ git logcommit ca82a6dff817ec66f44342007202690a93763949Author: Scott C">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-20T06:52:52.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git基础(3)-查看提交历史">
+<meta name="twitter:description" content="git log 命令查看提交历史，通过带不同参数来控制显示的内容和方式。  不用任何参数 git log 会按 提交时间（最晚在前）显示所有提交记录，包括 SHA-1 校验和、作者名字 、电子邮件地址、提交时间、提交说明。 12345678910111213$ git logcommit ca82a6dff817ec66f44342007202690a93763949Author: Scott C">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2019/02/20/git基础-3-查看提交历史/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Better-Jiang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">爱学兮的小江</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web前端 &amp; Vue &amp; Java</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术总结/">技术总结</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/测试/">测试</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode插件/">vscode插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/测试文章/">测试文章</a><span class="tag-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Git/" style="font-size: 14px;">Git</a> <a href="/tags/Hexo/" style="font-size: 13px;">Hexo</a> <a href="/tags/vscode插件/" style="font-size: 13px;">vscode插件</a> <a href="/tags/测试文章/" style="font-size: 13.5px;">测试文章</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">9</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/20/git基础-5-远程仓库/" class="title">git基础(5)-远程仓库</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-20T08:57:40.000Z" itemprop="datePublished">2019-02-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/20/git基础-4-撤销与回滚/" class="title">git基础(4)-撤销与回滚</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-20T06:58:01.000Z" itemprop="datePublished">2019-02-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/20/git基础-3-查看提交历史/" class="title">git基础(3)-查看提交历史</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-20T02:19:13.000Z" itemprop="datePublished">2019-02-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/19/git基础-2-创建仓库-更新记录/" class="title">git基础(2)-创建仓库/更新记录</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-19T01:21:34.000Z" itemprop="datePublished">2019-02-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/02/18/git基础-1-git常规环境配置/" class="title">git基础(1)-git常规环境配置</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-02-18T12:10:01.000Z" itemprop="datePublished">2019-02-18</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-git基础-3-查看提交历史" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      git基础(3)-查看提交历史
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/02/20/git基础-3-查看提交历史/" class="article-date">
+	  <time datetime="2019-02-20T02:19:13.000Z" itemprop="datePublished">2019-02-20</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Git/">Git</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/02/20/git基础-3-查看提交历史/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p><code>git log</code> 命令查看提交历史，通过带不同参数来控制显示的内容和方式。</p>
+<ul>
+<li><p>不用任何参数<br> <code>git log</code> 会按 提交时间（最晚在前）显示所有提交记录，包括 SHA-1 校验和、作者名字 、电子邮件地址、提交时间、提交说明。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log</span><br><span class="line">commit ca82a6dff817ec66f44342007202690a93763949</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date: Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line">changed the version number</span><br><span class="line">commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date: Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line">removed unnecessary test</span><br><span class="line">commit a11bef06a3f659402fe7563abf99ad00de2209e6</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date: Sat Mar 15 10:31:28 2008 -0700</span><br><span class="line">first commit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>-p</code> ，显示 每次 提交内容差异</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">git log -p</span><br><span class="line">commit ca82a6dff817ec66f44342007202690a93763949</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date: Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line">  changed the version number</span><br><span class="line"></span><br><span class="line">diff --git a/Rakefile b/Rakefile   // git格式的diff,进行比较的文件,a版本的Rakefile(变动前),b版本的Rekefile(变动后)</span><br><span class="line">index a874b73..8f94139 100644   // 两个版本的哈希(index区的a874b73对象，8f94139对象比较),最后6位数字是对象的模式（普通文件，644权限）</span><br><span class="line">--- a/Rakefile   // 变动前文件</span><br><span class="line">+++ b/Rakefile   // 变动后文件</span><br><span class="line">@@ -5,7 +5,7 @@ require 'rake/gempackagetask'  // 与 合并格式的 diff 相同(diff-u file1 file2) -5,7 表示 "-":变动前文件,"5":第6行，"7":连续7行, "+":变动后文件</span><br><span class="line">spec = Gem::Specification.new do |s|</span><br><span class="line">s.platform = Gem::Platform::RUBY</span><br><span class="line">s.name = "simplegit"</span><br><span class="line">- s.version = "0.1.0"   // "-" 变动前文件，删除的行</span><br><span class="line">+ s.version = "0.1.1"   // "+" 变动后文件，添加的行</span><br><span class="line">  s.author = "Scott Chacon"</span><br><span class="line">  s.email = "schacon@gee-mail.com"</span><br><span class="line">  s.summary = "A simple gem for using Git in Ruby code."</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>--stat</code>, 简略的统计信息<br>列出每次提交所修改过 的文件、多少文件被修改、被修改过的文件的那些行被移除或添加了。最后还有给总结。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --stat</span><br><span class="line">commit ca82a6dff817ec66f44342007202690a93763949</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date: Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line">changed the version number</span><br><span class="line">Rakefile | 2 +-</span><br><span class="line">1 file changed, 1 insertion(+), 1 deletion(-)</span><br><span class="line">commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line">Author: Scott Chacon &lt;schacon@gee-mail.com&gt;</span><br><span class="line">Date: Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line">removed unnecessary test</span><br><span class="line">lib/simplegit.rb | 5 -----</span><br><span class="line">1 file changed, 5 deletions(-)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>--pretty</code> ，使用指定的方式展示提交记录 <code>oneline</code> 将每个提交放在一行。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --pretty=oneline</span><br><span class="line">ca82a6dff817ec66f44342007202690a93763949 changed the version number</span><br><span class="line">085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7 removed unnecessary test</span><br><span class="line">a11bef06a3f659402fe7563abf99ad00de2209e6 first commit</span><br></pre></td></tr></table></figure>
+<p><code>format</code>，定制要显示的记录格式  </p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --pretty=format:"%h - %an, %ar : %s"</span><br><span class="line"></span><br><span class="line"> ca82a6d - Scott Chacon, 6 years ago : changed the version number</span><br><span class="line"> 085bb3b - Scott Chacon, 6 years ago : removed unnecessary test</span><br><span class="line"> a11bef0 - Scott Chacon, 6 years ago : first commit</span><br></pre></td></tr></table></figure>
+<p>| 选项 | 说明                                        |<br>| —- | ——————————————- |<br>| %H   | commit的完整哈希字串                        |<br>| %h   | 简短哈希字串                                |<br>| %an  | 作者（author）名字                          |<br>| %ae  | 作者电子邮件地址                            |<br>| %ad  | 作者修订日期，（可用–date=选项定制格式）   |<br>| %ar  | 作者修订日期，按多久以前的方式显示          |<br>| %cn  | 提交者（committer）名字                     |<br>| %ce  | 提交者电子邮件地址                          |<br>| %cd  | 提交者修订日期，（可用–date=选项定制格式） |<br>| %cr  | 提交者修订日期，按多久以前的方式显示        |<br>| %s   | 提交说明                                    |</p>
+</li>
+<li><p><code>--graph</code> ，图像化的展示分支、合并历史  </p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --graph</span><br><span class="line"> * commit ca82a6dff817ec66f44342007202690a93763949 (HEAD -&gt; master, origin/master, origin/HEAD)</span><br><span class="line"> | Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> | Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"> |</span><br><span class="line"> |     changed the verison number</span><br><span class="line"> |</span><br><span class="line"> * commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line"> | Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> | Date:   Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line"> |</span><br><span class="line"> |     removed unnecessary test code</span><br><span class="line"> |</span><br><span class="line"> * commit a11bef06a3f659402fe7563abf99ad00de2209e6</span><br><span class="line">   Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">   Date:   Sat Mar 15 10:31:28 2008 -0700</span><br><span class="line"></span><br><span class="line">       first commit</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>--name-only</code>, 仅显示已经修改的文件清单   </p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --name-only</span><br><span class="line"> commit ca82a6dff817ec66f44342007202690a93763949 (HEAD -&gt; master, origin/master, origin/HEAD)</span><br><span class="line"> Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"></span><br><span class="line">     changed the verison number</span><br><span class="line"></span><br><span class="line"> Rakefile</span><br><span class="line"></span><br><span class="line"> commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line"> Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> Date:   Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line"></span><br><span class="line">     removed unnecessary test code</span><br><span class="line"></span><br><span class="line"> lib/simplegit.rb</span><br><span class="line"></span><br><span class="line"> commit a11bef06a3f659402fe7563abf99ad00de2209e6</span><br><span class="line"> Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> Date:   Sat Mar 15 10:31:28 2008 -0700</span><br><span class="line"></span><br><span class="line">     first commit</span><br><span class="line"></span><br><span class="line"> README</span><br><span class="line"> Rakefile</span><br><span class="line"> lib/simplegit.rb</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>--name-status</code>, 显示新增、修改、删除的文件清单 </p>
+ <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --name-status</span><br><span class="line"> commit ca82a6dff817ec66f44342007202690a93763949 (HEAD -&gt; master, origin/master, origin/HEAD)</span><br><span class="line"> Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"></span><br><span class="line">     changed the verison number</span><br><span class="line"></span><br><span class="line"> M       Rakefile</span><br><span class="line"></span><br><span class="line"> commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line"> Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> Date:   Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line"></span><br><span class="line">     removed unnecessary test code</span><br><span class="line"></span><br><span class="line"> M       lib/simplegit.rb</span><br><span class="line"></span><br><span class="line"> commit a11bef06a3f659402fe7563abf99ad00de2209e6</span><br><span class="line"> Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> Date:   Sat Mar 15 10:31:28 2008 -0700</span><br><span class="line"></span><br><span class="line">     first commit</span><br><span class="line"></span><br><span class="line"> A       README</span><br><span class="line"> A       Rakefile</span><br><span class="line"> A       lib/simplegit.rb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="git-log-常用选项（限制输出格式）"><a href="#git-log-常用选项（限制输出格式）" class="headerlink" title="git log 常用选项（限制输出格式）"></a>git log 常用选项（限制输出格式）</h3><table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-p</td>
+<td>显示每次提交之间的差异</td>
+</tr>
+<tr>
+<td>–stat</td>
+<td>提交文件修改统计信息</td>
+</tr>
+<tr>
+<td>–shortstat</td>
+<td>只显示–stat中最后的行数、修改、添加、移除统计</td>
+</tr>
+<tr>
+<td>–name-only</td>
+<td>仅显示已修改 的文件清单</td>
+</tr>
+<tr>
+<td>–abbrev-commit</td>
+<td>仅显示SHA-1的前几个字符，而非所有40个字符</td>
+</tr>
+<tr>
+<td>–graph</td>
+<td>显示ASCII图形表示的 分支 合并历史</td>
+</tr>
+<tr>
+<td>–pretty</td>
+<td>使用其他格式 显示提交 历史信息。包括oneline, short,full,fuller,format（后跟指定格式–pretty=format:’%h, %s’）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="限制输出"><a href="#限制输出" class="headerlink" title="限制输出"></a>限制输出</h3><p>除定制输出格式外，git log 有许多 限定输出长度的选项，也就是只 输出部分提交历史信息。<br>| 选项              | 说明                                                                             |<br>| —————– | ——————————————————————————– |<br>| -(n)              | 显示最近的n条提交                                                                |<br>| –since,–after   | 指定时间之后的提交(–since=”2019-02-01 21:00:00”)                                |<br>| –until, –before | 指定时间之前的提交                                                               |<br>| –autor           | 指定作者相关的提交                                                               |<br>| –committer       | 指定提交者相关的提交                                                             |<br>| –grep            | 含指定关键字的提交  (在提交说明中搜索关键字)                                     |<br>| -S                | 显示添加或移除某个关键字的提交 （-S预警查询,找出添加或移除”预警查询”的提交记录） |</p>
+<h3 id="路径-选项"><a href="#路径-选项" class="headerlink" title="路径 选项"></a>路径 选项</h3><p>如果只关心某些文件或目录中的历史提交，可在<code>git log</code>选项的最后指定它们的路径。<strong>需要用两个短划线(–)隔开之前的选项和后面跟的路径名</strong><br> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --pretty="%h %s" --author="liuzhenjiang" --since="2019-02-14 21:00:00" --before="2019-02-16" -- ./src/views/early-warning/early-area-control/</span><br><span class="line"></span><br><span class="line"> 84854447 【预警消息】 案件/地域预警消息，状态更新</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2019/02/20/git基础-3-查看提交历史/" title="git基础(3)-查看提交历史" target="_blank" rel="external">http://yoursite.com/2019/02/20/git基础-3-查看提交历史/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Better-Jiang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Better-Jiang" target="_blank"><span class="text-dark">爱学兮的小江</span><small class="ml-1x">Web前端 &amp; Vue &amp; Java</small></a></h3>
+        <div>前端狗，爱思考，爱码字</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/02/20/git基础-4-撤销与回滚/" title="git基础(4)-撤销与回滚"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/02/19/git基础-2-创建仓库-更新记录/" title="git基础(2)-创建仓库/更新记录"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="wechat" data-mobile-sites></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class>
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c9348a5e84eb5050ec8',
+    clientSecret: 'b92d8dd66f66bbe04d870af0e612ff74a00546da',
+    repo: 'Better-Jiang.github.io',
+    owner: 'Better-Jiang',
+    admin: ['Better-Jiang'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
