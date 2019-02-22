@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="爱学兮的小江">
 <meta property="og:description" content="git log 命令查看提交历史，通过带不同参数来控制显示的内容和方式。  不用任何参数 git log 会按 提交时间（最晚在前）显示所有提交记录，包括 SHA-1 校验和、作者名字 、电子邮件地址、提交时间、提交说明。 12345678910111213$ git logcommit ca82a6dff817ec66f44342007202690a93763949Author: Scott C">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-20T06:52:52.448Z">
+<meta property="og:updated_time" content="2019-02-22T01:53:11.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git基础(3)-查看提交历史">
 <meta name="twitter:description" content="git log 命令查看提交历史，通过带不同参数来控制显示的内容和方式。  不用任何参数 git log 会按 提交时间（最晚在前）显示所有提交记录，包括 SHA-1 校验和、作者名字 、电子邮件地址、提交时间、提交说明。 12345678910111213$ git logcommit ca82a6dff817ec66f44342007202690a93763949Author: Scott C">
@@ -402,8 +402,63 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --pretty=oneline</span><br><span class="line">ca82a6dff817ec66f44342007202690a93763949 changed the version number</span><br><span class="line">085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7 removed unnecessary test</span><br><span class="line">a11bef06a3f659402fe7563abf99ad00de2209e6 first commit</span><br></pre></td></tr></table></figure>
 <p><code>format</code>，定制要显示的记录格式  </p>
  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --pretty=format:"%h - %an, %ar : %s"</span><br><span class="line"></span><br><span class="line"> ca82a6d - Scott Chacon, 6 years ago : changed the version number</span><br><span class="line"> 085bb3b - Scott Chacon, 6 years ago : removed unnecessary test</span><br><span class="line"> a11bef0 - Scott Chacon, 6 years ago : first commit</span><br></pre></td></tr></table></figure>
-<p>| 选项 | 说明                                        |<br>| —- | ——————————————- |<br>| %H   | commit的完整哈希字串                        |<br>| %h   | 简短哈希字串                                |<br>| %an  | 作者（author）名字                          |<br>| %ae  | 作者电子邮件地址                            |<br>| %ad  | 作者修订日期，（可用–date=选项定制格式）   |<br>| %ar  | 作者修订日期，按多久以前的方式显示          |<br>| %cn  | 提交者（committer）名字                     |<br>| %ce  | 提交者电子邮件地址                          |<br>| %cd  | 提交者修订日期，（可用–date=选项定制格式） |<br>| %cr  | 提交者修订日期，按多久以前的方式显示        |<br>| %s   | 提交说明                                    |</p>
 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%H</td>
+<td>commit的完整哈希字串</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>简短哈希字串</td>
+</tr>
+<tr>
+<td>%an</td>
+<td>作者（author）名字</td>
+</tr>
+<tr>
+<td>%ae</td>
+<td>作者电子邮件地址</td>
+</tr>
+<tr>
+<td>%ad</td>
+<td>作者修订日期，（可用–date=选项定制格式）</td>
+</tr>
+<tr>
+<td>%ar</td>
+<td>作者修订日期，按多久以前的方式显示</td>
+</tr>
+<tr>
+<td>%cn</td>
+<td>提交者（committer）名字</td>
+</tr>
+<tr>
+<td>%ce</td>
+<td>提交者电子邮件地址</td>
+</tr>
+<tr>
+<td>%cd</td>
+<td>提交者修订日期，（可用–date=选项定制格式）</td>
+</tr>
+<tr>
+<td>%cr</td>
+<td>提交者修订日期，按多久以前的方式显示</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>提交说明</td>
+</tr>
+</tbody>
+</table>
+<ul>
 <li><p><code>--graph</code> ，图像化的展示分支、合并历史  </p>
  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --graph</span><br><span class="line"> * commit ca82a6dff817ec66f44342007202690a93763949 (HEAD -&gt; master, origin/master, origin/HEAD)</span><br><span class="line"> | Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> | Date:   Mon Mar 17 21:52:11 2008 -0700</span><br><span class="line"> |</span><br><span class="line"> |     changed the verison number</span><br><span class="line"> |</span><br><span class="line"> * commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7</span><br><span class="line"> | Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line"> | Date:   Sat Mar 15 16:40:33 2008 -0700</span><br><span class="line"> |</span><br><span class="line"> |     removed unnecessary test code</span><br><span class="line"> |</span><br><span class="line"> * commit a11bef06a3f659402fe7563abf99ad00de2209e6</span><br><span class="line">   Author: Scott Chacon &lt;schacon@gmail.com&gt;</span><br><span class="line">   Date:   Sat Mar 15 10:31:28 2008 -0700</span><br><span class="line"></span><br><span class="line">       first commit</span><br></pre></td></tr></table></figure>
 </li>
@@ -452,7 +507,45 @@
 </tr>
 </tbody>
 </table>
-<h3 id="限制输出"><a href="#限制输出" class="headerlink" title="限制输出"></a>限制输出</h3><p>除定制输出格式外，git log 有许多 限定输出长度的选项，也就是只 输出部分提交历史信息。<br>| 选项              | 说明                                                                             |<br>| —————– | ——————————————————————————– |<br>| -(n)              | 显示最近的n条提交                                                                |<br>| –since,–after   | 指定时间之后的提交(–since=”2019-02-01 21:00:00”)                                |<br>| –until, –before | 指定时间之前的提交                                                               |<br>| –autor           | 指定作者相关的提交                                                               |<br>| –committer       | 指定提交者相关的提交                                                             |<br>| –grep            | 含指定关键字的提交  (在提交说明中搜索关键字)                                     |<br>| -S                | 显示添加或移除某个关键字的提交 （-S预警查询,找出添加或移除”预警查询”的提交记录） |</p>
+<h3 id="限制输出"><a href="#限制输出" class="headerlink" title="限制输出"></a>限制输出</h3><p>除定制输出格式外，git log 有许多 限定输出长度的选项，也就是只 输出部分提交历史信息。</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-(n)</td>
+<td>显示最近的n条提交</td>
+</tr>
+<tr>
+<td>–since,–after</td>
+<td>指定时间之后的提交(–since=”2019-02-01 21:00:00”)</td>
+</tr>
+<tr>
+<td>–until, –before</td>
+<td>指定时间之前的提交</td>
+</tr>
+<tr>
+<td>–autor</td>
+<td>指定作者相关的提交</td>
+</tr>
+<tr>
+<td>–committer</td>
+<td>指定提交者相关的提交</td>
+</tr>
+<tr>
+<td>–grep</td>
+<td>含指定关键字的提交  (在提交说明中搜索关键字)</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>显示添加或移除某个关键字的提交 （-S预警查询,找出添加或移除”预警查询”的提交记录）</td>
+</tr>
+</tbody>
+</table>
 <h3 id="路径-选项"><a href="#路径-选项" class="headerlink" title="路径 选项"></a>路径 选项</h3><p>如果只关心某些文件或目录中的历史提交，可在<code>git log</code>选项的最后指定它们的路径。<strong>需要用两个短划线(–)隔开之前的选项和后面跟的路径名</strong><br> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git log --pretty="%h %s" --author="liuzhenjiang" --since="2019-02-14 21:00:00" --before="2019-02-16" -- ./src/views/early-warning/early-area-control/</span><br><span class="line"></span><br><span class="line"> 84854447 【预警消息】 案件/地域预警消息，状态更新</span><br></pre></td></tr></table></figure></p>
 
       
