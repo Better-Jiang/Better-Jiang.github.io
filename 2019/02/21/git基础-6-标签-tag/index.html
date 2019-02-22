@@ -259,7 +259,7 @@
                 <a class="category-link" href="/categories/技术总结/">技术总结</a>
               </p>
               <p class="item-title">
-                <a href="/2019/02/21/git基础-8-分支开发工作流-Branching-Workflows/" class="title">git基础(8)-分支开发工作流(Branching Workflows)</a>
+                <a href="/2019/02/21/git基础-8-分支开发本地工作流-Branching-Workflows/" class="title">git基础(8)-分支开发本地工作流(Branching Workflows)</a>
               </p>
               <p class="item-date">
                 <time datetime="2019-02-21T08:41:02.000Z" itemprop="datePublished">2019-02-21</time>
@@ -404,7 +404,7 @@
 <li><code>git tag -d &lt;tagname&gt;</code> : 删除 本地仓库上的标签</li>
 </ul>
 <h3 id="共享-推送-tag"><a href="#共享-推送-tag" class="headerlink" title="共享/推送 tag"></a>共享/推送 tag</h3><p>默认情况，<code>git push</code> 不会推送 标签到远程仓库服务器上。需要显式地推送标签到共享服务器上。类似共享远程分支,执行 <code>git push origin [tagname]</code> 命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span># 推送V1.1Tag 到 GitTest远程仓库上</span><br><span class="line"><span class="meta">$</span> git push GitTest V1.1</span><br><span class="line"></span><br><span class="line">Enumerating objects: 1, done.</span><br><span class="line">Counting objects: 100% (1/1), done.</span><br><span class="line">Writing objects: 100% (1/1), 161 bytes | 53.00 KiB/s, done.</span><br><span class="line">Total 1 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://github.com/Better-Jiang/GitTest.git</span><br><span class="line">* [new tag]         V1.1 -&gt; V1.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 推送V1.1Tag 到 GitTest远程仓库上</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git push GitTest V1.1</span></span><br><span class="line"></span><br><span class="line">Enumerating objects: 1, done.</span><br><span class="line">Counting objects: 100% (1/1), done.</span><br><span class="line">Writing objects: 100% (1/1), 161 bytes | 53.00 KiB/s, done.</span><br><span class="line">Total 1 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://github.com/Better-Jiang/GitTest.git</span><br><span class="line">* [new tag]         V1.1 -&gt; V1.1</span><br></pre></td></tr></table></figure>
 <p>使用带<code>--tags</code> 选项，可一次性推送全部标签。<code>git push GitTest --tags</code></p>
 
       
