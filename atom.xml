@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-20T11:51:24.979Z</updated>
+  <updated>2019-02-22T01:22:16.754Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,84 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git基础(8)-分支开发工作流(Branching Workflows)</title>
+    <link href="http://yoursite.com/2019/02/21/git%E5%9F%BA%E7%A1%80-8-%E5%88%86%E6%94%AF%E5%BC%80%E5%8F%91%E5%B7%A5%E4%BD%9C%E6%B5%81-Branching-Workflows/"/>
+    <id>http://yoursite.com/2019/02/21/git基础-8-分支开发工作流-Branching-Workflows/</id>
+    <published>2019-02-21T08:41:02.000Z</published>
+    <updated>2019-02-22T01:22:16.754Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于分支的便捷，用于开发中，渐渐衍生出了基于用分支进行开发的工作模式。最典型工作流：</p><ul><li><a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">Git Flow</a></li><li><a href="https://guides.github.com/introduction/flow/" target="_blank" rel="noopener">GitHub Flow</a></li><li><a href="https://docs.gitlab.com/ee/workflow/gitlab_flow.html" target="_blank" rel="noopener">GitLab Flow</a></li></ul><p>但是，此文不会介绍，因为现在小编根本不懂，对此也很迷。 如想简单了解，请查看 <a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html" target="_blank" rel="noopener">Git 工作流程简介</a><br>本文，主要讲下 长期分支、特性分支、远程分支</p><h3 id="长期分支"><a href="#长期分支" class="headerlink" title="长期分支"></a>长期分支</h3><p>根据项目开发的不同阶段，同时有多个开发的分支，且是长期的，一般不会删除。再定期地把某些特性分支合并入其他分支。典型方式: 根据不同层次的稳定性，建立分支</p><ul><li>master 分支:保留完全稳定的代码，已经发布</li><li>release 分支： 要发布的分支，发布且经过一段时间正式运行稳定后，合并入 master 分支</li><li>test 分支: 测试的分支，经过测试后，合并入 release 分支</li><li>develop 分支：开发分支,开发人员测试后，合并入 test 分支</li></ul><p><strong>这么做使分支具有不同级别的稳定性，当分支具有一定程度的稳定性后，再把它们合并入具有更改级别稳定性的分支中。</strong></p><h3 id="特性分支"><a href="#特性分支" class="headerlink" title="特性分支"></a>特性分支</h3><p>当工作被分散到不同的流水线中时，需要快速并且完整的在不同流水线中切换。而使用特性短期分支，针对不同流水线中的工作创建与之相关的分支，在不同分支间切换 来实现单一特性的工作。在特性分支修改完成后，再合并，而不用在乎它们建立的顺序或工作进度。</p><p><img src="/image/moreMegre.png" alt="多个特性分支"></p><h3 id="远程分支"><a href="#远程分支" class="headerlink" title="远程分支"></a>远程分支</h3><ul><li>分支(branch): z 指向某个提交对象的可变指针</li><li>跟踪分支(tracking brnch): 本地的分支，用户可写</li><li>远程跟踪分支(remote tracking branch): 远程分支状态的引用（指向远程分支的指针），用户只读，本地不能移动,在网络通信操作中，会自动移动。以 <code>[remote]/[branch]</code> 形式命名</li></ul><h4 id="git-clone-过程"><a href="#git-clone-过程" class="headerlink" title="git clone 过程"></a>git clone 过程</h4><ul><li><p>克隆前【远程仓库】的状态： 远程仓库<code>master</code>分支指向<code>C2</code>的 commit</p><p><img src="/image/remote_repo.png" alt="远程仓库"></p></li><li><p>将数据克隆到本地之后</p><ul><li>首先 生成一个 origin/master 的指针指向最新的提交 C2.这个 origin/master 就是远程跟踪分支，用户只读</li><li>然后 生产一个和 orign 的 master 分支指向同一提交 C2 的本地 master 分支.</li></ul><p><img src="/image/local_repo.png" alt="本地仓库"></p></li></ul><h4 id="git-push-过程"><a href="#git-push-过程" class="headerlink" title="git push 过程"></a>git push 过程</h4><ul><li>克隆后，修改本地文件并提交。此时 本地 master 分支指向 C3</li><li><p><img src="/image/push1.png" alt="git push before"></p></li><li><p><code>git push</code> 对远程和本地都做成修改</p><ul><li><p>修改远程的 master 分支 指向 至 C3</p><p><img src="/image/push2.png" alt="git push remote"></p></li><li><p>修改本地的 远程跟踪分支 orign/master 指向 C3</p><p><img src="/image/push3.png" alt="git push local"></p></li></ul></li></ul><h4 id="git-fetch-git-merge-过程"><a href="#git-fetch-git-merge-过程" class="headerlink" title="git fetch + git merge 过程"></a>git fetch + git merge 过程</h4><p><code>git fetch</code>从远端仓库抓取本地没有的数据，并更新本地数据库，移动 origin/master 指针指向新的、更新后的位置。<strong>但不会修改本地文件， 需要显式的合并</strong></p><ul><li><p>fetch 之前，远程 处于 C4, 本地处于 C3</p><p><img src="/image/fetch1.png" alt="fetch before"></p></li><li><p>fetch 之后，本地的 origin/master 分支指向了最新的 C4</p><p><img src="/image/fetch2.png" alt="fetch after"></p></li><li><p>通过 <code>git merge origin/master</code> 合并本地分支 ,merge 之后，本地 master 分支指向 C4.</p><p><img src="/image/fetch_megre.png" alt="merge origin/master"></p></li></ul><h4 id="git-pull-过程"><a href="#git-pull-过程" class="headerlink" title="git pull 过程"></a>git pull 过程</h4><p><code>git pull = git fetch + git merge</code>，本地仓库更新 origin/master 分支，将其指向 C4，再将其，合并入本地 master 分支,使得本地 master 分支也指向 C4</p><ul><li><p>git pull 之前，远程在 C4， 本地在 C3</p></li><li><p><img src="/image/fetch1.png" alt="git pull before"></p></li><li><p>git pull 之后， 本地仓库更新了 origin/master，将其指向 C4;然后更新本地 master 分支，将其指向 C4</p><p><img src="/image/pull2.png" alt="git pull before"></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;由于分支的便捷，用于开发中，渐渐衍生出了基于用分支进行开发的工作模式。最典型工作流：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://nvie.com/posts/a-successful-git-branching-model/&quot; target=&quot;_blank
+      
+    
+    </summary>
+    
+      <category term="技术总结" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git基础(7)-分支(branch)</title>
+    <link href="http://yoursite.com/2019/02/21/git%E5%9F%BA%E7%A1%80-7-%E5%88%86%E6%94%AF-branch/"/>
+    <id>http://yoursite.com/2019/02/21/git基础-7-分支-branch/</id>
+    <published>2019-02-21T06:28:26.000Z</published>
+    <updated>2019-02-22T01:23:09.325Z</updated>
+    
+    <content type="html"><![CDATA[<p>Git 分支本质是<strong>指向提交对象(commit object)的可变指针</strong>,默认是指向最后那个提交对象，每次提交后，都会自动向前移动。<strong>HEAD</strong>是特殊指针，指向当前所在的本地分支（可理解为当前分支的别称）。</p><h3 id="Git-是如何保存数据的？"><a href="#Git-是如何保存数据的？" class="headerlink" title="Git 是如何保存数据的？"></a>Git 是如何保存数据的？</h3><ul><li>Git 保存的不是文件的一系列或变更集或者差异，而是一系列不同时刻的文件快照。</li><li><p>每次提交时,Git 会保存一个提交对象。该对象包含：</p><ul><li>一个指向暂存内容快照的指针（树对象）</li><li>作者姓名、邮箱、提交解决信息</li><li>指向它的父对象（上一次提交对象）的指针<ul><li>首次提交产生的提交对象<strong>没有父对象</strong></li><li>其他普通提交操作产生的提交对象有<strong>一个父对象</strong></li><li>由多个分支合并产生的提交对象有<strong>多个父对象</strong></li></ul></li></ul></li><li><p>例子<br> 假设有一个工作目录，包含三个将要被暂存、提交的文件。<br> <strong>暂存操作</strong>：</p><ul><li>为每一个文件计算校验和</li><li>把当前版本的文件快照保存到 Git 仓库中（使用 blob 对象来保存文件快照）</li><li>将校验和加入到暂存区域 等待提交</li></ul><p><strong>提交操作</strong>:</p><ul><li>Git 先计算每一个子目录的校验和</li><li>在 Git 仓库中把这些校验和保存为树对象</li><li>Git 创建一个提交对象</li></ul><p><strong>此时，Git 仓库</strong>：</p><ul><li>3 个 blob 对象（保存文件快照）</li><li>1 个树对象（记录着目录结构和 blob 对象索引）</li><li><p>1 个提交对象 (包含 树对象的指针，和所有提交信息)</p><p><img src="/image/first_commit.png" alt="首次提交对象及其树结构"></p><p>修改后再次提交，此次产生的提交对象会包含一个指向上次提交对象（父对象）的指针</p><p><img src="/image/anther_commit.png" alt="提交对象及其父对象"></p></li></ul></li></ul><h3 id="Git-分支"><a href="#Git-分支" class="headerlink" title="Git 分支"></a>Git 分支</h3><p>Git 分支，其本质仅仅时指向其中一个提交对象的可变指针。默认分支名字是 master。</p><blockquote><p>A branch in Git is simply a lightweight movable pointer to one of these commits.</p></blockquote><p><img src="/image/branch.png" alt="分支及其提交历史"></p><h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><p>创建分支只是创建了一个可以移动的新的指针。名为<code>HEAD</code>的特殊指针，指向当前所在的本地分支</p><p><img src="/image/headOnMaster.png" alt="2个指向相同提交历史的分支"></p><ul><li><code>git branch &lt;branchname&gt;</code>： 创建一个分支</li><li><code>git branch -b &lt;branchname&gt;</code>： 创建分支，并切换，创建：<code>git branch &lt;branchname&gt;</code>, 切换：<code>git checkout &lt;branchname&gt;</code></li></ul><h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p><code>git checkout</code>命令，切换分支，实际上是改变 <code>HEAD</code> 的指向,同时<strong>将工作目录恢复到该分支所指向的快照内容（最后一次提交时的样子）</strong>。<br><code>git checkout testing</code>，切换到 testing 分支，此时 <code>HEAD</code> 指向 testing 分支</p><p><img src="/image/headOntesting.png" alt="切换分支，HEAD指向testing"></p><p>在<code>testing</code>分支，修改再提交一次，<code>testing</code>分支向前移动,<code>HEAD</code>也随着提交自动向前移动，但<code>master</code>分支保持不动。</p><p><img src="/image/moveBranch.png" alt="HEAD随分支提交自动向前移动"></p><h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><p><code>git merge</code>命令，合并指定分支到当前分支。</p><ul><li><code>Fast-forward</code>, “快进模式”,由于当前分支所指向的提交是并入分支的直接上游,所有 Git 只是简单的将指针向前移动。<br> 通俗来讲：当试图合并两个分支时，如果顺着一个分支走下去能够到达另一个分支，那么在合并时，只会简单的将指针向前推进。</li><li><p><code>&#39;recursive&#39; strategy</code>,在合并时，需要递归的查找两个分支的分叉点。</p><p><img src="/image/megre.png" alt="三方合并"></p><p>Git 会使用两个分支的末端的快照（C4 、C5）和这两个分支的共同祖先(C2)，做一个简单的三方合并。再将结果做一个新的快照并自动创建一个新的提交（C6）指向它。</p><p><img src="/image/megreAndCommit.png" alt="合并提交"></p></li></ul><h4 id="分支合并冲突"><a href="#分支合并冲突" class="headerlink" title="分支合并冲突"></a>分支合并冲突</h4><p>如果在两个不同分支上，对同一个文件的同一个部分进行了不同的修改，分支合并时就会产生合并冲突。 此时，<strong>Git 做了合并，但没有自动创建一个新的合并提交。</strong>,需要解决冲突，在使用<code>git add</code>命令来将其标记为冲突已解决，然后<code>git commit</code>完成提交。具体步骤：</p><ul><li><p><code>git status</code> 查看因 包含合并冲突 而处于未合并(unmerged)状态的文件</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git status</span></span><br><span class="line">On branch master</span><br><span class="line">You have unmerged paths.</span><br><span class="line">(fix conflicts and run "git commit")</span><br><span class="line">Unmerged paths:</span><br><span class="line">(use "git add &lt;file&gt;..." to mark resolution)</span><br><span class="line">both modified: index.html</span><br><span class="line">no changes added to commit (use "git add" and/or "git commit -a")</span><br></pre></td></tr></table></figure><p>未合并状态的文件中都会加入标准的冲突解决标记，需要打开文件，手动修改文件，解决冲突。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;contact : email.support@github.com&lt;/div&gt;</span><br><span class="line">=======</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;</span><br><span class="line">please contact us at support@github.com</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html</span><br></pre></td></tr></table></figure></li><li><p>解决了所有文件冲突后， <code>git add</code>将每个文件标记为 <strong>冲突已解决</strong>。注意: 一旦暂存这些冲突文件，Git 就会将它们标记为冲突已解决。所以最后是修改一个文件，暂存一个文件，以免漏掉。</p></li><li><code>git commit</code>，提交合并。</li></ul><h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><ul><li><p>查看分支</p><p><code>git branch</code> 不加任何参数，列出所有分支，<code>*</code> 代表当前分支（当前 HEAD 指针所指向的分支）</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git branch</span></span><br><span class="line">* develop</span><br><span class="line">  master</span><br><span class="line">  release</span><br></pre></td></tr></table></figure><p><code>git branch -v</code>,每个分支的最后一次提交</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git branch -v</span></span><br><span class="line">* develop b1e18237 【预警查询】 分页滑动，触发页面样式更新函数，屏幕自适应</span><br><span class="line">  master 3ea94fa9 Merge branch 'release' into 'master'</span><br><span class="line">  release a98f6667 Merge branch 'develop' into 'release'</span><br></pre></td></tr></table></figure><p><code>git branch --merged/--no-merged</code>,过滤分支列表中已经合并或尚未合并到当前分支的分支。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git branch --merged</span></span><br><span class="line"> * develop</span><br><span class="line">   release</span><br></pre></td></tr></table></figure><p><strong>在列表中没有<code>*</code>号的分支，通常是已经将它们的分支合并到另一个分支，可已使用<code>git branch -d</code> 删除的。</strong></p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Git 分支本质是&lt;strong&gt;指向提交对象(commit object)的可变指针&lt;/strong&gt;,默认是指向最后那个提交对象，每次提交后，都会自动向前移动。&lt;strong&gt;HEAD&lt;/strong&gt;是特殊指针，指向当前所在的本地分支（可理解为当前分支的别称）。&lt;/p
+      
+    
+    </summary>
+    
+      <category term="技术总结" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git基础(6)-标签(tag)</title>
+    <link href="http://yoursite.com/2019/02/21/git%E5%9F%BA%E7%A1%80-6-%E6%A0%87%E7%AD%BE-tag/"/>
+    <id>http://yoursite.com/2019/02/21/git基础-6-标签-tag/</id>
+    <published>2019-02-21T01:37:46.000Z</published>
+    <updated>2019-02-21T02:15:23.836Z</updated>
+    
+    <content type="html"><![CDATA[<p>给历史上某一次提交打上标签，以示该次提交的重要性，方便日后的查看、回溯。比如使用此功能来标记发布节点（V1.0.0）</p><h3 id="tag-类型"><a href="#tag-类型" class="headerlink" title="tag 类型"></a>tag 类型</h3><ul><li>轻量标签(lightweight): 其实是一个独立的分支，且不可改变,是一个特定提交的引用。</li><li>附注标签(annotated): 是存储在 Git 数据库中的一个完整对象。它有自身的校验和信息，包含标签名字、标签说明，标签本身也允许使用 GPG 来签署和验证。</li></ul><h3 id="创建-tag"><a href="#创建-tag" class="headerlink" title="创建 tag"></a>创建 tag</h3><ul><li><code>git tag -a v1.0 -m &quot;release 1.0&quot;</code>, 创建一个附注标签，并且添加了附注信息”release 1.0”</li><li><code>git tag -a v0.8 &lt;commitID&gt;</code> : 给过去的提交大标签，在命令末尾指定提交的校验和（或部分校验和 、7 位）</li></ul><h3 id="查看-tag"><a href="#查看-tag" class="headerlink" title="查看 tag"></a>查看 tag</h3><ul><li><code>git tag</code> : 列出所有的标签</li><li><code>git show &lt;tagname&gt;</code> : 查看标签信息和对应的提交信息</li></ul><h3 id="删除-tag"><a href="#删除-tag" class="headerlink" title="删除 tag"></a>删除 tag</h3><ul><li><code>git tag -d &lt;tagname&gt;</code> : 删除 本地仓库上的标签</li></ul><h3 id="共享-推送-tag"><a href="#共享-推送-tag" class="headerlink" title="共享/推送 tag"></a>共享/推送 tag</h3><p>默认情况，<code>git push</code> 不会推送 标签到远程仓库服务器上。需要显式地推送标签到共享服务器上。类似共享远程分支,执行 <code>git push origin [tagname]</code> 命令</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span># 推送V1.1Tag 到 GitTest远程仓库上</span><br><span class="line"><span class="meta">$</span> git push GitTest V1.1</span><br><span class="line"></span><br><span class="line">Enumerating objects: 1, done.</span><br><span class="line">Counting objects: 100% (1/1), done.</span><br><span class="line">Writing objects: 100% (1/1), 161 bytes | 53.00 KiB/s, done.</span><br><span class="line">Total 1 (delta 0), reused 0 (delta 0)</span><br><span class="line">To https://github.com/Better-Jiang/GitTest.git</span><br><span class="line">* [new tag]         V1.1 -&gt; V1.1</span><br></pre></td></tr></table></figure><p>使用带<code>--tags</code> 选项，可一次性推送全部标签。<code>git push GitTest --tags</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;给历史上某一次提交打上标签，以示该次提交的重要性，方便日后的查看、回溯。比如使用此功能来标记发布节点（V1.0.0）&lt;/p&gt;
+&lt;h3 id=&quot;tag-类型&quot;&gt;&lt;a href=&quot;#tag-类型&quot; class=&quot;headerlink&quot; title=&quot;tag 类型&quot;&gt;&lt;/a&gt;ta
+      
+    
+    </summary>
+    
+      <category term="技术总结" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
   
   <entry>
     <title>git基础(5)-远程仓库</title>
@@ -200,6 +278,31 @@
   </entry>
   
   <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2019/02/15/hello-world/"/>
+    <id>http://yoursite.com/2019/02/15/hello-world/</id>
+    <published>2019-02-15T07:27:08.000Z</published>
+    <updated>2019-02-18T08:16:01.996Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="hello-nihao"><a href="#hello-nihao" class="headerlink" title="hello nihao"></a>hello nihao</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>demo</title>
     <link href="http://yoursite.com/2019/02/15/demo/"/>
     <id>http://yoursite.com/2019/02/15/demo/</id>
@@ -225,31 +328,6 @@
     
     
       <category term="测试文章" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/02/15/hello-world/"/>
-    <id>http://yoursite.com/2019/02/15/hello-world/</id>
-    <published>2019-02-15T07:27:08.000Z</published>
-    <updated>2019-02-18T08:16:01.996Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="hello-nihao"><a href="#hello-nihao" class="headerlink" title="hello nihao"></a>hello nihao</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
