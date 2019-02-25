@@ -27,7 +27,7 @@
 <meta property="og:description" content="日常工作中，如果能遵循工作流程，提交代码仔细、规范，其实仅需要 6 个常用的 Git 命令。如图：  新建代码库 git init，在当前目录新建一个 Git 代码库 git init [project-name],新建一个目录，并将其初始化为 Git 代码库 git clone [url]，克隆一个远程代码库  配置Git 的配置文件.gitconfig，在用户主目录下（全局配置 –global">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/image/Git.jpg">
-<meta property="og:updated_time" content="2019-02-25T09:56:36.847Z">
+<meta property="og:updated_time" content="2019-02-25T12:09:22.754Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git基础(9)-Git常用命令清单">
 <meta name="twitter:description" content="日常工作中，如果能遵循工作流程，提交代码仔细、规范，其实仅需要 6 个常用的 Git 命令。如图：  新建代码库 git init，在当前目录新建一个 Git 代码库 git init [project-name],新建一个目录，并将其初始化为 Git 代码库 git clone [url]，克隆一个远程代码库  配置Git 的配置文件.gitconfig，在用户主目录下（全局配置 –global">
@@ -421,6 +421,7 @@
 <li><code>git branch -r</code>, 列出所有远程分支</li>
 <li><code>git branch -a</code>,列出所有本地和远程分支</li>
 <li><code>git branch [branch-name]</code>,新建一个分支，但依然停留在当前分支</li>
+<li><code>git checkout [commit] -b [branch-name]</code>,从提交历史检查一个新的分支，相当于恢复误删的分支</li>
 <li><code>git checkout -b [branch-name]</code>,新建一个分支，并切换到该分支</li>
 <li><code>git branch [branch] [commit]</code>,新建一个分支，指向指定的 commit</li>
 <li><code>git branch --track [branch] [remote-branch]</code>,建立一个新分支，与指定的远程分支建立追踪关系</li>
