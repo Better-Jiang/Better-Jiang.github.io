@@ -17,21 +17,23 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>git基础(4)-撤销与回滚 | better-jiang</title>
-  <meta name="description" content="在任何一个阶段，都可能想要撤销某些操作，来取消对某文件的修改。注意，有些操作是是不可逆的. 检查修改 git diff 检查工作区和暂存区之间的差异 git diff --cached 检查暂存区和本地仓库之间的差异 git diff master origin/develop 检查本地仓库与远程仓库 develop 分支之间的差异  重新提交 git commit --amend有时提交完了发现">
+  <title>git基础(9)-Git常用命令清单 | better-jiang</title>
+  <meta name="description" content="日常工作中，如果能遵循工作流程，提交代码仔细、规范，其实仅需要 6 个常用的 Git 命令。如图：  新建代码库 git init，在当前目录新建一个 Git 代码库 git init [project-name],新建一个目录，并将其初始化为 Git 代码库 git clone [url]，克隆一个远程代码库  配置Git 的配置文件.gitconfig，在用户主目录下（全局配置 –global">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git基础(4)-撤销与回滚">
-<meta property="og:url" content="http://yoursite.com/2019/02/20/git基础-4-撤销与回滚/index.html">
+<meta property="og:title" content="git基础(9)-Git常用命令清单">
+<meta property="og:url" content="http://yoursite.com/2019/02/25/git基础-9-Git常用命令清单/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
-<meta property="og:description" content="在任何一个阶段，都可能想要撤销某些操作，来取消对某文件的修改。注意，有些操作是是不可逆的. 检查修改 git diff 检查工作区和暂存区之间的差异 git diff --cached 检查暂存区和本地仓库之间的差异 git diff master origin/develop 检查本地仓库与远程仓库 develop 分支之间的差异  重新提交 git commit --amend有时提交完了发现">
+<meta property="og:description" content="日常工作中，如果能遵循工作流程，提交代码仔细、规范，其实仅需要 6 个常用的 Git 命令。如图：  新建代码库 git init，在当前目录新建一个 Git 代码库 git init [project-name],新建一个目录，并将其初始化为 Git 代码库 git clone [url]，克隆一个远程代码库  配置Git 的配置文件.gitconfig，在用户主目录下（全局配置 –global">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-25T01:49:04.953Z">
+<meta property="og:image" content="http://yoursite.com/image/Git.jpg">
+<meta property="og:updated_time" content="2019-02-25T09:56:36.847Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git基础(4)-撤销与回滚">
-<meta name="twitter:description" content="在任何一个阶段，都可能想要撤销某些操作，来取消对某文件的修改。注意，有些操作是是不可逆的. 检查修改 git diff 检查工作区和暂存区之间的差异 git diff --cached 检查暂存区和本地仓库之间的差异 git diff master origin/develop 检查本地仓库与远程仓库 develop 分支之间的差异  重新提交 git commit --amend有时提交完了发现">
+<meta name="twitter:title" content="git基础(9)-Git常用命令清单">
+<meta name="twitter:description" content="日常工作中，如果能遵循工作流程，提交代码仔细、规范，其实仅需要 6 个常用的 Git 命令。如图：  新建代码库 git init，在当前目录新建一个 Git 代码库 git init [project-name],新建一个目录，并将其初始化为 Git 代码库 git clone [url]，克隆一个远程代码库  配置Git 的配置文件.gitconfig，在用户主目录下（全局配置 –global">
+<meta name="twitter:image" content="http://yoursite.com/image/Git.jpg">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yoursite.com/2019/02/20/git基础-4-撤销与回滚/index.html">
+  <link rel="canonical" href="http://yoursite.com/2019/02/25/git基础-9-Git常用命令清单/index.html">
   
     <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
   
@@ -340,14 +342,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-git基础-4-撤销与回滚" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-git基础-9-Git常用命令清单" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      git基础(4)-撤销与回滚
+      git基础(9)-Git常用命令清单
     </h1>
   
 
@@ -355,8 +357,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/02/20/git基础-4-撤销与回滚/" class="article-date">
-	  <time datetime="2019-02-20T06:58:01.000Z" itemprop="datePublished">2019-02-20</time>
+	<a href="/2019/02/25/git基础-9-Git常用命令清单/" class="article-date">
+	  <time datetime="2019-02-25T07:02:06.000Z" itemprop="datePublished">2019-02-25</time>
 	</a>
 </span>
         
@@ -381,47 +383,114 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/02/20/git基础-4-撤销与回滚/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/02/25/git基础-9-Git常用命令清单/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>在任何一个阶段，都可能想要撤销某些操作，来取消对某文件的修改。注意，有些操作是是不可逆的.</p>
-<h3 id="检查修改"><a href="#检查修改" class="headerlink" title="检查修改"></a>检查修改</h3><ul>
-<li><code>git diff</code> 检查工作区和暂存区之间的差异</li>
-<li><code>git diff --cached</code> 检查暂存区和本地仓库之间的差异</li>
-<li><code>git diff master origin/develop</code> 检查本地仓库与远程仓库 develop 分支之间的差异</li>
+        <p>日常工作中，如果能遵循工作流程，提交代码仔细、规范，其实仅需要 6 个常用的 Git 命令。如图：</p>
+<p><img src="/image/Git.jpg" alt="Git"></p>
+<h3 id="新建代码库"><a href="#新建代码库" class="headerlink" title="新建代码库"></a>新建代码库</h3><ul>
+<li><code>git init</code>，在当前目录新建一个 Git 代码库</li>
+<li><code>git init [project-name]</code>,新建一个目录，并将其初始化为 Git 代码库</li>
+<li><code>git clone [url]</code>，克隆一个远程代码库</li>
 </ul>
-<h3 id="重新提交-git-commit-amend"><a href="#重新提交-git-commit-amend" class="headerlink" title="重新提交 git commit --amend"></a>重新提交 <code>git commit --amend</code></h3><p>有时提交完了发现漏掉几个文件没添加、或者提交信息写错，需要重新提交. <code>git commit --amend</code> 会将暂存区的文件提交,并覆盖原来的提交信息</p>
-<h3 id="取消暂存的文件-git-reset-HEAD-lt-file-gt"><a href="#取消暂存的文件-git-reset-HEAD-lt-file-gt" class="headerlink" title="取消暂存的文件 git reset HEAD &lt;file&gt;..."></a>取消暂存的文件 <code>git reset HEAD &lt;file&gt;...</code></h3><p>例如: 修改了两个文件并想将它们做为 2 次独立的修改提交,但却意外地输入 <code>git add *</code> 暂存了它们两个,如何取下暂存中的文件？ 正如 <code>git status</code>命令提示的 使用<code>git reset HEAD &lt;file&gt; ...</code> 来撤销暂存</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line"> On branch master</span><br><span class="line"> Changes to be committed:</span><br><span class="line">   (use "git reset HEAD &lt;file&gt;..." to unstage)</span><br><span class="line"></span><br><span class="line">         new file:   a.md</span><br><span class="line">         new file:   b.md</span><br></pre></td></tr></table></figure>
-<p><code>git reset HEAD a.md</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git reset HEAD a.md</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line">Changes to be committed:</span><br><span class="line"> (use "git reset HEAD &lt;file&gt;..." to unstage)</span><br><span class="line"></span><br><span class="line">       new file:   b.md</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line"> (use "git add &lt;file&gt;..." to include in what will be committed)</span><br><span class="line"></span><br><span class="line">       a.md</span><br></pre></td></tr></table></figure>
-<h3 id="撤销对文件的修改-git-checkout-lt-file-gt"><a href="#撤销对文件的修改-git-checkout-lt-file-gt" class="headerlink" title="撤销对文件的修改 git checkout -- &lt;file&gt;..."></a>撤销对文件的修改 <code>git checkout -- &lt;file&gt;...</code></h3><p>撤销修改，将其还原成上次提交时的样子.但<code>git checkout -- &lt;file&gt;</code>是一个危险命令，它只是拷贝了一个文件来覆盖原文件，原文件所做的修改都会消失。</p>
-<h3 id="不同场景下的撤销（未-push-到远程仓库还原操作）"><a href="#不同场景下的撤销（未-push-到远程仓库还原操作）" class="headerlink" title="不同场景下的撤销（未 push 到远程仓库还原操作）"></a>不同场景下的撤销（未 push 到远程仓库还原操作）</h3><ol>
-<li><p>文件被修改，未执行<code>git add</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;fileName&gt;</span><br><span class="line"></span><br><span class="line">git checkout .</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>Git 的配置文件<code>.gitconfig</code>，在用户主目录下（全局配置 –global），在项目目录下（项目配置 –local），在安装目录下（系统配置 –system）</p>
+<ul>
+<li><code>git config --list</code>，显示当前 Git 配置</li>
+<li><code>git config -e [--global]</code>,编辑 Git 配置文件</li>
+<li><code>git config [--global] user.name &quot;[name]&quot;</code>,设置用户信息</li>
+</ul>
+<h3 id="增加-删除文件到暂存区"><a href="#增加-删除文件到暂存区" class="headerlink" title="增加/删除文件到暂存区"></a>增加/删除文件到暂存区</h3><ul>
+<li><code>git add [file1] [file2] ...</code>，添加指定文件到暂存区</li>
+<li><code>git add .</code>,添加当前目录的所有文件到暂存区</li>
+<li><code>git rm [file1] [file2] ...</code>，删除工作区文件，并将这次删除放入暂存区</li>
+<li><code>git rm --cached [file]</code>，停止追踪指定文件，但该文件会保留在工作区</li>
+<li><code>git mv [rile-original] [file-renamed]</code>,改名文件，并将这个改名放入暂存区</li>
+</ul>
+<h3 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h3><ul>
+<li><code>git commit -m [message]</code>,提交暂存区到本地仓库</li>
+<li><code>git commit [file2] [file2] ... -m [message]</code>，提交暂存区指定文件到本地仓库</li>
+<li><code>git commit -a</code>,提交工作区自上次 commit 之后的变化，直接到本地仓库</li>
+<li><code>git commit -v</code>,提交时显示 diff 信息</li>
+<li><code>git commit --amend -m [message]</code>，使用一次新的 commit，替代上一次提交</li>
+</ul>
+<h3 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h3><ul>
+<li><code>git branch</code>, 列出所有本地分支</li>
+<li><code>git branch -r</code>, 列出所有远程分支</li>
+<li><code>git branch -a</code>,列出所有本地和远程分支</li>
+<li><code>git branch [branch-name]</code>,新建一个分支，但依然停留在当前分支</li>
+<li><code>git checkout -b [branch-name]</code>,新建一个分支，并切换到该分支</li>
+<li><code>git branch [branch] [commit]</code>,新建一个分支，指向指定的 commit</li>
+<li><code>git branch --track [branch] [remote-branch]</code>,建立一个新分支，与指定的远程分支建立追踪关系</li>
+<li><code>git branch --set-upstream-to [origin/branch]</code>,修改追踪仓库，在现有分支与指定的远程分支建立追踪关系</li>
+<li><code>git chekout [branch]</code>,切换到指定分支，并更新工作区</li>
+<li><code>git merge [branch]</code>,合并指定分支到当前分支</li>
+<li><code>git cherry-pick [commit]</code>,选择一个 commit，合并进当前分支</li>
+<li><code>git branch -d [branch-name]</code>，删除本地分支</li>
+<li><code>git push origin --delete [branch-name]</code>,删除指定远端分支<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git push GitTest --delete branches</span><br><span class="line"> To https://github.com/Better-Jiang/GitTest.git</span><br><span class="line"> - [deleted]         branches</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>同时对多个文件执行<code>git add</code> ,但本次提交只想提交其中部分文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git add *</span><br><span class="line"><span class="meta">$</span> git status</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 取消部分暂存文件</span><br><span class="line"><span class="meta">$</span> git reset HEAD &lt;fileName&gt;</span><br></pre></td></tr></table></figure>
+</ul>
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><ul>
+<li><code>git tag</code>,列出所有标签</li>
+<li><code>git tag -a [tag] -m [message]</code>,新建一个 附注类型的 tag，在当前 commit</li>
+<li><code>git tag [tag] [commit]</code>，新建一个 tag，在指定 commit</li>
+<li><code>git tag -d [tag]</code>,删除指定 tag</li>
+<li><code>git show [tag]</code>,查看 tag 信息</li>
+<li><code>git push [remote] [tag]</code>, 推送指定 tag</li>
+<li><code>git push [remote] --tags</code>,推送所有 tag</li>
+<li><p><code>git push [remote] :refs/tags/[tag]</code>,远端删除指定 tag</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git push GitTest :refs/tags/v1.1</span><br><span class="line"></span><br><span class="line"> remote: warning: Deleting a non-existent ref.</span><br><span class="line"> To https://github.com/Better-Jiang/GitTest.git</span><br><span class="line"> - [deleted]         v1.1</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>文件执行了 <code>git add</code>， 但想撤销对其中部分文件的修改</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 取消暂存</span><br><span class="line"><span class="meta">$</span> git reset HEAD &lt;fileName&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 取消修改</span><br><span class="line"><span class="meta">$</span> git  checkout &lt;fileName&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>已经 <code>git commit</code>， 想再次修改，但不想产生新的 commit 记录</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改的最后一次暂存</span><br><span class="line"><span class="meta">$</span> git add &lt;fileName&gt;</span><br><span class="line"><span class="meta">$</span> git commit --amend -m "comment"</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>已经在本地多次提交记录<code>git commit</code>,但想撤销到其中某次 Commit</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset [--hard|soft|mixed|merge|keep] [commit|HEAD]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="不同场景下的回滚（已-push-到远程仓库的还原操作）"><a href="#不同场景下的回滚（已-push-到远程仓库的还原操作）" class="headerlink" title="不同场景下的回滚（已 push 到远程仓库的还原操作）"></a>不同场景下的回滚（已 push 到远程仓库的还原操作）</h3><p><strong>回滚有风险，需要提前做好备份，通知其他团队成员</strong></p>
-<ol>
-<li><p>撤销指定文件到指定版本</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看指定文件的历史版本</span><br><span class="line"><span class="meta">$</span> git log &lt;fileName&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 回滚到指定commitID</span><br><span class="line"><span class="meta">$</span> git chekcout &lt;commitID&gt; &lt;fileName&gt;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+</ul>
+<h3 id="查看信息"><a href="#查看信息" class="headerlink" title="查看信息"></a>查看信息</h3><ul>
+<li><code>git status</code>,显示文件状态，是否有变更文件</li>
+<li><code>git log</code>，当前分支的版本历史</li>
+<li><code>git log --stat</code>,显示 commit 历史，以及每次 commit 发生变更的文件</li>
+<li><code>git log --follow [file]</code>,<code>git whatchanged [file]</code>显示某个文件的版本历史，包括文件改名</li>
+<li><code>git log -p [file]</code>,显示指定文件相关的每一次 diff</li>
+<li><code>git blame [file]</code>,显示指定文件什么人，在什么时间修改过</li>
+<li><code>git diff</code>，显示暂存区和工作区的差异</li>
+<li><code>git diff --cached</code>,暂存区和上一个 commit 的差异</li>
+<li><code>git diff HEAD</code>,暂存区和当前分支最新 commit 之间的差异</li>
+<li><code>git diff [commit] [commit]</code>,两次提交之间的差异</li>
+<li><code>git show [commit]</code>, 显示某次提交的元数据和内容变化</li>
+<li><code>git show --name-only [commit]</code>,显示某次提交发生变化的文件</li>
+<li><code>git show [commit]:[filename]</code>,显示某次提交时，某个文件的内容</li>
+<li><code>git reflog</code>，显示当前分支的最仅几次提交</li>
+</ul>
+<h3 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h3><ul>
+<li><code>git fetch [remote]</code>,下载远程仓库的所有变动</li>
+<li><code>git remote -v</code>,显示所有远程仓库</li>
+<li><code>git remote show [remote]</code>,显示某个远程仓库的信息</li>
+<li><code>git remote add [shortname] [url]</code>,增加一个新的远程仓库，并命名</li>
+<li><code>git pull &lt;y远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</code>,<code>git pull origin master:testing</code>,将远程主机 origin 的 master 分支拉取过来，与本地的 testing 分支合并。冒号：省略，表示与当前分支进行合并。</li>
+<li><code>git pull [remote] [branch]</code>,取回远程仓库的变化，并于当前本地分支合并</li>
+<li><code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</code>，将本地分支上传到远程分支。</li>
+<li><code>git push [remote] [local-branch]</code>,上传本地指定分支，到远程仓库的同名分支,如果没有则创建新分支</li>
+<li><code>git push [remote]: refs/for/master</code>，如果省略了本地分支，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。等同于<code>git push [remote] --delete [branch]</code></li>
+<li><strong><code>refs/for</code>，表示我们提交到服务器之后需要经过 code review 之后才能进行 merge</strong></li>
+<li><strong>如果当前分支与远程分支存在追踪关系，则本地分支和远程分支都可以省略，<code>git push origin</code>，将当前分支推送到 origin 主机的对应分支</strong></li>
+<li><code>git push [remote] --force</code>,强行推送当前分支到远程仓库，即使有冲突</li>
+<li><code>git push</code>，如果当前分支只有一个远程分支，则可以省略主机名。</li>
+</ul>
+<h3 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h3><ul>
+<li><code>git checkout [file]</code>,恢复暂存区的指定文件到工作区</li>
+<li><code>git checkout [commit] [file]</code>,恢复某个指定 commit 的指定文件到工作区</li>
+<li><code>git checkout .</code>,恢复上一个 commit 的所有文件到工作区</li>
+<li><code>git reset [file]</code>,重置暂存区的指定文件，与上一次 commit 保持一致，但工作区不变</li>
+<li><code>git reset --hard</code>,重置暂存区与工作区内容，与上一次 commit 保持一致</li>
+<li><code>git reset [commit]</code>,重置当前分支指针为指定 commit，同时重置暂存区，但工作区保持不变</li>
+<li><code>git revert [commit]</code>，新建一个 commit,撤销指定 commit 的所有变化，并应用到当前分支</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><code>git archive</code>,生成一个可供发布的压缩包</li>
+<li><code>git stash</code>,备份当前工作区的内容</li>
+<li><code>git stash pop</code>,从 Git 栈中，读取最近一次保存的内容，恢复工作区相关内容</li>
+<li><code>git stash list</code>,显示 Git 栈内所有备份</li>
+<li><code>git stash clear</code>，清空 Git 栈</li>
+</ul>
 
       
     </div>
@@ -431,7 +500,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2019/02/20/git基础-4-撤销与回滚/" title="git基础(4)-撤销与回滚" target="_blank" rel="external">http://yoursite.com/2019/02/20/git基础-4-撤销与回滚/</a>
+      <a href="http://yoursite.com/2019/02/25/git基础-9-Git常用命令清单/" title="git基础(9)-Git常用命令清单" target="_blank" rel="external">http://yoursite.com/2019/02/25/git基础-9-Git常用命令清单/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -477,13 +546,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/02/20/git基础-5-远程仓库/" title="git基础(5)-远程仓库"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/02/20/git基础-3-查看提交历史/" title="git基础(3)-查看提交历史"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/02/25/git基础-8-重置揭秘/" title="git基础(8)-重置揭秘"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
