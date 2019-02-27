@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-25T12:09:22.754Z</updated>
+  <updated>2019-02-27T01:17:05.437Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>npm常用知识汇总</title>
+    <link href="http://yoursite.com/2019/02/26/npm%E5%B8%B8%E7%94%A8%E7%9F%A5%E8%AF%86%E6%B1%87%E6%80%BB/"/>
+    <id>http://yoursite.com/2019/02/26/npm常用知识汇总/</id>
+    <published>2019-02-26T07:19:44.000Z</published>
+    <updated>2019-02-27T01:17:05.437Z</updated>
+    
+    <content type="html"><![CDATA[<p>npm 是随 Node.js 一起安装的包管理工具，它的一个很重要的作用就是：将开发者从繁琐的包管理工作中解放出来，使开发者更加专注于功能的开发。</p><h3 id="安装-更新"><a href="#安装-更新" class="headerlink" title="安装/更新"></a>安装/更新</h3><p>npm 不需要单独安装，在安装 Node 时，会连带一起安装 npm。但 Node 附带的 npm 可能不是最新版本，需要运行 <code>npm install npm@latest -g</code> 更新到最新版本。因在国内 访问、下载 npm 包太慢，可设置淘宝镜像。</p><ul><li>设置淘宝镜像 <code>npm i -g cnpm --registry=https://registry.npm.taobao.org</code><ul><li><code>npm config get registry</code> 查看镜像是否配置成功</li></ul></li><li>更新最新版本 <code>npm i npm@latest -g</code></li></ul><h3 id="npm-使用"><a href="#npm-使用" class="headerlink" title="npm 使用"></a>npm 使用</h3><h4 id="npm-init"><a href="#npm-init" class="headerlink" title="npm init"></a>npm init</h4><p><code>npm init</code> 初始化生成一个新的 <code>package.json</code> 。它会向用户提一系列 配置问题。使用参数 <code>-f(force)</code>,<code>-y(yes)</code>,则跳过提问阶段，用默认变量 直接生成 <code>package.json</code></p><h4 id="npm-set"><a href="#npm-set" class="headerlink" title="npm set"></a>npm set</h4><ul><li><p><code>npm config list -l</code>，查看 npm 配置信息</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm config list -l</span><br><span class="line"> ; cli configs</span><br><span class="line"> long = true</span><br><span class="line"> metrics-registry = "https://registry.npmjs.org/"</span><br><span class="line"> scope = ""</span><br><span class="line"> user-agent = "npm/6.4.1 node/v8.14.0 win32 x64"</span><br><span class="line"> init-author-email = ""</span><br><span class="line"> init-author-name = ""</span><br><span class="line"> init-author-url = ""</span><br><span class="line"> init-license = "ISC"</span><br><span class="line"> init-module = "C:\\Users\\14335\\.npm-init.js"</span><br><span class="line"> init-version = "1.0.0"</span><br></pre></td></tr></table></figure></li><li><p><code>npm set</code> 用来设置 npm 的配置信息,这些信息会存放在主用户目录的<code>~/.npmrc</code>文件。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm set init-author-email "1433539514@qq.com"</span><br><span class="line"><span class="meta">$</span> npm set init-author-name "better-jiang"</span><br><span class="line"><span class="meta">$</span> npm set init-license 'MIT'</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> cat ~/.npmrc</span><br><span class="line">init-author-email=1433539514@qq.com</span><br><span class="line">init-author-name=better-jiang</span><br><span class="line">init-license=MIT</span><br></pre></td></tr></table></figure><p><code>npm set</code> 设置之后，再 <code>npm init</code>, <code>package.json</code>中作者姓名、邮件、许可就会自动写入预设的值。</p></li></ul><h4 id="npm-info"><a href="#npm-info" class="headerlink" title="npm info"></a>npm info</h4><p><code>npm info</code> 命令查看模块的具体信息</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm info vue</span><br><span class="line"></span><br><span class="line">   vue@2.6.7 | MIT | deps: none | versions: 247</span><br><span class="line">   Reactive, component-oriented view layer for modern web interfaces.</span><br><span class="line">   https://github.com/vuejs/vue#readme</span><br><span class="line"></span><br><span class="line">   keywords: vue</span><br><span class="line"></span><br><span class="line">   dist</span><br><span class="line">   .tarball: https://registry.npmjs.org/vue/-/vue-2.6.7.tgz</span><br><span class="line">   .shasum: 254f188e7621d2d19ee28d0c0442c6d21b53ae2d</span><br><span class="line">   .integrity: sha512-g7ADfQ82QU+j6F/bVDioVQf2ccIMYLuR4E8ev+RsDBlmwRkhGO3HhgF4PF9vpwjdPpxyb1zzLur2nQ2oIMAMEg==</span><br><span class="line">   .unpackedSize: 3.0 MB</span><br><span class="line"></span><br><span class="line">   maintainers:</span><br><span class="line">   - yyx990803 &lt;yyx990803@gmail.com&gt;</span><br><span class="line"></span><br><span class="line">   dist-tags:</span><br><span class="line">   beta: 2.6.0-beta.3  csp: 1.0.28-csp     latest: 2.6.7</span><br><span class="line"></span><br><span class="line">   published 4 days ago by yyx990803 &lt;yyx990803@gmail.com&gt;</span><br></pre></td></tr></table></figure><h4 id="npm-search"><a href="#npm-search" class="headerlink" title="npm search"></a>npm search</h4><p><code>npm search</code> 命令在 npm 仓库 搜索相关内容</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm search  vue</span><br><span class="line"></span><br><span class="line">NAME                      | DESCRIPTION          | AUTHOR          | DATE       | VERSION  | KEYWORDS</span><br><span class="line">vue                       | Reactive,…           | =yyx990803      | 2019-02-21 | 2.6.7    | vue</span><br><span class="line">vue-router                | Official router for… | =posva…         | 2018-11-23 | 3.0.2    | vue router routing</span><br><span class="line">vuex                      | state management…    | =yyx990803      | 2019-01-17 | 3.1.0    |</span><br><span class="line">eslint-plugin-vue         | Official ESLint…     | =chrisvfritz…   | 2019-02-18 | 5.2.2    | eslint eslint-plugin eslint-config vue vuejs rules</span><br><span class="line">bootstrap-vue             | BootstrapVue…        | =pi0…           | 2019-02-19 | 2.0.0-r… | Bootstrap Bootstrap 4 Bootstrap for Vue SSR Web Components Directives Polymer Vue VueJS Vue2 WebCo</span><br><span class="line">mpo</span><br><span class="line">vue-i18n                  | Internationalization… | =kazupon        | 2019-02-17 | 8.8.2    | i18n internationalization plugin vue vue.js</span><br><span class="line">vuetify                   | Vue.js 2 Semantic…   | =amajesticpota… | 2019-02-19 | 1.5.2    |</span><br><span class="line">vue-style-loader          | Vue.js style loader… | =yyx990803      | 2018-08-13 | 4.1.2    |</span><br><span class="line">vue-meta                  | manage page meta…    | =alexchopin…    | 2018-12-18 | 1.5.8    | attribute google head helmet info meta seo server ssr title universal vue</span><br><span class="line">vue-multiselect           | Multiselect…         | =shentao        | 2018-10-03 | 2.1.3    |</span><br><span class="line">vue-class-component       | ES201X/TypeScript…   | =ktsn…          | 2019-02-19 | 7.0.1    | vue class babel typescript</span><br><span class="line">@vue/eslint-config-standa | eslint-config-stand… | =akryum =soda…  | 2018-10-30 | 4.0.0    | vue cli</span><br><span class="line">rd                        |                      |                 |            |          |</span><br><span class="line">vue-chartjs               | Vue.js wrapper for…  | =apertureless   | 2018-08-04 | 3.4.0    | ChartJs Vue Visualisation Wrapper Charts</span><br><span class="line">@vue/eslint-config-pretti | eslint-config-prett… | =akryum =soda…  | 2018-11-12 | 4.0.1    | vue cli</span><br><span class="line">er                        |                      |                 |            |          |</span><br><span class="line">vue-hot-reload-api        | hot reload api for…  | =yyx990803      | 2019-02-22 | 2.3.3    | vue hot reload</span><br><span class="line">vue-resource              | The HTTP client for… | =steffans…      | 2018-05-20 | 1.5.1    | vue xhr http ajax</span><br><span class="line">@vue/eslint-config-airbnb | eslint-config-airbnb… | =akryum =soda…  | 2018-10-30 | 4.0.0    | vue cli</span><br><span class="line">vue-eslint-parser         | The ESLint custom…   | =mysticatea     | 2019-02-10 | 6.0.2    |</span><br><span class="line">@vue/component-compiler-u | Lower level…         | =akryum…        | 2019-02-21 | 2.6.0    | vue sfc component compiler</span><br><span class="line">tils                      |                      |                 |            |          |</span><br><span class="line">vue-property-decorator    | property decorators… | =kaorun343      | 2019-01-11 | 7.3.0    | vue typescript decorator</span><br></pre></td></tr></table></figure><h4 id="npm-list"><a href="#npm-list" class="headerlink" title="npm list"></a><a href="https://www.npmjs.cn/cli/ls/" target="_blank" rel="noopener">npm list</a></h4><ul><li><code>npm list</code> 以树形结构列出当前项目已安装的所有模块，以及它们的依赖</li><li><code>npm list -global</code>, 列出全局安装的模块</li><li><code>npm list vue</code>, 列出指定模块</li><li><code>npm list -prod</code>, <code>dependencies</code>中的模块 依赖树</li><li><code>npm list -dev</code>, <code>devDependencies</code>的模块 依赖树</li></ul><h4 id="npm-install"><a href="#npm-install" class="headerlink" title="npm install"></a><a href="https://www.npmjs.cn/cli/install/" target="_blank" rel="noopener">npm install</a></h4><ul><li>本地 / 全局 安装<br>默认情况下，<code>npm</code>会从 <a href="http://npmjs.org" target="_blank" rel="noopener">http://npmjs.org</a> 搜索或下载包，并将包安装到当前目录的<code>node_modules</code>子目录下。<ul><li>本地安装，是指将一个模块下载到当前目录的<code>node_modules</code>子目录，然后只有在项目目录中，才能调用该模块</li></ul></li><li>全局安装，一般来讲，只适用于工具模块，比如webpack，gulp，eslint。</li></ul><table><thead><tr><th>模式</th><th>require 引入使用</th><th>注册PATH</th></tr></thead><tbody><tr><td>本地模式</td><td>是</td><td>否</td></tr><tr><td>全局模式</td><td>否</td><td>是</td></tr></tbody></table><p>注意⚠️：安装之前，<code>npm install</code>会先检查，node_modules目录是否已经存在指定模块，如果存在，就不重新安装了，即使远程仓库已经有一个新版本。<br>如果希望，不过是否安装过，都要强制重新安装，可是有<code>-f</code>或<code>--force</code>参数<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm install &lt;package name&gt; --force</span><br></pre></td></tr></table></figure></p><ul><li><p>安装不同版本</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm install vue-router@2.8.1  // 2.8.1 版本 </span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> npm install vue-router@latest  // 最新版本</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span> npm install vue-router@^2.7.0 // 2.7.0及以后的版本</span><br></pre></td></tr></table></figure><ul><li>版本范围<ul><li><strong>version</strong>， 必须是准确版本号</li><li><strong>&gt;version</strong>, 大于指定版本号</li><li><strong>&gt;=version</strong>,大于等于版本号</li><li><strong>&lt;version</strong>, 小于版本号</li><li><strong>&lt;=version</strong>, 小于等于版本号</li><li><strong>~version</strong>, 约等于办本号</li><li><strong>^version</strong>,最小的版本号，向后兼容</li><li><strong>1.2.X</strong>, 1.2这个大版本，1.2.0,2.2.4,etc, but no 1.3.0</li><li><strong>version1 - version2</strong>, &gt;=version1 &lt;=version2</li></ul></li></ul></li><li>依赖类型（dependencies， devDependencies）<ul><li>dependencies 依赖，是指该项目所依赖的js模块，当他人引用此包时，该依赖下的模块也会被下载</li><li>devDependencies 依赖，只是在开发环境中需要用到的，在他人引用时不会被下载。</li></ul></li><li><code>npm install</code>,默认会下载安装dependencies和devDependencies中的所有模块，如果使用<code>--production</code> 参数，只会下载安装 dependencies下的模块<h3 id="npm-run"><a href="#npm-run" class="headerlink" title="npm run"></a>npm run</h3>npm 不仅可以用于模块管理，还可以执行脚本。<code>package.json</code>文件中有一个<code>scripts</code>字段，可用于指定脚本命令，供npm直接调用。  <ul><li>scripts， 就是一些脚本代码，可以通过 <code>npm run script-key</code>来调用， <code>npm run</code> 是其简写。<ul><li><code>npm run</code>，不加参数，直接运行，会列出<code>package.json</code>中所有可以执行的脚本命令。</li><li>运行<code>bash脚本</code><br>在写scripts属性中的命令，也可以在<code>node_modules/.bin</code>目录中直接写成<strong>bash脚本</strong> <h3 id="npm-bin"><a href="#npm-bin" class="headerlink" title="npm bin"></a>npm bin</h3><code>npm bin</code>命令显示当前项目的，Node模块的可执行脚本所在的目录（即<code>.bin</code>目录）<h3 id="npm-root"><a href="#npm-root" class="headerlink" title="npm root"></a>npm root</h3><code>npm root [-g]</code>,查看【全局的】包的安装路径<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm help   // 查看npm 命令列表</span><br><span class="line">npm -l  // 查看 npm命令的简单用法</span><br><span class="line">npm version    // 查看npm node 等版本</span><br><span class="line">npm help [command]  // 查看某命令 详细用法</span><br><span class="line">npm list --depth=0 [-g]  // 查看[全局]本地安装的包</span><br><span class="line">npm view &lt;package name&gt;   // 查看指定包的信息</span><br><span class="line">npm search [search key]  // 搜索相关的npm包</span><br><span class="line">npm update [-g] [package name] // 升级当前项目指定模块</span><br><span class="line">npm config list  // 查看配置信息</span><br></pre></td></tr></table></figure></li></ul></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;npm 是随 Node.js 一起安装的包管理工具，它的一个很重要的作用就是：将开发者从繁琐的包管理工作中解放出来，使开发者更加专注于功能的开发。&lt;/p&gt;
+&lt;h3 id=&quot;安装-更新&quot;&gt;&lt;a href=&quot;#安装-更新&quot; class=&quot;headerlink&quot; title=&quot;安
+      
+    
+    </summary>
+    
+      <category term="技术总结" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="npm" scheme="http://yoursite.com/tags/npm/"/>
+    
+  </entry>
   
   <entry>
     <title>git基础(9)-Git常用命令清单</title>
@@ -302,85 +328,6 @@
     
     
       <category term="vscode插件" scheme="http://yoursite.com/tags/vscode%E6%8F%92%E4%BB%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>文章资源test</title>
-    <link href="http://yoursite.com/2019/02/15/%E6%96%87%E7%AB%A0%E8%B5%84%E6%BA%90test/"/>
-    <id>http://yoursite.com/2019/02/15/文章资源test/</id>
-    <published>2019-02-15T08:54:24.000Z</published>
-    <updated>2019-02-18T07:02:03.016Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="文章资源测试"><a href="#文章资源测试" class="headerlink" title="文章资源测试"></a>文章资源测试</h3><h2 id="要使用绝对路径，否则-在首页中图片显示，当在文章页不显示"><a href="#要使用绝对路径，否则-在首页中图片显示，当在文章页不显示" class="headerlink" title="要使用绝对路径，否则 在首页中图片显示，当在文章页不显示"></a>要使用绝对路径，否则 在首页中图片显示，当在文章页不显示</h2><p><img src="/image/多特征分析-重新设计02.png" alt="图片"><br><img src="/image/预警查询_密度监控.png" alt="图片2"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;文章资源测试&quot;&gt;&lt;a href=&quot;#文章资源测试&quot; class=&quot;headerlink&quot; title=&quot;文章资源测试&quot;&gt;&lt;/a&gt;文章资源测试&lt;/h3&gt;&lt;h2 id=&quot;要使用绝对路径，否则-在首页中图片显示，当在文章页不显示&quot;&gt;&lt;a href=&quot;#要使用绝对路径，否
-      
-    
-    </summary>
-    
-      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="测试文章" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>demo</title>
-    <link href="http://yoursite.com/2019/02/15/demo/"/>
-    <id>http://yoursite.com/2019/02/15/demo/</id>
-    <published>2019-02-15T07:27:08.000Z</published>
-    <updated>2019-02-18T07:02:33.760Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><!-- vscode-markdown-toc --><ul><li><ol><li><a href="#">标题</a><ul><li>1.1. <a href="#ID">标题 ID</a></li><li>1.2. <a href="#2">标题 2 个影人</a></li></ul></li></ol></li><li><ol start="2"><li><a href="#dd">强调dd</a></li></ol></li><li><ol start="3"><li><a href="#3333222">数学3333222</a><ul><li>3.1. <a href="#dddd">dddd</a></li></ul></li></ol></li><li><ol start="4"><li><a href="#writing">部署测试，部署在writing分支上</a></li></ol></li></ul><!-- vscode-markdown-toc-config    numbering=true    autoSave=true    /vscode-markdown-toc-config --><!-- /vscode-markdown-toc --><h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1. 标题"></a>1. <a name></a>标题</h2><h3 id="1-1-标题-ID"><a href="#1-1-标题-ID" class="headerlink" title="1.1. 标题 ID"></a>1.1. <a name="ID"></a>标题 ID</h3><h3 id="1-2-标题-2-个影人"><a href="#1-2-标题-2-个影人" class="headerlink" title="1.2. 标题 2 个影人"></a>1.2. <a name="2"></a>标题 2 个影人</h3><h2 id="2-强调dd"><a href="#2-强调dd" class="headerlink" title="2. 强调dd"></a>2. <a name="dd"></a>强调dd</h2><p><strong>粗体</strong><br>_斜体_<br><strong>粗体</strong><br><strong>ddd</strong><br> <code>ddd</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x, y</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ul><li style="list-style: none"><input type="checkbox" checked> 未成内容</li><li style="list-style: none"><input type="checkbox"> 已完成</li><li style="list-style: none"><input type="checkbox"> yi</li></ul><h2 id="3-数学3333222"><a href="#3-数学3333222" class="headerlink" title="3. 数学3333222"></a>3. <a name="3333222"></a>数学3333222</h2><p>$$f(x) = sin(x) + 12 $$<br><strong>nob</strong></p><ul><li style="list-style: none"><input type="checkbox" checked> nihao</li></ul><h4 id="3-1-dddd"><a href="#3-1-dddd" class="headerlink" title="3.1. dddd"></a>3.1. <a name="dddd"></a>dddd</h4><ul><li>one<ul><li>nihao</li></ul></li><li>ddd</li></ul><table><thead><tr><th>一个普通标题</th><th>一个普通标题</th><th>一个普通标题</th></tr></thead><tbody><tr><td>短文本</td><td>中等文本</td><td>稍微长一点的文本</td></tr><tr><td>稍微长一点的文本</td><td>短文本</td><td>中等文本</td></tr></tbody></table><table><thead><tr><th style="text-align:center">nihao</th><th style="text-align:center">nihao</th></tr></thead><tbody><tr><td style="text-align:center">d</td><td style="text-align:center">d</td></tr></tbody></table><p><del>ddd</del></p><h2 id="4-部署测试，部署在writing分支上"><a href="#4-部署测试，部署在writing分支上" class="headerlink" title="4. 部署测试，部署在writing分支上"></a>4. <a name="writing"></a>部署测试，部署在writing分支上</h2>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;目录&quot;&gt;&lt;a href=&quot;#目录&quot; class=&quot;headerlink&quot; title=&quot;目录&quot;&gt;&lt;/a&gt;目录&lt;/h1&gt;&lt;!-- vscode-markdown-toc --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;ol&gt;
-&lt;li&gt;&lt;a href=&quot;#&quot;&gt;标题&lt;/a&gt;&lt;ul&gt;
-&lt;li
-      
-    
-    </summary>
-    
-      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="测试文章" scheme="http://yoursite.com/tags/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2019/02/15/hello-world/"/>
-    <id>http://yoursite.com/2019/02/15/hello-world/</id>
-    <published>2019-02-15T07:27:08.000Z</published>
-    <updated>2019-02-18T08:16:01.996Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p><h3 id="hello-nihao"><a href="#hello-nihao" class="headerlink" title="hello nihao"></a>hello nihao</h3>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
-      
-    
-    </summary>
-    
-      <category term="测试" scheme="http://yoursite.com/categories/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
   </entry>
   
