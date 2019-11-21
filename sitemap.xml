@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/about/index.html</loc>
+    
+    <lastmod>2019-11-21T01:40:00.816Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/05/17/%E3%80%8ACSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97%E3%80%8B-Chapter1-3-%E6%A0%B7%E5%BC%8F%E8%A1%A8%E5%86%85%E5%AE%B9/</loc>
     
     <lastmod>2019-05-17T07:57:55.251Z</lastmod>
@@ -194,13 +201,6 @@
     <loc>http://yoursite.com/2019/02/20/git%E5%9F%BA%E7%A1%80-5-%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93/</loc>
     
     <lastmod>2019-02-20T11:51:24.979Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/about/index.html</loc>
-    
-    <lastmod>2019-02-18T06:29:31.127Z</lastmod>
     
   </url>
   
