@@ -27,7 +27,7 @@
 <meta property="og:description" content="样式表内容在这之后，样式表的实际内容是什么？就像这样：123h1 &amp;#123;  color: maroon;&amp;#125; 诸如此类的样式构成了任何嵌入样式表的主体，可以简单也可以复杂，可以很多也可以很长。很少有文档的style元素不包含任何样式规则，尽管可以有一个简单的@import声明列表，而没像上一个示例那样的实际的规则。     在我们继续阅读该书剩余部分之前，有一些关于样式表中可以活不可">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/image/Figure1-7.png">
-<meta property="og:updated_time" content="2019-05-17T07:57:55.251Z">
+<meta property="og:updated_time" content="2019-11-21T01:58:18.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《CSS权威指南》- Chapter1.3 - 样式表内容">
 <meta name="twitter:description" content="样式表内容在这之后，样式表的实际内容是什么？就像这样：123h1 &amp;#123;  color: maroon;&amp;#125; 诸如此类的样式构成了任何嵌入样式表的主体，可以简单也可以复杂，可以很多也可以很长。很少有文档的style元素不包含任何样式规则，尽管可以有一个简单的@import声明列表，而没像上一个示例那样的实际的规则。     在我们继续阅读该书剩余部分之前，有一些关于样式表中可以活不可">
@@ -301,7 +301,7 @@
                 <a class="category-link" href="/categories/技术总结/">技术总结</a>
               </p>
               <p class="item-title">
-                <a href="/2019/04/03/《CSS权威指南》-Chapter1-2 - CSS与HTML结合/" class="title">《CSS权威指南》- Chapter1.2 - CSS与HTML结合</a>
+                <a href="/2019/04/03/《CSS权威指南》-Chapter1-2 - CSS与HTML结合/" class="title">《CSS权威指南4》- Chapter1.2 - CSS与HTML结合</a>
               </p>
               <p class="item-date">
                 <time datetime="2019-04-03T02:06:59.000Z" itemprop="datePublished">2019-04-03</time>
@@ -372,7 +372,7 @@
         <h3 id="样式表内容"><a href="#样式表内容" class="headerlink" title="样式表内容"></a>样式表内容</h3><p>在这之后，样式表的实际内容是什么？就像这样：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: maroon;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>诸如此类的样式构成了任何嵌入样式表的主体，可以简单也可以复杂，可以很多也可以很长。很少有文档的<code>style</code>元素不包含任何样式规则，尽管可以有一个简单的<code>@import</code>声明列表，而没像上一个示例那样的实际的规则。    </p>
 <p>在我们继续阅读该书剩余部分之前，有一些关于样式表中可以活不可以包含的顶级内容需要介绍。  </p>
-<h4 id="标记-Markup"><a href="#标记-Markup" class="headerlink" title="标记(Markup)"></a>标记(Markup)</h4><p>在样式表中没有标记，这似乎是显而易见的，但是你会惊讶。唯一的例外是HTML的注释标记，由于历史原因，它可以在<code>style</code>元素内部使用。 (<strong>没啥意义？？？，实测，并证明不了</strong>)<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: maroon;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!<span class="selector-tag">--</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-tag">--</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="标记-Markup"><a href="#标记-Markup" class="headerlink" title="标记(Markup)"></a>标记(Markup)</h4><p>在样式表中没有标记，这似乎是显而易见的，但是你会惊讶。唯一的例外是HTML的注释标记，由于历史原因，它可以在<code>style</code>元素内部使用。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: maroon;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!<span class="selector-tag">--</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125; </span><br><span class="line"><span class="selector-tag">--</span>&gt;</span><br></pre></td></tr></table></figure></p>
 <h4 id="规则结构"><a href="#规则结构" class="headerlink" title="规则结构"></a>规则结构</h4><p>为了更详细的说明规则的概念，我们要将规则的结构进行分解并逐一介绍。<br>每一个样式规则有2个基本部分：选择器（selector）和声明块（declaration block）。声明块由一个或多个声明组成，每个声明是一个属性-值对。每个样式表由一系列规则组成。图 Figure1-7 显示了规则的各个部分。<br><img src="/image/Figure1-7.png" alt="Figure 1-7"><br>如规则左边所示，选择器定义了文档的哪些部分将受影响。图Figure1-7中，<code>h1</code>元素被选中。如果选择器是<code>p</code>，则会选择所要的<code>p</code>(段落)元素.<br>规则的右边包含声明块，它由一个或多个声明组成。每个声明都是一个CSS属性和该属性值的组合。图Figure1-7中，声明块包含2个声明。第一个声明指出该规则将导致文档的部分颜色为红色，第二个声明指出文档中该部分的背景色为黄色。所以，文档中所有<code>h1</code>元素（由选择器定义）将以红色文本，黄色背景为样式。   </p>
 <h4 id="供应商前缀（Vendor-prefixing）"><a href="#供应商前缀（Vendor-prefixing）" class="headerlink" title="供应商前缀（Vendor prefixing）"></a>供应商前缀（Vendor prefixing）</h4><p>有时你会看到CSS前面有破折号和标签，比如<code>-o-border-image</code>.它们被称为供应商前缀，是浏览器厂商 将属性、值或其他CSS的位标记为实验或专用（或两者都是）的一种方式。截止2016年底，市面上出现了一些供应商前缀，最常见的如表1-1所示。      </p>
 <table>
