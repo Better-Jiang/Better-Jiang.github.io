@@ -26,10 +26,16 @@
 <meta property="og:site_name" content="爱学兮的小江">
 <meta property="og:description" content="安装可查看 vue-DevTools 文档 5 种常用调试方法Vue DevTools 使得在运行时调试 Vue 应用程序变得很容易，以下会介绍在调试 Vue 中常用的 5 中方法 1. 实时编辑组件 data 数据当在使用 Vue 构建组件时，我们希望能实时去操作组件 data 数据。IDE 中更新 data 后，然后再去浏览器中查看结果比较麻烦，已经不适合了。 Vue-DevTools 允许">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-21T12:04:16.743Z">
+<meta property="og:image" content="http://yoursite.com/image/liveEditComponentData.gif">
+<meta property="og:image" content="http://yoursite.com/image/inspectDom&Component.gif">
+<meta property="og:image" content="http://yoursite.com/image/trackCostomEvents.gif">
+<meta property="og:image" content="http://yoursite.com/image/trackRoute.gif">
+<meta property="og:image" content="http://yoursite.com/image/Vuex.gif">
+<meta property="og:updated_time" content="2019-11-22T00:52:12.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue调试工具(Vue-DevTools)使用指南">
 <meta name="twitter:description" content="安装可查看 vue-DevTools 文档 5 种常用调试方法Vue DevTools 使得在运行时调试 Vue 应用程序变得很容易，以下会介绍在调试 Vue 中常用的 5 中方法 1. 实时编辑组件 data 数据当在使用 Vue 构建组件时，我们希望能实时去操作组件 data 数据。IDE 中更新 data 后，然后再去浏览器中查看结果比较麻烦，已经不适合了。 Vue-DevTools 允许">
+<meta name="twitter:image" content="http://yoursite.com/image/liveEditComponentData.gif">
   <!-- Canonical links -->
   <link rel="canonical" href="http://yoursite.com/2019/11/21/Vue调试工具Vue-DevTools使用指南/index.html">
   
@@ -376,24 +382,24 @@
 <li>在 tab 左列选择组件</li>
 <li>在 tab 右列 编辑 组件 <code>data</code>数据</li>
 </ol>
-<p><a href>! 实时编辑组件 data </a></p>
+<p><img src="/image/liveEditComponentData.gif" alt="实时编辑组件 data "></p>
 <p>默认情况下，<code>prop</code> 数据是不可编辑的，但我们可以在 <code>settings</code>tab 设置为可编辑状态</p>
 <p>使用此功能，我们可以编辑所以 <code>data</code> 类型,切换 boolean 值，操作数组，我们还可以操作来自远端 API 的数据，只要我们把它加载到 vue 组件内，就可以对其实时操作了。</p>
 <h4 id="2-组件-DOM-快速定位"><a href="#2-组件-DOM-快速定位" class="headerlink" title="2. 组件/ DOM 快速定位"></a>2. 组件/ DOM 快速定位</h4><ul>
 <li>组件 tab <code>Inspect DOM</code>,可快速定位该组件在 DOM 中位置</li>
 <li>组件 tab <code>select in component in page</code>，可点击页面元素，快速定位其所属组件</li>
 </ul>
-<p><a href>!DOM/组件 快速定位</a></p>
+<p><img src="/image/inspectDom&amp;Component.gif" alt="DOM/组件 快速定位"></p>
 <h4 id="3-跟踪自定义事件"><a href="#3-跟踪自定义事件" class="headerlink" title="3. 跟踪自定义事件"></a>3. 跟踪自定义事件</h4><p>Vue Devtools 可以跟踪我们在 Vue 应用中使用的定义事件，查看事件是否正确触发，检查它们携带是数据（payload）<br>Vue Devtools 只能跟踪自定义事件，即使用<code>this.$emit(&#39;myEvent&#39;)</code>触发的事件，不能跟踪绑定到组件上的事件比如<code>v-on:ckick</code>、<code>v-on:keyup</code></p>
-<p><a href>!跟踪自定义事件</a></p>
+<p><img src="/image/trackCostomEvents.gif" alt="跟踪自定义事件"></p>
 <h4 id="监视-路由历史和数据"><a href="#监视-路由历史和数据" class="headerlink" title="监视 路由历史和数据"></a>监视 路由历史和数据</h4><p>当我们使用 Vue 构建单页面应用时，希望能实时调试路由并跟踪整个应用的导航流。Vue DevTools 有一个 <code>Routing</code> tab，记录了路由变化时的历史和数据。<br><code>Routing</code> tab 有 2 个选项：</p>
 <ol>
 <li><code>Hishtory</code> 显示 路由的历史和其数据</li>
 <li><code>Routes</code> 显示 应用中所有的路由及其 options</li>
 </ol>
-<p><a href>!监视 路由历史和数据</a></p>
+<p><img src="/image/trackRoute.gif" alt="监视 路由历史和数据"></p>
 <h4 id="调试-Vuex-行为，回到过去状态"><a href="#调试-Vuex-行为，回到过去状态" class="headerlink" title="调试 Vuex 行为，回到过去状态"></a>调试 Vuex 行为，回到过去状态</h4><p><code>Vuex</code>是 Vue 的状态管理库，它运行我们以可预知的形式管理和更新应用的状态。Vue Devtools 可以让我们在运行时检查状态，以便调试。<br><code>Vuex</code> tab ，记录了应用状态，每当<code>Vuex</code>派发一个更新（dispatch a mutation）。它还允许我们在运行时 回退到以前 Vuex 的状态。</p>
-<p><a href>!Vuex behavior</a></p>
+<p><img src="/image/Vuex.gif" alt="Vuex behavior"></p>
 
       
     </div>
