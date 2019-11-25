@@ -26,7 +26,7 @@
 <meta property="og:site_name" content="爱学兮的小江">
 <meta property="og:description" content="媒体查询使用媒体查询，作者可以定义浏览器使用给定的样式表的媒体环境。在过去，这是通过手动在link元素、style元素或使用@import、@media声明设置上设置媒体类型来实现的。媒体查询通过允许作者使用所谓的媒体描述符根据给定媒体类型的特性选择样式表，将这一概念又向前推进了几步。 用法媒体查询可以在以下地方使用：  link 元素 的 media 属性 style 元素 的 media 属性">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-25T01:22:50.621Z">
+<meta property="og:updated_time" content="2019-11-25T01:28:18.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《CSS权威指南4》- Chapter1.4 - 媒体查询">
 <meta name="twitter:description" content="媒体查询使用媒体查询，作者可以定义浏览器使用给定的样式表的媒体环境。在过去，这是通过手动在link元素、style元素或使用@import、@media声明设置上设置媒体类型来实现的。媒体查询通过允许作者使用所谓的媒体描述符根据给定媒体类型的特性选择样式表，将这一概念又向前推进了几步。 用法媒体查询可以在以下地方使用：  link 元素 的 media 属性 style 元素 的 media 属性">
@@ -409,7 +409,78 @@
 <ul>
 <li>only<br>用于隐藏样式表，使其不被那些太老旧而不支持媒体查询的浏览器看到。例如，要将样式表应用于所有媒体，但只适用于那些支持媒体查询的浏览器，应该写成<code>@import url(new.css) only all</code>。支持媒体查询的浏览器中，only 关键字会被忽略，样式表被应用。在不支持的浏览器中，only 关键字创建了一个明显的媒体类型<code>only all</code>，这是无效的，因此，样式表不会应用于 这些浏览器。<strong>*注意：</strong> only 关键字只能用在媒体查询的开头。</li>
 </ul>
-<h4 id="媒体特性描述符和值类型"><a href="#媒体特性描述符和值类型" class="headerlink" title="媒体特性描述符和值类型"></a>媒体特性描述符和值类型</h4><p>迄今为止，我们已经在示例中看到了许多媒体特性描述符，但是还没有一个完整的列表 ，下面是所有可能的描述符列表（目前截至到 2017 年底）：<br>||||<br>|:——-|:——|:——|<br>|with|aspect-ratio|color-index|<br>|min-width|min-aspect-ratio|min-color-index|<br>|max-width|max-aspect-ratio|max-color-index|<br>|device-width|device-aspect-ratio|momochrome|<br>|min-device-width|min-device-aspect-ratio|min-monochrome|<br>|max-device-width|max-device-aspect-ratio|max-monochrome|<br>|height|color|resolution|<br>|min-height|min-color|min-resolution|<br>|max-height|max-color|max-resolution|<br>|device-height||orientation|<br>|min-device-height|ratio|scan|<br>|max-device-height|resolution|grid|</p>
+<h4 id="媒体特性描述符和值类型"><a href="#媒体特性描述符和值类型" class="headerlink" title="媒体特性描述符和值类型"></a>媒体特性描述符和值类型</h4><p>迄今为止，我们已经在示例中看到了许多媒体特性描述符，但是还没有一个完整的列表 ，下面是所有可能的描述符列表（目前截至到 2017 年底）：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>with</td>
+<td>aspect-ratio</td>
+<td>color-index</td>
+</tr>
+<tr>
+<td>min-width</td>
+<td>min-aspect-ratio</td>
+<td>min-color-index</td>
+</tr>
+<tr>
+<td>max-width</td>
+<td>max-aspect-ratio</td>
+<td>max-color-index</td>
+</tr>
+<tr>
+<td>device-width</td>
+<td>device-aspect-ratio</td>
+<td>momochrome</td>
+</tr>
+<tr>
+<td>min-device-width</td>
+<td>min-device-aspect-ratio</td>
+<td>min-monochrome</td>
+</tr>
+<tr>
+<td>max-device-width</td>
+<td>max-device-aspect-ratio</td>
+<td>max-monochrome</td>
+</tr>
+<tr>
+<td>height</td>
+<td>color</td>
+<td>resolution</td>
+</tr>
+<tr>
+<td>min-height</td>
+<td>min-color</td>
+<td>min-resolution</td>
+</tr>
+<tr>
+<td>max-height</td>
+<td>max-color</td>
+<td>max-resolution</td>
+</tr>
+<tr>
+<td>device-height</td>
+<td></td>
+<td>orientation</td>
+</tr>
+<tr>
+<td>min-device-height</td>
+<td>ratio</td>
+<td>scan</td>
+</tr>
+<tr>
+<td>max-device-height</td>
+<td>resolution</td>
+<td>grid</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
