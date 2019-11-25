@@ -17,30 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>git基础(7)-分支(branch) | better-jiang</title>
-  <meta name="description" content="Git 分支本质是指向提交对象(commit object)的可变指针,默认是指向最后那个提交对象，每次提交后，都会自动向前移动。HEAD是特殊指针，指向当前所在的本地分支（可理解为当前分支的别称）。 Git 是如何保存数据的？ Git 保存的不是文件的一系列或变更集或者差异，而是一系列不同时刻的文件快照。 每次提交时,Git 会保存一个提交对象。该对象包含：  一个指向暂存内容快照的指针（树对象">
-<meta name="keywords" content="Git">
+  <title>《CSS权威指南4》- Chapter1.4 - 媒体查询 | better-jiang</title>
+  <meta name="description" content="媒体查询使用媒体查询，作者可以定义浏览器使用给定的样式表的媒体环境。在过去，这是通过手动在link元素、style元素或使用@import、@media声明设置上设置媒体类型来实现的。媒体查询通过允许作者使用所谓的媒体描述符根据给定媒体类型的特性选择样式表，将这一概念又向前推进了几步。 用法媒体查询可以在以下地方使用：  link 元素 的 media 属性 style 元素 的 media 属性">
+<meta name="keywords" content="翻译,CSS权威指南-第四版">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git基础(7)-分支(branch)">
-<meta property="og:url" content="http://yoursite.com/2019/02/21/git基础-7-分支-branch/index.html">
+<meta property="og:title" content="《CSS权威指南4》- Chapter1.4 - 媒体查询">
+<meta property="og:url" content="http://yoursite.com/2019/11/25/《CSS权威指南4》-Chapter1-4-媒体查询/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
-<meta property="og:description" content="Git 分支本质是指向提交对象(commit object)的可变指针,默认是指向最后那个提交对象，每次提交后，都会自动向前移动。HEAD是特殊指针，指向当前所在的本地分支（可理解为当前分支的别称）。 Git 是如何保存数据的？ Git 保存的不是文件的一系列或变更集或者差异，而是一系列不同时刻的文件快照。 每次提交时,Git 会保存一个提交对象。该对象包含：  一个指向暂存内容快照的指针（树对象">
+<meta property="og:description" content="媒体查询使用媒体查询，作者可以定义浏览器使用给定的样式表的媒体环境。在过去，这是通过手动在link元素、style元素或使用@import、@media声明设置上设置媒体类型来实现的。媒体查询通过允许作者使用所谓的媒体描述符根据给定媒体类型的特性选择样式表，将这一概念又向前推进了几步。 用法媒体查询可以在以下地方使用：  link 元素 的 media 属性 style 元素 的 media 属性">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/image/first_commit.png">
-<meta property="og:image" content="http://yoursite.com/image/anther_commit.png">
-<meta property="og:image" content="http://yoursite.com/image/branch.png">
-<meta property="og:image" content="http://yoursite.com/image/headOnMaster.png">
-<meta property="og:image" content="http://yoursite.com/image/headOntesting.png">
-<meta property="og:image" content="http://yoursite.com/image/moveBranch.png">
-<meta property="og:image" content="http://yoursite.com/image/megre.png">
-<meta property="og:image" content="http://yoursite.com/image/megreAndCommit.png">
-<meta property="og:updated_time" content="2019-02-22T01:23:09.325Z">
+<meta property="og:updated_time" content="2019-11-25T01:22:50.621Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git基础(7)-分支(branch)">
-<meta name="twitter:description" content="Git 分支本质是指向提交对象(commit object)的可变指针,默认是指向最后那个提交对象，每次提交后，都会自动向前移动。HEAD是特殊指针，指向当前所在的本地分支（可理解为当前分支的别称）。 Git 是如何保存数据的？ Git 保存的不是文件的一系列或变更集或者差异，而是一系列不同时刻的文件快照。 每次提交时,Git 会保存一个提交对象。该对象包含：  一个指向暂存内容快照的指针（树对象">
-<meta name="twitter:image" content="http://yoursite.com/image/first_commit.png">
+<meta name="twitter:title" content="《CSS权威指南4》- Chapter1.4 - 媒体查询">
+<meta name="twitter:description" content="媒体查询使用媒体查询，作者可以定义浏览器使用给定的样式表的媒体环境。在过去，这是通过手动在link元素、style元素或使用@import、@media声明设置上设置媒体类型来实现的。媒体查询通过允许作者使用所谓的媒体描述符根据给定媒体类型的特性选择样式表，将这一概念又向前推进了几步。 用法媒体查询可以在以下地方使用：  link 元素 的 media 属性 style 元素 的 media 属性">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://yoursite.com/2019/02/21/git基础-7-分支-branch/index.html">
+  <link rel="canonical" href="http://yoursite.com/2019/11/25/《CSS权威指南4》-Chapter1-4-媒体查询/index.html">
   
     <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
   
@@ -329,14 +320,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-git基础-7-分支-branch" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-《CSS权威指南4》-Chapter1-4-媒体查询" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      git基础(7)-分支(branch)
+      《CSS权威指南4》- Chapter1.4 - 媒体查询
     </h1>
   
 
@@ -344,8 +335,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/02/21/git基础-7-分支-branch/" class="article-date">
-	  <time datetime="2019-02-21T06:28:26.000Z" itemprop="datePublished">2019-02-21</time>
+	<a href="/2019/11/25/《CSS权威指南4》-Chapter1-4-媒体查询/" class="article-date">
+	  <time datetime="2019-11-25T01:22:19.000Z" itemprop="datePublished">2019-11-25</time>
 	</a>
 </span>
         
@@ -357,7 +348,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Git/">Git</a>
+	<a class="article-tag-link" href="/tags/CSS权威指南-第四版/">CSS权威指南-第四版</a>, <a class="article-tag-link" href="/tags/翻译/">翻译</a>
   </span>
 
 
@@ -370,97 +361,55 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/02/21/git基础-7-分支-branch/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/25/《CSS权威指南4》-Chapter1-4-媒体查询/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>Git 分支本质是<strong>指向提交对象(commit object)的可变指针</strong>,默认是指向最后那个提交对象，每次提交后，都会自动向前移动。<strong>HEAD</strong>是特殊指针，指向当前所在的本地分支（可理解为当前分支的别称）。</p>
-<h3 id="Git-是如何保存数据的？"><a href="#Git-是如何保存数据的？" class="headerlink" title="Git 是如何保存数据的？"></a>Git 是如何保存数据的？</h3><ul>
-<li>Git 保存的不是文件的一系列或变更集或者差异，而是一系列不同时刻的文件快照。</li>
-<li><p>每次提交时,Git 会保存一个提交对象。该对象包含：</p>
+        <h3 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h3><p>使用媒体查询，作者可以定义浏览器使用给定的样式表的媒体环境。在过去，这是通过手动在<code>link</code>元素、<code>style</code>元素或使用<code>@import</code>、<code>@media</code>声明设置上设置媒体类型来实现的。媒体查询通过允许作者使用所谓的媒体描述符根据给定媒体类型的特性选择样式表，将这一概念又向前推进了几步。</p>
+<h4 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h4><p>媒体查询可以在以下地方使用：</p>
 <ul>
-<li>一个指向暂存内容快照的指针（树对象）</li>
-<li>作者姓名、邮箱、提交解决信息</li>
-<li>指向它的父对象（上一次提交对象）的指针<ul>
-<li>首次提交产生的提交对象<strong>没有父对象</strong></li>
-<li>其他普通提交操作产生的提交对象有<strong>一个父对象</strong></li>
-<li>由多个分支合并产生的提交对象有<strong>多个父对象</strong></li>
+<li>link 元素 的 media 属性</li>
+<li>style 元素 的 media 属性</li>
+<li>@import 声明 的媒体描述符部分</li>
+<li>@media 声明 的媒体描述符部分</li>
 </ul>
-</li>
-</ul>
-</li>
-<li><p>例子<br> 假设有一个工作目录，包含三个将要被暂存、提交的文件。<br> <strong>暂存操作</strong>：</p>
+<p>媒体的查询范围可以从简单的媒体类型到复杂的媒体类型和特性 组合</p>
+<h4 id="简单的媒体查询"><a href="#简单的媒体查询" class="headerlink" title="简单的媒体查询"></a>简单的媒体查询</h4><p>在介绍媒体查询的所以可能性之前，让我们先看看简单的媒体块。假设我们想要一些不同的样式用于在投影设置中显示样式的情况，例如幻灯片显示。这里有两个简单的 CSS 片段：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: maroon;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> projection &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: yellow;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在本例中，h1 元素 将在所以媒体中被涂成褐红色，但是 body 元素只在投影媒介中才会得到黄色背景。<br>在给定的样式表中可以有任意数量的@media 块，每个块都有自己的一组媒体描述符，甚至可以将所以规则封装在一个@media 块中：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> all &#123;</span><br><span class="line">  <span class="selector-tag">h1</span>: &#123;</span><br><span class="line">    <span class="attribute">color</span>: maroon;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: yellow;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这些例子中<code>projection</code>和<code>all</code>的地方就是设置媒体查询的地方。这些查询依赖于 媒体类型的描述 和 媒体参数的描述 的组合，以 CSS 块确定何时被应用。</p>
+<h4 id="媒体类型"><a href="#媒体类型" class="headerlink" title="媒体类型"></a>媒体类型</h4><p>媒体查询最基本的形式是媒体类型，它首次出现在 CSS2 中。以下是不同媒体类型的简单标签：</p>
 <ul>
-<li>为每一个文件计算校验和</li>
-<li>把当前版本的文件快照保存到 Git 仓库中（使用 blob 对象来保存文件快照）</li>
-<li>将校验和加入到暂存区域 等待提交</li>
+<li><strong>all</strong>，适用所有的展示媒体</li>
+<li><strong>print</strong>，为有视力是用户打印文档时使用，也用于文档的打印预览展示</li>
+<li><strong>screen</strong>, 当以屏幕媒体（如桌面计算机显示器）显示文档时使用。所以的 web 浏览器也都是屏幕介质的用户代理。一些浏览器也支持投影，它允许文档以幻灯片的形式显示。一些移动浏览器支持 手持类型（<code>handheld</code>）。</li>
 </ul>
-<p><strong>提交操作</strong>:</p>
+<p>可以使用逗号分隔的列表指定多个每媒体类型。以下四个例子都是在屏幕和打印媒体中应用样式表（或规则块）的等效方法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"demo.css"</span> <span class="attr">media</span>=<span class="string">"screen, print"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"sreen, print"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">  body &#123;</span></span><br><span class="line"><span class="undefined">    font-size: 15px;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> url(foo.css) screen, print;</span><br><span class="line">@<span class="keyword">media</span> screen, print &#123;</span><br><span class="line">  <span class="selector-tag">font-size</span>: 15<span class="selector-tag">px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当向这些媒体类型添加特性的描述符时，会更有趣。例如 描述给定媒体的分辨率或颜色深度的值。</p>
+<h4 id="媒体描述符"><a href="#媒体描述符" class="headerlink" title="媒体描述符"></a>媒体描述符</h4><p>对于任何曾经在 link 元素或@import 声明上设置过媒体类型的作者，媒体查询的位置将是非常熟悉的。以下是在彩色打印机上渲染文档时应用外部样式表的两种本质上等效的方法：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"print-color.css"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">""</span><span class="attr">print</span> <span class="attr">and</span> (<span class="attr">color</span>) <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@import url(print-color.css) print and (color);</span><br></pre></td></tr></table></figure>
+<p>在可以使用媒体类型的任何地方，都可以使用媒体查询。这意味着，按照上一级的示例，可以在逗号分隔的列表中列出多个查询：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"print-color.css"</span> <span class="attr">tyoe</span>=<span class="string">"text/css"</span> <span class="attr">media</span>=<span class="string">"print and (color), screen and (color-depth:8)"</span> <span class="attr">ref</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@import url(print-color.css) print and (color), screen and (colo-depth: 8);</span><br></pre></td></tr></table></figure>
+<p>在任何情况下，即使其中一个媒体查询的结果未“true”,也会应用相关联的样式表。因此，前面给定的<code>@import</code>,<code>print-color.css</code>被应用在彩色打印机或彩色足够充足的屏幕环境。如果在黑白打印机上打印，两个查询结果都是“false”,<code>print-color.css</code>将不会应用到文档中。这同样适用于任何屏幕媒体。</p>
+<p>每个媒体描述符由一个媒体类型和一个或多个列出的媒体特性组成，每个媒体特性描述符使用括号括起。如果没有提供媒体类型，则假设为 all，这使得下面两个例子等价：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> all and (min-resolution: <span class="number">96dpi</span>) &#123; ... &#125;</span><br><span class="line">@<span class="keyword">media</span> (min-resolutionL <span class="number">96dpi</span>) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<p>一般来讲，媒体特性描述符的格式类似于 CSS 中的属性-值 对。有些不同之处，最明显的是一些特性可以在没有值的情况指定。例如，任何基于颜色的媒体都将使用（color）进行匹配，而任何使用 16 位颜色深度的媒体都将是使用（color: 16）进行匹配。实际上，使用没有值的描述符是对该描述符的真/假测试：（color）的意思是“这个媒介是彩色的吗？”</p>
+<p>多个特性描述符可以用<code>and</code>逻辑关键字链接。事实上，媒体查询有两个逻辑关键字：</p>
 <ul>
-<li>Git 先计算每一个子目录的校验和</li>
-<li>在 Git 仓库中把这些校验和保存为树对象</li>
-<li>Git 创建一个提交对象</li>
+<li>and<br>将两个或多个媒体特性链接在一起，所有特性都为真，查询才为真。例如：<code>(color) and (orentation: landscape) and (mid-device-width: 800px)</code>意味着必须满足所有 3 个条件，如果媒体环境有颜色，处于横向方向，并且设备的显示宽度至少为 800px，这样样式表才被应用。</li>
+<li>not<br>否定整个查询，如果所以条件都为真，则不应用样式表。例如：<code>not (color) and (orientation: landscape) and (min-device-widht: 800px)</code>意味着如果满足所以 3 个条件，则否定该语句。因此，如果媒体环境有颜色，是横向的，而且设备的显示宽度至少 800px，那么样式表将不被应用。在所以其他情况下，样式表都将被应用。<br><strong>注意：</strong> not 关键字 只能在媒体查询开头使用。像<code>(color) and not (min-device-width: 800px)</code>的代码是不合法的，在这种 情况下，查询将被忽略。</li>
 </ul>
-<p><strong>此时，Git 仓库</strong>：</p>
+<p>媒体查询中没有<code>OR</code>关键字。实际上，分隔查询列表的逗号具有 OR 的功能。<code>print, screen</code>意思是“如果媒体是打印机或屏幕”。<code>screen and (max-color: 2) or (monochrome)</code>是不合法的，将被忽略。因该写成<code>screen and (max-color: 2), screen and (monochrome)</code>.</p>
+<p>还有一个关键字<code>only</code>，它被设计成故意向后不兼容</p>
 <ul>
-<li>3 个 blob 对象（保存文件快照）</li>
-<li>1 个树对象（记录着目录结构和 blob 对象索引）</li>
-<li><p>1 个提交对象 (包含 树对象的指针，和所有提交信息)</p>
-<p><img src="/image/first_commit.png" alt="首次提交对象及其树结构"></p>
-<p>修改后再次提交，此次产生的提交对象会包含一个指向上次提交对象（父对象）的指针</p>
-<p><img src="/image/anther_commit.png" alt="提交对象及其父对象"></p>
-</li>
+<li>only<br>用于隐藏样式表，使其不被那些太老旧而不支持媒体查询的浏览器看到。例如，要将样式表应用于所有媒体，但只适用于那些支持媒体查询的浏览器，应该写成<code>@import url(new.css) only all</code>。支持媒体查询的浏览器中，only 关键字会被忽略，样式表被应用。在不支持的浏览器中，only 关键字创建了一个明显的媒体类型<code>only all</code>，这是无效的，因此，样式表不会应用于 这些浏览器。<strong>*注意：</strong> only 关键字只能用在媒体查询的开头。</li>
 </ul>
-</li>
-</ul>
-<h3 id="Git-分支"><a href="#Git-分支" class="headerlink" title="Git 分支"></a>Git 分支</h3><p>Git 分支，其本质仅仅时指向其中一个提交对象的可变指针。默认分支名字是 master。</p>
-<blockquote>
-<p>A branch in Git is simply a lightweight movable pointer to one of these commits.</p>
-</blockquote>
-<p><img src="/image/branch.png" alt="分支及其提交历史"></p>
-<h4 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h4><p>创建分支只是创建了一个可以移动的新的指针。名为<code>HEAD</code>的特殊指针，指向当前所在的本地分支</p>
-<p><img src="/image/headOnMaster.png" alt="2个指向相同提交历史的分支"></p>
-<ul>
-<li><code>git branch &lt;branchname&gt;</code>： 创建一个分支</li>
-<li><code>git branch -b &lt;branchname&gt;</code>： 创建分支，并切换，创建：<code>git branch &lt;branchname&gt;</code>, 切换：<code>git checkout &lt;branchname&gt;</code></li>
-</ul>
-<h3 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h3><p><code>git checkout</code>命令，切换分支，实际上是改变 <code>HEAD</code> 的指向,同时<strong>将工作目录恢复到该分支所指向的快照内容（最后一次提交时的样子）</strong>。<br><code>git checkout testing</code>，切换到 testing 分支，此时 <code>HEAD</code> 指向 testing 分支</p>
-<p><img src="/image/headOntesting.png" alt="切换分支，HEAD指向testing"></p>
-<p>在<code>testing</code>分支，修改再提交一次，<code>testing</code>分支向前移动,<code>HEAD</code>也随着提交自动向前移动，但<code>master</code>分支保持不动。</p>
-<p><img src="/image/moveBranch.png" alt="HEAD随分支提交自动向前移动"></p>
-<h3 id="合并分支"><a href="#合并分支" class="headerlink" title="合并分支"></a>合并分支</h3><p><code>git merge</code>命令，合并指定分支到当前分支。</p>
-<ul>
-<li><code>Fast-forward</code>, “快进模式”,由于当前分支所指向的提交是并入分支的直接上游,所有 Git 只是简单的将指针向前移动。<br> 通俗来讲：当试图合并两个分支时，如果顺着一个分支走下去能够到达另一个分支，那么在合并时，只会简单的将指针向前推进。</li>
-<li><p><code>&#39;recursive&#39; strategy</code>,在合并时，需要递归的查找两个分支的分叉点。</p>
-<p><img src="/image/megre.png" alt="三方合并"></p>
-<p>Git 会使用两个分支的末端的快照（C4 、C5）和这两个分支的共同祖先(C2)，做一个简单的三方合并。再将结果做一个新的快照并自动创建一个新的提交（C6）指向它。</p>
-<p><img src="/image/megreAndCommit.png" alt="合并提交"></p>
-</li>
-</ul>
-<h4 id="分支合并冲突"><a href="#分支合并冲突" class="headerlink" title="分支合并冲突"></a>分支合并冲突</h4><p>如果在两个不同分支上，对同一个文件的同一个部分进行了不同的修改，分支合并时就会产生合并冲突。 此时，<strong>Git 做了合并，但没有自动创建一个新的合并提交。</strong>,需要解决冲突，在使用<code>git add</code>命令来将其标记为冲突已解决，然后<code>git commit</code>完成提交。具体步骤：</p>
-<ul>
-<li><p><code>git status</code> 查看因 包含合并冲突 而处于未合并(unmerged)状态的文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git status</span><br><span class="line">On branch master</span><br><span class="line">You have unmerged paths.</span><br><span class="line">(fix conflicts and run "git commit")</span><br><span class="line">Unmerged paths:</span><br><span class="line">(use "git add &lt;file&gt;..." to mark resolution)</span><br><span class="line">both modified: index.html</span><br><span class="line">no changes added to commit (use "git add" and/or "git commit -a")</span><br></pre></td></tr></table></figure>
-<p>未合并状态的文件中都会加入标准的冲突解决标记，需要打开文件，手动修改文件，解决冲突。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:index.html</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;contact : email.support@github.com&lt;/div&gt;</span><br><span class="line">=======</span><br><span class="line">&lt;div id=&quot;footer&quot;&gt;</span><br><span class="line">please contact us at support@github.com</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; iss53:index.html</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解决了所有文件冲突后， <code>git add</code>将每个文件标记为 <strong>冲突已解决</strong>。注意: 一旦暂存这些冲突文件，Git 就会将它们标记为冲突已解决。所以最后是修改一个文件，暂存一个文件，以免漏掉。</p>
-</li>
-<li><code>git commit</code>，提交合并。</li>
-</ul>
-<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><ul>
-<li><p>查看分支</p>
-<p><code>git branch</code> 不加任何参数，列出所有分支，<code>*</code> 代表当前分支（当前 HEAD 指针所指向的分支）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git branch</span><br><span class="line">* develop</span><br><span class="line">  master</span><br><span class="line">  release</span><br></pre></td></tr></table></figure>
-<p><code>git branch -v</code>,每个分支的最后一次提交</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git branch -v</span><br><span class="line">* develop b1e18237 【预警查询】 分页滑动，触发页面样式更新函数，屏幕自适应</span><br><span class="line">  master 3ea94fa9 Merge branch 'release' into 'master'</span><br><span class="line">  release a98f6667 Merge branch 'develop' into 'release'</span><br></pre></td></tr></table></figure>
-<p><code>git branch --merged/--no-merged</code>,过滤分支列表中已经合并或尚未合并到当前分支的分支。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> git branch --merged</span><br><span class="line"> * develop</span><br><span class="line">   release</span><br></pre></td></tr></table></figure>
-<p><strong>在列表中没有<code>*</code>号的分支，通常是已经将它们的分支合并到另一个分支，可已使用<code>git branch -d</code> 删除的。</strong></p>
-</li>
-</ul>
+<h4 id="媒体特性描述符和值类型"><a href="#媒体特性描述符和值类型" class="headerlink" title="媒体特性描述符和值类型"></a>媒体特性描述符和值类型</h4><p>迄今为止，我们已经在示例中看到了许多媒体特性描述符，但是还没有一个完整的列表 ，下面是所有可能的描述符列表（目前截至到 2017 年底）：<br>||||<br>|:——-|:——|:——|<br>|with|aspect-ratio|color-index|<br>|min-width|min-aspect-ratio|min-color-index|<br>|max-width|max-aspect-ratio|max-color-index|<br>|device-width|device-aspect-ratio|momochrome|<br>|min-device-width|min-device-aspect-ratio|min-monochrome|<br>|max-device-width|max-device-aspect-ratio|max-monochrome|<br>|height|color|resolution|<br>|min-height|min-color|min-resolution|<br>|max-height|max-color|max-resolution|<br>|device-height||orientation|<br>|min-device-height|ratio|scan|<br>|max-device-height|resolution|grid|</p>
 
       
     </div>
@@ -470,7 +419,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://yoursite.com/2019/02/21/git基础-7-分支-branch/" title="git基础(7)-分支(branch)" target="_blank" rel="external">http://yoursite.com/2019/02/21/git基础-7-分支-branch/</a>
+      <a href="http://yoursite.com/2019/11/25/《CSS权威指南4》-Chapter1-4-媒体查询/" title="《CSS权威指南4》- Chapter1.4 - 媒体查询" target="_blank" rel="external">http://yoursite.com/2019/11/25/《CSS权威指南4》-Chapter1-4-媒体查询/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -516,13 +465,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/02/21/git基础-8-分支开发本地工作流-Branching-Workflows/" title="git基础(8)-分支开发本地工作流(Branching Workflows)"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/02/21/git基础-6-标签-tag/" title="git基础(6)-标签(tag)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/11/21/Vue调试工具Vue-DevTools使用指南/" title="Vue调试工具(Vue-DevTools)使用指南"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
