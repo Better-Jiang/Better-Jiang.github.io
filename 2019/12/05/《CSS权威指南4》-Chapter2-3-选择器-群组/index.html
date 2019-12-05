@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>《CSS权威指南4》- Chapter2.2 - 分组 | better-jiang</title>
+  <title>《CSS权威指南4》- Chapter2.3-选择器-群组 | better-jiang</title>
   <meta name="description" content="分组迄今为止，我们已经学习了将单个样式应用于单个选择器这种相当简单的技术。但是如果想要向多个元素应用同一个样式？如果是这样的话，则需要使用多个选择器，或者向一个或一组元素应用多个样式。 分组选择器假设希望h2和p元素文本都是灰色。最简单的实现方式是使用以下声明： 123h2, p &amp;#123;    color: gray;&amp;#125; 将 h2和p选择器放在规则的左边，并使用逗号分隔，右边是样式">
 <meta name="keywords" content="翻译,CSS权威指南-第四版">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《CSS权威指南4》- Chapter2.2 - 分组">
-<meta property="og:url" content="https://better-jiang.github.io/2019/12/02/《CSS权威指南4》-Chapter2-2-分组/index.html">
+<meta property="og:title" content="《CSS权威指南4》- Chapter2.3-选择器-群组">
+<meta property="og:url" content="https://better-jiang.github.io/2019/12/05/《CSS权威指南4》-Chapter2-3-选择器-群组/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
 <meta property="og:description" content="分组迄今为止，我们已经学习了将单个样式应用于单个选择器这种相当简单的技术。但是如果想要向多个元素应用同一个样式？如果是这样的话，则需要使用多个选择器，或者向一个或一组元素应用多个样式。 分组选择器假设希望h2和p元素文本都是灰色。最简单的实现方式是使用以下声明： 123h2, p &amp;#123;    color: gray;&amp;#125; 将 h2和p选择器放在规则的左边，并使用逗号分隔，右边是样式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-02T07:32:06.444Z">
+<meta property="og:updated_time" content="2019-12-05T10:29:00.812Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《CSS权威指南4》- Chapter2.2 - 分组">
+<meta name="twitter:title" content="《CSS权威指南4》- Chapter2.3-选择器-群组">
 <meta name="twitter:description" content="分组迄今为止，我们已经学习了将单个样式应用于单个选择器这种相当简单的技术。但是如果想要向多个元素应用同一个样式？如果是这样的话，则需要使用多个选择器，或者向一个或一组元素应用多个样式。 分组选择器假设希望h2和p元素文本都是灰色。最简单的实现方式是使用以下声明： 123h2, p &amp;#123;    color: gray;&amp;#125; 将 h2和p选择器放在规则的左边，并使用逗号分隔，右边是样式">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://better-jiang.github.io/2019/12/02/《CSS权威指南4》-Chapter2-2-分组/index.html">
+  <link rel="canonical" href="https://better-jiang.github.io/2019/12/05/《CSS权威指南4》-Chapter2-3-选择器-群组/index.html">
   
     <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
   
@@ -320,14 +320,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-《CSS权威指南4》-Chapter2-2-分组" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-《CSS权威指南4》-Chapter2-3-选择器-群组" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      《CSS权威指南4》- Chapter2.2 - 分组
+      《CSS权威指南4》- Chapter2.3-选择器-群组
     </h1>
   
 
@@ -335,8 +335,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/12/02/《CSS权威指南4》-Chapter2-2-分组/" class="article-date">
-	  <time datetime="2019-12-02T07:30:38.000Z" itemprop="datePublished">2019-12-02</time>
+	<a href="/2019/12/05/《CSS权威指南4》-Chapter2-3-选择器-群组/" class="article-date">
+	  <time datetime="2019-12-05T10:28:22.000Z" itemprop="datePublished">2019-12-05</time>
 	</a>
 </span>
         
@@ -361,7 +361,7 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/12/02/《CSS权威指南4》-Chapter2-2-分组/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/12/05/《CSS权威指南4》-Chapter2-3-选择器-群组/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
@@ -389,7 +389,7 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>&#123;<span class="attribute">font</span>:<span class="number">18px</span> Helvetica;<span class="attribute">color</span>:purple;<span class="attribute">background</span>:aqua;&#125;</span><br></pre></td></tr></table></figure>
 <p>忽略空白，最后一个也会被服务器平等对待，但是第二个最易读的，也是在开发过程中编写 CSS 的推荐方法。处于网络性能的考虑，你可能会选择最小化 CSS，但这通常是由服务端脚本、缓存网络或其他服务来处理的。<br>如果第二个声明省略了分号，用户代理对样式表的解释如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font</span>: <span class="number">18px</span> Helvetica;</span><br><span class="line">    <span class="attribute">color</span>: purple background: aqua;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因为<code>background:</code>不是<code>color</code>的有效值，而且<code>color</code>只能有一个关键字，所有用户代理将完全忽略<code>color</code>声明（包括<code>background: aqua;</code>部分）。你可能以为浏览器至少会把<code>h1</code>元素渲染成没有浅绿色背景的紫色文本，但事实并非如此。相反，<code>color</code>将是默认的颜色（通常是黑色）,<code>banckground</code>是透明的（transparent，也是默认的）。声明<code>font: 18px Helvetica</code>仍然有效，因为它是用分号正确结束的。<br>与选择器分组一样，声明分组是保持样式表简短、富有表现力、易于维护的一种便利方式。</p>
+<p>因为<code>background:</code>不是<code>color</code>的有效值，而且<code>color</code>只能有一个关键字，所有用户代理将完全忽略<code>color</code>声明（包括<code>background: aqua;</code>部分）。你可能以为浏览器至少会把<code>h1</code>元素渲染成没有浅绿色背景的紫色文本，但事实并非如此。相反，<code>color</code>将是默认的颜色（通常是黑色）,<code>banckground</code>是透明的（transparent，也是默认的）。声明<code>font: 18px Helvetica</code>任然有效，因为它是用分号正确结束的。<br>与选择器分组一样，声明分组是保持样式表简短、富有表现力、易于维护的一种便利方式。</p>
 <h4 id="分组一切"><a href="#分组一切" class="headerlink" title="分组一切"></a>分组一切</h4><p>现在你知道可以对选择器、声明进行分组。通过在单个规则中结合这两种类型的分组，可以仅使用几个语句来定义非常复杂的样式。现在，如果你想给文档中所有的标题分配一些复杂的样式，并且希望对所有的标题应用相同的样式，该怎么办？具体做法如下：</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: gray;</span><br><span class="line">    <span class="attribute">background</span>: white;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>,<span class="number">5em</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">font-family</span>: Charcoal, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这里我们将选择器分组，因此规则右侧的样式将应用于列出的所有标题。声明分组意为着所有列出的规则将应用于规则左侧的选择器。<br>这种方法比冗长的替代方法更可取，后者的开头是这样的：</p>
@@ -407,7 +407,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://better-jiang.github.io/2019/12/02/《CSS权威指南4》-Chapter2-2-分组/" title="《CSS权威指南4》- Chapter2.2 - 分组" target="_blank" rel="external">https://better-jiang.github.io/2019/12/02/《CSS权威指南4》-Chapter2-2-分组/</a>
+      <a href="https://better-jiang.github.io/2019/12/05/《CSS权威指南4》-Chapter2-3-选择器-群组/" title="《CSS权威指南4》- Chapter2.3-选择器-群组" target="_blank" rel="external">https://better-jiang.github.io/2019/12/05/《CSS权威指南4》-Chapter2-3-选择器-群组/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -453,13 +453,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/12/02/EventLoop梳理/" title="EventLoop梳理"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/11/29/《CSS权威指南4》-Chapter2-1-基本样式规则/" title="《CSS权威指南4》- Chapter2.1 - 基本样式规则"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/12/02/EventLoop梳理/" title="EventLoop梳理"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
