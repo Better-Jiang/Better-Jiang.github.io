@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://better-jiang.github.io/image/EventLoop.png">
 <meta property="og:image" content="https://better-jiang.github.io/image/clickToTrigger.gif">
 <meta property="og:image" content="https://better-jiang.github.io/image/codeToTrigger.gif">
-<meta property="og:updated_time" content="2019-12-06T08:58:25.503Z">
+<meta property="og:updated_time" content="2019-12-06T09:27:38.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EventLoop梳理">
 <meta name="twitter:description" content="JS 是单线程的，它是通过事件队列（EventLoop）的方式来实现异步回调的。 浏览器内核(渲染引擎: Rendering Engine)浏览器内核其实指的是浏览器内的一个进程，它负责页面的渲染、脚本执行、事件处理等，每一个 Tab 页一个渲染进程。对于渲染进程来讲，它是多线程的，包括以下线程  GUI 渲染线程 复杂渲染页面，回流、重绘 与 JS 引擎线程互斥，防止渲染结果不可预期   JS">
@@ -424,7 +424,11 @@
 <hr>
 <hr>
 <hr>
-<h3 id="宏任务-微任务（再总结）"><a href="#宏任务-微任务（再总结）" class="headerlink" title="宏任务/微任务（再总结）"></a>宏任务/微任务（再总结）</h3><p>以下内容参考了该文章: <a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="noopener">任务、微任务、队列和调度 (英文版)</a></p>
+<h3 id="宏任务-微任务（再总结）"><a href="#宏任务-微任务（再总结）" class="headerlink" title="宏任务/微任务（再总结）"></a>宏任务/微任务（再总结）</h3><p>以下内容参考了该文章: <a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="noopener">任务、微任务、队列和调度 (英文版)</a><br><strong>微任务执行时机（2 种情况）：</strong></p>
+<ul>
+<li>after every callback, as long as no other JavaScript is mid-execution （在每个回调之后，没有其他 JavaScript 在执行时）</li>
+<li>at the end of each task （在每个宏任务执行完之后）</li>
+</ul>
 <h4 id="代码触发事件-鼠标、键盘等操作触发事件"><a href="#代码触发事件-鼠标、键盘等操作触发事件" class="headerlink" title="代码触发事件 / 鼠标、键盘等操作触发事件"></a>代码触发事件 / 鼠标、键盘等操作触发事件</h4><ul>
 <li>鼠标、键盘等操作触发的事件，事件在 JS 执行栈中执行完后，执行栈为空，可执行加微任务。因冒泡触发其他事件加入执行栈，再次执行。</li>
 <li>代码触发的事件，会先在 JS 执行栈执行<code>script</code>代码,再添加触发事件，触发事件执行完后，因 JS 执行栈还在执行<code>script</code>代码，故不可执行微任务。接着冒泡触发的事件加入执行栈执行。当所有冒泡事件执行完，<code>script</code>执行完后，才执行微任务队列。</li>
