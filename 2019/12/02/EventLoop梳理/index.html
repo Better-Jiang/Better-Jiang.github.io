@@ -18,19 +18,21 @@
   
   
   <title>EventLoop梳理 | better-jiang</title>
-  <meta name="description" content="JS是单线程的，它是通过事件队列（EventLoop）的方式来实现异步回调的。    浏览器内核(渲染引擎: Rendering Engine)浏览器内核其实指的是浏览器内的一个进程，它负责页面的渲染、脚本执行、事件处理等，每一个Tab页一个渲染进程。对于渲染进程来讲，它是多线程的，包括以下线程      GUI渲染线程 复杂渲染页面，回流、重绘 与JS引擎线程互斥，防止渲染结果不可预期   JS">
+  <meta name="description" content="JS 是单线程的，它是通过事件队列（EventLoop）的方式来实现异步回调的。 浏览器内核(渲染引擎: Rendering Engine)浏览器内核其实指的是浏览器内的一个进程，它负责页面的渲染、脚本执行、事件处理等，每一个 Tab 页一个渲染进程。对于渲染进程来讲，它是多线程的，包括以下线程  GUI 渲染线程 复杂渲染页面，回流、重绘 与 JS 引擎线程互斥，防止渲染结果不可预期   JS">
 <meta name="keywords" content="Javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="EventLoop梳理">
 <meta property="og:url" content="https://better-jiang.github.io/2019/12/02/EventLoop梳理/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
-<meta property="og:description" content="JS是单线程的，它是通过事件队列（EventLoop）的方式来实现异步回调的。    浏览器内核(渲染引擎: Rendering Engine)浏览器内核其实指的是浏览器内的一个进程，它负责页面的渲染、脚本执行、事件处理等，每一个Tab页一个渲染进程。对于渲染进程来讲，它是多线程的，包括以下线程      GUI渲染线程 复杂渲染页面，回流、重绘 与JS引擎线程互斥，防止渲染结果不可预期   JS">
+<meta property="og:description" content="JS 是单线程的，它是通过事件队列（EventLoop）的方式来实现异步回调的。 浏览器内核(渲染引擎: Rendering Engine)浏览器内核其实指的是浏览器内的一个进程，它负责页面的渲染、脚本执行、事件处理等，每一个 Tab 页一个渲染进程。对于渲染进程来讲，它是多线程的，包括以下线程  GUI 渲染线程 复杂渲染页面，回流、重绘 与 JS 引擎线程互斥，防止渲染结果不可预期   JS">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://better-jiang.github.io/image/EventLoop.png">
-<meta property="og:updated_time" content="2019-12-02T12:14:40.007Z">
+<meta property="og:image" content="https://better-jiang.github.io/image/clickToTrigger.gif">
+<meta property="og:image" content="https://better-jiang.github.io/image/codeToTrigger.gif">
+<meta property="og:updated_time" content="2019-12-06T08:58:25.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EventLoop梳理">
-<meta name="twitter:description" content="JS是单线程的，它是通过事件队列（EventLoop）的方式来实现异步回调的。    浏览器内核(渲染引擎: Rendering Engine)浏览器内核其实指的是浏览器内的一个进程，它负责页面的渲染、脚本执行、事件处理等，每一个Tab页一个渲染进程。对于渲染进程来讲，它是多线程的，包括以下线程      GUI渲染线程 复杂渲染页面，回流、重绘 与JS引擎线程互斥，防止渲染结果不可预期   JS">
+<meta name="twitter:description" content="JS 是单线程的，它是通过事件队列（EventLoop）的方式来实现异步回调的。 浏览器内核(渲染引擎: Rendering Engine)浏览器内核其实指的是浏览器内的一个进程，它负责页面的渲染、脚本执行、事件处理等，每一个 Tab 页一个渲染进程。对于渲染进程来讲，它是多线程的，包括以下线程  GUI 渲染线程 复杂渲染页面，回流、重绘 与 JS 引擎线程互斥，防止渲染结果不可预期   JS">
 <meta name="twitter:image" content="https://better-jiang.github.io/image/EventLoop.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://better-jiang.github.io/2019/12/02/EventLoop梳理/index.html">
@@ -364,52 +366,53 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>JS是单线程的，它是通过事件队列（<code>EventLoop</code>）的方式来实现异步回调的。   </p>
-<h4 id="浏览器内核-渲染引擎-Rendering-Engine"><a href="#浏览器内核-渲染引擎-Rendering-Engine" class="headerlink" title="浏览器内核(渲染引擎: Rendering Engine)"></a>浏览器内核(渲染引擎: Rendering Engine)</h4><p>浏览器内核其实指的是浏览器内的一个进程，它负责页面的渲染、脚本执行、事件处理等，每一个Tab页一个渲染进程。<br>对于渲染进程来讲，它是多线程的，包括以下线程    </p>
+        <p>JS 是单线程的，它是通过事件队列（<code>EventLoop</code>）的方式来实现异步回调的。</p>
+<h4 id="浏览器内核-渲染引擎-Rendering-Engine"><a href="#浏览器内核-渲染引擎-Rendering-Engine" class="headerlink" title="浏览器内核(渲染引擎: Rendering Engine)"></a>浏览器内核(渲染引擎: Rendering Engine)</h4><p>浏览器内核其实指的是浏览器内的一个进程，它负责页面的渲染、脚本执行、事件处理等，每一个 Tab 页一个渲染进程。<br>对于渲染进程来讲，它是多线程的，包括以下线程</p>
 <ul>
-<li>GUI渲染线程<ul>
+<li>GUI 渲染线程<ul>
 <li>复杂渲染页面，回流、重绘</li>
-<li>与JS引擎线程互斥，防止渲染结果不可预期</li>
+<li>与 JS 引擎线程互斥，防止渲染结果不可预期</li>
 </ul>
 </li>
-<li>JS引擎线程<ul>
-<li>复杂处理解析、执行JS脚本程序</li>
-<li>只有一个JS引擎（单线程）</li>
-<li>与GUI渲染线程互斥</li>
+<li>JS 引擎线程<ul>
+<li>复杂处理解析、执行 JS 脚本程序</li>
+<li>只有一个 JS 引擎（单线程）</li>
+<li>与 GUI 渲染线程互斥</li>
 </ul>
 </li>
 <li>事件触发线程<ul>
-<li>控制事件循环（鼠标点击、setTimeout、ajax等）</li>
-<li>当事件满足触发条件时，将回调事件放入到JS引擎所在的执行队列中</li>
+<li>控制事件循环（鼠标点击、setTimeout、ajax 等）</li>
+<li>当事件满足触发条件时，将回调事件放入到 JS 引擎所在的执行队列中</li>
 </ul>
 </li>
 <li>定时器触发线程<ul>
-<li>setTimeout、setInterval中计时</li>
+<li>setTimeout、setInterval 中计时</li>
 <li>计时完成后，通知<code>事件触发线程</code></li>
 </ul>
 </li>
-<li>异步HTTP请求线程<ul>
-<li>浏览器中一个单独的处理AJAX请求的线程</li>
-<li>当请求完成时，若有回调函数，通知<code>事件处理线程</code>      </li>
+<li><p>异步 HTTP 请求线程</p>
+<ul>
+<li>浏览器中一个单独的处理 AJAX 请求的线程</li>
+<li>当请求完成时，若有回调函数，通知<code>事件处理线程</code></li>
 </ul>
 </li>
 </ul>
-<p><strong>为了防止渲染结果不可预期，浏览器设定<code>GUI渲染线程</code>和<code>JS引擎线程</code>互斥，当<code>JS引擎线程</code>执行时<code>GUI渲染线程</code>挂起，GUI更新则会在<code>JS引擎线程</code>空闲时立即被执行</strong>    </p>
-<h4 id="JS的运行机制"><a href="#JS的运行机制" class="headerlink" title="JS的运行机制"></a>JS的运行机制</h4><ul>
-<li>JS分为同步任务和异步任务</li>
+<p><strong>为了防止渲染结果不可预期，浏览器设定<code>GUI渲染线程</code>和<code>JS引擎线程</code>互斥，当<code>JS引擎线程</code>执行时<code>GUI渲染线程</code>挂起，GUI 更新则会在<code>JS引擎线程</code>空闲时立即被执行</strong></p>
+<h4 id="JS-的运行机制"><a href="#JS-的运行机制" class="headerlink" title="JS 的运行机制"></a>JS 的运行机制</h4><ul>
+<li>JS 分为同步任务和异步任务</li>
 <li>同步任务在<code>JS引擎线程</code>上执行，形成一个<code>执行栈</code>，且<code>JS引擎线程</code>只执行<code>执行栈</code>中的事件</li>
 <li><code>事件触发线程</code>管理一个<code>任务队列</code>，异步任务触发条件达成，将回调事件放入<code>任务队列</code>中</li>
 <li><code>事件队列</code>中的回调事件，是由各自线程插入到事件队列中的</li>
-<li><code>执行栈</code>中所有同步任务执行完毕，此时<code>JS引擎线程</code>空闲，系统会读取<code>任务队列</code>，将可执行的异步任务回调事件添加到<code>执行栈</code>中，并执行        </li>
+<li><code>执行栈</code>中所有同步任务执行完毕，此时<code>JS引擎线程</code>空闲，系统会读取<code>任务队列</code>，将可执行的异步任务回调事件添加到<code>执行栈</code>中，并执行</li>
 </ul>
 <h5 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h5><ul>
-<li>setTimeout 定时任务<br>当代码执行到setTimeout时，<code>JS引擎线程</code>通知<code>定时器线程</code>，间隔一段时间后，触发一个回调事件。而<code>定时器线程</code>在接受到这个消息后，在间隔时间后，将回调事件放入由<code>事件触发线程</code>所管理的<code>事件队列</code>中。</li>
-<li>ajax网络请求<br>代码执行到ajax时，<code>JS引擎线程</code>通知<code>异步HTTP请求线程</code>，发送一个网络请求，并制定一个请求完成后的回调事件。而<code>异步HTTP请求线程</code>接受到这个消息后，会在请求成功后，将回调事件放入由<code>事件触发线程</code>管理的<code>事件队列</code>中</li>
+<li>setTimeout 定时任务<br>当代码执行到 setTimeout 时，<code>JS引擎线程</code>通知<code>定时器线程</code>，间隔一段时间后，触发一个回调事件。而<code>定时器线程</code>在接受到这个消息后，在间隔时间后，将回调事件放入由<code>事件触发线程</code>所管理的<code>事件队列</code>中。</li>
+<li>ajax 网络请求<br>代码执行到 ajax 时，<code>JS引擎线程</code>通知<code>异步HTTP请求线程</code>，发送一个网络请求，并制定一个请求完成后的回调事件。而<code>异步HTTP请求线程</code>接受到这个消息后，会在请求成功后，将回调事件放入由<code>事件触发线程</code>管理的<code>事件队列</code>中</li>
 </ul>
-<p><strong>setTimeout， ajax 代码执行时，其本身是同步任务，而其中的回调函数才是异步任务。当同步任务执行完，<code>JS引擎线程</code>会询问<code>事件触发线程</code>，在<code>事件队列</code>中是否有待执行的回调函数，如果有的话，则加入到<code>执行栈</code>中，交给<code>JS引擎线程</code>执行</strong>    </p>
-<h4 id="宏任务、微任务"><a href="#宏任务、微任务" class="headerlink" title="宏任务、微任务"></a>宏任务、微任务</h4><p>我们可以将每次执行栈执行的代码当做一个宏任务(<code>包括每次从事件队列中获取一个事件回调并放入执行栈中执行</code>)，每一个宏任务会从头到尾执行完毕，期间不会执行其他。<br>因为<code>JS引擎线程</code>和<code>GUI渲染线程</code>互斥，浏览器为了能够是<code>宏任务</code>和<code>DOM任务</code>有序的进行，会在一个<code>宏任务</code>执行结束后，在一个<code>宏任务</code>执行前，<code>GUI渲染线程</code>开始工作，更新DOM、对页面进行渲染。  </p>
-<p><strong>主代码，setTimeout, setInterval等，属于<code>宏任务</code></strong></p>
-<p>微任务可以理解为：在当前<code>宏任务</code>执行后立即执行的任务。也就是说，在<code>宏任务</code>执行完，在<code>渲染</code>前，将执行期间所产生的所有<code>微任务</code>。<br><strong>Promise, process.nextTick，mutation observer等，属于<code>微任务</code></strong></p>
+<p><strong>setTimeout， ajax 代码执行时，其本身是同步任务，而其中的回调函数才是异步任务。当同步任务执行完，<code>JS引擎线程</code>会询问<code>事件触发线程</code>，在<code>事件队列</code>中是否有待执行的回调函数，如果有的话，则加入到<code>执行栈</code>中，交给<code>JS引擎线程</code>执行</strong></p>
+<h4 id="宏任务、微任务"><a href="#宏任务、微任务" class="headerlink" title="宏任务、微任务"></a>宏任务、微任务</h4><p>我们可以将每次执行栈执行的代码当做一个宏任务(<code>包括每次从事件队列中获取一个事件回调并放入执行栈中执行</code>)，每一个宏任务会从头到尾执行完毕，期间不会执行其他。<br>因为<code>JS引擎线程</code>和<code>GUI渲染线程</code>互斥，浏览器为了能够是<code>宏任务</code>和<code>DOM任务</code>有序的进行，会在一个<code>宏任务</code>执行结束后，在一个<code>宏任务</code>执行前，<code>GUI渲染线程</code>开始工作，更新 DOM、对页面进行渲染。</p>
+<p><strong>主代码，setTimeout, setInterval 等，属于<code>宏任务</code></strong></p>
+<p>微任务可以理解为：在当前<code>宏任务</code>执行后立即执行的任务。也就是说，在<code>宏任务</code>执行完，在<code>渲染</code>前，将执行期间所产生的所有<code>微任务</code>。<br><strong>Promise, process.nextTick，mutation observer 等，属于<code>微任务</code></strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  宏任务 --&gt; 所有微任务 ---&gt; 渲染 ---&gt; 宏任务 ---&gt; 所有微任务 ---&gt;渲染 ...</span></span><br></pre></td></tr></table></figure>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
 <li>执行一个<code>宏任务</code>(<code>执行栈</code>中没有，从<code>事件队列</code>中取)</li>
@@ -417,6 +420,25 @@
 <li><code>宏任务</code>执行完毕后，立即依次执行当前<code>微任务队列</code>中的所有<code>微任务</code></li>
 <li>当前<code>宏任务</code>执行完毕，开始检查渲染，然后<code>GUI渲染线程</code>接管渲染</li>
 <li>渲染完毕后，<code>JS引擎线程</code>继续接管，开始下一个<code>宏任务</code>（从事件队列中获取）<br><img src="/image/EventLoop.png" alt="EventLoop"></li>
+</ul>
+<hr>
+<hr>
+<hr>
+<h3 id="宏任务-微任务（再总结）"><a href="#宏任务-微任务（再总结）" class="headerlink" title="宏任务/微任务（再总结）"></a>宏任务/微任务（再总结）</h3><p>以下内容参考了该文章: <a href="https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/" target="_blank" rel="noopener">任务、微任务、队列和调度 (英文版)</a></p>
+<h4 id="代码触发事件-鼠标、键盘等操作触发事件"><a href="#代码触发事件-鼠标、键盘等操作触发事件" class="headerlink" title="代码触发事件 / 鼠标、键盘等操作触发事件"></a>代码触发事件 / 鼠标、键盘等操作触发事件</h4><ul>
+<li>鼠标、键盘等操作触发的事件，事件在 JS 执行栈中执行完后，执行栈为空，可执行加微任务。因冒泡触发其他事件加入执行栈，再次执行。</li>
+<li>代码触发的事件，会先在 JS 执行栈执行<code>script</code>代码,再添加触发事件，触发事件执行完后，因 JS 执行栈还在执行<code>script</code>代码，故不可执行微任务。接着冒泡触发的事件加入执行栈执行。当所有冒泡事件执行完，<code>script</code>执行完后，才执行微任务队列。</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>内外两个 div，都注册了鼠标单击事件，</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">      .outer &#123;</span></span><br><span class="line"><span class="undefined">        margin: 40px auto;</span></span><br><span class="line"><span class="undefined">        width: 200px;</span></span><br><span class="line"><span class="undefined">        height: 200px;</span></span><br><span class="line"><span class="undefined">        display: flex;</span></span><br><span class="line"><span class="undefined">        justify-content: center;</span></span><br><span class="line"><span class="undefined">        align-items: center;</span></span><br><span class="line"><span class="undefined">        background: chocolate;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">      .inner &#123;</span></span><br><span class="line"><span class="undefined">        width: 100px;</span></span><br><span class="line"><span class="undefined">        height: 100px;</span></span><br><span class="line"><span class="undefined">        background: navy;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outer"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"inner"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> outer = <span class="built_in">document</span>.querySelector(<span class="string">".outer"</span>);</span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> inner = <span class="built_in">document</span>.querySelector(<span class="string">".inner"</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="keyword">new</span> MutationObserver(<span class="function">(<span class="params">mutations, observer</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// console.log(mutations, observer);</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> dataSetRandomVal = mutations[<span class="number">0</span>].target.dataset.random;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;dataSetRandomVal&#125;</span> - mutate`</span>);</span></span><br><span class="line"><span class="javascript">      &#125;).observe(outer, &#123; <span class="attr">attributes</span>: <span class="literal">true</span> &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      <span class="function"><span class="keyword">function</span> <span class="title">onClick</span>(<span class="params">event</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> currentClassName = event.currentTarget.className;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;currentClassName&#125;</span> - click`</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;currentClassName&#125;</span> - timeout`</span>), <span class="number">0</span>);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="params">()</span> =&gt;</span></span></span><br><span class="line"><span class="javascript">          <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;currentClassName&#125;</span> - promise`</span>)</span></span><br><span class="line"><span class="undefined">        );</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">        outer.setAttribute(<span class="string">"data-random"</span>, currentClassName);</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">      inner.addEventListener(<span class="string">"click"</span>, onClick);</span></span><br><span class="line"><span class="javascript">      outer.addEventListener(<span class="string">"click"</span>, onClick);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="comment">//   outer.click();</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">//   inner.click();</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>点击外/内层 div,鼠标单击触发<br><img src="/image/clickToTrigger.gif" alt="单击触发"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">单击outer</span><br><span class="line">demo.html:<span class="number">41</span> outer - click</span><br><span class="line">demo.html:<span class="number">46</span> outer - promise</span><br><span class="line">demo.html:<span class="number">36</span> outer - mutate</span><br><span class="line">demo.html:<span class="number">43</span> outer - timeout</span><br><span class="line"></span><br><span class="line">单击inner</span><br><span class="line">demo.html:<span class="number">41</span> inner - click</span><br><span class="line">demo.html:<span class="number">46</span> inner - promise</span><br><span class="line">demo.html:<span class="number">36</span> inner - mutate</span><br><span class="line">demo.html:<span class="number">41</span> outer - click</span><br><span class="line">demo.html:<span class="number">46</span> outer - promise</span><br><span class="line">demo.html:<span class="number">36</span> outer - mutate</span><br><span class="line">demo.html:<span class="number">43</span> inner - timeout</span><br><span class="line">demo.html:<span class="number">43</span> outer - timeout</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行 outer.click() / inner.click()，代码触发</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">outer.click();</span><br><span class="line">demo.html:<span class="number">41</span> outer - click</span><br><span class="line">demo.html:<span class="number">46</span> outer - promise</span><br><span class="line">demo.html:<span class="number">36</span> outer - mutate</span><br><span class="line"><span class="literal">undefined</span>   <span class="comment">// outer.click()执行完，无返回值</span></span><br><span class="line">demo.html:<span class="number">43</span> outer - timeout</span><br><span class="line"></span><br><span class="line">inner.click()</span><br><span class="line">demo.html:<span class="number">41</span> inner - click</span><br><span class="line">demo.html:<span class="number">41</span> outer - click</span><br><span class="line">demo.html:<span class="number">46</span> inner - promise</span><br><span class="line">demo.html:<span class="number">36</span> outer - mutate    <span class="comment">// MutationObserver的监听是异步触发，在所有的DOM操作完成后才触发使回调函数进入微任务队列，故这里触发一次</span></span><br><span class="line">demo.html:<span class="number">46</span> outer - promise</span><br><span class="line"><span class="literal">undefined</span>   <span class="comment">// inner.click()执行完，无返回值</span></span><br><span class="line">demo.html:<span class="number">43</span> inner - timeout</span><br><span class="line">demo.html:<span class="number">43</span> outer - timeout</span><br></pre></td></tr></table></figure>
+<p><img src="/image/codeToTrigger.gif" alt="代码执行触发"></p>
+</li>
 </ul>
 
       
