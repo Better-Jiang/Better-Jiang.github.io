@@ -17,21 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>《CSS权威指南4》- Chapter1.4 - 特性查询 | better-jiang</title>
-  <meta name="description" content="特性查询在 2015 到 2016 年之间，CSS 获得了在特定情况下（即浏览器支持的 CSSs 属性-值的组合下）应用 CSS 块的能力。这被称为特性查询。他们在结构上与媒体查询非常相似。考虑这样一种情况：如果 color 是受支持的属性，那么就对元素应用 color。它是这样的： 12345@supports (color:black) &amp;#123;  body &amp;#123;color: bl">
-<meta name="keywords" content="翻译,CSS权威指南-第四版">
+  <title>CSS知识点梳理(3) | better-jiang</title>
+  <meta name="description" content="选择器的特异性（Specificity）当一个元素有两个或多个相互冲突的属性声明时，具有最高特异性的属性声明将胜出。选择器的特异性值可以表示为四个部分0,0,0,0，实际如何确定 如下  每一个内联声明， 1,0,0,0 每一个 ID 选择器，加0,1,0,0 每一个类选择器、属性选择器、伪类选择器，加0,0,1,0 每一个元素选择器、伪元素选择器，加0,0,0,1 组合符和通配选择器不影响特异性">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《CSS权威指南4》- Chapter1.4 - 特性查询">
-<meta property="og:url" content="https://better-jiang.github.io/2019/11/26/《CSS权威指南4》-Chapter1-5-特性查询/index.html">
+<meta property="og:title" content="CSS知识点梳理(3)">
+<meta property="og:url" content="https://better-jiang.github.io/2019/12/10/CSS知识点梳理-3/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
-<meta property="og:description" content="特性查询在 2015 到 2016 年之间，CSS 获得了在特定情况下（即浏览器支持的 CSSs 属性-值的组合下）应用 CSS 块的能力。这被称为特性查询。他们在结构上与媒体查询非常相似。考虑这样一种情况：如果 color 是受支持的属性，那么就对元素应用 color。它是这样的： 12345@supports (color:black) &amp;#123;  body &amp;#123;color: bl">
+<meta property="og:description" content="选择器的特异性（Specificity）当一个元素有两个或多个相互冲突的属性声明时，具有最高特异性的属性声明将胜出。选择器的特异性值可以表示为四个部分0,0,0,0，实际如何确定 如下  每一个内联声明， 1,0,0,0 每一个 ID 选择器，加0,1,0,0 每一个类选择器、属性选择器、伪类选择器，加0,0,1,0 每一个元素选择器、伪元素选择器，加0,0,0,1 组合符和通配选择器不影响特异性">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T01:13:55.032Z">
+<meta property="og:updated_time" content="2019-12-10T04:13:30.233Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《CSS权威指南4》- Chapter1.4 - 特性查询">
-<meta name="twitter:description" content="特性查询在 2015 到 2016 年之间，CSS 获得了在特定情况下（即浏览器支持的 CSSs 属性-值的组合下）应用 CSS 块的能力。这被称为特性查询。他们在结构上与媒体查询非常相似。考虑这样一种情况：如果 color 是受支持的属性，那么就对元素应用 color。它是这样的： 12345@supports (color:black) &amp;#123;  body &amp;#123;color: bl">
+<meta name="twitter:title" content="CSS知识点梳理(3)">
+<meta name="twitter:description" content="选择器的特异性（Specificity）当一个元素有两个或多个相互冲突的属性声明时，具有最高特异性的属性声明将胜出。选择器的特异性值可以表示为四个部分0,0,0,0，实际如何确定 如下  每一个内联声明， 1,0,0,0 每一个 ID 选择器，加0,1,0,0 每一个类选择器、属性选择器、伪类选择器，加0,0,1,0 每一个元素选择器、伪元素选择器，加0,0,0,1 组合符和通配选择器不影响特异性">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://better-jiang.github.io/2019/11/26/《CSS权威指南4》-Chapter1-5-特性查询/index.html">
+  <link rel="canonical" href="https://better-jiang.github.io/2019/12/10/CSS知识点梳理-3/index.html">
   
     <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
   
@@ -320,14 +320,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-《CSS权威指南4》-Chapter1-5-特性查询" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-CSS知识点梳理-3" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      《CSS权威指南4》- Chapter1.4 - 特性查询
+      CSS知识点梳理(3)
     </h1>
   
 
@@ -335,8 +335,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/11/26/《CSS权威指南4》-Chapter1-5-特性查询/" class="article-date">
-	  <time datetime="2019-11-26T01:11:47.000Z" itemprop="datePublished">2019-11-26</time>
+	<a href="/2019/12/10/CSS知识点梳理-3/" class="article-date">
+	  <time datetime="2019-12-10T01:30:24.000Z" itemprop="datePublished">2019-12-10</time>
 	</a>
 </span>
         
@@ -348,7 +348,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/CSS权威指南-第四版/">CSS权威指南-第四版</a>, <a class="article-tag-link" href="/tags/翻译/">翻译</a>
+	<a class="article-tag-link" href="/tags/CSS/">CSS</a>
   </span>
 
 
@@ -361,31 +361,65 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/26/《CSS权威指南4》-Chapter1-5-特性查询/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/12/10/CSS知识点梳理-3/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="特性查询"><a href="#特性查询" class="headerlink" title="特性查询"></a>特性查询</h3><p>在 2015 到 2016 年之间，CSS 获得了在特定情况下（即浏览器支持的 CSSs 属性-值的组合下）应用 CSS 块的能力。这被称为特性查询。<br>他们在结构上与媒体查询非常相似。考虑这样一种情况：如果 color 是受支持的属性，那么就对元素应用 color。它是这样的：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">supports</span> (color:black) &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;<span class="attribute">color</span>: black;&#125;</span><br><span class="line">  <span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: purple;&#125;</span><br><span class="line">  <span class="selector-tag">h2</span> &#123;<span class="attribute">color</span>: navy;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>实际上，它意味着“如果理解并能处理<code>color: black</code>这样的属性-值组合，就应用这些样式，否则，就跳过这些样式”。在不理解<code>@supports</code>的用户代理（浏览器等）中，整个 CSS 规则块被跳过。</p>
-<p>特性查询是渐进增强样式的完美方法。例如，假设想在现有的浮动和内联块布局中添加一些网格布局，可以保留旧的布局方案，然后在样式表中包含这样的块：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">supports</span> (display: grid) &#123;</span><br><span class="line">  <span class="selector-tag">section</span><span class="selector-id">#main</span> &#123;<span class="attribute">display</span>: grid;&#125;</span><br><span class="line">  <span class="comment">/*styles to switch off old layout*/</span></span><br><span class="line">  <span class="comment">/*grud layout styles*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样样式将应用于支持网格显示的浏览器中，覆盖旧的页面布局样式，然后应用所需的样式使其在基于网格的未来中生效。太老的浏览器无法支持网格布局，也很可能因太老而无法支持<code>@supports</code>,所以他们完全的跳过整个块，就好像从来没出现过一样。<br>特性查询 可以彼此 嵌入，也可以嵌入到媒体查询中，反之亦然。<br>编写基于弹性盒子布局的屏幕、打印的样式，将媒体查询包裹在<code>@support (display: flex)</code>块中：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">supports</span> (display: flex) &#123;</span><br><span class="line">  @<span class="keyword">media</span> screen &#123;</span><br><span class="line">    <span class="comment">/*screen flexbox styles go here */</span></span><br><span class="line">  &#125;</span><br><span class="line">  @<span class="keyword">media</span> print &#123;</span><br><span class="line">    <span class="comment">/*print flexbox styles go  here */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>相反，可以在各种响应设计的媒体查询块中，添加<code>@supports ()</code> 块：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> screen and (max-width: <span class="number">30em</span>) &#123;</span><br><span class="line">  @<span class="keyword">supports</span> (display: flex) &#123;</span><br><span class="line">    <span class="comment">/*small-screen flexbox styles go here*/</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">media</span> screen and (min-width: <span class="number">30em</span>) &#123;</span><br><span class="line">  @<span class="keyword">supports</span> (display: flex) &#123;</span><br><span class="line">    <span class="comment">/* large-screen flexbox styles go here */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如何组织这些区块完全取决自己。</p>
-<p>与媒体查询一样，特性查询也允许有逻辑操作符。假设想要在一个用户代理同时支持网格布局和 CSS 形状（<code>shapes</code>）时应用样式，应该这样的：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">supports</span> (display: grid) and (shape-outside: circle()) &#123;</span><br><span class="line">  <span class="comment">/* grid-and-shape  styles go here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这基本上等价于以下写法：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">supports</span> (display: flex) &#123;</span><br><span class="line">  @<span class="keyword">supports</span> (shape-outside: circle()) &#123;</span><br><span class="line">    <span class="comment">/*   */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>除了<code>and</code>操作符外，还有更多可用的操作。CSS 形状是个很好的例子去说明为什么<code>or</code>是 有用的。因为在很长一段时间 <code>webkit</code>浏览器只支持通过 带厂商前缀属性的 CSS 形状。所以，如果用形状，可以这样使用特性查询：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">supports</span> (shape-outside: circle()) or (-webkit-shape-outside: circle()) &#123;</span><br><span class="line">  <span class="comment">/* shape styles go here */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>你仍然需要确保同时使用带前缀和不带 前缀的形状属性，这将支持 webkit 发行版本，并向后兼容，同时也支持其他支持 形状的浏览器，但不是通过带前缀的属性。</p>
-<p>特性查询也可以使用<code>not</code>。例如，在不支持网格布局时应用以下样式：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">supports</span> not (display: grid) &#123;</span><br><span class="line">  <span class="comment">/* grid-not-suppoted styles go here*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="选择器的特异性（Specificity）"><a href="#选择器的特异性（Specificity）" class="headerlink" title="选择器的特异性（Specificity）"></a>选择器的特异性（Specificity）</h4><p>当一个元素有两个或多个相互冲突的属性声明时，具有最高特异性的属性声明将胜出。<br>选择器的特异性值可以表示为四个部分<code>0,0,0,0</code>，实际如何确定 如下</p>
+<ul>
+<li>每一个内联声明， <code>1,0,0,0</code></li>
+<li>每一个 ID 选择器，加<code>0,1,0,0</code></li>
+<li>每一个类选择器、属性选择器、伪类选择器，加<code>0,0,1,0</code></li>
+<li>每一个元素选择器、伪元素选择器，加<code>0,0,0,1</code></li>
+<li>组合符和通配选择器不影响特异性值</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: red;&#125; <span class="comment">/*specificity = 0,0,0,1 */</span></span><br><span class="line"><span class="selector-tag">p</span> <span class="selector-tag">em</span> &#123;<span class="attribute">color</span>: purple&#125;;  <span class="comment">/*specificity = 0,0,0,2 */</span></span><br><span class="line"><span class="selector-class">.grape</span> &#123;<span class="attribute">color</span>: purple&#125;;  <span class="comment">/*specificity = 0,0,1,0 */</span></span><br><span class="line">*<span class="selector-class">.bright</span> &#123;<span class="attribute">color</span>: yellow;&#125;  <span class="comment">/*specificity = 0,0,1, */</span></span><br><span class="line"><span class="selector-tag">p</span><span class="selector-class">.bright</span> <span class="selector-tag">em</span><span class="selector-class">.dark</span> &#123;<span class="attribute">color</span>: maroon;&#125;  <span class="comment">/*specificity = 0,0,2,2 */</span></span><br><span class="line"><span class="selector-id">#id216</span> &#123;<span class="attribute">color</span>: blue;&#125;  <span class="comment">/*specificity = 0,1,0,0 */</span></span><br><span class="line"><span class="selector-tag">div</span><span class="selector-id">#sidebar</span> *<span class="selector-attr">[href]</span> &#123;<span class="attribute">color</span>: silver;&#125; <span class="comment">/*specificity = 0,1,1,1 */</span></span><br></pre></td></tr></table></figure>
+<p>一旦选择器的特异性被确定，特异性值将付给它所有的相关声明。</p>
+<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span><span class="selector-class">.section</span> &#123;<span class="attribute">color</span>: silver; <span class="attribute">background</span>: black;&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:silver;&#125;    <span class="comment">/* 0,0,0,1 */</span></span><br><span class="line"><span class="selector-tag">h2</span> &#123;<span class="attribute">background</span>:black;&#125; <span class="comment">/* 0,0,0,1 */</span></span><br><span class="line"></span><br><span class="line"><span class="selector-tag">h1</span><span class="selector-class">.section</span> &#123;<span class="attribute">color</span>:silver;&#125;  <span class="comment">/* 0,0,1,1 */</span></span><br><span class="line"><span class="selector-tag">h2</span><span class="selector-class">.section</span> &#123;<span class="attribute">background</span>: black;&#125; <span class="comment">/*0,0,1,1*/</span></span><br></pre></td></tr></table></figure>
+</code></pre><p><strong><code>!important</code>声明比所有的特异性值都高</strong></p>
+<h4 id="继承（Inheritance）"><a href="#继承（Inheritance）" class="headerlink" title="继承（Inheritance）"></a>继承（Inheritance）</h4><p>当元素的一个继承属性没有指定值时，则取父元素的同属性的计算值.</p>
+<ul>
+<li>许多属性不具继承性；例如：<code>border</code>,盒模型属性包括<code>margin,padding, background, border</code>。</li>
+<li><p>继承属性的值完全没有特异性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;color: gray;&#125;</span><br><span class="line">h1#page-title &#123;color: black;&#125;</span><br><span class="line"></span><br><span class="line">&lt;h1 id=&quot;page-title&quot;&gt; Meerkat &lt;em&gt;Central&lt;/em&gt; &lt;/h1&gt;</span><br></pre></td></tr></table></figure>
+<p>由于通配选择器适用于所有元素，并且具有特异性<code>0,0,0,0</code>,因此颜色声明的灰色胜过了继承的黑色值。后者根本没有特异性。</p>
+<p><strong>通配选择器具有短路继承的效果</strong></p>
+</li>
+</ul>
+<h4 id="层叠-级联（Cascade）"><a href="#层叠-级联（Cascade）" class="headerlink" title="层叠/级联（Cascade）"></a>层叠/级联（Cascade）</h4><p>层叠样式表(Cascading Style Sheets)：CSS 基于一种使样式层叠在一起的方法，它是通过将继承和特异性与一些规则相结合而实现的。</p>
+<ul>
+<li><p>层叠规则</p>
+<ol>
+<li>查找包含与给定元素匹配的选择器的所有规则</li>
+<li>按<code>显示权重</code>对声明排序，<code>!import</code>比其它无<code>!important</code>规则权重高。</li>
+<li>按<code>来源</code>对声明排序，三个基本来源：作者、读者、用户代理。通常情况下，作者的样式胜过读者，当读者<code>!important</code>样式比其它都强，包括作者的<code>!important</code>样式。 （以下权重由大至小）<ol>
+<li>读者 important 声明</li>
+<li>作者 important 声明</li>
+<li>作者 正常 声明</li>
+<li>读者 正常 声明</li>
+<li>用户代理（浏览器） 默认 声明</li>
+</ol>
+</li>
+<li>按<code>特异性值</code>排序</li>
+<li><p>按<code>声明的顺序</code>排序</p>
+<ul>
+<li><p><code>@import</code>引入的外部样式，排在文档内部样式的前面.可视为在<code>@import</code>的地方，把外部样式表粘贴于此。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> url(basic.css);</span><br><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>: blue;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>a</code>链接样式的顺序 <code>link-visited-focus-hover-active</code>.为什么？<br>一个链可能同时处于多个状态，即同时匹配多个伪类。<code>:link</code>和<code>visited</code>是常态效果，<code>:hover</code>和<code>:active</code>是瞬时效果</p>
+<ul>
+<li>未点击链接前，匹配<code>:link</code>伪类，鼠标悬停/点击时，链接同时匹配<code>:link</code>和<code>:hover</code>/<code>:active</code>。在同时匹配多个伪类时，后出现的伪类样式会覆盖前面的，所有<code>:link</code>必须写在<code>:hover</code>、<code>:active</code>之前，才能展示链接悬浮、激活样式。</li>
+<li><code>:hover</code>和<code>:active</code>顺序？假若<code>:hover</code>放在<code>:active</code>后面，当点击链接的一瞬间，实际长匹配了<code>:active</code>同时也匹配了<code>:hover</code>伪类，<code>:hover</code>在后面就覆盖了<code>:active</code>样式，所有就无法展示<code>:active</code>样式了。故<code>:active</code>在<code>:hover</code>之后。</li>
+<li><code>:link</code>和<code>:visited</code>两个伪类之间顺序无所谓，因为它们不能同时匹配。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
 
       
     </div>
@@ -395,7 +429,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://better-jiang.github.io/2019/11/26/《CSS权威指南4》-Chapter1-5-特性查询/" title="《CSS权威指南4》- Chapter1.4 - 特性查询" target="_blank" rel="external">https://better-jiang.github.io/2019/11/26/《CSS权威指南4》-Chapter1-5-特性查询/</a>
+      <a href="https://better-jiang.github.io/2019/12/10/CSS知识点梳理-3/" title="CSS知识点梳理(3)" target="_blank" rel="external">https://better-jiang.github.io/2019/12/10/CSS知识点梳理-3/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -441,13 +475,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/11/26/节流与防抖/" title="节流与防抖"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/11/25/《CSS权威指南4》-Chapter1-4-媒体查询/" title="《CSS权威指南4》- Chapter1.4 - 媒体查询"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/12/09/CSS知识点梳理-2/" title="CSS知识点梳理(2)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
