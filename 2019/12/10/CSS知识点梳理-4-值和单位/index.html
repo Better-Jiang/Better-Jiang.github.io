@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>CSS知识点梳理(4)-值和单位 | better-jiang</title>
+  <meta name="description" content="关键字、字符串、其他文本值关键字在需要用某种类型的单词来描述值的时候，那个单词就是关键字。例如none 全局关键字CSS 定义了每个属性都给以接受的三个全局关键字:inherit、initial、unset.  inherit: 使元素上的属性值与其父元素上的属性值相同。 1234567&amp;lt;div id=&amp;quot;toolbar&amp;quot;&amp;gt;  &amp;lt;a href=&amp;quot;one">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS知识点梳理(4)-值和单位">
+<meta property="og:url" content="https://better-jiang.github.io/2019/12/10/CSS知识点梳理-4-值和单位/index.html">
+<meta property="og:site_name" content="爱学兮的小江">
+<meta property="og:description" content="关键字、字符串、其他文本值关键字在需要用某种类型的单词来描述值的时候，那个单词就是关键字。例如none 全局关键字CSS 定义了每个属性都给以接受的三个全局关键字:inherit、initial、unset.  inherit: 使元素上的属性值与其父元素上的属性值相同。 1234567&amp;lt;div id=&amp;quot;toolbar&amp;quot;&amp;gt;  &amp;lt;a href=&amp;quot;one">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-11T09:42:37.541Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS知识点梳理(4)-值和单位">
+<meta name="twitter:description" content="关键字、字符串、其他文本值关键字在需要用某种类型的单词来描述值的时候，那个单词就是关键字。例如none 全局关键字CSS 定义了每个属性都给以接受的三个全局关键字:inherit、initial、unset.  inherit: 使元素上的属性值与其父元素上的属性值相同。 1234567&amp;lt;div id=&amp;quot;toolbar&amp;quot;&amp;gt;  &amp;lt;a href=&amp;quot;one">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://better-jiang.github.io/2019/12/10/CSS知识点梳理-4-值和单位/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Better-Jiang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">爱学兮的小江</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web前端 &amp; Vue</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术总结/">技术总结</a><span class="category-list-count">37</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔感悟/">随笔感悟</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS权威指南-第四版/">CSS权威指南-第四版</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode插件/">vscode插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书籍读后感/">书籍读后感</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程认知/">编程认知</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题反思/">问题反思</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CSS/" style="font-size: 13.4px;">CSS</a> <a href="/tags/CSS权威指南-第四版/" style="font-size: 13.8px;">CSS权威指南-第四版</a> <a href="/tags/Git/" style="font-size: 14px;">Git</a> <a href="/tags/Javascript/" style="font-size: 13.2px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 13.6px;">Vue</a> <a href="/tags/npm/" style="font-size: 13px;">npm</a> <a href="/tags/vscode插件/" style="font-size: 13px;">vscode插件</a> <a href="/tags/书籍读后感/" style="font-size: 13.2px;">书籍读后感</a> <a href="/tags/编程认知/" style="font-size: 13px;">编程认知</a> <a href="/tags/翻译/" style="font-size: 14px;">翻译</a> <a href="/tags/问题反思/" style="font-size: 13px;">问题反思</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/10/CSS知识点梳理-4-值和单位/" class="title">CSS知识点梳理(4)-值和单位</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-10T06:53:50.000Z" itemprop="datePublished">2019-12-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/10/CSS知识点梳理-3/" class="title">CSS知识点梳理(3)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-10T01:30:24.000Z" itemprop="datePublished">2019-12-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/09/CSS知识点梳理-2/" class="title">CSS知识点梳理(2)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-09T01:13:38.000Z" itemprop="datePublished">2019-12-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/09/CSS知识点梳理-1/" class="title">CSS知识点梳理(1)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-09T01:11:41.000Z" itemprop="datePublished">2019-12-09</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/05/《CSS权威指南4》-Chapter2-3-选择器-群组/" class="title">《CSS权威指南4》- Chapter2.3-选择器-群组</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-05T10:28:22.000Z" itemprop="datePublished">2019-12-05</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-CSS知识点梳理-4-值和单位" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS知识点梳理(4)-值和单位
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/12/10/CSS知识点梳理-4-值和单位/" class="article-date">
+	  <time datetime="2019-12-10T06:53:50.000Z" itemprop="datePublished">2019-12-10</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/CSS/">CSS</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/12/10/CSS知识点梳理-4-值和单位/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="关键字、字符串、其他文本值"><a href="#关键字、字符串、其他文本值" class="headerlink" title="关键字、字符串、其他文本值"></a>关键字、字符串、其他文本值</h3><h4 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h4><p>在需要用某种类型的单词来描述值的时候，那个单词就是关键字。例如<code>none</code></p>
+<h5 id="全局关键字"><a href="#全局关键字" class="headerlink" title="全局关键字"></a>全局关键字</h5><p>CSS 定义了每个属性都给以接受的三个<strong>全局关键字</strong>:<code>inherit</code>、<code>initial</code>、<code>unset</code>.</p>
+<ul>
+<li><p>inherit: 使元素上的属性值与其父元素上的属性值相同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;toolbar&quot;&gt;</span><br><span class="line">  &lt;a href=&quot;one.html&quot;&gt;One&lt;/a&gt; | &lt;a href=&quot;two.html&quot;&gt;Two&lt;/a&gt; |</span><br><span class="line">  &lt;a href=&quot;three.html&quot;&gt;Three&lt;/a&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">#toolbar &#123;background: blue; color:white;&#125; // a链接 颜色，默认样式</span><br><span class="line">#toolbar a &#123;color: inherit;&#125;              // a链接，颜色 继承自父元素</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>initial: 重置元素的属性值为默认值。</p>
+</li>
+<li>unset: 是<code>inherit</code>和<code>iniital</code>的通用替身。如果属性可继承，则<code>unset</code>效果与使用<code>inherit</code>相同。如果属性不可继承，则效果与使用<code>initial</code>相同。</li>
+</ul>
+<h5 id="all"><a href="#all" class="headerlink" title="all"></a>all</h5><p>一个特殊的属性，它的值只接受<code>全局关键字 (inherit | initial | unset )</code><br><code>all</code>是所有属性的替代，除了<code>direction</code>和<code>unicode-bidi</code>.如果一个元素声明了<code>all: inherit</code>, 则其所有属性的值都从其父元素继承，除了<code>direction</code>和<code>unicode-bidi</code> 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;section&gt;</span><br><span class="line">    &lt;div id=&quot;example&quot;&gt;This is a div&lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="Strings"><a href="#Strings" class="headerlink" title="Strings"></a>Strings</h4><p>字符串值用单引号或双引号包装的任意字符序列，用<code>&lt;string&gt;</code>的值来表示</p>
+<h4 id="URLs"><a href="#URLs" class="headerlink" title="URLs"></a>URLs</h4><p>在<code>@import</code>声明中，导入外部样式表是用到。<strong>注意：在 CSS 中，相对 url 是相当样式表本身的，而不是相当于使用样式表的 HTML 文档</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> url(protocol://server/pathname);   <span class="comment">/* 绝对路径 */</span></span><br><span class="line">@<span class="keyword">import</span> url(pathname)                     /* 相对路径 */</span><br></pre></td></tr></table></figure>
+<h4 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h4><p>image 值是对图像的引用</p>
+<ul>
+<li><url>: 外部资源标识符，在本例中，就是图像的 url</url></li>
+<li><p><image-set>: 一组图像，根据嵌入值中的条件来选择。例如<code>image-set()</code>可以指定大的突图像应用于桌面布局，小的图像应用于移动设计。类似于图像元素的 srcset 属性。</image-set></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  // 1x 2x 表示：像素密度</span><br><span class="line"> .imageSet &#123;</span><br><span class="line">  width: 300px;</span><br><span class="line">  height: 400px;</span><br><span class="line">  background: -webkit-image-set(url(https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png) 1x, url(https://mat1.gtimg.com/www/images/qq2012/qqlogo_2x.png) 2x);</span><br><span class="line">  background-repeat: repeat-y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  &lt;img src=&quot;https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png&quot;</span><br><span class="line">      srcset=&quot;</span><br><span class="line">      https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png 1x,</span><br><span class="line">      https://mat1.gtimg.com/www/images/qq2012/qqlogo_2x.png 2x</span><br><span class="line">      &quot;</span><br><span class="line">  /&gt;</span><br><span class="line">      &lt;img src=&quot;https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png&quot;</span><br><span class="line">      srcset=&quot;</span><br><span class="line">      https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png 325W,</span><br><span class="line">      https://mat1.gtimg.com/www/images/qq2012/qqlogo_2x.png 375W</span><br><span class="line">      &quot;</span><br><span class="line">  /&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><gradient>: 指一个线性或经向的梯度图像。</gradient></p>
+</li>
+</ul>
+<h3 id="分数值（弹性值）（Fractions）"><a href="#分数值（弹性值）（Fractions）" class="headerlink" title="分数值（弹性值）（Fractions）"></a>分数值（弹性值）（Fractions）</h3><p>分数值（弹性值）是一个<number>后跟标签<code>fr</code>。这是在网格布局中引入的概念，用于划分布局中无约束空间的部分。</number></p>
+<h3 id="距离"><a href="#距离" class="headerlink" title="距离"></a>距离</h3><h4 id="绝对长度单位"><a href="#绝对长度单位" class="headerlink" title="绝对长度单位"></a>绝对长度单位</h4><ul>
+<li>Inche (in)英寸，1in = 2.54cm；1cm = 0.394in</li>
+<li>Centimeter(cm)</li>
+<li>Millimeter(mm)</li>
+<li>Point(pt)点，72pt = 1in； <code>p {font-size:18pt}</code>相当于<code>p {font-size: 0.25in;}</code></li>
+<li>Pixel(px)像素，是屏幕上的一个小格子。但在 CSS 中像素比较抽象，像素被定义为每英寸产生 96 像素所需要的大小。<br>在 CSS 规范建议，如果显示器的分辨率密度明显不同于每英寸 96 像素（ppi，96 pixels per inch）,则用户代理应将像素缩放到“参考像素”，CSS2.1 和 CSS3 建议是 96ppi。<br>如果一个显示器的分辨率是宽：1024px，高：768px，则其屏幕的尺寸是宽：10 2/3 英寸，高：8 英寸，它完全由显示像素填充，每个像素宽、高是 1/96 英寸。一些显示器的 ppi 高于 96，如视网膜显示屏，iPhone 4S 是 326ppi，iPad 是 264ppi</li>
+</ul>
+<h4 id="相对长度单位"><a href="#相对长度单位" class="headerlink" title="相对长度单位"></a>相对长度单位</h4><ul>
+<li>em/ex，<code>em:</code>小写 m 的宽度；<code>ex:</code>小写 x 的高度。</li>
+<li>rem, <code>rem</code>总是使用根元素（html 元素）字体大小来计算；<code>em</code>使用它所应用的元素的字体大小来计算；</li>
+<li>ch, “one character”,等于<code>0</code>字符的宽度或高度。(文字本身的宽度+两边内置间距)。<ol>
+<li>可保证每一行最大 80 个字符宽度</li>
+<li>可给图片宽度设置 25 个字符的宽度<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.contanier</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">80ch</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">1rem</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">25ch</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="视口相对大小单位"><a href="#视口相对大小单位" class="headerlink" title="视口相对大小单位"></a>视口相对大小单位</h5><p>CSS3 中新增的特性，相对于视口进行计算的单位。如浏览器窗口、可打印区域、移动设备显示</p>
+<ul>
+<li>Viewport width unit(vm)：由视口宽度/100 计算而来，如果视口宽度 937px，1vm=9.37px,如果视口改变，vm 值也随之改变。</li>
+<li>Viewport height unit(vh): 由视口高度/100 计算而来</li>
+<li>Viewport minimum unit(vmin): 取 vm 和 vh 中较小的，如果视口宽 937px，高 640px，则 1vmin = 6.4px</li>
+<li>Viewport maximum unit(vmax): 取 vm 和 vh 中较大的</li>
+</ul>
+<h4 id="分辨率单位"><a href="#分辨率单位" class="headerlink" title="分辨率单位"></a>分辨率单位</h4><p>随着媒体查询和响应设计的出现，为了能够描述显示分辨率，引入了三种新的单位</p>
+<ul>
+<li>Dots per inch(dpi)：线性上每英寸的显示点数。可以指打印机输出的点，设备的物理像素，或电子墨显示屏中的电子像素。</li>
+<li>Dots per centimeter(dpcm)：每厘米的显示点数。</li>
+<li>Dops per pixel unit(dppx)：每个 CSS 像素单位的显示点数。CSS3 中。1dppx 相当于 96dpi,因为 CSS 以该比率定义像素单位。<br>截止 2017 年末，这些分辨率单位仅用于媒体查询中，</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">media</span> (min-resolution: <span class="number">500dpi</span>) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="计算的值（Calculation-Values-calc-）"><a href="#计算的值（Calculation-Values-calc-）" class="headerlink" title="计算的值（Calculation Values, calc()）"></a>计算的值（Calculation Values, calc()）</h3><p><code>calc()</code>,可以在任何允许使用以下数值类型的地方。<code>&lt;length&gt;,&lt;frequency&gt;, &lt;angle&gt;,&lt;time&gt;,&lt;percentage&gt;, &lt;number&gt;, &lt;integer&gt;</code>，也可以使用它们的单位类型。单需要注意以下限制：</p>
+<ul>
+<li><code>+</code>,<code>-</code>符号两边的值必须相同单位类型或<code>&lt;number&gt;</code>和<code>&lt;integer&gt;</code>.如<code>5em + 2.7</code>是非法的,因为一个是长度单位（em），另一个不是。<code>5em + 20px</code>是合法的，两个都是长度单位。</li>
+<li><code>+</code>,<code>-</code>符号两边需要空格，<code>*</code>,<code>/</code>不需要。<br>-</li>
+</ul>
+<h3 id="属性值-（Attribute-Values-attr-）"><a href="#属性值-（Attribute-Values-attr-）" class="headerlink" title="属性值 （Attribute Values, attr()）"></a>属性值 （Attribute Values, attr()）</h3><p>在一些 CSS 属性中，可以填入该元素定义的 HTML 属性的值，还可以指定表达式中的值类型。通过<code>attr()</code>表达式完成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  .say::before &#123;</span><br><span class="line">    content: &quot;[&quot; attr(class) &quot;]&quot;;</span><br><span class="line">  &#125;</span><br><span class="line">  .say::after &#123;</span><br><span class="line">    content: attr(data-after);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&lt;div class=&quot;jiangjiang say&quot; data-height=&quot;10&quot; data-after=&quot;after&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&quot;&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">type</th>
+<th style="text-align:center">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">name colors</td>
+<td style="text-align:center">148 color keywords</td>
+</tr>
+<tr>
+<td style="text-align:center">RGB/RGBa</td>
+<td style="text-align:center">rgb(255,255,255) rgba(100%,100%,100%,0.5)</td>
+</tr>
+<tr>
+<td style="text-align:center">hexadecimal RGB color</td>
+<td style="text-align:center">#FF3BC0 #0F0 #00FF00</td>
+</tr>
+<tr>
+<td style="text-align:center">hexadecimal RGBa color</td>
+<td style="text-align:center">#000000FF 第 7-8 位表示透明度，FF~00,透明度递减</td>
+</tr>
+<tr>
+<td style="text-align:center">HSL/HSLa</td>
+<td style="text-align:center">H:hue(色调,色相角度,0-360);S:saturation(饱和度,0-100%);L:lightness(亮度,0-100%)</td>
+</tr>
+<tr>
+<td style="text-align:center">color keywords</td>
+<td style="text-align:center">transparent：透明色 rgba(0,0,0,0),是背景色的默认值; currentColor： 当前元素的颜色的计算值</td>
+</tr>
+</tbody>
+</table>
+<h3 id="角度"><a href="#角度" class="headerlink" title="角度"></a>角度</h3><ul>
+<li>deg : Degrees, 一圈 360 度</li>
+<li>rad : Radians,一圈 2&pi;(近似 6.28)</li>
+<li>turn : Turns，一整圈，常用在动画、旋转，<code>10turn</code>代表 10 圈</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Degrees</th>
+<th style="text-align:center">Radians</th>
+<th style="text-align:center">Turns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0deg</td>
+<td style="text-align:center">orad</td>
+<td style="text-align:center">0turn</td>
+</tr>
+<tr>
+<td style="text-align:center">45deg</td>
+<td style="text-align:center">0.785rad</td>
+<td style="text-align:center">0.125turn</td>
+</tr>
+<tr>
+<td style="text-align:center">90deg</td>
+<td style="text-align:center">1.571rad</td>
+<td style="text-align:center">0.25turn</td>
+</tr>
+<tr>
+<td style="text-align:center">180deg</td>
+<td style="text-align:center">3.142rad</td>
+<td style="text-align:center">0.5turn</td>
+</tr>
+<tr>
+<td style="text-align:center">270deg</td>
+<td style="text-align:center">4.712rad</td>
+<td style="text-align:center">0.75turn</td>
+</tr>
+<tr>
+<td style="text-align:center">360deg</td>
+<td style="text-align:center">6.283rad</td>
+<td style="text-align:center">1turn</td>
+</tr>
+</tbody>
+</table>
+<h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><p><code>&lt;position&gt;</code>值是如何指定背景区域中原始图像的位置</p>
+<ul>
+<li>1 个 值: 第 2 值默认<code>center</code>; <code>25%</code>-&gt; <code>25% center</code></li>
+<li>2 个 值：第 1 个是长度或百分比，则代表水平方向上的值。<code>25% 35px</code>，水平方向:25%,竖直方向:35px;</li>
+<li>3 个 值: 最后一个 默认<code>0</code>，<code>right 20px top</code>-&gt;<code>right 20px top 0</code></li>
+<li>4 个 值: <code>top 50% left 35px</code>，表示 距离 top 的偏移量为 50%，距离 left 的偏移量是 35px。</li>
+</ul>
+<h3 id="自定义值-Custom-Values"><a href="#自定义值-Custom-Values" class="headerlink" title="自定义值(Custom Values)"></a>自定义值(Custom Values)</h3><ul>
+<li>自定义标识符以两个连字符开头<code>--base--color</code>,之后使用<code>val()值类型调用它</code></li>
+<li>可使用特性查询（<code>@supports</code>）判断是否支持该特性</li>
+<li>自定义值有限定的，仅在给定的上下文中可以</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"ie=edge"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Custom Values<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">      @<span class="keyword">supports</span> (color: var(--custom)) &#123;</span></span><br><span class="line"><span class="undefined">        html &#123;</span></span><br><span class="line"><span class="css">          <span class="selector-tag">--base-color</span>: <span class="selector-id">#639</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        aside &#123;</span></span><br><span class="line"><span class="css">          <span class="selector-tag">--base-color</span>: <span class="selector-id">#f60</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        h1 &#123;</span></span><br><span class="line"><span class="undefined">          color: var(--base-color);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="undefined">          --gutter: 3ch;</span></span><br><span class="line"><span class="undefined">          --offset: 1;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        ul li &#123;</span></span><br><span class="line"><span class="undefined">          margin-left: calc(var(--gutter) * var(--offset));</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        ul ul li &#123;</span></span><br><span class="line"><span class="undefined">          --offset: 2;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">        ul ul ul li &#123;</span></span><br><span class="line"><span class="undefined">          --offset: 3;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Main H1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">aside</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>aside H1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">aside</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Main H1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Main H1<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>a regular set of indents for unordered lists<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>1111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span>1111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>2222<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>2222<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>3333<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>3333<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span>3333<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://better-jiang.github.io/2019/12/10/CSS知识点梳理-4-值和单位/" title="CSS知识点梳理(4)-值和单位" target="_blank" rel="external">https://better-jiang.github.io/2019/12/10/CSS知识点梳理-4-值和单位/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Better-Jiang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Better-Jiang" target="_blank"><span class="text-dark">爱学兮的小江</span><small class="ml-1x">Web前端 &amp; Vue</small></a></h3>
+        <div>前端狗，爱思考，爱码字</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2019/12/10/CSS知识点梳理-3/" title="CSS知识点梳理(3)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="wechat" data-mobile-sites></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class>
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c9348a5e84eb5050ec8',
+    clientSecret: 'b92d8dd66f66bbe04d870af0e612ff74a00546da',
+    repo: 'Better-Jiang.github.io',
+    owner: 'Better-Jiang',
+    admin: ['Better-Jiang'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
