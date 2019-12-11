@@ -26,10 +26,13 @@
 <meta property="og:site_name" content="爱学兮的小江">
 <meta property="og:description" content="关键字、字符串、其他文本值关键字在需要用某种类型的单词来描述值的时候，那个单词就是关键字。例如none 全局关键字CSS 定义了每个属性都给以接受的三个全局关键字:inherit、initial、unset.  inherit: 使元素上的属性值与其父元素上的属性值相同。 1234567&amp;lt;div id=&amp;quot;toolbar&amp;quot;&amp;gt;  &amp;lt;a href=&amp;quot;one">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-11T09:42:37.541Z">
+<meta property="og:image" content="https://better-jiang.github.io/image/The_spectrum_on_a_whell_and_strip.png">
+<meta property="og:image" content="https://better-jiang.github.io/image/Mixing_RGB_to_create_the_spectrum.png">
+<meta property="og:updated_time" content="2019-12-11T09:56:59.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS知识点梳理(4)-值和单位">
 <meta name="twitter:description" content="关键字、字符串、其他文本值关键字在需要用某种类型的单词来描述值的时候，那个单词就是关键字。例如none 全局关键字CSS 定义了每个属性都给以接受的三个全局关键字:inherit、initial、unset.  inherit: 使元素上的属性值与其父元素上的属性值相同。 1234567&amp;lt;div id=&amp;quot;toolbar&amp;quot;&amp;gt;  &amp;lt;a href=&amp;quot;one">
+<meta name="twitter:image" content="https://better-jiang.github.io/image/The_spectrum_on_a_whell_and_strip.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://better-jiang.github.io/2019/12/10/CSS知识点梳理-4-值和单位/index.html">
   
@@ -384,11 +387,11 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> url(protocol://server/pathname);   <span class="comment">/* 绝对路径 */</span></span><br><span class="line">@<span class="keyword">import</span> url(pathname)                     /* 相对路径 */</span><br></pre></td></tr></table></figure>
 <h4 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h4><p>image 值是对图像的引用</p>
 <ul>
-<li><url>: 外部资源标识符，在本例中，就是图像的 url</url></li>
-<li><p><image-set>: 一组图像，根据嵌入值中的条件来选择。例如<code>image-set()</code>可以指定大的突图像应用于桌面布局，小的图像应用于移动设计。类似于图像元素的 srcset 属性。</image-set></p>
+<li><code>&lt;url&gt;</code>: 外部资源标识符，在本例中，就是图像的 url</li>
+<li><p><code>&lt;image-set&gt;</code>: 一组图像，根据嵌入值中的条件来选择。例如<code>image-set()</code>可以指定大的突图像应用于桌面布局，小的图像应用于移动设计。类似于图像元素的 srcset 属性。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  // 1x 2x 表示：像素密度</span><br><span class="line"> .imageSet &#123;</span><br><span class="line">  width: 300px;</span><br><span class="line">  height: 400px;</span><br><span class="line">  background: -webkit-image-set(url(https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png) 1x, url(https://mat1.gtimg.com/www/images/qq2012/qqlogo_2x.png) 2x);</span><br><span class="line">  background-repeat: repeat-y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  &lt;img src=&quot;https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png&quot;</span><br><span class="line">      srcset=&quot;</span><br><span class="line">      https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png 1x,</span><br><span class="line">      https://mat1.gtimg.com/www/images/qq2012/qqlogo_2x.png 2x</span><br><span class="line">      &quot;</span><br><span class="line">  /&gt;</span><br><span class="line">      &lt;img src=&quot;https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png&quot;</span><br><span class="line">      srcset=&quot;</span><br><span class="line">      https://mat1.gtimg.com/www/images/qq2012/qqlogo_1x.png 325W,</span><br><span class="line">      https://mat1.gtimg.com/www/images/qq2012/qqlogo_2x.png 375W</span><br><span class="line">      &quot;</span><br><span class="line">  /&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><gradient>: 指一个线性或经向的梯度图像。</gradient></p>
+<li><p><code>&lt;gradient&gt;</code>: 指一个线性或经向的梯度图像。</p>
 </li>
 </ul>
 <h3 id="分数值（弹性值）（Fractions）"><a href="#分数值（弹性值）（Fractions）" class="headerlink" title="分数值（弹性值）（Fractions）"></a>分数值（弹性值）（Fractions）</h3><p>分数值（弹性值）是一个<number>后跟标签<code>fr</code>。这是在网格布局中引入的概念，用于划分布局中无约束空间的部分。</number></p>
@@ -464,6 +467,7 @@
 </tr>
 </tbody>
 </table>
+<p><img src="/image/The_spectrum_on_a_whell_and_strip.png" alt="色调图" align="left"><br><img src="/image/Mixing_RGB_to_create_the_spectrum.png" width="600" height="400" alt="色调/RGB"></p>
 <h3 id="角度"><a href="#角度" class="headerlink" title="角度"></a>角度</h3><ul>
 <li>deg : Degrees, 一圈 360 度</li>
 <li>rad : Radians,一圈 2&pi;(近似 6.28)</li>
