@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>CSS知识点梳理(7)-基本视觉格式化 | better-jiang</title>
+  <meta name="description" content="基本框CSS 假设每个元素都会生成一个或多个矩形框，称之为元素框（element box）。每个元素框 中心有一个内容区（content area）。内容区周围有可选的padding,border,outline,margin,将它们的宽度设为 0，可以将它们从元素框去除。  内边距（padding）,不能为负值，内容的背景色会应用到内边距。 外边距（margin），通常是透明的，从中可以看到父元">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS知识点梳理(7)-基本视觉格式化">
+<meta property="og:url" content="https://better-jiang.github.io/2019/12/16/CSS知识点梳理-7-基本视觉格式化/index.html">
+<meta property="og:site_name" content="爱学兮的小江">
+<meta property="og:description" content="基本框CSS 假设每个元素都会生成一个或多个矩形框，称之为元素框（element box）。每个元素框 中心有一个内容区（content area）。内容区周围有可选的padding,border,outline,margin,将它们的宽度设为 0，可以将它们从元素框去除。  内边距（padding）,不能为负值，内容的背景色会应用到内边距。 外边距（margin），通常是透明的，从中可以看到父元">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-12-16T09:17:52.328Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS知识点梳理(7)-基本视觉格式化">
+<meta name="twitter:description" content="基本框CSS 假设每个元素都会生成一个或多个矩形框，称之为元素框（element box）。每个元素框 中心有一个内容区（content area）。内容区周围有可选的padding,border,outline,margin,将它们的宽度设为 0，可以将它们从元素框去除。  内边距（padding）,不能为负值，内容的背景色会应用到内边距。 外边距（margin），通常是透明的，从中可以看到父元">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://better-jiang.github.io/2019/12/16/CSS知识点梳理-7-基本视觉格式化/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Better-Jiang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">爱学兮的小江</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web前端 &amp; Vue</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术总结/">技术总结</a><span class="category-list-count">41</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔感悟/">随笔感悟</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS权威指南-第四版/">CSS权威指南-第四版</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode插件/">vscode插件</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书籍读后感/">书籍读后感</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公司项目涉及技术点梳理/">公司项目涉及技术点梳理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程认知/">编程认知</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题反思/">问题反思</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CSS/" style="font-size: 13.8px;">CSS</a> <a href="/tags/CSS权威指南-第四版/" style="font-size: 13.8px;">CSS权威指南-第四版</a> <a href="/tags/Git/" style="font-size: 14px;">Git</a> <a href="/tags/Javascript/" style="font-size: 13.4px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 13.6px;">Vue</a> <a href="/tags/npm/" style="font-size: 13px;">npm</a> <a href="/tags/vscode插件/" style="font-size: 13px;">vscode插件</a> <a href="/tags/书籍读后感/" style="font-size: 13.2px;">书籍读后感</a> <a href="/tags/公司项目涉及技术点梳理/" style="font-size: 13px;">公司项目涉及技术点梳理</a> <a href="/tags/编程认知/" style="font-size: 13px;">编程认知</a> <a href="/tags/翻译/" style="font-size: 14px;">翻译</a> <a href="/tags/问题反思/" style="font-size: 13px;">问题反思</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/16/CSS知识点梳理-7-基本视觉格式化/" class="title">CSS知识点梳理(7)-基本视觉格式化</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-16T07:13:25.000Z" itemprop="datePublished">2019-12-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/16/CSS知识点梳理-6-文本属性/" class="title">CSS知识点梳理(6)-文本属性</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-16T07:11:46.000Z" itemprop="datePublished">2019-12-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/13/webpack梳理-据公司项目/" class="title">webpack梳理(据公司项目)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-13T03:17:26.000Z" itemprop="datePublished">2019-12-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/12/CSS知识点梳理-5-字体/" class="title">CSS知识点梳理(5)-字体</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-12T08:06:17.000Z" itemprop="datePublished">2019-12-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/10/CSS知识点梳理-4-值和单位/" class="title">CSS知识点梳理(4)-值和单位</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-10T06:53:50.000Z" itemprop="datePublished">2019-12-10</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-CSS知识点梳理-7-基本视觉格式化" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS知识点梳理(7)-基本视觉格式化
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/12/16/CSS知识点梳理-7-基本视觉格式化/" class="article-date">
+	  <time datetime="2019-12-16T07:13:25.000Z" itemprop="datePublished">2019-12-16</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/CSS/">CSS</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/12/16/CSS知识点梳理-7-基本视觉格式化/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="基本框"><a href="#基本框" class="headerlink" title="基本框"></a>基本框</h3><p>CSS 假设每个元素都会生成一个或多个矩形框，称之为<code>元素框（element box）</code>。每个元素框 中心有一个<code>内容区（content area）</code>。内容区周围有可选的<code>padding</code>,<code>border</code>,<code>outline</code>,<code>margin</code>,将它们的宽度设为 0，可以将它们从元素框去除。</p>
+<ul>
+<li>内边距（padding）,不能为负值，内容的背景色会应用到内边距。</li>
+<li>外边距（margin），通常是透明的，从中可以看到父元素的背景色，外边可以为负值。</li>
+<li>边框（border），如果没有设置颜色，则取元素内容的前景色。如果边框样式有某中间隙，则可以通过间隙看到元素的背景色（换句话说，边框与内容和内边距具有相同的背景）。边框的宽度不能为负值。</li>
+<li>轮廓（outline），轮廓不占据空间，它被描绘与内容之上。</li>
+</ul>
+<h4 id="快速复习"><a href="#快速复习" class="headerlink" title="快速复习"></a>快速复习</h4><ul>
+<li>正常流（Normal flow）：在西方语言中从左到右，从上到下的文本渲染，也是传统 HTML 文档的文本布局。要注意，在非西方语言中，流向可能发生变化。大多数元素都在正常流中，唯一让一个元素脱离正常流的方法就是让其成为浮动元素、定位元素、或者是弹性盒子、网格布局元素。本章讨论的元素都在正常流中。</li>
+<li>不可替换元素（Nonreplaced element）： 其内容包含在文档中的元素。例如，<code>p</code>段落是不可替换的元素，因为其文本内容位于该元素本身内。</li>
+<li>可替换元素（Replaced element）：这是充当其他内容占位符的元素。一个典型的例子就是<code>img</code>元素，它只是指向一个图像文件，这个文件将插入到文档流中该<code>img</code>元素本身所在的位置。大多数表单元素也是可替换的。</li>
+<li>根元素（Root element）： 文档树顶端的元素。在 HTML 文档中，根元素是<code>html</code>元素。</li>
+<li>块级盒子/框（Block box）: 这是一个由元素（如<code>p</code>,<code>div</code>）生成的框。这些块级框在正常流中，会在其框之前和之后生成“换行”，所有处于正常流中的块级框会一个一个垂直摆放的。通过声明<code>display:block</code>,任何元素都能生成一个块级框。</li>
+<li>行内框（Inline box）：这是一个由诸如<code>strong</code>,<code>span</code>之类元素生成的框。这些框不会在它之前、之后生成“换行”。通过声明<code>display:inline</code>，任何元素都能生成一个行内框。</li>
+<li>行内-块框（Inline-block box）：这是一个内部类似于块级框，但外部类似于行内框的框。它的行为与可替换元素相似，但不完全相同。想象一下，把一个<code>div</code>粘贴到一行文本中，就好像它是嵌入图像一样。</li>
+</ul>
+<h4 id="包含块（the-containing-block）"><a href="#包含块（the-containing-block）" class="headerlink" title="包含块（the containing block）"></a>包含块（the containing block）</h4><ul>
+<li>每一个元素的框都是相对于其包含块进行布局；实际上，包含块是盒子/框的“布局上下文”。</li>
+<li>对于正常的西式文本流中的元素，包含块是从生成<code>列表项或块级框(list item or block box)</code>的<code>最近祖先</code>的<code>内容边缘</code>开始形成的。</li>
+<li><code>html</code>元素所在的包含块是<code>初始包含块(initial containing block)</code></li>
+</ul>
+<h3 id="改变元素显示方式"><a href="#改变元素显示方式" class="headerlink" title="改变元素显示方式"></a>改变元素显示方式</h3><p>通过给<code>dispaly</code>属性设置显示的值来改变样式的显示方式。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Values:         [&lt;display-outside&gt; || &lt;display-inside&gt;] | &lt;display-listitem&gt; |</span><br><span class="line">                &lt;display-internal&gt; | &lt;display-box&gt; |&lt;display-legacy&gt;</span><br><span class="line"><span class="selector-tag">Initial</span> <span class="selector-tag">value</span>:  <span class="selector-tag">inline</span></span><br><span class="line"><span class="selector-tag">Inherited</span>:      <span class="selector-tag">No</span></span><br><span class="line"><span class="selector-tag">Animatable</span>:     <span class="selector-tag">No</span></span><br><span class="line"></span><br><span class="line">&lt;display-outside&gt;:      block | inline | run-in</span><br><span class="line">&lt;display-inside&gt;:       flow | flow-root | table | flex | grid |ruby</span><br><span class="line">&lt;<span class="selector-tag">display-listitem</span>&gt;:     <span class="selector-tag">list-item</span></span><br><span class="line">&lt;display-internal&gt;:     table-row-group | table-column-group | table-row-group |  ...</span><br><span class="line">&lt;display-box&gt;:          contents | none</span><br><span class="line">&lt;display-legacy&gt;:       inline-block | inline-list-item | inline-table |</span><br><span class="line">                        inline-flex | inline-grid</span><br></pre></td></tr></table></figure>
+<p><strong>使用<code>display</code>属性只是改变元素的显示角色，而不是改变它们的固有性质。内联元素可以是块元素的后代，但反过来不行。</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span style="display: block;"&gt;</span><br><span class="line">    &lt;p style="display: inline;"&gt;this is wrong!&lt;/p&gt;</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="块级框（Block-Box）"><a href="#块级框（Block-Box）" class="headerlink" title="块级框（Block Box）"></a>块级框（Block Box）</h4><p>块级框的行为有时是可预测的，有时是令人惊讶的。比如，沿水平轴和垂直轴放置框的处理可能不一样。详细如下图（盒模型）：</p>
+<ul>
+<li>box-sizing<br><code>box-sizing</code>属性可以改变上述盒模型的<code>width</code>和<code>height</code>值的实际包含的区域。默认的区域是<code>(内容框)content-box</code>。<br><code>box-sizing</code>属性，适用于”接受宽度和高度值的所有元素”，所以它也适用于替换的行内元素（如<code>img</code>）和行内块元素。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Values:           content-box | padding-box | border-box</span><br><span class="line"><span class="selector-tag">Initial</span> <span class="selector-tag">value</span>:    <span class="selector-tag">content-box</span></span><br><span class="line"><span class="selector-tag">Applies</span> <span class="selector-tag">to</span>:       <span class="selector-tag">All</span> <span class="selector-tag">elements</span> <span class="selector-tag">that</span> <span class="selector-tag">accept</span> <span class="selector-tag">width</span> <span class="selector-tag">or</span> <span class="selector-tag">height</span> <span class="selector-tag">values</span></span><br><span class="line"><span class="selector-tag">Inherited</span>:        <span class="selector-tag">No</span></span><br><span class="line"><span class="selector-tag">Animatable</span>；      <span class="selector-tag">No</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="水平格式化"><a href="#水平格式化" class="headerlink" title="水平格式化"></a>水平格式化</h4><ul>
+<li><code>box-sizing</code>的默认值是<code>content-box</code>，则宽度的指定值将影响内容区域的宽度，而不是整个可见元素框的宽度。</li>
+<li>正常流中块级框的水平宽度的总和等于<code>包含块</code>的宽度。</li>
+</ul>
+<h4 id="水平属性"><a href="#水平属性" class="headerlink" title="水平属性"></a>水平属性</h4><ul>
+<li>有 7 个属性，<code>margin-left</code>,<code>border-left</code>,<code>padding-left</code>,<code>width</code>,<code>padding-right</code>,<code>border-right</code>,<code>margin-right</code>.</li>
+<li>这 7 个属性的值相加等于该元素<code>包含块</code>宽度，即块元素的父元素的<code>width</code>值。</li>
+<li>3 个属性，<code>width</code>,<code>margin-left</code>,<code>margin-right</code>可以设置为<code>auto</code>，其余属性必须设置为特定值或默认的 0.</li>
+</ul>
+<h4 id="使用auto"><a href="#使用auto" class="headerlink" title="使用auto"></a>使用<code>auto</code></h4><p><strong>总之上述 7 个属性相加等于包含块的宽度</strong></p>
+<ul>
+<li>1 个 auto: <code>auto = 父元素宽度-其余6个属性值之和</code></li>
+<li>2 个 auto: <code>margin-left</code>,<code>margin-righ</code>为<code>auto</code>，<code>auto: (父元素宽度 - width) / 2</code>; <code>width</code>,<code>其中1个外边距</code>为<code>auto</code>,则外边距减为<code>0</code>。<code>width = 父元素宽度 - 给定的外边距的值</code></li>
+<li>3 个 auto: 2 个外边距为 0.</li>
+</ul>
+<h4 id="负值-外边距"><a href="#负值-外边距" class="headerlink" title="负值 外边距"></a>负值 外边距</h4><p><strong>请记住，7 个水平属性的总和总是等于父元素的宽度。</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">3px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-class">.wide</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">width</span>: auto;</span><br><span class="line">    <span class="attribute">margin-right</span>: -<span class="number">50px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>10px + 0 + auto + 0 + 0 - 50px = 500px</code>，<code>auto = 540px</code>, 则<code>width:540px</code>;</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-class">.wide</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: auto;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">3px</span> solid gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>10px + 3px + 0 + 600px + 0 + 3px + auto = 500px</code>,<code>auto = -116px</code>, 则<code>margin-right: -116px</code>.</p>
+<h3 id="内联元素"><a href="#内联元素" class="headerlink" title="内联元素"></a>内联元素</h3>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://better-jiang.github.io/2019/12/16/CSS知识点梳理-7-基本视觉格式化/" title="CSS知识点梳理(7)-基本视觉格式化" target="_blank" rel="external">https://better-jiang.github.io/2019/12/16/CSS知识点梳理-7-基本视觉格式化/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Better-Jiang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Better-Jiang" target="_blank"><span class="text-dark">爱学兮的小江</span><small class="ml-1x">Web前端 &amp; Vue</small></a></h3>
+        <div>前端狗，爱思考，爱码字</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2019/12/16/CSS知识点梳理-6-文本属性/" title="CSS知识点梳理(6)-文本属性"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="wechat" data-mobile-sites></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class>
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c9348a5e84eb5050ec8',
+    clientSecret: 'b92d8dd66f66bbe04d870af0e612ff74a00546da',
+    repo: 'Better-Jiang.github.io',
+    owner: 'Better-Jiang',
+    admin: ['Better-Jiang'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
