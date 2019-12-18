@@ -26,10 +26,12 @@
 <meta property="og:site_name" content="爱学兮的小江">
 <meta property="og:description" content="基本框CSS 假设每个元素都会生成一个或多个矩形框，称之为元素框（element box）。每个元素框 中心有一个内容区（content area）。内容区周围有可选的padding,border,outline,margin,将它们的宽度设为 0，可以将它们从元素框去除。  内边距（padding）,不能为负值，内容的背景色会应用到内边距。 外边距（margin），通常是透明的，从中可以看到父元">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-16T09:17:52.328Z">
+<meta property="og:image" content="https://better-jiang.github.io/image/box_model.png">
+<meta property="og:updated_time" content="2019-12-18T04:12:01.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS知识点梳理(7)-基本视觉格式化">
 <meta name="twitter:description" content="基本框CSS 假设每个元素都会生成一个或多个矩形框，称之为元素框（element box）。每个元素框 中心有一个内容区（content area）。内容区周围有可选的padding,border,outline,margin,将它们的宽度设为 0，可以将它们从元素框去除。  内边距（padding）,不能为负值，内容的背景色会应用到内边距。 外边距（margin），通常是透明的，从中可以看到父元">
+<meta name="twitter:image" content="https://better-jiang.github.io/image/box_model.png">
   <!-- Canonical links -->
   <link rel="canonical" href="https://better-jiang.github.io/2019/12/16/CSS知识点梳理-7-基本视觉格式化/index.html">
   
@@ -393,6 +395,7 @@
 <p><strong>使用<code>display</code>属性只是改变元素的显示角色，而不是改变它们的固有性质。内联元素可以是块元素的后代，但反过来不行。</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span style="display: block;"&gt;</span><br><span class="line">    &lt;p style="display: inline;"&gt;this is wrong!&lt;/p&gt;</span><br><span class="line">&lt;/span&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="块级框（Block-Box）"><a href="#块级框（Block-Box）" class="headerlink" title="块级框（Block Box）"></a>块级框（Block Box）</h4><p>块级框的行为有时是可预测的，有时是令人惊讶的。比如，沿水平轴和垂直轴放置框的处理可能不一样。详细如下图（盒模型）：</p>
+<p><img src="/image/box_model.png" alt="盒模型"></p>
 <ul>
 <li>box-sizing<br><code>box-sizing</code>属性可以改变上述盒模型的<code>width</code>和<code>height</code>值的实际包含的区域。默认的区域是<code>(内容框)content-box</code>。<br><code>box-sizing</code>属性，适用于”接受宽度和高度值的所有元素”，所以它也适用于替换的行内元素（如<code>img</code>）和行内块元素。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Values:           content-box | padding-box | border-box</span><br><span class="line"><span class="selector-tag">Initial</span> <span class="selector-tag">value</span>:    <span class="selector-tag">content-box</span></span><br><span class="line"><span class="selector-tag">Applies</span> <span class="selector-tag">to</span>:       <span class="selector-tag">All</span> <span class="selector-tag">elements</span> <span class="selector-tag">that</span> <span class="selector-tag">accept</span> <span class="selector-tag">width</span> <span class="selector-tag">or</span> <span class="selector-tag">height</span> <span class="selector-tag">values</span></span><br><span class="line"><span class="selector-tag">Inherited</span>:        <span class="selector-tag">No</span></span><br><span class="line"><span class="selector-tag">Animatable</span>；      <span class="selector-tag">No</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -417,7 +420,108 @@
 <p><code>10px + 0 + auto + 0 + 0 - 50px = 500px</code>，<code>auto = 540px</code>, 则<code>width:540px</code>;</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">5px</span> solid black;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-class">.wide</span> &#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">600px</span>;</span><br><span class="line">    <span class="attribute">margin-right</span>: auto;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">3px</span> solid gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>10px + 3px + 0 + 600px + 0 + 3px + auto = 500px</code>,<code>auto = -116px</code>, 则<code>margin-right: -116px</code>.</p>
-<h3 id="内联元素"><a href="#内联元素" class="headerlink" title="内联元素"></a>内联元素</h3>
+<p><strong>请记住：填充（padding）、边框（border）、内容宽/高（width/height）不可能是负值。只有外边距（margin）可以是负值。</strong></p>
+<h4 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h4><ul>
+<li>边框（border）的值只接受长度值，不接受百分比值。</li>
+<li><p>百分比值是相对于包含块（containing block）的宽度值（也就是其父元素的宽度）</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"width: 67%; padding-right: 5%; padding-left: 5%; margin-right: auto; margin-left: 5%"</span>&gt;</span></span><br><span class="line">    playing percentages</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 5% + 5% + 67% + 5% + auto = containing block width</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">      auto: 18%</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="替换元素（Relpaced-Elements）"><a href="#替换元素（Relpaced-Elements）" class="headerlink" title="替换元素（Relpaced Elements）"></a>替换元素（Relpaced Elements）</h4><p>到目前为止，我们在处理正常文本流中不可替换的块框的水平格式。</p>
+<ul>
+<li>块级<code>替换元素</code>也使用于以上规则。</li>
+<li>块级<code>替换元素</code>如果<code>width:auto</code>,那么元素的宽度就是内容的固有宽度（例如，<code>img</code>元素，原始图像的宽度）。</li>
+<li><code>img</code>元素，<code>width</code>属性可以指定不同的宽度值。</li>
+<li>当可替换元素的宽度从固有宽度更改时，其高度值也会等比例的缩放以匹配，除非高度也被设置。同理，高度也是如此。<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"smile.svg"</span> <span class="attr">style</span>=<span class="string">"display: block; width: 25px; margin: 0;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"smile.svg"</span> <span class="attr">style</span>=<span class="string">"display: block; width: 50px; margin: 0;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"smile.svg"</span> <span class="attr">style</span>=<span class="string">"display: block; width: 100px; margin: 0;"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="垂直格式化（Vertical-Formatting）"><a href="#垂直格式化（Vertical-Formatting）" class="headerlink" title="垂直格式化（Vertical Formatting）"></a>垂直格式化（Vertical Formatting）</h4><ul>
+<li>元素的内容决定了元素的默认高度。内容的宽度也影响高度，一个块级元素宽度越小，为了包含所有的内联内容，它就必须越高。</li>
+<li>当元素的内容比其块框的高度高时，其实际行为取决于属性<code>overflow</code>的值。</li>
+<li>与<code>width</code>一样，<code>height</code>默认定义内容区域的高度，而不是可视元素框（visible element box）的高度，除非<code>box-sizing</code>的值不是<code>content-box</code>.</li>
+</ul>
+<h4 id="垂直-相关-属性（Vertical-Properties）"><a href="#垂直-相关-属性（Vertical-Properties）" class="headerlink" title="垂直 相关 属性（Vertical Properties）"></a>垂直 相关 属性（Vertical Properties）</h4><ul>
+<li>同水平格式化一样，垂直相关的属性也涉及 7 个属性：<code>margin-top</code>,<code>border-top</code>,<code>padding-top</code>,<code>height</code>,<code>padding-bottom</code>,<code>padding-border</code>,<code>margin-top</code>.</li>
+<li>上述 7 个属性的值的和必须等于其包含块的高度，通常是其父元素的高度值。</li>
+<li>仅<code>height</code>,<code>margin-top</code>,<code>margin-bottom</code>3 个值可以设置为<code>auto</code>.<code>padding</code>,<code>border</code>相关的值必须设置具体的值或者默认值为 0。</li>
+<li><code>margin-top</code>,<code>margin-bottom</code>在正常流中块框中设置为 auto，二者都自动重设为 0.0 值会妨碍正常流盒在其包含块中的垂直居中。</li>
+</ul>
+<h4 id="百分比高度"><a href="#百分比高度" class="headerlink" title="百分比高度"></a>百分比高度</h4><ul>
+<li>正常流块框的高度设置成百分比，此值相对于包含块高度的。</li>
+<li><strong>子元素的百分比高度是根据父元素的高度来确定的，当父元素的高度为不确定值时，或者父元素高度未定义时，子元素的高度百分比将无用,将被重设为 auto</strong><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"height: auto;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"height: 50%"</span>&gt;</span>Not Half as tall, height reset to auto<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="auto-高度"><a href="#auto-高度" class="headerlink" title="auto 高度"></a>auto 高度</h4><ul>
+<li>如果一个正常流 块框设置<code>height:auto</code>，那么其高度值刚好可以将其内联内容的行框包裹起来。</li>
+<li>如果一个正常流 块框设置<code>height:auto</code>,并且仅有块级的子元素，则其高度值等于最顶层的子元素的顶部外边框边缘的到最底层的子元素的底部外边框边缘的距离。</li>
+</ul>
+<h4 id="垂直边距-塌陷-折叠-重叠（Collapsing-Vertical-Margins）"><a href="#垂直边距-塌陷-折叠-重叠（Collapsing-Vertical-Margins）" class="headerlink" title="垂直边距 塌陷/折叠/重叠（Collapsing Vertical Margins）"></a>垂直边距 塌陷/折叠/重叠（Collapsing Vertical Margins）</h4><ul>
+<li>垂直方向上相邻的 margin 会发生折叠行为。而<code>padding</code>和<code>border</code>不存在折叠行为。</li>
+<li>margin 发生折叠/重叠（collapse / overlap）行为，较小的边距被较大的边距所取代。</li>
+<li><strong>在一个包含块中引入边框(border)或填充(padding)会导致其子元素的边距（margin）被包含在其中。 <code>the introduction of a border or padding on a containing blokc would cause the margins of its child elements to be contained within it.</code></strong></li>
+</ul>
+<h4 id="负边距和折叠（Negative-Margins-and-Collapsing）"><a href="#负边距和折叠（Negative-Margins-and-Collapsing）" class="headerlink" title="负边距和折叠（Negative Margins and Collapsing）"></a>负边距和折叠（Negative Margins and Collapsing）</h4><p>如果设置了负的垂直边距，则折叠后的边距为正、负边距相加的值。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.neg</span> &#123;<span class="attribute">margin-top</span>: -<span class="number">50px</span>; <span class="attribute">margin-right</span>: <span class="number">10px</span>;</span><br><span class="line"><span class="attribute">margin-left</span>: <span class="number">10px</span>; <span class="attribute">margin-bottom</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">border</span>: <span class="number">3px</span> solid gray;&#125;</span><br><span class="line"></span><br><span class="line">&lt;div style="width: 420px; background-color: silver; padding: 10px;</span><br><span class="line"><span class="selector-tag">margin-top</span>: 50<span class="selector-tag">px</span>; <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span>;"&gt;</span><br><span class="line">&lt;p class="neg"&gt;</span><br><span class="line"><span class="selector-tag">A</span> <span class="selector-tag">paragraph</span>.</span><br><span class="line">&lt;/p&gt;</span><br><span class="line"><span class="selector-tag">A</span> <span class="selector-tag">div</span>.</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>上述示例，<code>p</code>段落，被负上边距<code>向上拉</code>了 50px，它后面的<code>div</code>内容也被<code>向上拉</code>了 50px。<br><strong>事实上，<code>p</code>段落后面的每一个正常流内容都被向上拉了 50px。 当<code>div</code>中的内容都被向上拉出，其高度为 0</strong></p>
+<h3 id="行内元素"><a href="#行内元素" class="headerlink" title="行内元素"></a>行内元素</h3><h4 id="行-布局（Line-Layout）"><a href="#行-布局（Line-Layout）" class="headerlink" title="行 布局（Line Layout）"></a>行 布局（Line Layout）</h4><ul>
+<li>为了理解如何生成行，首先要知道一个元素都包含一个很长的文本行。</li>
+<li>当<code>text-align: justify</code>时，每一都必须与段落的内容区域一样宽，使得该行的边缘与段落的内容边缘相接触。行长度和段落之间的差异通过改变每行中字母和单词之间的间距来弥补。所以<code>word-spacing</code>被<code>text-align:justify</code>覆盖，如果<code>letter-spacing</code>的值不是长度值也会被覆盖。</li>
+</ul>
+<h4 id="基本术语和概念"><a href="#基本术语和概念" class="headerlink" title="基本术语和概念"></a>基本术语和概念</h4><h5 id="匿名文本（Anonymous-text）"><a href="#匿名文本（Anonymous-text）" class="headerlink" title="匿名文本（Anonymous text）"></a><em>匿名文本（Anonymous text）</em></h5><p>所有未包含在行内元素的字符串。例如<code>&lt;p&gt;I&#39;m &lt;em&gt;so&lt;/em&gt; happy!&lt;/p&gt;</code>,”I’m “和” happy!”是匿名文本。注意，空格也是匿名文本，因为空格和其他字符一样都是正常的字符。</p>
+<h5 id="字符框（Em-box）"><a href="#字符框（Em-box）" class="headerlink" title="字符框（Em box）"></a><em>字符框（Em box）</em></h5><p>em 框是在字体中定义的，也称字符框。实际的字形（glyphs）可能比 em 框更高或者更矮。在 CSS 中，<code>font-size</code>的值决定了每个 em 框的高度。</p>
+<h5 id="内容区（Content-area）"><a href="#内容区（Content-area）" class="headerlink" title="内容区（Content area）"></a><em>内容区（Content area）</em></h5><p>在非替换元素中，内容区有 2 中，CSS 规范允许选择其中任意一种。内容区可以是元素中各字符的 em 框串在一起构成的框，也可以是有元素中字符字形描述的框。本书中，简单起见采用 em 框定义的。在替换元素中，内容区就是元素的<code>固有高度+padding+border+margin</code>。</p>
+<h5 id="行间距（Leading）"><a href="#行间距（Leading）" class="headerlink" title="行间距（Leading）"></a><em>行间距（Leading）</em></h5><p>行间距是<code>font-size</code>和<code>line-height</code>值之差。这个差被一分为二，分别应用到内容区的顶部和底部。内容区增加的这两部分分别称“半间距（half-leading）”。<strong>行间距只应用于非替换元素</strong></p>
+<h5 id="行内框（inline-box）"><a href="#行内框（inline-box）" class="headerlink" title="行内框（inline box）"></a><em>行内框（inline box）</em></h5><p>这个框通过向内容区添加行间距来描述的。对应非替换元素，行内框的高度刚好等于<code>line-height</code>的值。对应可替换元素，行内框的高度刚好等于内容区高度，因为行间距不能应用于可替换元素。</p>
+<h5 id="行框（Line-box）"><a href="#行框（Line-box）" class="headerlink" title="行框（Line box）"></a><em>行框（Line box）</em></h5><p>这是包含该行出现的行内框的最高点和最低的的最小框。换句话就，行框的上边界要位于最高行内框的上边界，而行框的下边界要位于最低行内框的下边界。</p>
+<p>根据前面介绍的术语和定义，CSS 还提供了一组行为和有用的概念：</p>
+<ul>
+<li>内容区类似于一个块级元素的内容框。</li>
+<li>行内元素的背景应用于内容区+padding.</li>
+<li>行内元素的边框包围着内容区以及任何 padding 和 border。</li>
+<li>非替换元素的 padding、border、margin 对行内元素或其生成的框没有垂直影响。也就是说，它们不会影响元素行内框的高度，因此也就不会影响包含元素的行框高度。</li>
+<li>替换元素的 margin、border 会影响该元素行内框的高度，从而也影响到包含该元素的行框的高度。<br><strong>需要注意，行内框根据<code>vertical-align</code>属性值 在行中垂直对齐</strong></li>
+</ul>
+<h4 id="逐步构建一个行框？"><a href="#逐步构建一个行框？" class="headerlink" title="逐步构建一个行框？"></a>逐步构建一个行框？</h4><p>如何逐步构建一个行框，通过此过程了解一行的各个部分是如何组合在一起，共同确定其高度的？<br>通过以下步骤确定行内每个元素的行内框的高度：</p>
+<ul>
+<li><ol>
+<li>得到各行<code>内非替换元素</code>以及<code>不属于后代行内元素的文本</code>的<code>font-size</code>和<code>line-height</code>的值。<code>line-height</code>减去<code>font-size</code>，得到框的行间距。行间距 一分为二，将其分别应用到 em 框的顶部和底部。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>得到各个非替换元素的<code>heihgt</code>,<code>margin-top</code>,<code>margin-bottom</code>,<code>padding-top</code>, <code>paddding-bottom</code>,<code>border-top-width</code>,<code>border-bottom-width</code>的值，并把它们加起来。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>对于各内容区，确定有多少内容在整行基线之上和之下。这各任务并不容易：你必须知道每个元素和匿名文本段的基线的位置以及该行本身的基线位置，然后把它们对齐。另外，<strong>对于替换元素，要将其底部放在整个行的基线上</strong>。</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>对于指定了<code>vertical-align</code>的元素，要确定其垂直偏移量。它将告诉你元素的行内框向上或向下移动了多远，并且它将改变元素在基线之上或之下多少。</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>现在已经知道所有行内框的位置，接下来 计算最终的行框高度。为此，只需要将基线与最高行内框顶部之间的距离 与 基线与最低行内框底部之间的距离 相加即可。</li>
+</ol>
+</li>
+</ul>
+<h4 id="行内格式化（Inline-Formatting）"><a href="#行内格式化（Inline-Formatting）" class="headerlink" title="行内格式化（Inline Formatting）"></a>行内格式化（Inline Formatting）</h4><ul>
+<li>所有元素都有<code>line-height</code>,不管是否显示声明。这个值极大地影响了行内元素的的显示方式。</li>
+<li>一行的高度（或行框的高度）是由其组成元素和其他内容（如文本）的高度决定的。</li>
+<li><code>line-height</code>实际上只影响行内元素和其他行内内容，而不影响块级元素，至少不是直接影响。</li>
+<li><p>可以给一个块级元素设置<code>line-height</code>，并将该值用于到块中的所有内容，不论内容是否包含在行内元素中。但是只有在块级元素中有内联内容是才会由视觉效果。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"line-height: 2em;"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>由于没有内容去创建一个行框，段落也没有任何显示。</p>
+</li>
+<li><p>从某种意义上块级元素中包含的每一行文本都是行内元素，而不乱 它是否被标签包围其来。如果你喜欢，可以想象一个虚构的标签序列 ，如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">line</span>&gt;</span>This is a paragraph with a number of<span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">line</span>&gt;</span>lines of text which make up the <span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">line</span>&gt;</span>conents.<span class="tag">&lt;/<span class="name">line</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>尽管<code>line</code>标签实际并不存在，但段落行为就像它们存在一样。每一行文都从段落继承了其样式。所以，只需给块级元素创建<code>line-height</code>规则，就不必显示的为它们的所以行内元素声明<code>line-height</code>.</p>
+</li>
+</ul>
+<h4 id="行内非替换元素（Inline-Nonrepalced-Elements）"><a href="#行内非替换元素（Inline-Nonrepalced-Elements）" class="headerlink" title="行内非替换元素（Inline Nonrepalced Elements）"></a>行内非替换元素（Inline Nonrepalced Elements）</h4><p>构建只包含 不可替换元素（或匿名文本）的行。这样可以很好的理解行内布局中不可替换元素和可替换元素之间的区别。</p>
+<h5 id="建立框-（Building-the-Boxes）"><a href="#建立框-（Building-the-Boxes）" class="headerlink" title="建立框 （Building the Boxes）"></a>建立框 （Building the Boxes）</h5><p>对于行内非替换元素或匿名文本某一部分，<code>font-size</code>的值确定了内容区的高度。<code>line-height</code>确定了行内框的高度。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">"font-size: 12px; line-height: 12px;"</span>&gt;</span></span><br><span class="line">This is text, <span class="tag">&lt;<span class="name">em</span>&gt;</span>some of which is emphasized<span class="tag">&lt;/<span class="name">em</span>&gt;</span>, plus other text<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">which is <span class="tag">&lt;<span class="name">strong</span> <span class="attr">style</span>=<span class="string">"font-size: 24px;"</span>&gt;</span>strongly emphasized<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><br><span class="line">and which is<span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">larger than the surrounding text.</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上例中，大多数文本<code>font-size</code>都是 12px，只有一个行内非 替换元素<code>font-size</code>是 24px。因为<code>line-heihgt</code>是继承属性，所以<code>strong</code>元素的<code>line-height</code>也是 12px，则其行内框高度为 12px,即 12px 高的行内框在元素内容区(24px)中垂直居中，行内框实际小于内容区。<br>到目前为至，似乎我们对每个文本都做了相同的处理，所有的行内框大小相同。但这并不完全正确。因为文本都是按基线对齐的，所以第二行虽然行内框大小相同，但排列的并不整齐。<br>由于行内框的顶部位于元素的内容区内，因此元素的内容溢出到行框之外，并于其他行框重叠。</p>
+<h5 id="垂直对齐（Vertical-Alignment）"><a href="#垂直对齐（Vertical-Alignment）" class="headerlink" title="垂直对齐（Vertical Alignment）"></a>垂直对齐（Vertical Alignment）</h5>
       
     </div>
     <div class="article-footer">
