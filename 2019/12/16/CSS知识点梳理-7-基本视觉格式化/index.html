@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://better-jiang.github.io/image/box_model.png">
 <meta property="og:image" content="https://better-jiang.github.io/image/Inline_replaced_element_sit_on_the_baseline.png">
-<meta property="og:updated_time" content="2019-12-23T13:11:36.229Z">
+<meta property="og:updated_time" content="2019-12-25T00:35:33.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS知识点梳理(7)-基本视觉格式化">
 <meta name="twitter:description" content="基本框CSS 假设每个元素都会生成一个或多个矩形框，称之为元素框（element box）。每个元素框 中心有一个内容区（content area）。内容区周围有可选的padding,border,outline,margin,将它们的宽度设为 0，可以将它们从元素框去除。  内边距（padding）,不能为负值，内容的背景色会应用到内边距。 外边距（margin），通常是透明的，从中可以看到父元">
@@ -571,7 +571,18 @@
 <li>只要一个行内替换元素是 块级元素或表单元格元素中的唯一后代，替换元素都会生成行框，并且替换元素（如图像）放在基线上</li>
 <li>负<code>margin</code> 会使行内替换元素向下拉</li>
 </ul>
-<h5 id="行内块元素（Inline-Block-Elements）"><a href="#行内块元素（Inline-Block-Elements）" class="headerlink" title="行内块元素（Inline-Block Elements）"></a>行内块元素（Inline-Block Elements）</h5>
+<h5 id="行内块元素（Inline-Block-Elements）"><a href="#行内块元素（Inline-Block-Elements）" class="headerlink" title="行内块元素（Inline-Block Elements）"></a>行内块元素（Inline-Block Elements）</h5><ul>
+<li>行内块元素作为一个<strong>行内框</strong>与其他元素和内容相关，它就像一个图像一样放在一个文本行中，实际上，<strong>行内块元素会作为替换元素放在行中。</strong>这就意味着，行内块元素的底端默认地位于文本行的基线上，而且内部没有行分隔符。</li>
+<li>在行内块元素的内部，其内容像块级元素一样被设置。就像所有块级元素和行内替换元素一样，行内块元素也有<code>width</code>,<code>heihgt</code>属性，如果其比周围的内容高，这些属性会使行高增加。</li>
+<li>如果行内块元素的<code>width</code>未定义，或显式声明未<code>auto</code>，元素框将收缩以适应内容，即元素框的宽度刚好足够包含该内容，没有多余空间。<strong>行内框也是如此，不过行内框可以跨多个文本行（同其他行内容覆盖），但行内块元素不会</strong></li>
+</ul>
+<h5 id="Flow-Display"><a href="#Flow-Display" class="headerlink" title="Flow Display"></a>Flow Display</h5><h5 id="Contents-Display"><a href="#Contents-Display" class="headerlink" title="Contents Display"></a>Contents Display</h5><h5 id="计算值（Computed-Values）"><a href="#计算值（Computed-Values）" class="headerlink" title="计算值（Computed Values）"></a>计算值（Computed Values）</h5><p>如果元素是浮动元素或定位元素，<code>display</code>的计算值会改变。实际上，<code>display</code>,<code>position</code>,<code>float</code>值会相互影响。</p>
+<h4 id="小结（Summary）"><a href="#小结（Summary）" class="headerlink" title="小结（Summary）"></a>小结（Summary）</h4><p><code>display</code>属性指定了元素的显示类型，包含两类基础特征：</p>
+<ul>
+<li>外部显示类型：用于指定元素怎样生成盒模型，定义了元素怎样参与<code>流式布局/文档流</code>的处理。例如<code>block</code>,<code>inline</code>,<code>run-in</code></li>
+<li>内部显示类型：定义了元素内子元素的布局方式。例如<code>flow</code>,<code>table</code>,<code>flex</code>,<code>grid</code></li>
+</ul>
+
       
     </div>
     <div class="article-footer">
