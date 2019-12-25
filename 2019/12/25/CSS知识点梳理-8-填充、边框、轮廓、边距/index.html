@@ -17,27 +17,29 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>Vue调试工具(Vue-DevTools)使用指南 | better-jiang</title>
-  <meta name="description" content="安装可查看 vue-DevTools 文档 5 种常用调试方法Vue DevTools 使得在运行时调试 Vue 应用程序变得很容易，以下会介绍在调试 Vue 中常用的 5 中方法 1. 实时编辑组件 data 数据当在使用 Vue 构建组件时，我们希望能实时去操作组件 data 数据。IDE 中更新 data 后，然后再去浏览器中查看结果比较麻烦，已经不适合了。 Vue-DevTools 允许">
-<meta name="keywords" content="Vue">
+  <title>CSS知识点梳理(8)-填充、边框、轮廓、边距 | better-jiang</title>
+  <meta name="description" content="基本元素框 所以文档元素都生成一个矩形框，称之为元素框（element box），它描述了元素在文档布局中所占的空间大小。 手动定位（position）元素框，它们可能会重叠；在正常流的元素上使用负边距，也会出现视觉重叠。 width,height属性不能应用于行内非替换元素。 正常流中的元素很少设定height，height是由元素内容决定的，而非创作者决定。  填充（Padding） 默认情况">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Vue调试工具(Vue-DevTools)使用指南">
-<meta property="og:url" content="https://better-jiang.github.io/2019/11/21/Vue调试工具Vue-DevTools使用指南/index.html">
+<meta property="og:title" content="CSS知识点梳理(8)-填充、边框、轮廓、边距">
+<meta property="og:url" content="https://better-jiang.github.io/2019/12/25/CSS知识点梳理-8-填充、边框、轮廓、边距/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
-<meta property="og:description" content="安装可查看 vue-DevTools 文档 5 种常用调试方法Vue DevTools 使得在运行时调试 Vue 应用程序变得很容易，以下会介绍在调试 Vue 中常用的 5 中方法 1. 实时编辑组件 data 数据当在使用 Vue 构建组件时，我们希望能实时去操作组件 data 数据。IDE 中更新 data 后，然后再去浏览器中查看结果比较麻烦，已经不适合了。 Vue-DevTools 允许">
+<meta property="og:description" content="基本元素框 所以文档元素都生成一个矩形框，称之为元素框（element box），它描述了元素在文档布局中所占的空间大小。 手动定位（position）元素框，它们可能会重叠；在正常流的元素上使用负边距，也会出现视觉重叠。 width,height属性不能应用于行内非替换元素。 正常流中的元素很少设定height，height是由元素内容决定的，而非创作者决定。  填充（Padding） 默认情况">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://better-jiang.github.io/image/liveEditComponentData.gif">
-<meta property="og:image" content="https://better-jiang.github.io/image/inspectDom&Component.gif">
-<meta property="og:image" content="https://better-jiang.github.io/image/trackCostomEvents.gif">
-<meta property="og:image" content="https://better-jiang.github.io/image/trackRoute.gif">
-<meta property="og:image" content="https://better-jiang.github.io/image/Vuex.gif">
-<meta property="og:updated_time" content="2019-11-22T00:52:12.149Z">
+<meta property="og:image" content="https://better-jiang.github.io/image/border_style.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/border_radius1.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/border_radius2.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/border_radius3.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/slice_here.png">
+<meta property="og:image" content="https://better-jiang.github.io/image/border_image_repeat.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/border-image-nine.png">
+<meta property="og:updated_time" content="2019-12-25T09:32:40.380Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue调试工具(Vue-DevTools)使用指南">
-<meta name="twitter:description" content="安装可查看 vue-DevTools 文档 5 种常用调试方法Vue DevTools 使得在运行时调试 Vue 应用程序变得很容易，以下会介绍在调试 Vue 中常用的 5 中方法 1. 实时编辑组件 data 数据当在使用 Vue 构建组件时，我们希望能实时去操作组件 data 数据。IDE 中更新 data 后，然后再去浏览器中查看结果比较麻烦，已经不适合了。 Vue-DevTools 允许">
-<meta name="twitter:image" content="https://better-jiang.github.io/image/liveEditComponentData.gif">
+<meta name="twitter:title" content="CSS知识点梳理(8)-填充、边框、轮廓、边距">
+<meta name="twitter:description" content="基本元素框 所以文档元素都生成一个矩形框，称之为元素框（element box），它描述了元素在文档布局中所占的空间大小。 手动定位（position）元素框，它们可能会重叠；在正常流的元素上使用负边距，也会出现视觉重叠。 width,height属性不能应用于行内非替换元素。 正常流中的元素很少设定height，height是由元素内容决定的，而非创作者决定。  填充（Padding） 默认情况">
+<meta name="twitter:image" content="https://better-jiang.github.io/image/border_style.jpg">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://better-jiang.github.io/2019/11/21/Vue调试工具Vue-DevTools使用指南/index.html">
+  <link rel="canonical" href="https://better-jiang.github.io/2019/12/25/CSS知识点梳理-8-填充、边框、轮廓、边距/index.html">
   
     <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
   
@@ -326,14 +328,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Vue调试工具Vue-DevTools使用指南" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-CSS知识点梳理-8-填充、边框、轮廓、边距" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Vue调试工具(Vue-DevTools)使用指南
+      CSS知识点梳理(8)-填充、边框、轮廓、边距
     </h1>
   
 
@@ -341,8 +343,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/11/21/Vue调试工具Vue-DevTools使用指南/" class="article-date">
-	  <time datetime="2019-11-21T10:47:25.000Z" itemprop="datePublished">2019-11-21</time>
+	<a href="/2019/12/25/CSS知识点梳理-8-填充、边框、轮廓、边距/" class="article-date">
+	  <time datetime="2019-12-25T09:13:23.000Z" itemprop="datePublished">2019-12-25</time>
 	</a>
 </span>
         
@@ -354,7 +356,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Vue/">Vue</a>
+	<a class="article-tag-link" href="/tags/CSS/">CSS</a>
   </span>
 
 
@@ -367,40 +369,62 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/21/Vue调试工具Vue-DevTools使用指南/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/12/25/CSS知识点梳理-8-填充、边框、轮廓、边距/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>可查看 <a href="https://github.com/vuejs/vue-devtools#installation" target="_blank" rel="noopener">vue-DevTools 文档</a></p>
-<h3 id="5-种常用调试方法"><a href="#5-种常用调试方法" class="headerlink" title="5 种常用调试方法"></a>5 种常用调试方法</h3><p>Vue DevTools 使得在运行时调试 Vue 应用程序变得很容易，以下会介绍在调试 Vue 中常用的 5 中方法</p>
-<h4 id="1-实时编辑组件-data-数据"><a href="#1-实时编辑组件-data-数据" class="headerlink" title="1. 实时编辑组件 data 数据"></a>1. 实时编辑组件 <code>data</code> 数据</h4><p>当在使用 Vue 构建组件时，我们希望能实时去操作组件 data 数据。IDE 中更新 data 后，然后再去浏览器中查看结果比较麻烦，已经不适合了。</p>
-<p>Vue-DevTools 允许 我们在运行时去 编辑组件 data</p>
-<ol>
-<li>打开浏览器调试工具，导航到 Vue tab</li>
-<li>在 tab 左列选择组件</li>
-<li>在 tab 右列 编辑 组件 <code>data</code>数据</li>
-</ol>
-<p><img src="/image/liveEditComponentData.gif" alt="实时编辑组件 data "></p>
-<p>默认情况下，<code>prop</code> 数据是不可编辑的，但我们可以在 <code>settings</code>tab 设置为可编辑状态</p>
-<p>使用此功能，我们可以编辑所以 <code>data</code> 类型,切换 boolean 值，操作数组，我们还可以操作来自远端 API 的数据，只要我们把它加载到 vue 组件内，就可以对其实时操作了。</p>
-<h4 id="2-组件-DOM-快速定位"><a href="#2-组件-DOM-快速定位" class="headerlink" title="2. 组件/ DOM 快速定位"></a>2. 组件/ DOM 快速定位</h4><ul>
-<li>组件 tab <code>Inspect DOM</code>,可快速定位该组件在 DOM 中位置</li>
-<li>组件 tab <code>select in component in page</code>，可点击页面元素，快速定位其所属组件</li>
+        <h3 id="基本元素框"><a href="#基本元素框" class="headerlink" title="基本元素框"></a>基本元素框</h3><ul>
+<li>所以文档元素都生成一个矩形框，称之为<strong>元素框（element box）</strong>，它描述了元素在文档布局中所占的空间大小。</li>
+<li>手动定位（position）元素框，它们可能会重叠；在正常流的元素上使用负边距，也会出现视觉重叠。</li>
+<li><code>width</code>,<code>height</code>属性不能应用于行内非替换元素。</li>
+<li>正常流中的元素很少设定<code>height</code>，<code>height</code>是由元素内容决定的，而非创作者决定。</li>
 </ul>
-<p><img src="/image/inspectDom&amp;Component.gif" alt="DOM/组件 快速定位"></p>
-<h4 id="3-跟踪自定义事件"><a href="#3-跟踪自定义事件" class="headerlink" title="3. 跟踪自定义事件"></a>3. 跟踪自定义事件</h4><p>Vue Devtools 可以跟踪我们在 Vue 应用中使用的定义事件，查看事件是否正确触发，检查它们携带是数据（payload）<br>Vue Devtools 只能跟踪自定义事件，即使用<code>this.$emit(&#39;myEvent&#39;)</code>触发的事件，不能跟踪绑定到组件上的事件比如<code>v-on:ckick</code>、<code>v-on:keyup</code></p>
-<p><img src="/image/trackCostomEvents.gif" alt="跟踪自定义事件"></p>
-<h4 id="监视-路由历史和数据"><a href="#监视-路由历史和数据" class="headerlink" title="监视 路由历史和数据"></a>监视 路由历史和数据</h4><p>当我们使用 Vue 构建单页面应用时，希望能实时调试路由并跟踪整个应用的导航流。Vue DevTools 有一个 <code>Routing</code> tab，记录了路由变化时的历史和数据。<br><code>Routing</code> tab 有 2 个选项：</p>
-<ol>
-<li><code>Hishtory</code> 显示 路由的历史和其数据</li>
-<li><code>Routes</code> 显示 应用中所有的路由及其 options</li>
+<h3 id="填充（Padding）"><a href="#填充（Padding）" class="headerlink" title="填充（Padding）"></a>填充（Padding）</h3><ul>
+<li>默认情况下，元素没有填充。如果没有填充 ，元素的边框会与元素本身的内容很接近，所以，给元素边框时，最好同时增加填充。</li>
+<li>百分比值是相对于其父元素（包含块）的<code>width</code>计算的，所以父元素的<code>width</code>改变，其值也相应改变</li>
+<li>对于行内元素，填充不会改变元素行高，但是对于有背景色和填充的行内元素，其背景色可以扩展到元素的上下<code>padding</code>（因为填充能延伸背景）。</li>
+<li>对于替换元素，填充会影响元素行高；不论替换的元素是块级元素还是行内元素，填充都会包围其内容，背景色将填入到该填充中。</li>
+</ul>
+<h3 id="边框（Border）"><a href="#边框（Border）" class="headerlink" title="边框（Border）"></a>边框（Border）</h3><ul>
+<li>边框的默认值：<code>style：none</code>,<code>width: medium</code>,<code>color: 元素的前景色</code>;</li>
+<li><code>border: [&lt;border-style&gt; || &lt;border-width&gt; || &lt;border-color&gt;]</code></li>
+<li>对于行内元素，无论怎样设定边框宽度，元素的行高都不会改变。如果有背景色，上下边框会覆盖其它行内容，左右边框不会。</li>
+<li>对于替换元素，例如图像，边框会影响文本行的行高。</li>
+</ul>
+<p><img src="/image/border_style.jpg" alt="border-style"></p>
+<h4 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h4><ul>
+<li><code>border-radius: 2em;</code><br>左上角，边框开始在距上边框 2em，距左边框 2em 的地方开始弯曲，曲线沿着半径为 2em 的圆走。<br><img src="/image/border_radius1.jpg" alt="border-radius:2em"></li>
+<li><code>border-radius: 33%</code></li>
+<li><img src="/image/border_radius2.jpg" alt="border-radius:33%"></li>
+<li><code>border-radius: 1em / 2em;(水平方向/垂直方向)</code><br><img src="/image/border_radius3.jpg" alt="border-radius: 1em/2em"></li>
+</ul>
+<h4 id="Image-Border"><a href="#Image-Border" class="headerlink" title="Image Border"></a>Image Border</h4><p><code>border-image</code>有 3 个参数： 图片（border-image-source），剪裁位置（border-image-slice），重复性（border-image-repeat）</p>
+<ul>
+<li><code>border-image-source</code><br>同<code>background-image</code>属性一样，使用<code>url()</code>，默认值<code>none</code>.</li>
+<li><p><code>border-image-slice</code><br>数值单位是 <code>px</code>,百分比值相对于边框图像大小；边框图片根据 4 个参数值进行“四刀切”，形成一个九宫格。比如<code>border-image-slice: 30% 35% 40% 30%</code>.<br><img src="/image/slice_here.png" alt="slice_here"></p>
+</li>
+<li><p><code>border-image-repeat</code><br>4 个关键字值：<code>repeat(重复)</code>，<code>round(平铺)</code>,<code>stretch(拉伸)</code>，<code>space</code>。默认值为<code>stretch</code>;<code>round</code>会拉伸/压缩图片，以使图片能完全铺满;<code>space</code>不会改变图片大小，会将多余空间均匀分配。<br>可有 2 个参数，第一个代表水平方向，第二个代表垂直方向<br><img src="/image/border_image_repeat.jpg" alt="border-image-repeat"></p>
+</li>
+<li>九宫格模型<br><img src="/image/border-image-nine.png" alt="border-image-nine"><br>如上图所示，橙红色的四个边角区域称之为“角边框图片”，没有任何展示效果，固定在边框四角。橙黄色区域属于展示效果的作用区（也是边框宽度计算的剩余区），会被平铺，重复，拉伸。</li>
+</ul>
+<h5 id="border-image-绘制原理简述"><a href="#border-image-绘制原理简述" class="headerlink" title="border-image 绘制原理简述"></a>border-image 绘制原理简述</h5><ol>
+<li>调用边框图片，通过<code>border-image-source</code>链接图片</li>
+<li>边框图片的剪裁，形成九宫格</li>
+<li>剪裁图片填充到边框，9 部分，一一对应的放至元素边框的九宫格，然后再压缩/拉伸至同边框宽度大小</li>
+<li>执行重复属性，四个角的边框图片不执行，上下执行水平方向，左右执行垂直方向，中间格子则水平、垂直都要执行。</li>
+<li>完成绘制，实现效果</li>
 </ol>
-<p><img src="/image/trackRoute.gif" alt="监视 路由历史和数据"></p>
-<h4 id="调试-Vuex-行为，回到过去状态"><a href="#调试-Vuex-行为，回到过去状态" class="headerlink" title="调试 Vuex 行为，回到过去状态"></a>调试 Vuex 行为，回到过去状态</h4><p><code>Vuex</code>是 Vue 的状态管理库，它运行我们以可预知的形式管理和更新应用的状态。Vue Devtools 可以让我们在运行时检查状态，以便调试。<br><code>Vuex</code> tab ，记录了应用状态，每当<code>Vuex</code>派发一个更新（dispatch a mutation）。它还允许我们在运行时 回退到以前 Vuex 的状态。</p>
-<p><img src="/image/Vuex.gif" alt="Vuex behavior"></p>
-
+<p>参考内容： <a href="https://www.zhangxinxu.com/wordpress/2010/01/css3-border-image/" target="_blank" rel="noopener">border-image 详解</a></p>
+<h3 id="轮廓（Outline）"><a href="#轮廓（Outline）" class="headerlink" title="轮廓（Outline）"></a>轮廓（Outline）</h3><p>轮廓往往是绘制在边框之外的。轮廓与边框有以下几个基本区别：</p>
+<ul>
+<li>轮廓不占据空间，不会影响行高</li>
+<li>轮廓可以是非矩形</li>
+<li>元素通常在<code>:focus</code>状态下，呈现轮廓</li>
+<li>轮廓是全有或全无的命题，不能像边框一样，仅独立的设定某一边的样式</li>
+</ul>
+<h3 id="边距（Margin）"><a href="#边距（Margin）" class="headerlink" title="边距（Margin）"></a>边距（Margin）</h3>
       
     </div>
     <div class="article-footer">
@@ -409,7 +433,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://better-jiang.github.io/2019/11/21/Vue调试工具Vue-DevTools使用指南/" title="Vue调试工具(Vue-DevTools)使用指南" target="_blank" rel="external">https://better-jiang.github.io/2019/11/21/Vue调试工具Vue-DevTools使用指南/</a>
+      <a href="https://better-jiang.github.io/2019/12/25/CSS知识点梳理-8-填充、边框、轮廓、边距/" title="CSS知识点梳理(8)-填充、边框、轮廓、边距" target="_blank" rel="external">https://better-jiang.github.io/2019/12/25/CSS知识点梳理-8-填充、边框、轮廓、边距/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -455,13 +479,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/11/25/《CSS权威指南4》-Chapter1-4-媒体查询/" title="《CSS权威指南4》- Chapter1.4 - 媒体查询"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/05/17/《CSS权威指南》-Chapter1-3-样式表内容/" title="《CSS权威指南4》- Chapter1.3 - 样式表内容"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/12/23/柳州飞盘hat赛有感/" title="柳州飞盘hat赛有感"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

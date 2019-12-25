@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://better-jiang.github.io/"/>
-  <updated>2019-12-24T01:49:32.326Z</updated>
+  <updated>2019-12-25T09:32:40.380Z</updated>
   <id>https://better-jiang.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS知识点梳理(8)-填充、边框、轮廓、边距</title>
+    <link href="https://better-jiang.github.io/2019/12/25/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-8-%E5%A1%AB%E5%85%85%E3%80%81%E8%BE%B9%E6%A1%86%E3%80%81%E8%BD%AE%E5%BB%93%E3%80%81%E8%BE%B9%E8%B7%9D/"/>
+    <id>https://better-jiang.github.io/2019/12/25/CSS知识点梳理-8-填充、边框、轮廓、边距/</id>
+    <published>2019-12-25T09:13:23.000Z</published>
+    <updated>2019-12-25T09:32:40.380Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="基本元素框"><a href="#基本元素框" class="headerlink" title="基本元素框"></a>基本元素框</h3><ul><li>所以文档元素都生成一个矩形框，称之为<strong>元素框（element box）</strong>，它描述了元素在文档布局中所占的空间大小。</li><li>手动定位（position）元素框，它们可能会重叠；在正常流的元素上使用负边距，也会出现视觉重叠。</li><li><code>width</code>,<code>height</code>属性不能应用于行内非替换元素。</li><li>正常流中的元素很少设定<code>height</code>，<code>height</code>是由元素内容决定的，而非创作者决定。</li></ul><h3 id="填充（Padding）"><a href="#填充（Padding）" class="headerlink" title="填充（Padding）"></a>填充（Padding）</h3><ul><li>默认情况下，元素没有填充。如果没有填充 ，元素的边框会与元素本身的内容很接近，所以，给元素边框时，最好同时增加填充。</li><li>百分比值是相对于其父元素（包含块）的<code>width</code>计算的，所以父元素的<code>width</code>改变，其值也相应改变</li><li>对于行内元素，填充不会改变元素行高，但是对于有背景色和填充的行内元素，其背景色可以扩展到元素的上下<code>padding</code>（因为填充能延伸背景）。</li><li>对于替换元素，填充会影响元素行高；不论替换的元素是块级元素还是行内元素，填充都会包围其内容，背景色将填入到该填充中。</li></ul><h3 id="边框（Border）"><a href="#边框（Border）" class="headerlink" title="边框（Border）"></a>边框（Border）</h3><ul><li>边框的默认值：<code>style：none</code>,<code>width: medium</code>,<code>color: 元素的前景色</code>;</li><li><code>border: [&lt;border-style&gt; || &lt;border-width&gt; || &lt;border-color&gt;]</code></li><li>对于行内元素，无论怎样设定边框宽度，元素的行高都不会改变。如果有背景色，上下边框会覆盖其它行内容，左右边框不会。</li><li>对于替换元素，例如图像，边框会影响文本行的行高。</li></ul><p><img src="/image/border_style.jpg" alt="border-style"></p><h4 id="border-radius"><a href="#border-radius" class="headerlink" title="border-radius"></a>border-radius</h4><ul><li><code>border-radius: 2em;</code><br>左上角，边框开始在距上边框 2em，距左边框 2em 的地方开始弯曲，曲线沿着半径为 2em 的圆走。<br><img src="/image/border_radius1.jpg" alt="border-radius:2em"></li><li><code>border-radius: 33%</code></li><li><img src="/image/border_radius2.jpg" alt="border-radius:33%"></li><li><code>border-radius: 1em / 2em;(水平方向/垂直方向)</code><br><img src="/image/border_radius3.jpg" alt="border-radius: 1em/2em"></li></ul><h4 id="Image-Border"><a href="#Image-Border" class="headerlink" title="Image Border"></a>Image Border</h4><p><code>border-image</code>有 3 个参数： 图片（border-image-source），剪裁位置（border-image-slice），重复性（border-image-repeat）</p><ul><li><code>border-image-source</code><br>同<code>background-image</code>属性一样，使用<code>url()</code>，默认值<code>none</code>.</li><li><p><code>border-image-slice</code><br>数值单位是 <code>px</code>,百分比值相对于边框图像大小；边框图片根据 4 个参数值进行“四刀切”，形成一个九宫格。比如<code>border-image-slice: 30% 35% 40% 30%</code>.<br><img src="/image/slice_here.png" alt="slice_here"></p></li><li><p><code>border-image-repeat</code><br>4 个关键字值：<code>repeat(重复)</code>，<code>round(平铺)</code>,<code>stretch(拉伸)</code>，<code>space</code>。默认值为<code>stretch</code>;<code>round</code>会拉伸/压缩图片，以使图片能完全铺满;<code>space</code>不会改变图片大小，会将多余空间均匀分配。<br>可有 2 个参数，第一个代表水平方向，第二个代表垂直方向<br><img src="/image/border_image_repeat.jpg" alt="border-image-repeat"></p></li><li>九宫格模型<br><img src="/image/border-image-nine.png" alt="border-image-nine"><br>如上图所示，橙红色的四个边角区域称之为“角边框图片”，没有任何展示效果，固定在边框四角。橙黄色区域属于展示效果的作用区（也是边框宽度计算的剩余区），会被平铺，重复，拉伸。</li></ul><h5 id="border-image-绘制原理简述"><a href="#border-image-绘制原理简述" class="headerlink" title="border-image 绘制原理简述"></a>border-image 绘制原理简述</h5><ol><li>调用边框图片，通过<code>border-image-source</code>链接图片</li><li>边框图片的剪裁，形成九宫格</li><li>剪裁图片填充到边框，9 部分，一一对应的放至元素边框的九宫格，然后再压缩/拉伸至同边框宽度大小</li><li>执行重复属性，四个角的边框图片不执行，上下执行水平方向，左右执行垂直方向，中间格子则水平、垂直都要执行。</li><li>完成绘制，实现效果</li></ol><p>参考内容： <a href="https://www.zhangxinxu.com/wordpress/2010/01/css3-border-image/" target="_blank" rel="noopener">border-image 详解</a></p><h3 id="轮廓（Outline）"><a href="#轮廓（Outline）" class="headerlink" title="轮廓（Outline）"></a>轮廓（Outline）</h3><p>轮廓往往是绘制在边框之外的。轮廓与边框有以下几个基本区别：</p><ul><li>轮廓不占据空间，不会影响行高</li><li>轮廓可以是非矩形</li><li>元素通常在<code>:focus</code>状态下，呈现轮廓</li><li>轮廓是全有或全无的命题，不能像边框一样，仅独立的设定某一边的样式</li></ul><h3 id="边距（Margin）"><a href="#边距（Margin）" class="headerlink" title="边距（Margin）"></a>边距（Margin）</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;基本元素框&quot;&gt;&lt;a href=&quot;#基本元素框&quot; class=&quot;headerlink&quot; title=&quot;基本元素框&quot;&gt;&lt;/a&gt;基本元素框&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;所以文档元素都生成一个矩形框，称之为&lt;strong&gt;元素框（element box）&lt;/strong&gt;，
+      
+    
+    </summary>
+    
+      <category term="技术总结" scheme="https://better-jiang.github.io/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="CSS" scheme="https://better-jiang.github.io/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title>柳州飞盘hat赛有感</title>
@@ -507,31 +533,6 @@
     
     
       <category term="编程认知" scheme="https://better-jiang.github.io/tags/%E7%BC%96%E7%A8%8B%E8%AE%A4%E7%9F%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS中的图像大小</title>
-    <link href="https://better-jiang.github.io/2019/04/03/CSS%E4%B8%AD%E7%9A%84%E5%9B%BE%E5%83%8F%E5%A4%A7%E5%B0%8F/"/>
-    <id>https://better-jiang.github.io/2019/04/03/CSS中的图像大小/</id>
-    <published>2019-04-03T07:15:08.000Z</published>
-    <updated>2019-04-04T01:57:05.844Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="图像由img元素src指定："><a href="#图像由img元素src指定：" class="headerlink" title="图像由img元素src指定："></a>图像由<code>img</code>元素<code>src</code>指定：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;./xi_map.jpg&quot; alt=&quot;&quot; /&gt;</span><br><span class="line">&lt;img src=&quot;./xi_map.jpg&quot; alt=&quot;&quot; width=&quot;100&quot; height=&quot;100&quot; /&gt;</span><br><span class="line"> &lt;img src=&quot;./xi_map.jpg&quot; alt=&quot;&quot; width=&quot;100&quot; /&gt;</span><br><span class="line"> &lt;img src=&quot;./xi_map.jpg&quot; alt=&quot;&quot; height=&quot;100&quot; /&gt;</span><br></pre></td></tr></table></figure><p>图像元素尺寸 ：690 X 586，显示的尺寸依次：<br><img src="/image/xj_map.png" alt="xj_map"></p><ol><li>690px, 586px</li><li>100px, 100px</li><li>100px, 586/(690/100) = 84.92px</li><li>100*(690/586) = 117.74px, 100px</li></ol><h4 id="图像由backgroud-image指定"><a href="#图像由backgroud-image指定" class="headerlink" title="图像由backgroud-image指定:"></a>图像由<code>backgroud-image</code>指定:</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"img"</span> <span class="attr">style</span>=<span class="string">"width:690px;height:586px"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"img"</span> <span class="attr">style</span>=<span class="string">"width:100px;height:100px"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"img"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">style</span>=<span class="string">"width:100px;height:100px; background-size: 50px 50px"</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"img"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">style</span>=<span class="string">"width:100px;height:100px; background-size: contain"</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"img"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">style</span>=<span class="string">"width:100px;height:100px; background-size: cover"</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span></span></span><br><span class="line"><span class="tag">      <span class="attr">class</span>=<span class="string">"img"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">style</span>=<span class="string">"width:100px;height:117.74px; background-size: cover"</span></span></span><br><span class="line"><span class="tag">    &gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">  <span class="selector-class">.img</span> &#123;</span></span><br><span class="line"><span class="undefined">    background-color: rgb(156, 54, 54);</span></span><br><span class="line"><span class="undefined">    display: inline-block;</span></span><br><span class="line"><span class="undefined">    background-image: url('./xi_map.jpg');</span></span><br><span class="line"><span class="undefined">    background-repeat: no-repeat;</span></span><br><span class="line"><span class="undefined">    background-size: auto;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure><p>图像显示尺寸依次:<br><img src="/image/xj_map2.png" alt="xj_map2"></p><ol><li>690px, 586px</li><li>100px, 100px (只显示图像左上角 100px X 100px 大小的部分)</li><li>50px, 50px</li><li>100px, 84.92px (图像按比例缩放显示)</li><li>100px, 100px (图像高度上按缩放显示，但宽度上只截取了 100px 显示（按原图像宽高比计算的话，宽度应该显示 117.74px）)</li><li>117.74px, 100px (图像按原图像的固定宽高比显示)</li></ol><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul><li>固有尺寸：固有宽度，固有高度，固有宽高比</li><li>指定大小： <code>height</code>,<code>width</code>,<code>background-size</code></li><li>图像超出 背景区域的部分，会被裁剪掉；覆盖不全的部分，会用背景色来填充</li><li>调整图像大小:<ul><li><code>background-image</code>方式 ，用<code>background-size</code>属性，指定大小(宽，高)，cover，contain<ul><li><code>contain</code>是包含约束，要在背景框里尽可能的大。如上图 4，背景框宽 100px,高 100px，图像固有宽 690px,高 586px,包含约束取宽 100px，高度根据宽高比计算出来 100/690/586=84.92px,对于背景区域未覆盖的地方用背景色来填充。</li><li><code>cover</code>是覆盖约束，要在大于等于背景框的前提下尽可能的小；如上图 5，背景框宽 100px，高 100px，图像固有宽 690px，高 586px，覆盖约束要取高 100px，宽根据固有宽高比计算 100*（690/586）=117.74px，对于超出背景区域的部分，被裁剪掉。</li></ul></li><li><code>&lt;img&gt;</code>方式，使用<code>object-fit</code>属性，fill, contain, cover,none,scale-down<ul><li><code>fill</code>：填充，拉伸填充满屏幕,不保证原有比例 -<code>contain</code>: 包含，保持原有尺寸比例，且图像容器里放的下</li><li><code>cover</code>: 覆盖，保持原有尺寸比例，且图像尺寸一定大于等于容器尺寸</li><li><code>none</code>: 保持原有尺寸比例，如果图像尺寸大于容器，则裁剪多余的</li><li><code>scale-down</code>: 图像的尺寸与<code>none</code>或<code>contain</code>中的一个相同，取决于它们之间谁得到的尺寸会更小一些</li></ul></li></ul></li><li>调整图像在背景框的位置<ul><li>背景图，使用<code>background-position</code>: 默认值:50%,50%</li><li><code>&lt;img&gt;</code>,使用<code>object-position</code>:默认值是 50% 50%</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;图像由img元素src指定：&quot;&gt;&lt;a href=&quot;#图像由img元素src指定：&quot; class=&quot;headerlink&quot; title=&quot;图像由img元素src指定：&quot;&gt;&lt;/a&gt;图像由&lt;code&gt;img&lt;/code&gt;元素&lt;code&gt;src&lt;/code&gt;指定：&lt;/h4
-      
-    
-    </summary>
-    
-      <category term="技术总结" scheme="https://better-jiang.github.io/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="CSS" scheme="https://better-jiang.github.io/tags/CSS/"/>
     
   </entry>
   
