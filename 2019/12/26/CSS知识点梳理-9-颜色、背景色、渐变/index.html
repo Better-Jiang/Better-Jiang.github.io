@@ -17,23 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>《CSS权威指南4》- Chapter1.3 - 样式表内容 | better-jiang</title>
-  <meta name="description" content="样式表内容在这之后，样式表的实际内容是什么？就像这样： 123h1 &amp;#123;  color: maroon;&amp;#125; 诸如此类的样式构成了任何嵌入样式表的主体，可以简单也可以复杂，可以很多也可以很长。很少有文档的style元素不包含任何样式规则，尽管可以有一个简单的@import声明列表，而没像上一个示例那样的实际的规则。 在我们继续阅读该书剩余部分之前，有一些关于样式表中可以活不可以包含">
-<meta name="keywords" content="翻译,CSS权威指南-第四版">
+  <title>CSS知识点梳理(9)-颜色、背景色、渐变 | better-jiang</title>
+  <meta name="description" content="颜色 (Colors) 使用color属性设置的是元素的前景色，通常指文本的颜色 color属性也影响元素的边框颜色，如果没有border-color属性，边框颜色默认前景色，也就是color属性的值.如下所示，元素&amp;lt;p class=&amp;quot;aside&amp;quot;&amp;gt;灰色文本，灰色的中等宽度的实线的边框。 1234p.aside &amp;#123;  color: gray;  borde">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《CSS权威指南4》- Chapter1.3 - 样式表内容">
-<meta property="og:url" content="https://better-jiang.github.io/2019/05/17/《CSS权威指南》-Chapter1-3-样式表内容/index.html">
+<meta property="og:title" content="CSS知识点梳理(9)-颜色、背景色、渐变">
+<meta property="og:url" content="https://better-jiang.github.io/2019/12/26/CSS知识点梳理-9-颜色、背景色、渐变/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
-<meta property="og:description" content="样式表内容在这之后，样式表的实际内容是什么？就像这样： 123h1 &amp;#123;  color: maroon;&amp;#125; 诸如此类的样式构成了任何嵌入样式表的主体，可以简单也可以复杂，可以很多也可以很长。很少有文档的style元素不包含任何样式规则，尽管可以有一个简单的@import声明列表，而没像上一个示例那样的实际的规则。 在我们继续阅读该书剩余部分之前，有一些关于样式表中可以活不可以包含">
+<meta property="og:description" content="颜色 (Colors) 使用color属性设置的是元素的前景色，通常指文本的颜色 color属性也影响元素的边框颜色，如果没有border-color属性，边框颜色默认前景色，也就是color属性的值.如下所示，元素&amp;lt;p class=&amp;quot;aside&amp;quot;&amp;gt;灰色文本，灰色的中等宽度的实线的边框。 1234p.aside &amp;#123;  color: gray;  borde">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://better-jiang.github.io/image/Figure1-7.png">
-<meta property="og:updated_time" content="2019-11-21T08:04:27.706Z">
+<meta property="og:updated_time" content="2019-12-26T13:00:53.125Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《CSS权威指南4》- Chapter1.3 - 样式表内容">
-<meta name="twitter:description" content="样式表内容在这之后，样式表的实际内容是什么？就像这样： 123h1 &amp;#123;  color: maroon;&amp;#125; 诸如此类的样式构成了任何嵌入样式表的主体，可以简单也可以复杂，可以很多也可以很长。很少有文档的style元素不包含任何样式规则，尽管可以有一个简单的@import声明列表，而没像上一个示例那样的实际的规则。 在我们继续阅读该书剩余部分之前，有一些关于样式表中可以活不可以包含">
-<meta name="twitter:image" content="https://better-jiang.github.io/image/Figure1-7.png">
+<meta name="twitter:title" content="CSS知识点梳理(9)-颜色、背景色、渐变">
+<meta name="twitter:description" content="颜色 (Colors) 使用color属性设置的是元素的前景色，通常指文本的颜色 color属性也影响元素的边框颜色，如果没有border-color属性，边框颜色默认前景色，也就是color属性的值.如下所示，元素&amp;lt;p class=&amp;quot;aside&amp;quot;&amp;gt;灰色文本，灰色的中等宽度的实线的边框。 1234p.aside &amp;#123;  color: gray;  borde">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://better-jiang.github.io/2019/05/17/《CSS权威指南》-Chapter1-3-样式表内容/index.html">
+  <link rel="canonical" href="https://better-jiang.github.io/2019/12/26/CSS知识点梳理-9-颜色、背景色、渐变/index.html">
   
     <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
   
@@ -322,14 +320,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-《CSS权威指南》-Chapter1-3-样式表内容" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-CSS知识点梳理-9-颜色、背景色、渐变" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      《CSS权威指南4》- Chapter1.3 - 样式表内容
+      CSS知识点梳理(9)-颜色、背景色、渐变
     </h1>
   
 
@@ -337,8 +335,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/05/17/《CSS权威指南》-Chapter1-3-样式表内容/" class="article-date">
-	  <time datetime="2019-05-17T03:24:50.000Z" itemprop="datePublished">2019-05-17</time>
+	<a href="/2019/12/26/CSS知识点梳理-9-颜色、背景色、渐变/" class="article-date">
+	  <time datetime="2019-12-26T13:00:34.000Z" itemprop="datePublished">2019-12-26</time>
 	</a>
 </span>
         
@@ -350,7 +348,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/CSS权威指南-第四版/">CSS权威指南-第四版</a>, <a class="article-tag-link" href="/tags/翻译/">翻译</a>
+	<a class="article-tag-link" href="/tags/CSS/">CSS</a>
   </span>
 
 
@@ -363,67 +361,132 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/05/17/《CSS权威指南》-Chapter1-3-样式表内容/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/12/26/CSS知识点梳理-9-颜色、背景色、渐变/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="样式表内容"><a href="#样式表内容" class="headerlink" title="样式表内容"></a>样式表内容</h3><p>在这之后，样式表的实际内容是什么？就像这样：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: maroon;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>诸如此类的样式构成了任何嵌入样式表的主体，可以简单也可以复杂，可以很多也可以很长。很少有文档的<code>style</code>元素不包含任何样式规则，尽管可以有一个简单的<code>@import</code>声明列表，而没像上一个示例那样的实际的规则。</p>
-<p>在我们继续阅读该书剩余部分之前，有一些关于样式表中可以活不可以包含的顶级内容需要介绍。</p>
-<h4 id="标记-Markup"><a href="#标记-Markup" class="headerlink" title="标记(Markup)"></a>标记(Markup)</h4><p>在样式表中没有标记，这似乎是显而易见的，但是你会惊讶。唯一的例外是 HTML 的注释标记，由于历史原因，它可以在<code>style</code>元素内部使用。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: maroon;</span><br><span class="line">&#125;</span><br><span class="line">&lt;!<span class="selector-tag">--</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">--</span>&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="规则结构"><a href="#规则结构" class="headerlink" title="规则结构"></a>规则结构</h4><p>为了更详细的说明规则的概念，我们要将规则的结构进行分解并逐一介绍。<br>每一个样式规则有 2 个基本部分：选择器（selector）和声明块（declaration block）。声明块由一个或多个声明组成，每个声明是一个属性-值对。每个样式表由一系列规则组成。图 Figure1-7 显示了规则的各个部分。<br><img src="/image/Figure1-7.png" alt="Figure 1-7"><br>如规则左边所示，选择器定义了文档的哪些部分将受影响。图 Figure1-7 中，<code>h1</code>元素被选中。如果选择器是<code>p</code>，则会选择所要的<code>p</code>(段落)元素.<br>规则的右边包含声明块，它由一个或多个声明组成。每个声明都是一个 CSS 属性和该属性值的组合。图 Figure1-7 中，声明块包含 2 个声明。第一个声明指出该规则将导致文档的部分颜色为红色，第二个声明指出文档中该部分的背景色为黄色。所以，文档中所有<code>h1</code>元素（由选择器定义）将以红色文本，黄色背景为样式。</p>
-<h4 id="供应商前缀（Vendor-prefixing）"><a href="#供应商前缀（Vendor-prefixing）" class="headerlink" title="供应商前缀（Vendor prefixing）"></a>供应商前缀（Vendor prefixing）</h4><p>有时你会看到 CSS 前面有破折号和标签，比如<code>-o-border-image</code>.它们被称为供应商前缀，是浏览器厂商 将属性、值或其他 CSS 的位标记为实验或专用（或两者都是）的一种方式。截止 2016 年底，市面上出现了一些供应商前缀，最常见的如表 1-1 所示。</p>
+        <h3 id="颜色-Colors"><a href="#颜色-Colors" class="headerlink" title="颜色 (Colors)"></a>颜色 (Colors)</h3><ul>
+<li>使用<code>color</code>属性设置的是元素的前景色，通常指文本的颜色</li>
+<li><p><code>color</code>属性也影响元素的边框颜色，如果没有<code>border-color</code>属性，边框颜色默认前景色，也就是<code>color</code>属性的值.如下所示，元素<code>&lt;p class=&quot;aside&quot;&gt;</code>灰色文本，灰色的中等宽度的实线的边框。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.aside</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: gray;</span><br><span class="line">  <span class="attribute">border-style</span>: solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>color</code>属性也影响表单元素，但表单元素，就像图像一样，是可替换元素。它们实际上并不是 HTML 文档的内容，CSS 不会对可替换元素的内容进行样式设置的。不同浏览器之间表单样式是不一致的，所以，表单元素是非常棘手的，应谨慎处理。</p>
+</li>
+</ul>
+<h3 id="背景色-Backgrounds"><a href="#背景色-Backgrounds" class="headerlink" title="背景色 (Backgrounds)"></a>背景色 (Backgrounds)</h3><ul>
+<li>默认情况下，元素的背景色区域包含内容区，填充，边框则绘制在背景色之上。</li>
+<li><code>background-color</code>默认值<code>transparent</code>,背景色不可继承。</li>
+</ul>
+<h4 id="background-clip"><a href="#background-clip" class="headerlink" title="background-clip"></a>background-clip</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Value</span>:            <span class="selector-attr">[border-box|padding-box|content-box|text]</span></span><br><span class="line"><span class="selector-tag">Initial</span> <span class="selector-tag">value</span>:    <span class="selector-tag">border-box</span></span><br><span class="line"><span class="selector-tag">Applies</span> <span class="selector-tag">to</span>:       <span class="selector-tag">All</span> <span class="selector-tag">elements</span></span><br><span class="line"><span class="selector-tag">Inherited</span>:        <span class="selector-tag">No</span></span><br><span class="line"><span class="selector-tag">Animatable</span>:       <span class="selector-tag">No</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>background-clip</code>定义了<strong>背景绘制区域</strong>，背景同时绘制在边框可见区域的后面。</li>
+<li><p>一些注意事项</p>
+<ul>
+<li><code>background-clip</code>不能作用于根元素（<code>html</code>）</li>
+<li>如果元素有圆角(<code>border-radius</code>)，则背景区域也会相应的精确减少。</li>
+<li><code>background-clip</code>与<code>background-repeat</code>交互效果很差</li>
+<li><code>background-clip</code>只定义了背景的裁剪区域，它不会影响到其他背景属性，比如<code>background-image</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="background-position"><a href="#background-position" class="headerlink" title="background-position"></a>background-position</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Value：         &lt;length&gt; || &lt;length&gt;</span><br><span class="line">                &lt;positon&gt; || &lt;positon&gt;</span><br><span class="line"><span class="selector-tag">Values</span>：        0% 0%</span><br><span class="line"><span class="selector-tag">Percentages</span>：   参考元素背景区域和图像上对应的点（<span class="selector-tag">top-left</span>）</span><br><span class="line"><span class="selector-tag">Inherited</span>：     <span class="selector-tag">No</span></span><br><span class="line"><span class="selector-tag">Animatable</span>:     <span class="selector-tag">Yes</span></span><br><span class="line"></span><br><span class="line">&lt;<span class="selector-tag">length</span>&gt;: 百分比，长度值</span><br><span class="line">&lt;<span class="selector-tag">position</span>&gt;: <span class="selector-tag">top</span>, <span class="selector-tag">center</span>, <span class="selector-tag">bottom</span>, <span class="selector-tag">left</span>, <span class="selector-tag">right</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>background-position</code>如何确定图像在元素背景区域中的位置。</li>
+<li><code>background-position</code>指定两个值，一个定义 x 坐标，一个定义 y 坐标。指定一个值，则第二个值默认为<code>center</code>。</li>
+<li><code>background-position: 0% 0%;</code>：图像的左上角与元素背景区域的左上角对齐。等同于<code>background-positon: left top;</code></li>
+<li><code>background-position: -50px -50px;</code>: 图像以元素背景区域左上角为参考，向左偏移 50px，向上偏移 50px。</li>
+<li><code>background-position: 50% 50%;</code>: 图像的 50%，50%点同元素背景区域 50%，50%的点对齐。等同于<code>background-position: center center</code><br>偏移量计算：<br>x 方向：(背景区域宽度 - 图像宽度) - x 方向百分比<br>y 方向：(背景区域高度 - 图像高度) - y 方向百分比<br>假如 图像 300px，300px, 元素背景区域 500px,500px, 计算偏移量：x 方向：100px; y 方向：100px;</li>
+<li><p>百分比值，偏移量计算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(container width - image width) * (position x%) = (x offset value)</span><br><span class="line"></span><br><span class="line">(container height - image height) * (position y%) = (y offset value)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="background-repeat"><a href="#background-repeat" class="headerlink" title="background-repeat"></a>background-repeat</h4><ul>
+<li>指定两个值，第一个应用于水平方向，第二个应用于垂直方向。指定一个值，则水平，垂直方向都应用，除了<code>repeat-x</code>,<code>repeat-y</code>。</li>
+</ul>
 <table>
 <thead>
 <tr>
-<th>Prefix</th>
-<th>Vendor</th>
+<th style="text-align:center">Single Keyword</th>
+<th style="text-align:center">Equivalent Keywords</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>-epub-</td>
-<td>国际数字出版论坛 ePub 格式</td>
+<td style="text-align:center">repeat-x</td>
+<td style="text-align:center">repeat-x no-repeat</td>
 </tr>
 <tr>
-<td>-moz-</td>
-<td>基于 MOzilla 的浏览器（Firefox）</td>
+<td style="text-align:center">repeat-y</td>
+<td style="text-align:center">no-repeat no-repeat</td>
 </tr>
 <tr>
-<td>-ms-</td>
-<td>微软 IE 浏览器</td>
+<td style="text-align:center">repeat</td>
+<td style="text-align:center">repeat repeat</td>
 </tr>
 <tr>
-<td>-o-</td>
-<td>基于 Opera 的浏览器（Opera）</td>
+<td style="text-align:center">no-repeat</td>
+<td style="text-align:center">no-repeat no-repeat</td>
 </tr>
 <tr>
-<td>-webkit-</td>
-<td>基于 Webkit 的浏览器（Safari,Chrome）</td>
+<td style="text-align:center">space</td>
+<td style="text-align:center">space space</td>
+</tr>
+<tr>
+<td style="text-align:center">round</td>
+<td style="text-align:center">round round</td>
 </tr>
 </tbody>
 </table>
-<p>正如表格 1-1 所示，供应商前缀普遍可接受的格式一个破折号，一个标签，一个破折号，尽管有几个前缀错误的省略了第一个破折号。<br>供应商的使用和滥用是冗长的，扭曲的，并且超出了本书的范围。可以这样说，它们一开始是作为浏览器厂商测试新产品的一种方式，因此有助于提高互用性，而不用担心陷入与其他浏览器不兼容的遗留行为中。这避免了整个类的问题，在 CSS 初期它几乎扼杀了 CSS。不幸的是，前缀属性随后被 web 作者公开发行，最终导致了一系列全新的问题。<br>截止 2016 年底，供应商前缀种类正在减少，旧的前缀属性和值慢慢的从浏览器实现中移除。你完全有可能永远不编写有前缀的 CSS，但是你会在市面上遇到它，或者从老旧的代码库中继承它。</p>
-<h4 id="空白处理"><a href="#空白处理" class="headerlink" title="空白处理"></a>空白处理</h4><p>CSS 基本对规则之间的空白不敏感，对规则内部的空白页不敏感，尽管有一些例外。<br>一般来说，CSS 对待空白如 HTML 文档一样：为了进行解析，任何连续的空白字符都被折叠成一个空格。因此，你可以按照以下方式格式化假象的彩虹规则:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">rainbow</span><span class="selector-pseudo">:infrared</span> <span class="selector-tag">red</span> <span class="selector-tag">orange</span> <span class="selector-tag">yellow</span> <span class="selector-tag">green</span> <span class="selector-tag">blue</span> <span class="selector-tag">indigo</span> <span class="selector-tag">violet</span> <span class="selector-tag">ultravilet</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">rainbow</span>:</span><br><span class="line">  <span class="selector-tag">infrared</span> <span class="selector-tag">red</span> <span class="selector-tag">orange</span> <span class="selector-tag">yellow</span> <span class="selector-tag">blue</span> <span class="selector-tag">indigo</span> <span class="selector-tag">violet</span> <span class="selector-tag">ultraviolet</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">rainbow</span>:</span><br><span class="line">  <span class="selector-tag">infrared</span></span><br><span class="line">  <span class="selector-tag">red</span></span><br><span class="line">  <span class="selector-tag">orange</span></span><br><span class="line">  <span class="selector-tag">yellow</span></span><br><span class="line">  <span class="selector-tag">green</span></span><br><span class="line">  <span class="selector-tag">blue</span></span><br><span class="line">  <span class="selector-tag">indigo</span></span><br><span class="line">  <span class="selector-tag">violet</span></span><br><span class="line">  <span class="selector-tag">ultraviolet</span></span><br><span class="line">  ;</span><br></pre></td></tr></table></figure>
-<p><strong>唯一限制的是分隔字符必须是空白字符：空格，制表符、换行符，可以单独使用，也可以组合使用，个数不限，可任意使用</strong><br>类似的，你可以以任何喜欢的方式使用空白字符格式化一系列的 CSS 规则。 这是无限可能当中的 5 种：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>&#123;<span class="attribute">color</span>:black;&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background</span>: white;&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: gray;&#125;</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: silver ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">ol</span></span><br><span class="line">  &#123;</span><br><span class="line">    color</span><br><span class="line">      :</span><br><span class="line">    <span class="selector-tag">silver</span></span><br><span class="line">      ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>从第一个规则看出，空格能被最大限度的省略。实际上，这通常出现在压缩的 CSS 中，即删除所有多余的空格。在前两个规则之后，使用了越来越多的空格，直到最后一个规则，几乎所有能被分隔的东西，都被分隔到单独的一行中。<br>所有这些都是有效的，所以你应该选择最合理的格式（也就是最容易阅读），并坚持下去。<br>在某些方面，实际上需要出现空格。最常见的例子是在值中分隔关键词列表，就像彩虹例子一样，必须使用空格分隔。</p>
-<h4 id="CSS-注释"><a href="#CSS-注释" class="headerlink" title="CSS 注释"></a>CSS 注释</h4><p>css 允许注释，同<code>C/C++</code>注释相似，它们使用<code>/*</code>和<code>*/</code>包围要注释的内容：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* CSS 注释 */</span></span><br></pre></td></tr></table></figure>
-<p>跨多行注释，像<code>C++</code>一样:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 多行注释，</span></span><br><span class="line"><span class="comment">没有问题</span></span><br><span class="line"><span class="comment">/</span></span><br></pre></td></tr></table></figure>
-<p>但是，CSS 注释<strong>不能嵌套</strong>,以下例子是不正确的：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* css内注释嵌套</span></span><br><span class="line"><span class="comment">  /*是不正确的*/</span></span><br><span class="line">不在注释内*/</span><br></pre></td></tr></table></figure>
-<p>CSS 不存在类似<code>//</code>或<code>#</code>注释’一行其余部分’模式，只有<code>/**/</code>这一种模式。所以，如果你希望把注释与标签放在同一行，需要小心处置。例如，以下是正确的做法：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:red&#125;   <span class="comment">/*css 注解 有多行，*/</span></span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">font-size</span>:<span class="number">12px</span>&#125; <span class="comment">/*但是，因为 它 在内容的旁边*/</span></span><br><span class="line"><span class="selector-tag">h2</span> &#123;<span class="attribute">width</span>:<span class="number">20px</span>&#125;   <span class="comment">/*所以，每一行都需要使用注释符号 包裹起来*/</span></span><br></pre></td></tr></table></figure>
-<p>如果每一行没有注释符号，那么大部分样式将变成注释，从而不起作用。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;<span class="attribute">color</span>:red&#125;   <span class="comment">/*css 注解 有多行，</span></span><br><span class="line"><span class="comment">p &#123;font-size:12px&#125; 但是，因为 它 在内容的旁边</span></span><br><span class="line"><span class="comment">h2 &#123;width:20px&#125;   所以，每一行都需要使用注释符号 包裹起来*/</span></span><br></pre></td></tr></table></figure>
-<p>这个例子中，只有第一个样式规则（h1 {color:red}）会被应用到文档，余下规则都成为注释部分，被浏览器渲染引擎忽略。</p>
+<ul>
+<li>当指定<code>background-position</code>时，图像的重复从指定位置向两边重复的。</li>
+<li><code>space</code>,它计算出一个给定轴上可以重复图像多少次，然后按一定的间隔将它们分开，这就重复的图像就可以从背景区域的一边重复到另一边。保证图像在边缘处不被裁剪，是完整的。<strong>如果图像重复超过一次，就会忽略/覆盖掉<code>background-position</code>指定的位置</strong></li>
+<li><code>round</code>,最有可能导致图像的缩放,使图像重复适合的整数次数。<strong>而且它不会忽略/覆盖掉<code>background-position</code>指定的位置</strong>。 <strong>所以，确保重复模式合适且不会裁剪图像的唯一方法将图像放在角落。</strong></li>
+</ul>
+<h4 id="background-attachment"><a href="#background-attachment" class="headerlink" title="background-attachment"></a>background-attachment</h4><p><code>background-attachment</code>属性决定了背景图像的位置是在视口（viewport）内固定，还是随着包含它的区域滚动。</p>
+<ul>
+<li><code>scroll</code>，默认值，表示背景相对于元素本身固定，不随着它的内容滚动</li>
+<li><code>fixed</code>, 表示背景相对于视口固定。即使元素有滚动，背景也会随着元素、或元素内容滚动</li>
+<li><code>local</code>, 表示背景相对于元素的内容固定，并且背景的绘制区域和地位区域是相对于可滚动的区域而不是包含它的边框。</li>
+<li>参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-attachment" target="_blank" rel="noopener">MDN background-attachment</a></li>
+</ul>
+<h4 id="background-size"><a href="#background-size" class="headerlink" title="background-size"></a>background-size</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Value:          [&lt;length&gt;|&lt;percentage&gt;|auto]&#123;1,2&#125;|cover|contain</span><br><span class="line"><span class="selector-tag">Initial</span> <span class="selector-tag">value</span>:  <span class="selector-tag">auto</span></span><br><span class="line"><span class="selector-tag">Applies</span> <span class="selector-tag">to</span>:     <span class="selector-tag">All</span> <span class="selector-tag">elements</span></span><br><span class="line"><span class="selector-tag">Inherited</span>:      <span class="selector-tag">No</span></span><br><span class="line"><span class="selector-tag">Animatable</span>:     <span class="selector-tag">Yes</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>background-size</code>设置图片大小，可拉伸到新尺寸，也可保持原有比例的同时缩放到元素的可用空间尺寸。</li>
+<li>指定两个值，第一个指定图片的宽度，第二个指定图片的高度；一个值，这个值指定图片的宽度，图片的高度默认为<code>auto</code></li>
+<li><code>&lt;length&gt;值</code>，不能为负值;<code>&lt;percentage&gt;</code>值，相对于背景区域（background positioning area）的百分比。背景区域由<code>background-origin</code>设置，默认为盒模型的内容区于填充。如果<code>background-attachment</code>为<code>fixed</code>，背景区域为浏览器可视区（视口）,不包含滚动条。</li>
+<li><code>auto</code>，以背景图片的比例缩放。</li>
+<li><code>cover</code>,缩放背景图片以能完全覆盖背景区域。尽可能大的缩放背景图片，并保持图片的宽高比例。</li>
+<li><code>contain</code>，缩放背景图片以完全装入背景区域，背景区域可能有部分空白。</li>
+<li><code>一个auto，另一个不是auto</code>,如果图像有固有比例，则指定的长度使用指定值，未指定的长度由指定值和固有比例计算。如果没有固有比例，则指定长度使用指定值，未指定的长度使用图像相应的固有长度，若还没有固有长度，则使用背景区域相应的长度。</li>
+<li><strong>位图一定有固有尺寸和固有比例；矢量图可能二者都有，也可能只有一个。渐变视为只有固有尺寸或只有固有比例的图片</strong></li>
+</ul>
+<h4 id="background"><a href="#background" class="headerlink" title="background"></a>background</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Value:          [&lt;bg-layer&gt;,]* &lt;final-bg-layer&gt;</span><br><span class="line">Initial value:  Refer to individual properties</span><br><span class="line">Applies to ；   All elements</span><br><span class="line">Inherited:      No</span><br><span class="line"></span><br><span class="line">&lt;bg-layer&gt;: &lt;bg-image&gt;||&lt;position&gt;[/&lt;bg-size&gt;]?||&lt;repeat-style&gt;||&lt;attachment&gt;||&lt;box&gt;||&lt;box&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: white;</span><br><span class="line">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(jiang.png);</span><br><span class="line">  <span class="attribute">background-position</span>: top left;</span><br><span class="line">  <span class="attribute">background-size</span>: <span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">background-repeat</span>: repeat-y;</span><br><span class="line">  <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">  <span class="attribute">background-origin</span>: border-box;</span><br><span class="line">  <span class="attribute">background-clip</span>: padding-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background</span>: white <span class="built_in">url</span>(jiang.png) top left/<span class="number">50%</span> <span class="number">50%</span> repeat-y fixed border-box padding-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简写语法需要注意地方如下：</p>
+<ul>
+<li>在每一层中，下列的值可以出现 0 次或 1 次：<ul>
+<li><code>&lt;attachment&gt;</code></li>
+<li><code>&lt;bg-image&gt;</code></li>
+<li><code>&lt;position&gt;</code></li>
+<li><code>&lt;bg-size&gt;</code></li>
+<li><code>&lt;repeat-style&gt;</code></li>
+</ul>
+</li>
+<li><code>&lt;bg-size&gt;</code>只能紧跟着<code>&lt;position&gt;</code>后面出现，并且以<code>/</code>分割，如:<code>top left/50% 50%</code></li>
+<li><code>&lt;box&gt;</code>可能出现 0 次，1 次，2 次。如果出现 1 次，它同时设定<code>background-origin</code>和<code>background-clip</code>。如果出现 2 次，第一次设定<code>background-origin</code>，第二次设定<code>background-clip</code></li>
+<li><p><code>background</code>是一个简写属性，它有其默认值，所以它的默认值可以覆盖之前给定的值。如下，<code>h2</code>的其它<code>background</code>属性被默认值覆盖。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span> &#123;<span class="attribute">background</span>: gray <span class="built_in">url</span>(thetrees.jpg) center/contain repeat-x;&#125;</span><br><span class="line">// 错误</span><br><span class="line"><span class="selector-tag">h2</span> &#123;<span class="attribute">background</span>: silver;&#125;</span><br><span class="line"></span><br><span class="line">// 正确</span><br><span class="line"><span class="selector-tag">h2</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: silver;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="渐变-（Gradients）"><a href="#渐变-（Gradients）" class="headerlink" title="渐变 （Gradients）"></a>渐变 （Gradients）</h3><h3 id="阴影（Box-Shadows）"><a href="#阴影（Box-Shadows）" class="headerlink" title="阴影（Box Shadows）"></a>阴影（Box Shadows）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow: none|h-offset v-offset blur spread color | inset;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>box-shadow</code>由<code>,</code>分割的列表来描述一个或多个阴影效果。如果设置了<code>border-radius</code>，阴影也会有圆角效果。</li>
+<li><code>blur</code>，阴影模糊半径，值越大，模糊面积就越大，阴影就越大越淡。</li>
+<li><code>spread</code>,阴影大小，正值，阴影扩大，负值，阴影收缩。默认为 0.</li>
+<li><code>inset</code>，变为内部阴影。</li>
+</ul>
 
       
     </div>
@@ -433,7 +496,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://better-jiang.github.io/2019/05/17/《CSS权威指南》-Chapter1-3-样式表内容/" title="《CSS权威指南4》- Chapter1.3 - 样式表内容" target="_blank" rel="external">https://better-jiang.github.io/2019/05/17/《CSS权威指南》-Chapter1-3-样式表内容/</a>
+      <a href="https://better-jiang.github.io/2019/12/26/CSS知识点梳理-9-颜色、背景色、渐变/" title="CSS知识点梳理(9)-颜色、背景色、渐变" target="_blank" rel="external">https://better-jiang.github.io/2019/12/26/CSS知识点梳理-9-颜色、背景色、渐变/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -479,13 +542,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/11/21/Vue调试工具Vue-DevTools使用指南/" title="Vue调试工具(Vue-DevTools)使用指南"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/05/09/编程新理解（代码大全，代码整洁之道-读书摘要）/" title="编程新理解（代码大全，代码整洁之道-读书摘要）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/12/25/面试复习准备计划/" title="面试复习准备计划"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
