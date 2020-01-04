@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>CSS知识点梳理(10)-浮动和形状 | better-jiang</title>
+  <meta name="description" content="浮动（Floating） 在某种程度上，被浮动的元素被从文档的正常流中移除，尽管它仍影响布局。一个元素被浮动时，其他内容会“环绕”该元素。 浮动元素周围的边距不会发生边距塌陷/折叠 如果要浮动一个不可替换元素，则必须声明该元素的宽度，否则，根据CSS规范，元素的宽度趋于0.浮动是详情浮动元素的包含块（containing block）是其最近的块级祖先元素浮动元素会生成一个块级框，而不论这个元素本">
+<meta name="keywords" content="CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS知识点梳理(10)-浮动和形状">
+<meta property="og:url" content="https://better-jiang.github.io/2019/12/27/CSS知识点梳理-10-浮动和形状/index.html">
+<meta property="og:site_name" content="爱学兮的小江">
+<meta property="og:description" content="浮动（Floating） 在某种程度上，被浮动的元素被从文档的正常流中移除，尽管它仍影响布局。一个元素被浮动时，其他内容会“环绕”该元素。 浮动元素周围的边距不会发生边距塌陷/折叠 如果要浮动一个不可替换元素，则必须声明该元素的宽度，否则，根据CSS规范，元素的宽度趋于0.浮动是详情浮动元素的包含块（containing block）是其最近的块级祖先元素浮动元素会生成一个块级框，而不论这个元素本">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://better-jiang.github.io/image/float_rule1.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/float_rule2.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/flaot_rule3.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/float_rule4.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/float_rule5.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/float_rule6.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/float_rule7.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/float_rule8.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/float_rule9.jpg">
+<meta property="og:updated_time" content="2019-12-27T04:30:14.789Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS知识点梳理(10)-浮动和形状">
+<meta name="twitter:description" content="浮动（Floating） 在某种程度上，被浮动的元素被从文档的正常流中移除，尽管它仍影响布局。一个元素被浮动时，其他内容会“环绕”该元素。 浮动元素周围的边距不会发生边距塌陷/折叠 如果要浮动一个不可替换元素，则必须声明该元素的宽度，否则，根据CSS规范，元素的宽度趋于0.浮动是详情浮动元素的包含块（containing block）是其最近的块级祖先元素浮动元素会生成一个块级框，而不论这个元素本">
+<meta name="twitter:image" content="https://better-jiang.github.io/image/float_rule1.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://better-jiang.github.io/2019/12/27/CSS知识点梳理-10-浮动和形状/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Better-Jiang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">爱学兮的小江</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web前端 &amp; Vue</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术总结/">技术总结</a><span class="category-list-count">50</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计划/">计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔感悟/">随笔感悟</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">18</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS权威指南-第四版/">CSS权威指南-第四版</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书籍读后感/">书籍读后感</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/公司项目涉及技术点梳理/">公司项目涉及技术点梳理</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程认知/">编程认知</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计划/">计划</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题反思/">问题反思</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/飞盘/">飞盘</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/CSS权威指南-第四版/" style="font-size: 13.67px;">CSS权威指南-第四版</a> <a href="/tags/Git/" style="font-size: 13.83px;">Git</a> <a href="/tags/Javascript/" style="font-size: 13.33px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 13.5px;">Vue</a> <a href="/tags/npm/" style="font-size: 13px;">npm</a> <a href="/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/tags/书籍读后感/" style="font-size: 13.17px;">书籍读后感</a> <a href="/tags/公司项目涉及技术点梳理/" style="font-size: 13px;">公司项目涉及技术点梳理</a> <a href="/tags/编程认知/" style="font-size: 13px;">编程认知</a> <a href="/tags/翻译/" style="font-size: 13.83px;">翻译</a> <a href="/tags/计划/" style="font-size: 13px;">计划</a> <a href="/tags/问题反思/" style="font-size: 13px;">问题反思</a> <a href="/tags/飞盘/" style="font-size: 13px;">飞盘</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/01/04/CSS知识点梳理-16-转换（Transform）/" class="title">CSS知识点梳理(16)-转换（Transform）</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-01-04T13:13:25.000Z" itemprop="datePublished">2020-01-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/01/04/CSS知识点梳理-15-列表和生成内容/" class="title">CSS知识点梳理(15)-列表和生成内容</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-01-04T13:10:40.000Z" itemprop="datePublished">2020-01-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/01/04/CSS知识点梳理-14-表格布局/" class="title">CSS知识点梳理(14)-表格布局</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-01-04T13:08:39.000Z" itemprop="datePublished">2020-01-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/01/03/CSS知识点梳理-13-网格布局/" class="title">CSS知识点梳理(13)-网格布局</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-01-03T01:56:18.000Z" itemprop="datePublished">2020-01-03</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/随笔感悟/">随笔感悟</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/12/31/2019年回顾与2020年展望/" class="title">2019年回顾与2020年展望</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-12-31T12:49:37.000Z" itemprop="datePublished">2019-12-31</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-CSS知识点梳理-10-浮动和形状" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS知识点梳理(10)-浮动和形状
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/12/27/CSS知识点梳理-10-浮动和形状/" class="article-date">
+	  <time datetime="2019-12-27T01:05:10.000Z" itemprop="datePublished">2019-12-27</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/CSS/">CSS</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/12/27/CSS知识点梳理-10-浮动和形状/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="浮动（Floating）"><a href="#浮动（Floating）" class="headerlink" title="浮动（Floating）"></a>浮动（Floating）</h3><ul>
+<li>在某种程度上，被浮动的元素被从文档的正常流中移除，尽管它仍影响布局。<strong>一个元素被浮动时，其他内容会“环绕”该元素。</strong></li>
+<li><strong>浮动元素周围的边距不会发生边距塌陷/折叠</strong></li>
+<li>如果要浮动一个不可替换元素，则必须声明该元素的宽度，否则，根据CSS规范，元素的宽度趋于0.<h4 id="浮动是详情"><a href="#浮动是详情" class="headerlink" title="浮动是详情"></a>浮动是详情</h4><strong>浮动元素的包含块（containing block）是其最近的块级祖先元素</strong><br>浮动元素会生成一个块级框，而不论这个元素本身是什么。它就会像块级元素一样摆放和表现。<br>控制浮动元素的摆放规则：    </li>
+</ul>
+<ol>
+<li>浮动元素的左（或右）内边界不能超过其包含块的左（或右）内边界<br><img src="/image/float_rule1.jpg" alt="float_rule1"></li>
+<li>浮动元素的左（或右）外边界必须是在源文档中之前出现的左浮动（或右浮动）元素的右（或左）外边界，除非出现的浮动元素的顶端在先出现浮动元素的底端下面。<br><img src="/image/float_rule2.jpg" alt> </li>
+<li>左浮动元素的右外边界不会在其右边右浮动元素的左外边界的右边。同理，右浮动元素的左外边界不会在其左边任何左浮动元素的右外边界的左边。防止浮动元素的重叠。<br> <img src="/image/flaot_rule3.jpg" alt></li>
+<li>一个浮动元素的顶端不能比其父元素的内顶端更高。如果一个浮动元素在两个折叠外边距之间，放置这个浮动元素时就好像在两个元素之间有一个块级父元素。<br> <img src="/image/float_rule4.jpg" alt></li>
+<li>浮动元素的顶端不能比之前所有的浮动元素或块级元素的顶端更高。<br> <img src="/image/float_rule5.jpg" alt></li>
+<li>浮动元素的顶端不能高于任何行框的顶端，也包括源文档中较早出现的元素生成的框。该规则京一部限制了元素的向上浮动，不允许元素浮动到包含该浮动元素之前内容的行的顶端之上。<br> <img src="/image/float_rule6.jpg" alt></li>
+<li>左浮动元素的左边有另一个浮动元素，其右外边界不能在其包含块的右边界的右边。同理，右浮动元素的右边右另一个浮动元素，其左外边界不能在其包含块的左边界的左边。<strong>即，浮动元素不能超过其包含块元素的边界，如果超出，则这个浮动元素会向下浮动</strong><br> <img src="/image/float_rule7.jpg" alt></li>
+<li>在满足其他约束条件的前提下，浮动元素必须尽可能的高地放置<br> <img src="/image/float_rule8.jpg" alt></li>
+<li>左浮动元素必须向左尽可能的远，右浮动元素必须向右尽可能的远。位置越高，就会向左，向右浮动的越远。<br><img src="/image/float_rule9.jpg" alt></li>
+</ol>
+<h4 id="应用行为"><a href="#应用行为" class="headerlink" title="应用行为"></a>应用行为</h4><ul>
+<li><p><strong>浮动元素会延申，从而包含其所有的后代浮动元素。因此，通过将父元素也设置为浮动元素，就可以把其后代浮元素包含在其父元素内</strong>    </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"float: left; width: 100%;"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"jiang.gif"</span> <span class="attr">style</span>=<span class="string">"float: left;"</span>&gt;</span> The 'div' will stretch around the floated image,  becasue the 'div' has been floated.</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>负外边距可能导致浮动元素移动到其父元素的外面。</li>
+<li>浮动元素与正常内容发生重叠时，显示规则</li>
+<li>行内框与一个浮动元素重叠时，其边框、背景和内容都在该浮动元素“之上”显示</li>
+<li>块级框与一个浮动元素重叠时，其边距、背景在该浮动元素“之下”显示，但内容在浮动元素“之上”显示。<strong>即，行内元素完全覆盖浮动元素（包括其背景、边框、内容），而块级元素仅内容显示在浮动元素之上，但其背景、边框放在浮动元素之下</strong></li>
+<li>这里所描述的重叠行为与源文档中的顺序无关。元素在浮动元素之前还是之后出现并不重要，都会有相同的行为。<h3 id="清除（Clearing）"><a href="#清除（Clearing）" class="headerlink" title="清除（Clearing）"></a>清除（Clearing）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vlaue: 					left|right|both|none</span><br><span class="line">Initial value:	none</span><br><span class="line">Applies to:			Block-level elements</span><br><span class="line">Inherited:			No</span><br><span class="line">Animatable:			No</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>h3 {clear: left;}</code>解释为“确保<code>h3</code>的左边没有浮动元素”</p>
+</li>
+<li>在CSS2.1中，引入了一个清除区域（clearance）,它是在元素的上外边距之上增加的额外间隔，且不允许任何浮动元素进入这个范围内。<strong>这就意味着，元素设置<code>clear</code>属性时，它的外边距不会改变，之所以会向下移动是清除区域造成的</strong></li>
+<li><p>大多数情况下，无法知道一个元素周围多大范围内不允许有浮动元素。要确保清除元素的顶端与浮动元素的底端之间有一定的空间，可以为浮动元素本身设置一个下边距。    </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span> &#123;</span><br><span class="line">	<span class="attribute">float</span>: left;</span><br><span class="line">	<span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">1px</span> solid gray;</span><br><span class="line">	<span class="attribute">clear</span>: left;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>浮动元素的外边距边界定义了浮动框的边界，清除元素必须下移到浮动框以下</strong></p>
+<h3 id="浮动形状（Float-Shapes）"><a href="#浮动形状（Float-Shapes）" class="headerlink" title="浮动形状（Float Shapes）"></a>浮动形状（Float Shapes）</h3></li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://better-jiang.github.io/2019/12/27/CSS知识点梳理-10-浮动和形状/" title="CSS知识点梳理(10)-浮动和形状" target="_blank" rel="external">https://better-jiang.github.io/2019/12/27/CSS知识点梳理-10-浮动和形状/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Better-Jiang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Better-Jiang" target="_blank"><span class="text-dark">爱学兮的小江</span><small class="ml-1x">Web前端 &amp; Vue</small></a></h3>
+        <div>前端狗，爱思考，爱码字</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/12/30/CSS知识点梳理-11-定位/" title="CSS知识点梳理(11)-定位"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/12/26/CSS知识点梳理-9-颜色、背景色、渐变/" title="CSS知识点梳理(9)-颜色、背景色、渐变"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="wechat" data-mobile-sites></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class>
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c9348a5e84eb5050ec8',
+    clientSecret: 'b92d8dd66f66bbe04d870af0e612ff74a00546da',
+    repo: 'Better-Jiang.github.io',
+    owner: 'Better-Jiang',
+    admin: ['Better-Jiang'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
