@@ -18,15 +18,37 @@
   
   
   <title>CSS知识点梳理(16)-转换（Transform） | better-jiang</title>
-  <meta name="keywords" content="CSS">
+  <meta name="description" content="坐标系统 笛卡尔坐标系统（Cartesian coordinate systems）  该系统就是常见x/y/z坐标系统，x代表水平轴，y代表垂直轴,z代表深度轴。x正值向右，负值向左,y正值向下，负值向上,z正值离你更近，负值离你更远。 每个元素都携带它自己的参照系，也就是说，如果旋转一个元素，那么它的轴也会随之旋转，之后的变换都是对那些旋转的轴进行计算的   球面坐标系统 (spherical">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS知识点梳理(16)-转换（Transform）">
 <meta property="og:url" content="https://better-jiang.github.io/2020/01/04/CSS知识点梳理-16-转换（Transform）/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
+<meta property="og:description" content="坐标系统 笛卡尔坐标系统（Cartesian coordinate systems）  该系统就是常见x/y/z坐标系统，x代表水平轴，y代表垂直轴,z代表深度轴。x正值向右，负值向左,y正值向下，负值向上,z正值离你更近，负值离你更远。 每个元素都携带它自己的参照系，也就是说，如果旋转一个元素，那么它的轴也会随之旋转，之后的变换都是对那些旋转的轴进行计算的   球面坐标系统 (spherical">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-04T13:13:34.657Z">
+<meta property="og:image" content="https://better-jiang.github.io/image/elemental_frames_of_reference.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/rotation_z.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/rotation_three_axes.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/translate_in_dimensions.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/scale_in_demensions.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/rotation_three_axes.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/rotation_vectors.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/float_interact_differently_with_blocks_and_grids.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/skew_along_x_y_axes.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/skew_element.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/effect_of_varying_perspective_values.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/various_origin_calulation.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/rotational_effects_origins.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/skew_effects_origins.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/flat_transform.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/preserve_3d_transform.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/shared_perspective_vs_individual_perspectives.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/backface_visibility_example.jpg">
+<meta property="og:updated_time" content="2020-01-05T09:11:44.851Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS知识点梳理(16)-转换（Transform）">
+<meta name="twitter:description" content="坐标系统 笛卡尔坐标系统（Cartesian coordinate systems）  该系统就是常见x/y/z坐标系统，x代表水平轴，y代表垂直轴,z代表深度轴。x正值向右，负值向左,y正值向下，负值向上,z正值离你更近，负值离你更远。 每个元素都携带它自己的参照系，也就是说，如果旋转一个元素，那么它的轴也会随之旋转，之后的变换都是对那些旋转的轴进行计算的   球面坐标系统 (spherical">
+<meta name="twitter:image" content="https://better-jiang.github.io/image/elemental_frames_of_reference.jpg">
   <!-- Canonical links -->
   <link rel="canonical" href="https://better-jiang.github.io/2020/01/04/CSS知识点梳理-16-转换（Transform）/index.html">
   
@@ -364,7 +386,207 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        
+        <h3 id="坐标系统"><a href="#坐标系统" class="headerlink" title="坐标系统"></a>坐标系统</h3><ul>
+<li><p>笛卡尔坐标系统（Cartesian coordinate systems）</p>
+<ul>
+<li>该系统就是常见<code>x/y/z</code>坐标系统，<code>x</code>代表水平轴，<code>y</code>代表垂直轴,<code>z</code>代表深度轴。<code>x</code>正值向右，负值向左,<code>y</code>正值向下，负值向上,<code>z</code>正值离你更近，负值离你更远。</li>
+<li><strong>每个元素都携带它自己的参照系，也就是说，如果旋转一个元素，那么它的轴也会随之旋转，之后的变换都是对那些旋转的轴进行计算的</strong><br><img src="/image/elemental_frames_of_reference.jpg" alt="Elemental frames of reference"></li>
+</ul>
+</li>
+<li><p>球面坐标系统 (spherical coordinate systems)<br>球面坐标系统描述了三维空间中的角度。对于 2D 中变换，只需要考虑一个单独的 360° 极坐标系统，它位于 x,y 轴描述的平面上。</p>
+<ul>
+<li><p>对于 2D 旋转，实际上描述了绕<code>z</code>轴的旋转(在 xy 平面上旋转)。<strong>正度数，顺时针旋转，负度数，逆时针旋转</strong><br><img src="/image/rotation_z.jpg" alt="Rotations in the xy plane"></p>
+</li>
+<li><p>绕 <code>x</code>轴的旋转使元素向你倾斜或远离你,绕<code>y</code>轴的旋转使元素从一边转向另一边。<br><img src="/image/rotation_three_axes.jpg" alt="Rotations around the three axes"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h3><ul>
+<li>百分比值相对于<code>boundiing box</code>,在 CSS 中，它就是<code>border box</code>，忽略轮廓和边距。</li>
+<li>所有转换后的元素有自己的堆栈上下文。<strong>元素在页面上占用的实际空间与转换之前相同</strong></li>
+<li>转换函数是一个接一个的处理的，所有其顺利不同，结果可能有所不同。</li>
+<li>在一系列转换函数中，必须所有的函数是正确格式，如果其中一个函数无效，则整个<code>transform</code>的值都无效。</li>
+<li>转换通常不是累加的，但是动画转换，无论是使用过渡（<code>transition</code>）还是实际的动画(<code>animation</code>)，是可以叠加的。</li>
+<li><p>在没有显示的指定过渡或动画，可以通过伪类(例如<code>:hover</code>)来创建可叠加的转换。·</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span><span class="selector-id">#one</span> &#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(100px) <span class="built_in">scale</span>(1,2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-id">#one</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(-45deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>转换不能应用到原子内联级的框中，例如<code>span</code>,<code>a</code>，可以通过<code>display:block;</code>,<code>display:inline-block</code>来改变显示角色。</p>
+</li>
+</ul>
+<h4 id="translate-函数"><a href="#translate-函数" class="headerlink" title="translate 函数"></a>translate 函数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Function</th>
+<th style="text-align:center">Permitted value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">translateX(), translateY()</td>
+<td style="text-align:center">&#60;length&#62; &#124; &#60;percentage&#62;</td>
+</tr>
+<tr>
+<td style="text-align:center">translate()</td>
+<td style="text-align:center">[&#60;length&#62; &#124; &#60;percentage&#62;][,&#60;length&#62; &#124; &#60;percentage&#62;]?</td>
+</tr>
+<tr>
+<td style="text-align:center">translateZ()</td>
+<td style="text-align:center">&#60;length&#62;</td>
+</tr>
+<tr>
+<td style="text-align:center">translate3d()</td>
+<td style="text-align:center">[&#60;length&#62; &#124; &#60;percentage&#62;],[&#60;length&#62; &#124; &#60;percentage&#62;],[&#60;length&#62;]</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/image/translate_in_dimensions.jpg" alt="Translating in two dimensions"></p>
+<ul>
+<li>百分比的值，其距离计算是相对于元素自身大小。</li>
+<li><code>translate(x,y)</code>如果<code>y</code>值省略，则它被设置为<code>0</code>，<code>translate(2em)</code>等价于<code>translate(2em, 0)</code></li>
+<li><code>translateZ()</code>的值，仅接受长度值，不允许使用百分比值。</li>
+<li><code>translate3d()</code>必须包含 3 个值，<code>translate3d(1em, -50px)</code>视为无效，不会被认为是<code>translate3d(1em, -50px, 0)</code></li>
+</ul>
+<h4 id="scale-函数"><a href="#scale-函数" class="headerlink" title="scale 函数"></a>scale 函数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Function</th>
+<th style="text-align:center">Permitted value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">scaleX(), scaleY(), scaleZ()</td>
+<td style="text-align:center">&#60;number&#62;</td>
+</tr>
+<tr>
+<td style="text-align:center">scale()</td>
+<td style="text-align:center">&#60;number&#62;[,&#60;number&#62;]?</td>
+</tr>
+<tr>
+<td style="text-align:center">scale3d()</td>
+<td style="text-align:center">&#60;number&#62;,&#60;number&#62;,&#60;number&#62;</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/image/scale_in_demensions.jpg" alt="Scaled elements"></p>
+<ul>
+<li><code>scale</code>函数只接受数值，不接受百分比的值。</li>
+<li><code>scale()</code>,如果只提供一个数字，它将被用作两个轴的缩放值。<code>scale(2)</code>等价于<code>scale(2, 2)</code>.</li>
+</ul>
+<h4 id="rotate-函数"><a href="#rotate-函数" class="headerlink" title="rotate 函数"></a>rotate 函数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Function</th>
+<th style="text-align:center">Permitted value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">rotate(), rotateX(), rotateY(), rotateZ()</td>
+<td style="text-align:center">&#60;angle&#62;</td>
+</tr>
+<tr>
+<td style="text-align:center">rotate3d()</td>
+<td style="text-align:center">&#60;number&#62;,&#60;number&#62;,&#60;number&#62;,&#60;angle&#62;</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/image/rotation_three_axes.jpg" alt="Rotations around the three axes"></p>
+<ul>
+<li><code>rotate()</code>是一个 2D 旋转，等价于<code>rotateZ()</code>，围绕 z 轴旋转。</li>
+<li><p><code>rotate3d(x,y,z,angle)</code>是围绕所声明的三维向量旋转。 x,y,z 表示向量 在 x,y,z 轴的分量，angle 表示 旋转量。<br><img src="/image/rotation_vectors.jpg" alt="Rotations aroud 3D vector"></p>
+</li>
+<li><p><code>rotate3d(1,1,0,45deg)</code>的结果不等于<code>rotateX(45deg) rotateY(45deg) rotateZ(0deg)</code><br><img src="/image/float_interact_differently_with_blocks_and_grids.jpg" alt="The difference between rotating around two axes and rotating around a 3D axis"></p>
+</li>
+</ul>
+<h4 id="skew-函数"><a href="#skew-函数" class="headerlink" title="skew 函数"></a>skew 函数</h4><table>
+<thead>
+<tr>
+<th style="text-align:center">Functions</th>
+<th style="text-align:center">Permitted value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">skewX(), skewY()</td>
+<td style="text-align:center">&#60;angle&#62;</td>
+</tr>
+<tr>
+<td style="text-align:center">skew()</td>
+<td style="text-align:center">&#60;angle&#62;[, &#60;angle&#62;]?</td>
+</tr>
+</tbody>
+</table>
+<p><img src="/image/skew_along_x_y_axes.jpg" alt="Skewing along the x,y axes"></p>
+<ul>
+<li><p><code>skew(a,b)</code>同<code>skewX(a) skewY(b)</code>的行为不同，它是用矩阵运算<code>[ax,ay]</code>来指定 2D 倾斜的。<br><img src="/image/skew_element.jpg" alt="Skewed emelents"></p>
+</li>
+<li><p><code>skew(x,y)</code>如果忽略了 y 值，那么 它就是 0.</p>
+</li>
+</ul>
+<h4 id="perspective-函数"><a href="#perspective-函数" class="headerlink" title="perspective 函数"></a>perspective 函数</h4><p><code>perspective(&lt;length&gt;)</code>，用于指定观察点到 元素的距离。</p>
+<ul>
+<li>观察点距元素越近，元素的变形越大。</li>
+<li>此属性在舞台元素上设置，对进行 3D 变换的子元素生效。如果子元素非 3D 变换元素，则没有任何效果。</li>
+<li>透视效果，近大远小</li>
+<li><p>观察点/视点的位置可以结合<code>perspective-origin</code>属性进行调整。</p>
+<p><img src="/image/effect_of_varying_perspective_values.jpg" alt="The effects of varying perspective values"></p>
+</li>
+</ul>
+<h4 id="matrix-函数"><a href="#matrix-函数" class="headerlink" title="matrix 函数"></a>matrix 函数</h4><p>关于矩阵，比较复杂，且现阶段较少用到，故跳过该节。</p>
+<h3 id="更多转换属性"><a href="#更多转换属性" class="headerlink" title="更多转换属性"></a>更多转换属性</h3><h4 id="原点改变"><a href="#原点改变" class="headerlink" title="原点改变"></a>原点改变</h4><ul>
+<li>所有的转换默认使用元素中心作为转换远点。</li>
+<li><code>transform-origin</code>，使用 2 或者 3 个关键字定义转换原点。水平的，垂直的，可选择的 Z 轴长度。</li>
+<li><p>百分比值是根据元素大小计算的。</p>
+<p><img src="/image/various_origin_calulation.jpg" alt="Various origin calculations"></p>
+</li>
+<li><p>改变原点对旋转的影响</p>
+<p><img src="/image/rotational_effects_origins.jpg" alt="The rotational effects of using various transform origins"></p>
+</li>
+<li><p>改变原点对倾斜的影响</p>
+<p><img src="/image/skew_effects_origins.jpg" alt="the skew effects of using varous transform origins"></p>
+</li>
+</ul>
+<h4 id="3D-样式"><a href="#3D-样式" class="headerlink" title="3D 样式"></a>3D 样式</h4><ul>
+<li><code>transform-style</code>属性指定了嵌套元素如何在 3D 空间中呈现。<code>flat</code>默认值，表示所有子元素在 2D 平面呈现，<code>preserve-3d</code>表示所有子元素在 3D 空间中呈现。</li>
+<li><p><code>transform-style</code>属性需要设置在父元素中，<strong>它可以被其他属性覆盖，这是因为其他属性的一些值需要元素及其子元素在平面上才能正常工作。因此，为了避免这种覆盖行为，以下属性必须设置为以下值</strong></p>
+<ul>
+<li>overflow: visible</li>
+<li>filter: none</li>
+<li>clip: auto</li>
+<li>clip-path: none</li>
+<li>mask-image: none</li>
+<li>mask-border-source: none</li>
+<li>mix-blend-mode: normal</li>
+</ul>
+</li>
+<li><p><code>flat</code>变换的效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-id">#outer</span> &#123;<span class="attribute">transform</span>: <span class="built_in">perspective</span>(750px) <span class="built_in">rotateY</span>(60deg) <span class="built_in">rotateX</span>(-20deg);&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-id">#inner</span> &#123;<span class="attribute">transform</span>: <span class="built_in">perspective</span>(750px) <span class="built_in">translateZ</span>(60px) <span class="built_in">rotateX</span>(45deg);&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/image/flat_transform.jpg" alt="the effects of a flat transform style"></p>
+</li>
+<li><p><code>preserve-3d</code>变换的效果</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-id">#outer</span> &#123;<span class="attribute">transform</span>: <span class="built_in">perspective</span>(750px) <span class="built_in">rotateY</span>(60deg) <span class="built_in">rotateX</span>(-20deg); <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;&#125;</span><br><span class="line"><span class="selector-tag">div</span><span class="selector-id">#inner</span> &#123;<span class="attribute">transform</span>: <span class="built_in">perspective</span>(750px) <span class="built_in">translateZ</span>(60px) <span class="built_in">rotateX</span>(45deg);&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/image/preserve_3d_transform.jpg" alt="the effects of a 3d-preserved transform style"></p>
+</li>
+</ul>
+<h4 id="视角转换"><a href="#视角转换" class="headerlink" title="视角转换"></a>视角转换</h4><ul>
+<li><p><code>perspective</code>属性，应用于父元素，规定其所有子元素的透视深度(<strong>Z 平面距离用户之间的距离</strong>)；<code>perspective()</code>函数，只定义了给定该函数的元素的透视深度。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;<span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d; <span class="attribute">border</span>:<span class="number">1px</span> solid gray; <span class="attribute">width</span>: <span class="number">660px</span>&#125;</span><br><span class="line"><span class="selector-tag">img</span> &#123;<span class="attribute">margin</span>: <span class="number">10px</span>;&#125;</span><br><span class="line"><span class="selector-id">#one</span> &#123;<span class="attribute">perspective</span>: none&#125;;</span><br><span class="line"><span class="selector-id">#one</span> <span class="selector-tag">img</span> &#123;<span class="attribute">transform</span>: <span class="built_in">perspective</span>(800px) <span class="built_in">rotateX</span>(-50grad);&#125;</span><br><span class="line"><span class="selector-id">#two</span> &#123;<span class="attribute">perspective</span>: <span class="number">800px</span>;&#125;</span><br><span class="line"><span class="selector-id">#two</span> <span class="selector-tag">img</span> &#123;<span class="attribute">transform</span>: <span class="built_in">rotateX</span>(-50grad);&#125;</span><br><span class="line"></span><br><span class="line">&lt;div&gt;&lt;img src="rsq.gif"&gt;&lt;img src="rsq.gif"&gt;&lt;img src="rsq.gif"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="one"&gt;&lt;img src="rsq.gif"&gt;&lt;img src="rsq.gif"&gt;&lt;img src="rsq.gif"&gt;&lt;/div&gt;</span><br><span class="line">&lt;div id="two"&gt;&lt;img src="rsq.gif"&gt;&lt;img src="rsq.gif"&gt;&lt;img src="rsq.gif"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/image/shared_perspective_vs_individual_perspectives.jpg" alt="Shared perspective versus individual perspectives"></p>
+</li>
+<li><p><code>perspective-origin</code>定义了观察者视角相对于元素的位置（视线灭点），默认是元素的中心位置。其值同<code>transform-origin</code>相似。例如<code>perspective-origin: left top;</code>，即其视线灭点在<code>左上角</code></p>
+</li>
+</ul>
+<h4 id="背面处理"><a href="#背面处理" class="headerlink" title="背面处理"></a>背面处理</h4><p><code>backface-visibility</code>属性指定当元素背面朝向观察者时是否可见(<code>hidden</code>,<code>visible</code>)。</p>
+<ul>
+<li>在 3D 空间，旋转时，默认值，背面是可见的。</li>
+<li><p>例子，[悬浮翻面]</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">section</span> &#123;<span class="attribute">position</span>: relative;&#125;</span><br><span class="line"><span class="selector-tag">img</span>, <span class="selector-tag">div</span> &#123;<span class="attribute">position</span>: absolute; <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>;&#125;</span><br><span class="line"><span class="selector-tag">div</span> &#123;<span class="attribute">transform</span>: <span class="built_in">rotateY</span>(180deg); <span class="attribute">backface-visibility</span>: hidden;</span><br><span class="line"><span class="attribute">background</span>: <span class="built_in">rgba</span>(255,255,255,0.85);&#125;</span><br><span class="line"><span class="selector-tag">section</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">transform</span>: <span class="built_in">rotateY</span>(180deg); <span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;<span class="selector-tag">section</span>&gt;</span><br><span class="line">&lt;img src="photo.jpg" alt=""&gt;</span><br><span class="line">&lt;div class="info"&gt;(…info goes here…)&lt;/div&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="/image/backface_visibility_example.jpg" alt="Photo on the front, information on the back"></p>
+</li>
+</ul>
+
       
     </div>
     <div class="article-footer">
