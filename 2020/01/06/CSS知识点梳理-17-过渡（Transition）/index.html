@@ -17,33 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>git基础(8)-分支开发本地工作流(Branching Workflows) | better-jiang</title>
-  <meta name="description" content="由于分支的便捷，用于开发中，渐渐衍生出了基于用分支进行开发的工作模式。最典型工作流：  Git Flow GitHub Flow GitLab Flow  但是，此文不会介绍，因为现在小编根本不懂，对此也很迷。 如想简单了解，请查看 Git 工作流程简介本文，主要讲下 长期分支、特性分支、远程分支 长期分支根据项目开发的不同阶段，同时有多个开发的分支，且是长期的，一般不会删除。再定期地把某些特性分">
-<meta name="keywords" content="Git">
+  <title>CSS知识点梳理(17)-过渡（Transition） | better-jiang</title>
+  <meta name="description" content="通常，当一个 CSS 属性值改变时，改变是瞬间发生的。新的属性在重绘、或必要时回流+重绘受影响内容所需要的毫秒内（似乎时瞬间，渲染时间小于 16 毫秒）替换旧属性。CSS 中transition提供了一种方法来控制属性在一段时间内的改变，可以使属性值逐渐 变化。 过渡属性在 CSS 中，transition有四个属性：transition-property,transition-duration,">
+<meta name="keywords" content="CSS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git基础(8)-分支开发本地工作流(Branching Workflows)">
-<meta property="og:url" content="https://better-jiang.github.io/2019/02/21/git基础-8-分支开发本地工作流-Branching-Workflows/index.html">
+<meta property="og:title" content="CSS知识点梳理(17)-过渡（Transition）">
+<meta property="og:url" content="https://better-jiang.github.io/2020/01/06/CSS知识点梳理-17-过渡（Transition）/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
-<meta property="og:description" content="由于分支的便捷，用于开发中，渐渐衍生出了基于用分支进行开发的工作模式。最典型工作流：  Git Flow GitHub Flow GitLab Flow  但是，此文不会介绍，因为现在小编根本不懂，对此也很迷。 如想简单了解，请查看 Git 工作流程简介本文，主要讲下 长期分支、特性分支、远程分支 长期分支根据项目开发的不同阶段，同时有多个开发的分支，且是长期的，一般不会删除。再定期地把某些特性分">
+<meta property="og:description" content="通常，当一个 CSS 属性值改变时，改变是瞬间发生的。新的属性在重绘、或必要时回流+重绘受影响内容所需要的毫秒内（似乎时瞬间，渲染时间小于 16 毫秒）替换旧属性。CSS 中transition提供了一种方法来控制属性在一段时间内的改变，可以使属性值逐渐 变化。 过渡属性在 CSS 中，transition有四个属性：transition-property,transition-duration,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://better-jiang.github.io/image/moreMegre.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/remote_repo.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/local_repo.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/push1.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/push2.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/push3.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/fetch1.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/fetch2.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/fetch_megre.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/fetch1.png">
-<meta property="og:image" content="https://better-jiang.github.io/image/pull2.png">
-<meta property="og:updated_time" content="2019-02-22T02:15:04.930Z">
+<meta property="og:updated_time" content="2020-01-06T03:40:21.893Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git基础(8)-分支开发本地工作流(Branching Workflows)">
-<meta name="twitter:description" content="由于分支的便捷，用于开发中，渐渐衍生出了基于用分支进行开发的工作模式。最典型工作流：  Git Flow GitHub Flow GitLab Flow  但是，此文不会介绍，因为现在小编根本不懂，对此也很迷。 如想简单了解，请查看 Git 工作流程简介本文，主要讲下 长期分支、特性分支、远程分支 长期分支根据项目开发的不同阶段，同时有多个开发的分支，且是长期的，一般不会删除。再定期地把某些特性分">
-<meta name="twitter:image" content="https://better-jiang.github.io/image/moreMegre.png">
+<meta name="twitter:title" content="CSS知识点梳理(17)-过渡（Transition）">
+<meta name="twitter:description" content="通常，当一个 CSS 属性值改变时，改变是瞬间发生的。新的属性在重绘、或必要时回流+重绘受影响内容所需要的毫秒内（似乎时瞬间，渲染时间小于 16 毫秒）替换旧属性。CSS 中transition提供了一种方法来控制属性在一段时间内的改变，可以使属性值逐渐 变化。 过渡属性在 CSS 中，transition有四个属性：transition-property,transition-duration,">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://better-jiang.github.io/2019/02/21/git基础-8-分支开发本地工作流-Branching-Workflows/index.html">
+  <link rel="canonical" href="https://better-jiang.github.io/2020/01/06/CSS知识点梳理-17-过渡（Transition）/index.html">
   
     <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
   
@@ -332,14 +320,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-git基础-8-分支开发本地工作流-Branching-Workflows" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-CSS知识点梳理-17-过渡（Transition）" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      git基础(8)-分支开发本地工作流(Branching Workflows)
+      CSS知识点梳理(17)-过渡（Transition）
     </h1>
   
 
@@ -347,8 +335,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/02/21/git基础-8-分支开发本地工作流-Branching-Workflows/" class="article-date">
-	  <time datetime="2019-02-21T08:41:02.000Z" itemprop="datePublished">2019-02-21</time>
+	<a href="/2020/01/06/CSS知识点梳理-17-过渡（Transition）/" class="article-date">
+	  <time datetime="2020-01-06T02:46:11.000Z" itemprop="datePublished">2020-01-06</time>
 	</a>
 </span>
         
@@ -360,7 +348,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Git/">Git</a>
+	<a class="article-tag-link" href="/tags/CSS/">CSS</a>
   </span>
 
 
@@ -373,84 +361,15 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/02/21/git基础-8-分支开发本地工作流-Branching-Workflows/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/01/06/CSS知识点梳理-17-过渡（Transition）/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <p>由于分支的便捷，用于开发中，渐渐衍生出了基于用分支进行开发的工作模式。最典型工作流：</p>
-<ul>
-<li><a href="https://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener">Git Flow</a></li>
-<li><a href="https://guides.github.com/introduction/flow/" target="_blank" rel="noopener">GitHub Flow</a></li>
-<li><a href="https://docs.gitlab.com/ee/workflow/gitlab_flow.html" target="_blank" rel="noopener">GitLab Flow</a></li>
-</ul>
-<p>但是，此文不会介绍，因为现在小编根本不懂，对此也很迷。 如想简单了解，请查看 <a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html" target="_blank" rel="noopener">Git 工作流程简介</a><br>本文，主要讲下 长期分支、特性分支、远程分支</p>
-<h3 id="长期分支"><a href="#长期分支" class="headerlink" title="长期分支"></a>长期分支</h3><p>根据项目开发的不同阶段，同时有多个开发的分支，且是长期的，一般不会删除。再定期地把某些特性分支合并入其他分支。典型方式: 根据不同层次的稳定性，建立分支</p>
-<ul>
-<li>master 分支:保留完全稳定的代码，已经发布</li>
-<li>release 分支： 要发布的分支，发布且经过一段时间正式运行稳定后，合并入 master 分支</li>
-<li>test 分支: 测试的分支，经过测试后，合并入 release 分支</li>
-<li>develop 分支：开发分支,开发人员测试后，合并入 test 分支</li>
-</ul>
-<p><strong>这么做使分支具有不同级别的稳定性，当分支具有一定程度的稳定性后，再把它们合并入具有更改级别稳定性的分支中。</strong></p>
-<h3 id="特性分支"><a href="#特性分支" class="headerlink" title="特性分支"></a>特性分支</h3><p>当工作被分散到不同的流水线中时，需要快速并且完整的在不同流水线中切换。而使用特性短期分支，针对不同流水线中的工作创建与之相关的分支，在不同分支间切换 来实现单一特性的工作。在特性分支修改完成后，再合并，而不用在乎它们建立的顺序或工作进度。</p>
-<p><img src="/image/moreMegre.png" alt="多个特性分支"></p>
-<h3 id="远程分支"><a href="#远程分支" class="headerlink" title="远程分支"></a>远程分支</h3><ul>
-<li>分支(branch): z 指向某个提交对象的可变指针</li>
-<li>跟踪分支(tracking brnch): 本地的分支，用户可写</li>
-<li>远程跟踪分支(remote tracking branch): 远程分支状态的引用（指向远程分支的指针），用户只读，本地不能移动,在网络通信操作中，会自动移动。以 <code>[remote]/[branch]</code> 形式命名</li>
-</ul>
-<h4 id="git-clone-过程"><a href="#git-clone-过程" class="headerlink" title="git clone 过程"></a>git clone 过程</h4><ul>
-<li><p>克隆前【远程仓库】的状态： 远程仓库<code>master</code>分支指向<code>C2</code>的 commit</p>
-<p><img src="/image/remote_repo.png" alt="远程仓库"></p>
-</li>
-<li><p>将数据克隆到本地之后</p>
-<ul>
-<li>首先 生成一个 origin/master 的指针指向最新的提交 C2.这个 origin/master 就是远程跟踪分支，用户只读</li>
-<li>然后 生产一个和 orign 的 master 分支指向同一提交 C2 的本地 master 分支.</li>
-</ul>
-<p><img src="/image/local_repo.png" alt="本地仓库"></p>
-</li>
-</ul>
-<h4 id="git-push-过程"><a href="#git-push-过程" class="headerlink" title="git push 过程"></a>git push 过程</h4><ul>
-<li>克隆后，修改本地文件并提交。此时 本地 master 分支指向 C3</li>
-<li><p><img src="/image/push1.png" alt="git push before"></p>
-</li>
-<li><p><code>git push</code> 对远程和本地都做成修改</p>
-<ul>
-<li><p>修改远程的 master 分支 指向 至 C3</p>
-<p><img src="/image/push2.png" alt="git push remote"></p>
-</li>
-<li><p>修改本地的 远程跟踪分支 orign/master 指向 C3</p>
-<p><img src="/image/push3.png" alt="git push local"></p>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="git-fetch-git-merge-过程"><a href="#git-fetch-git-merge-过程" class="headerlink" title="git fetch + git merge 过程"></a>git fetch + git merge 过程</h4><p><code>git fetch</code>从远端仓库抓取本地没有的数据，并更新本地数据库，移动 origin/master 指针指向新的、更新后的位置。<strong>但不会修改本地文件， 需要显式的合并</strong></p>
-<ul>
-<li><p>fetch 之前，远程 处于 C4, 本地处于 C3</p>
-<p><img src="/image/fetch1.png" alt="fetch before"></p>
-</li>
-<li><p>fetch 之后，本地的 origin/master 分支指向了最新的 C4</p>
-<p><img src="/image/fetch2.png" alt="fetch after"></p>
-</li>
-<li><p>通过 <code>git merge origin/master</code> 合并本地分支 ,merge 之后，本地 master 分支指向 C4.</p>
-<p><img src="/image/fetch_megre.png" alt="merge origin/master"></p>
-</li>
-</ul>
-<h4 id="git-pull-过程"><a href="#git-pull-过程" class="headerlink" title="git pull 过程"></a>git pull 过程</h4><p><code>git pull = git fetch + git merge</code>，本地仓库更新 origin/master 分支，将其指向 C4，再将其，合并入本地 master 分支,使得本地 master 分支也指向 C4</p>
-<ul>
-<li><p>git pull 之前，远程在 C4， 本地在 C3</p>
-</li>
-<li><p><img src="/image/fetch1.png" alt="git pull before"></p>
-</li>
-<li><p>git pull 之后， 本地仓库更新了 origin/master，将其指向 C4;然后更新本地 master 分支，将其指向 C4</p>
-<p><img src="/image/pull2.png" alt="git pull before"></p>
-</li>
-</ul>
-
+        <p>通常，当一个 CSS 属性值改变时，改变是瞬间发生的。新的属性在重绘、或必要时回流+重绘受影响内容所需要的毫秒内（似乎时瞬间，渲染时间小于 16 毫秒）替换旧属性。CSS 中<code>transition</code>提供了一种方法来控制属性在一段时间内的改变，可以使属性值逐渐 变化。</p>
+<h3 id="过渡属性"><a href="#过渡属性" class="headerlink" title="过渡属性"></a>过渡属性</h3><p>在 CSS 中，<code>transition</code>有四个属性：<code>transition-property</code>,<code>transition-duration</code>,<code>transition-timing-function</code>,<code>transition-delay</code>.<br>元素上的<code>transition</code>与常规样式一起声明。每当目标属性更改时，如果在该属性上设置了<code>transition</code>，则浏览器使用<code>transition</code>使更改逐步进行。</p>
+<h3 id="反向：过渡回基线"><a href="#反向：过渡回基线" class="headerlink" title="反向：过渡回基线"></a>反向：过渡回基线</h3><h3 id="动画属性和值"><a href="#动画属性和值" class="headerlink" title="动画属性和值"></a>动画属性和值</h3><h3 id="降级和增强"><a href="#降级和增强" class="headerlink" title="降级和增强"></a>降级和增强</h3>
       
     </div>
     <div class="article-footer">
@@ -459,7 +378,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://better-jiang.github.io/2019/02/21/git基础-8-分支开发本地工作流-Branching-Workflows/" title="git基础(8)-分支开发本地工作流(Branching Workflows)" target="_blank" rel="external">https://better-jiang.github.io/2019/02/21/git基础-8-分支开发本地工作流-Branching-Workflows/</a>
+      <a href="https://better-jiang.github.io/2020/01/06/CSS知识点梳理-17-过渡（Transition）/" title="CSS知识点梳理(17)-过渡（Transition）" target="_blank" rel="external">https://better-jiang.github.io/2020/01/06/CSS知识点梳理-17-过渡（Transition）/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -505,13 +424,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/02/25/git基础-8-重置揭秘/" title="git基础(8)-重置揭秘"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/02/21/git基础-7-分支-branch/" title="git基础(7)-分支(branch)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/01/04/CSS知识点梳理-16-转换（Transform）/" title="CSS知识点梳理(16)-转换（Transform）"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     

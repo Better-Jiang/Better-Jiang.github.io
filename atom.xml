@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://better-jiang.github.io/"/>
-  <updated>2020-01-05T09:11:44.851Z</updated>
+  <updated>2020-01-06T03:40:21.893Z</updated>
   <id>https://better-jiang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS知识点梳理(17)-过渡（Transition）</title>
+    <link href="https://better-jiang.github.io/2020/01/06/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-17-%E8%BF%87%E6%B8%A1%EF%BC%88Transition%EF%BC%89/"/>
+    <id>https://better-jiang.github.io/2020/01/06/CSS知识点梳理-17-过渡（Transition）/</id>
+    <published>2020-01-06T02:46:11.000Z</published>
+    <updated>2020-01-06T03:40:21.893Z</updated>
+    
+    <content type="html"><![CDATA[<p>通常，当一个 CSS 属性值改变时，改变是瞬间发生的。新的属性在重绘、或必要时回流+重绘受影响内容所需要的毫秒内（似乎时瞬间，渲染时间小于 16 毫秒）替换旧属性。CSS 中<code>transition</code>提供了一种方法来控制属性在一段时间内的改变，可以使属性值逐渐 变化。</p><h3 id="过渡属性"><a href="#过渡属性" class="headerlink" title="过渡属性"></a>过渡属性</h3><p>在 CSS 中，<code>transition</code>有四个属性：<code>transition-property</code>,<code>transition-duration</code>,<code>transition-timing-function</code>,<code>transition-delay</code>.<br>元素上的<code>transition</code>与常规样式一起声明。每当目标属性更改时，如果在该属性上设置了<code>transition</code>，则浏览器使用<code>transition</code>使更改逐步进行。</p><h3 id="反向：过渡回基线"><a href="#反向：过渡回基线" class="headerlink" title="反向：过渡回基线"></a>反向：过渡回基线</h3><h3 id="动画属性和值"><a href="#动画属性和值" class="headerlink" title="动画属性和值"></a>动画属性和值</h3><h3 id="降级和增强"><a href="#降级和增强" class="headerlink" title="降级和增强"></a>降级和增强</h3>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;通常，当一个 CSS 属性值改变时，改变是瞬间发生的。新的属性在重绘、或必要时回流+重绘受影响内容所需要的毫秒内（似乎时瞬间，渲染时间小于 16 毫秒）替换旧属性。CSS 中&lt;code&gt;transition&lt;/code&gt;提供了一种方法来控制属性在一段时间内的改变，可以使属性
+      
+    
+    </summary>
+    
+      <category term="技术总结" scheme="https://better-jiang.github.io/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="CSS" scheme="https://better-jiang.github.io/tags/CSS/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS知识点梳理(16)-转换（Transform）</title>
@@ -491,32 +516,6 @@
       
         &lt;h3 id=&quot;Chapter-2&quot;&gt;&lt;a href=&quot;#Chapter-2&quot; class=&quot;headerlink&quot; title=&quot;Chapter 2&quot;&gt;&lt;/a&gt;Chapter 2&lt;/h3&gt;&lt;hr&gt;
 &lt;h4 id=&quot;基本样式规则&quot;&gt;&lt;a href=&quot;#基本样式规则&quot; class=
-      
-    
-    </summary>
-    
-      <category term="技术总结" scheme="https://better-jiang.github.io/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/"/>
-    
-    
-      <category term="CSS" scheme="https://better-jiang.github.io/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS知识点梳理(1)</title>
-    <link href="https://better-jiang.github.io/2019/12/09/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-1/"/>
-    <id>https://better-jiang.github.io/2019/12/09/CSS知识点梳理-1/</id>
-    <published>2019-12-09T01:11:41.000Z</published>
-    <updated>2019-12-09T09:40:50.744Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h3><hr><h4 id="元素"><a href="#元素" class="headerlink" title="元素"></a>元素</h4><ul><li>可替换元素：元素内容被文档内容不能直接显示的内容所替换，根据元素的标签和属性来决定元素的具体显示的内容；替换元素可用 height 和 width 属性进行缩放；如<code>&lt;img&gt;</code>，本身没具体内容，被文档外部的图像替换。<code>&lt;input&gt;</code>，由一个单选按钮、复选框、文本输入框替换。</li><li>不可替换元素：元素内容由浏览器在元素本身生产的框中显示。如<code>&lt;span&gt;</code>、<code>&lt;h1&gt;</code>、<code>&lt;td&gt;`</code>、</li><li> `</li><li>块级元素：默认地生成一个元素框，它会填充起父元素的内容区，且独占一行，旁边不能有其它元素。替换元素可以是块级元素，但通常都不是。如<code>p</code>、<code>div</code>、<code>li</code></li><li>行内元素：在一个文本行内生成元素框，且不会破坏该行的流。</li><li>HTML、CSS 都有块级元素、行内元素的概念，但存有一个重要差别。HTML 中，块级元素不能继承自行内元素。CSS 中，对显示角色如何嵌套不存在任何限制。</li></ul><h4 id="CSS-与-HTML-的结合"><a href="#CSS-与-HTML-的结合" class="headerlink" title="CSS 与 HTML 的结合"></a>CSS 与 HTML 的结合</h4><ul><li>外部样式：使用 link 标签来链接样式表和 HTML 文档。</li><li><p>文档样式</p><ul><li>用<code>&lt;style&gt;</code>元素包裹，且一定要是用 type 属性<code>type=&quot;text/css&quot;</code></li><li>使用<code>@import</code>指令，必须放在样式表开头。<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;style type="text/css"&gt;</span><br><span class="line">@<span class="keyword">import</span> url(other.css) print, projection;</span><br><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></li></ul></li><li><p>行内/内联样式：使用<code>style</code>属性为单个元素指定样式。</p></li></ul><h4 id="浏览器供应商前缀"><a href="#浏览器供应商前缀" class="headerlink" title="浏览器供应商前缀"></a>浏览器供应商前缀</h4><p>浏览器供应商 标记 CSS 属性、值作为实验或专有的一中方法</p><table><thead><tr><th>Prefix</th><th>Vendor</th></tr></thead><tbody><tr><td>-epub-</td><td>epub 格式</td></tr><tr><td>-moz-</td><td>firefox</td></tr><tr><td>-ms-</td><td>IE</td></tr><tr><td>-o-</td><td>Opera</td></tr><tr><td>-webkit-</td><td>基于 webkit 内核，Safari、Chrome 等</td></tr></tbody></table><h4 id="媒体查询"><a href="#媒体查询" class="headerlink" title="媒体查询"></a>媒体查询</h4><p>可用地方：</p><ul><li>link 元素中 media 属性</li><li>style 元素中 media 属性</li><li>@import 声明中，媒体描述部分</li><li>@media 声明中，媒体描述部分</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;link type=&quot;text/css&quot; ref=&quot;sheetstyle&quot; href=&quot;bar.css&quot; media=&quot;screen, print&quot;&gt;</span><br><span class="line">&lt;style type=&quot;text/css&quot; media=&quot;screen, print&quot;&gt;&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">@import url(bar.css) screen, print;</span><br><span class="line">@media screen, print &#123;</span><br><span class="line">  h1 &#123;</span><br><span class="line">    color: red;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h4 id="特性查询"><a href="#特性查询" class="headerlink" title="特性查询"></a>特性查询</h4><p>在某个 CSS 特性支持下应用 CSS 规则。例如，此样式块仅应用于支持、特性查询和网格布局的浏览器中，若不支持，则完全跳过样式块。</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">supports</span> (display: grid) &#123;</span><br><span class="line">  <span class="selector-id">#main</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: grid;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Chapter-1&quot;&gt;&lt;a href=&quot;#Chapter-1&quot; class=&quot;headerlink&quot; title=&quot;Chapter 1&quot;&gt;&lt;/a&gt;Chapter 1&lt;/h3&gt;&lt;hr&gt;
-&lt;h4 id=&quot;元素&quot;&gt;&lt;a href=&quot;#元素&quot; class=&quot;headerl
       
     
     </summary>
