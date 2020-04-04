@@ -37,6 +37,8 @@
   
   
   
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
   
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
   
@@ -349,6 +351,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/04/03/可替换元素与非可替换元素/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 617(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
+	
+
   </p>
 </article>
 
@@ -386,6 +395,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/04/03/《CSS权威指南》-Chapter1-2 - CSS与HTML结合/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
+	
+
   </p>
 </article>
 
@@ -423,6 +439,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/27/《CSS权威指南》-Chapter1-1 - CSS和文档/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 11(分)</span>
+	
+
   </p>
 </article>
 
@@ -460,6 +483,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/27/直面bug，而后反思/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.9k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6(分)</span>
+	
+
   </p>
 </article>
 
@@ -497,6 +527,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/20/《我从新疆来2》读后感/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.7k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
+	
+
   </p>
 </article>
 
@@ -534,6 +571,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/13/《CSS权威指南》-前言/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.7k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 13(分)</span>
+	
+
   </p>
 </article>
 
@@ -571,6 +615,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/13/《尘埃落定》读后感/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.8k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6(分)</span>
+	
+
   </p>
 </article>
 
@@ -608,6 +659,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/02/Vue-查缺补漏-5-异步更新队列/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 434(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+	
+
   </p>
 </article>
 
@@ -645,6 +703,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/02/Vue-查缺补漏-4-组件高级用法/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 435(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+	
+
   </p>
 </article>
 
@@ -682,6 +747,13 @@
 
     <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/03/02/Vue-查缺补漏-3-插槽-slot/#comments" class="article-comment-link">评论</a></span>
     
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 992(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 4(分)</span>
+	
+
   </p>
 </article>
 
@@ -769,6 +841,35 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
 
 
 

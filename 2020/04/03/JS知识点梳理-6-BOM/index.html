@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://better-jiang.github.io/image/pageSize.png">
 <meta property="og:image" content="https://better-jiang.github.io/image/window_config.png">
 <meta property="og:image" content="https://better-jiang.github.io/image/navigator.png">
-<meta property="og:updated_time" content="2020-04-03T02:45:29.800Z">
+<meta property="og:updated_time" content="2020-04-04T16:20:09.966Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS知识点梳理(6)-BOM">
 <meta name="twitter:description" content="BOM 即浏览器对象模型，是与浏览器交换的方法和接口。它提供了可以与浏览器窗口进行交互的对象结构，BOM 由多个对象构成，其中代表浏览器窗口的 window 对象是 OBM 的顶层对象。 window 对象BOM 的核心对象是 window,它表示浏览器的一个实例。在浏览器中，window 对象有双重角色。   是 JavaScript 访问浏览器窗口的一个接口    也是 ECMAScript">
@@ -46,6 +46,8 @@
   <link rel="stylesheet" href="/css/style.css">
   
   
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
   
   
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
@@ -368,6 +370,13 @@
 
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/03/JS知识点梳理-6-BOM/#comments" class="article-comment-link">评论</a></span>
         
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.5k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
+	
+
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
@@ -571,6 +580,20 @@
 </li>
 <li><code>repalceState()</code>，修改当前历史记录项，比如想要更新状态对象 state,或者带当前历史记录的 URL</li>
 </ul>
+<blockquote>
+<p>因公</p>
+</blockquote>
+<blockquote>
+<p>[success] dd</p>
+</blockquote>
+<pre class="mermaid">graph LR;
+　　client---core;
+　　client---common;
+　　core---common;
+　　common---portal;
+　　common---Biz;
+　　Biz---ConfigService;
+　　Biz---AdminService;</pre>
 
       
     </div>
@@ -769,6 +792,35 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
       
 
 
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
 
 
 
