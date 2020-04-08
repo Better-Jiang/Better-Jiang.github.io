@@ -17,16 +17,21 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>better-jiang</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="爱学兮的小江">
-<meta property="og:url" content="https://better-jiang.github.io/index.html">
+  <title>JS知识点梳理(8)-DOM2级遍历和范围 | better-jiang</title>
+  <meta name="description" content="DOM 遍历“DOM2 级遍历和范围”模块定义了 2 个用于遍历 DOM 结构的类型：NodeIterator和TreeWalker。它们都是基于给定的起点对 DOMM 结构执行深度优先的遍历操作。 NodeIterator使用document.createNodeIterator(root,whatToShow,filter)方法创建.  root,创建NodeIterator时指定的根节点，即">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS知识点梳理(8)-DOM2级遍历和范围">
+<meta property="og:url" content="https://better-jiang.github.io/2020/04/08/JS知识点梳理-8-DOM2级遍历和范围/index.html">
 <meta property="og:site_name" content="爱学兮的小江">
+<meta property="og:description" content="DOM 遍历“DOM2 级遍历和范围”模块定义了 2 个用于遍历 DOM 结构的类型：NodeIterator和TreeWalker。它们都是基于给定的起点对 DOMM 结构执行深度优先的遍历操作。 NodeIterator使用document.createNodeIterator(root,whatToShow,filter)方法创建.  root,创建NodeIterator时指定的根节点，即">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-08T14:14:01.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="爱学兮的小江">
+<meta name="twitter:title" content="JS知识点梳理(8)-DOM2级遍历和范围">
+<meta name="twitter:description" content="DOM 遍历“DOM2 级遍历和范围”模块定义了 2 个用于遍历 DOM 结构的类型：NodeIterator和TreeWalker。它们都是基于给定的起点对 DOMM 结构执行深度优先的遍历操作。 NodeIterator使用document.createNodeIterator(root,whatToShow,filter)方法创建.  root,创建NodeIterator时指定的根节点，即">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://better-jiang.github.io/index.html">
+  <link rel="canonical" href="https://better-jiang.github.io/2020/04/08/JS知识点梳理-8-DOM2级遍历和范围/index.html">
   
     <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
   
@@ -314,43 +319,52 @@
 </aside>
 
   
-  <main class="main" role="main">
   
-  <div class="content article-list">
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-JS知识点梳理-8-DOM2级遍历和范围" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+    <div class="article-header">
+      
+        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/08/JS知识点梳理-8-DOM2级遍历和范围/">JS知识点梳理(8)-DOM2级遍历和范围</a>
+    <h1 class="article-title" itemprop="name">
+      JS知识点梳理(8)-DOM2级遍历和范围
     </h1>
   
 
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
+      
+      <div class="article-meta">
+        <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/2020/04/08/JS知识点梳理-8-DOM2级遍历和范围/" class="article-date">
-	  <time datetime="2020-04-08T09:28:11.000Z" itemprop="datePublished">4月 8</time>
+	  <time datetime="2020-04-08T09:28:11.000Z" itemprop="datePublished">2020-04-08</time>
 	</a>
 </span>
-    
+        
   <span class="article-category">
     <i class="icon icon-folder"></i>
     <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
   </span>
 
-    
+        
   <span class="article-tag">
     <i class="icon icon-tags"></i>
 	<a class="article-tag-link" href="/tags/Javascript/">Javascript</a>
   </span>
 
 
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/08/JS知识点梳理-8-DOM2级遍历和范围/#comments" class="article-comment-link">评论</a></span>
-    
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/08/JS知识点梳理-8-DOM2级遍历和范围/#comments" class="article-comment-link">评论</a></span>
+        
 	
 		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1k(字)</span>
 	
@@ -358,430 +372,189 @@
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
 	
 
-  </p>
-</article>
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="DOM-遍历"><a href="#DOM-遍历" class="headerlink" title="DOM 遍历"></a>DOM 遍历</h2><p>“DOM2 级遍历和范围”模块定义了 2 个用于遍历 DOM 结构的类型：<code>NodeIterator</code>和<code>TreeWalker</code>。它们都是基于给定的起点对 DOMM 结构执行深度优先的遍历操作。</p>
+<h3 id="NodeIterator"><a href="#NodeIterator" class="headerlink" title="NodeIterator"></a>NodeIterator</h3><p>使用<code>document.createNodeIterator(root,whatToShow,filter)</code>方法创建.</p>
+<ul>
+<li><code>root</code>,创建<code>NodeIterator</code>时指定的根节点，即搜索的起点</li>
+<li><code>whatToShow</code>,表示要呈现的 Node 类型，由常量构成的位掩码。不匹配的节点被跳过。该参数的值以常量形式在 NodeFilter 类型中定义，如下所示<ul>
+<li><code>NodeFilter.SHOW_ALL</code>:显示所有类型的节点</li>
+<li><code>NodeFilter.SHOW_ELEMENT</code>:显示元素节点</li>
+<li><code>NodeFilter.SHOW_TEXT</code>:显示文本节点</li>
+<li><code>NodeFilter.SHOW_DOCUMENT</code>:显示文档节点</li>
+<li><code>NodeFilter.SHOW_COMMENT</code>:显示注释节点</li>
+</ul>
+</li>
+<li><code>filter</code>,用来指定自定义的 NodeFilter 对象，或者指定一个功能类似节点过滤器的函数。每个 NodeFilter 对象只有一个方法，即<code>acceptNode()</code>,如果应该访问给定节点，该方法返回<code>NodeFilter.FILTER_ACCEPT</code>,如果不应该访问给定节点，则返回<code>NodeFilter.FILTER_SKIP</code>,如果不指定，则传入<code>null</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 只显示&lt;p&gt;元素的节点迭代器</span></span><br><span class="line"> <span class="keyword">var</span> filterObj = &#123;</span><br><span class="line">     acceptNode: <span class="function"><span class="keyword">function</span> (<span class="params">node</span>) </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> node.nodeType === Node.ELEMENT_NODE &amp;&amp;</span><br><span class="line">         node.tagName.toLowerCase() === <span class="string">"p"</span></span><br><span class="line">         ? NodeFilter.FILTER_ACCEPT</span><br><span class="line">         : NodeFilter.FILTER_SKIP;</span><br><span class="line">     &#125;,</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="keyword">var</span> iterator = <span class="built_in">document</span>.createNodeIterator(</span><br><span class="line">     <span class="built_in">document</span>.body,</span><br><span class="line">     NodeFilter.SHOW_ALL,</span><br><span class="line">     filterObj</span><br><span class="line"> );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> filterFn = <span class="function"><span class="keyword">function</span> (<span class="params">node</span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">"filterFn node"</span>, node);</span><br><span class="line">   <span class="keyword">return</span> node.tagName.toLowerCase() === <span class="string">"p"</span></span><br><span class="line">     ? NodeFilter.FILTER_ACCEPT</span><br><span class="line">     : NodeFilter.FILTER_SKIP;</span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> iterator2 = <span class="built_in">document</span>.createNodeIterator(</span><br><span class="line">   <span class="built_in">document</span>.body,</span><br><span class="line">   NodeFilter.SHOW_ELEMENT,</span><br><span class="line">   filterFn</span><br><span class="line"> );</span><br></pre></td></tr></table></figure>
+<p><code>NodeIterator</code>类型有 2 个方法</p>
+<ul>
+<li><code>nextNode()</code>,返回下一个节点，不存在返回<code>null</code></li>
+<li><code>previousNode()</code>,返回前一个节点，不存在返回<code>null</code></li>
+</ul>
+<h3 id="TreeWalker"><a href="#TreeWalker" class="headerlink" title="TreeWalker"></a>TreeWalker</h3><p>TreeWalker 是 NodeIterator 的更高级版本。使用<code>document.createTreeWalker(root,whatToSHow,filter)</code>，参数同<code>doucument.createNodeIterator()</code>方法相同.但 filter 可以返回的值不同。可以使用<code>NodeFilter.FILTER_REJECT</code></p>
+<ul>
+<li>在使用<code>NodeIterator</code>对象时，<code>NodeFilter.FILTER_REJECT</code>与<code>NodeFilter.FILTER_SKIP</code>的作用相同</li>
+<li><p>在使用<code>TreeWalker</code>对象时，<code>NodeFilter.FILTER_SKIP</code>会跳过相应节点并前进到子树的下一个节点，而<code>NodeFilter.FILTER_REJECT</code>会跳过相应节点以及该节点的整个子树。<br>除了包含<code>nextNode()</code>，<code>previousNode()</code>方法外，还提供了用于不同方向上的遍历方法</p>
+</li>
+<li><p><code>parentNode()</code>,遍历到当前节点的父节点</p>
+</li>
+<li><code>firstChild()</code>,遍历到当前节点的第一个子节点</li>
+<li><code>lastChild()</code>,遍历到当前节点的最后一个子节点</li>
+<li><code>nextSibling()</code>,遍历到当前节点的下一个同辈节点</li>
+<li><code>previousSibling()</code>,遍历到当前节点的上一个同辈节点</li>
+</ul>
+<h2 id="DOM-范围"><a href="#DOM-范围" class="headerlink" title="DOM 范围"></a>DOM 范围</h2><p>“DOM2 级遍历和范围”中定义了范围（Range）接口，通过该接口可以选择文档中的一个区域，而不必考虑节点的界限。可以<code>Document</code>对象中的<code>creanteRange()</code>方法创建 Range。每一个范围由一个 Range 类型的实例表示</p>
+<h3 id="Range-属性"><a href="#Range-属性" class="headerlink" title="Range 属性"></a>Range 属性</h3><ul>
+<li><code>startContainer</code>,包含范围起点的节点</li>
+<li><code>startOffset</code>,范围在<code>startContainer</code>中起点的偏移量</li>
+<li><code>endContainer</code>,包含范围终点的节点</li>
+<li><code>endOffset</code>,范围在<code>endContainer</code>中终点的偏移量</li>
+<li><code>commonAncestorContainer</code>,包含整个<code>startContainer</code>和<code>endContainer</code>的共同的祖先节点</li>
+</ul>
+<h3 id="Range-方法"><a href="#Range-方法" class="headerlink" title="Range 方法"></a>Range 方法</h3><h4 id="简单的范围-定位方法"><a href="#简单的范围-定位方法" class="headerlink" title="简单的范围 定位方法"></a>简单的范围 定位方法</h4><ul>
+<li><code>selectNode(node)</code>,范围设置为包含整个给定的 node 节点（包括节点本身及其内容），此时范围的<code>startContainer</code>和<code>endContainer</code>属性是 node 节点的父节点</li>
+<li><code>seletNodeContents(node)</code>，范围设置为包含给定 node 节点的内容。此时范围的<code>startContainer</code>和<code>endContainer</code>属性就是给定 node 节点，<code>startOffset</code>为 0，<code>endOffset</code>为 node 节点的字符数或子节点个数</li>
+</ul>
+<h4 id="复杂的范围-定位方法"><a href="#复杂的范围-定位方法" class="headerlink" title="复杂的范围 定位方法"></a>复杂的范围 定位方法</h4><ul>
+<li><code>setStart(startNode, startOffset)</code>,设置范围的起始位置，参照节点<code>startNode</code>变成范围<code>startContainer</code>属性的值，偏移量<code>startOffset</code>变成范围<code>startOffset</code>属性的值。</li>
+<li><code>setend(endNode,endOffset)</code>，设置范围的终点。</li>
+</ul>
+<h4 id="范围-编辑方法"><a href="#范围-编辑方法" class="headerlink" title="范围 编辑方法"></a>范围 编辑方法</h4><ul>
+<li><code>deleteContents()</code>,从文档中移除 范围中的内容</li>
+<li><code>extractContents()</code>,把范围中的内容从文档移动到一个文档片段中</li>
+<li><code>cloneContents()</code>,返回一个包含范围中内容的文档片段</li>
+<li><code>insertNode(newNode)</code>,在范围的起始位置插入给定节点</li>
+<li><code>cloneRange()</code>,复制范围，返回一个克隆的范围 对象。</li>
+<li><code>detach()</code>,清理范围，在使用完范围后，最后调用<code>detach()</code>方法，以便从创建范围的文档中分离处该范围，同时要解除对范围的引用（设置为 null），从而回收内存</li>
+</ul>
 
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
     
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://better-jiang.github.io/2020/04/08/JS知识点梳理-8-DOM2级遍历和范围/" title="JS知识点梳理(8)-DOM2级遍历和范围" target="_blank" rel="external">https://better-jiang.github.io/2020/04/08/JS知识点梳理-8-DOM2级遍历和范围/</a>
+    </li>
     
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/08/JS知识点梳理-7-DOM/">JS知识点梳理(7)-DOM</a>
-    </h1>
-  
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
 
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Better-Jiang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Better-Jiang" target="_blank"><span class="text-dark">爱学兮的小江</span><small class="ml-1x">Web前端 &amp; Vue</small></a></h3>
+        <div>前端狗，爱思考，爱码字</div>
+      </div>
+    </figure>
   </div>
+</div>
+
+
+    </div>
+  </article>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/04/08/JS知识点梳理-7-DOM/" class="article-date">
-	  <time datetime="2020-04-08T00:25:53.000Z" itemprop="datePublished">4月 8</time>
-	</a>
-</span>
     
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
-  </span>
-
+  <section id="comments">
+  	
+           
     
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Javascript/">Javascript</a>
-  </span>
+  </section>
 
 
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/08/JS知识点梳理-7-DOM/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.3k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/03/JS知识点梳理-6-BOM/">JS知识点梳理(6)-BOM</a>
-    </h1>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
   
-
-  </div>
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/04/08/JS知识点梳理-7-DOM/" title="JS知识点梳理(7)-DOM"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/04/03/JS知识点梳理-6-BOM/" class="article-date">
-	  <time datetime="2020-04-02T21:44:40.000Z" itemprop="datePublished">4月 3</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Javascript/">Javascript</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/03/JS知识点梳理-6-BOM/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.5k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/02/JS知识点梳理-5-函数/">JS知识点梳理(5)-函数</a>
-    </h1>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
   
-
-  </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/04/02/JS知识点梳理-5-函数/" class="article-date">
-	  <time datetime="2020-04-02T07:11:05.000Z" itemprop="datePublished">4月 2</time>
-	</a>
-</span>
+  <div class="bar-right">
     
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Javascript/">Javascript</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/02/JS知识点梳理-5-函数/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.8k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/02/JS知识点梳理-4-面向对象/">JS知识点梳理(4)-面向对象</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/04/02/JS知识点梳理-4-面向对象/" class="article-date">
-	  <time datetime="2020-04-01T20:17:53.000Z" itemprop="datePublished">4月 2</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Javascript/">Javascript</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/02/JS知识点梳理-4-面向对象/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 5k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 20(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/JS知识点梳理-3-引用类型/">JS知识点梳理(3)-引用类型</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/03/30/JS知识点梳理-3-引用类型/" class="article-date">
-	  <time datetime="2020-03-30T09:53:44.000Z" itemprop="datePublished">3月 30</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Javascript/">Javascript</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/03/30/JS知识点梳理-3-引用类型/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 8.8k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 35(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/30/JS知识点梳理-2-变量、作用域、垃圾收集/">JS知识点梳理(2)-变量、作用域、垃圾收集</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/03/30/JS知识点梳理-2-变量、作用域、垃圾收集/" class="article-date">
-	  <time datetime="2020-03-30T00:37:51.000Z" itemprop="datePublished">3月 30</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Javascript/">Javascript</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/03/30/JS知识点梳理-2-变量、作用域、垃圾收集/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/23/JS知识点梳理-1-基本概念/">JS知识点梳理(1)-基本概念</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/03/23/JS知识点梳理-1-基本概念/" class="article-date">
-	  <time datetime="2020-03-22T20:04:00.000Z" itemprop="datePublished">3月 23</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/Javascript/">Javascript</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/03/23/JS知识点梳理-1-基本概念/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.3k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/22/疫情中，内看自己/">疫情中，内看自己</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/03/22/疫情中，内看自己/" class="article-date">
-	  <time datetime="2020-03-22T12:34:47.000Z" itemprop="datePublished">3月 22</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/随笔感悟/">随笔感悟</a>
-  </span>
-
-    
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/03/22/疫情中，内看自己/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.9k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 6(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/21/CSS知识点梳理-18-动画（Animation）/">CSS知识点梳理(18)-动画（Animation）</a>
-    </h1>
-  
-
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/03/21/CSS知识点梳理-18-动画（Animation）/" class="article-date">
-	  <time datetime="2020-03-21T08:41:40.000Z" itemprop="datePublished">3月 21</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link" href="/tags/CSS/">CSS</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/03/21/CSS知识点梳理-18-动画（Animation）/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.6k(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
-	
-
-  </p>
-</article>
-
+    <div class="share-component" data-sites="wechat" data-mobile-sites></div>
     
   </div>
-
+  </div>
+</nav>
   
-    
-    <nav class="bar bar-footer clearfix" data-stick-bottom>
-        <div class="bar-inner">
-        <ul class="pager pull-left">
-            
-            <li class="prev disabled">
-                <a href="javascript:;">
-                    <i class="icon icon-angle-left"></i>
-                    上一页
-                </a>
-            </li>
-            
-            
-            <li class="next">
-                <a href="/page/2/">
-                    下一页
-                    <i class="icon icon-angle-right"></i>
-                </a>
-            </li>
-            
-        </ul>
-        <div class="total-article bar-right">Page 1 of 7</div>
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class>
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
         </div>
-    </nav>
-    
- 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 </main>
 
   <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
@@ -834,6 +607,27 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c9348a5e84eb5050ec8',
+    clientSecret: 'b92d8dd66f66bbe04d870af0e612ff74a00546da',
+    repo: 'Better-Jiang.github.io',
+    owner: 'Better-Jiang',
+    admin: ['Better-Jiang'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
 
 
 
