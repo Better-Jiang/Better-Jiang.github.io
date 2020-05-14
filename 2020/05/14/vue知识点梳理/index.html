@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- google 广告 -->
+  <script data-ad-client="ca-pub-7070857500305563" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>vue知识点梳理 | better-jiang</title>
+  <meta name="description" content="vue 原理vue是一MVVM渐进式框架，在vue框架中数据会自动驱动视图。 MVVM设计模式  View：视图，即DOM，UI组件，负责将数据转换成UI展示 Model：模型，是vue组件里的data，或者vuex里数据 ViewModel：视图模型，负责监听数据变化，控制视图行为，处理用户交互。  View和Model之间无直接联系，而是通过ViewModel进行交互，ViewModel通过双">
+<meta name="keywords" content="Vue,面试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue知识点梳理">
+<meta property="og:url" content="https://better-jiang.github.io/2020/05/14/vue知识点梳理/index.html">
+<meta property="og:site_name" content="爱学兮的小江">
+<meta property="og:description" content="vue 原理vue是一MVVM渐进式框架，在vue框架中数据会自动驱动视图。 MVVM设计模式  View：视图，即DOM，UI组件，负责将数据转换成UI展示 Model：模型，是vue组件里的data，或者vuex里数据 ViewModel：视图模型，负责监听数据变化，控制视图行为，处理用户交互。  View和Model之间无直接联系，而是通过ViewModel进行交互，ViewModel通过双">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://better-jiang.github.io/image/MVVM.png">
+<meta property="og:image" content="https://better-jiang.github.io/image/lifecycle2.png">
+<meta property="og:image" content="https://better-jiang.github.io/image/vuegraph.jpg">
+<meta property="og:updated_time" content="2020-05-14T15:29:03.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue知识点梳理">
+<meta name="twitter:description" content="vue 原理vue是一MVVM渐进式框架，在vue框架中数据会自动驱动视图。 MVVM设计模式  View：视图，即DOM，UI组件，负责将数据转换成UI展示 Model：模型，是vue组件里的data，或者vuex里数据 ViewModel：视图模型，负责监听数据变化，控制视图行为，处理用户交互。  View和Model之间无直接联系，而是通过ViewModel进行交互，ViewModel通过双">
+<meta name="twitter:image" content="https://better-jiang.github.io/image/MVVM.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://better-jiang.github.io/2020/05/14/vue知识点梳理/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+</head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Better-Jiang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">爱学兮的小江</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web前端 &amp; Vue</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索">
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech>
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/技术总结/">技术总结</a><span class="category-list-count">67</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计划/">计划</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔感悟/">随笔感悟</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS权威指南-第四版/">CSS权威指南-第四版</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/axios/">axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/书籍读后感/">书籍读后感</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端性能/">前端性能</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程认知/">编程认知</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/翻译/">翻译</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/问题反思/">问题反思</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/飞盘/">飞盘</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CSS/" style="font-size: 14px;">CSS</a> <a href="/tags/CSS权威指南-第四版/" style="font-size: 13.57px;">CSS权威指南-第四版</a> <a href="/tags/Git/" style="font-size: 13.71px;">Git</a> <a href="/tags/Javascript/" style="font-size: 13.86px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 13.43px;">Vue</a> <a href="/tags/axios/" style="font-size: 13px;">axios</a> <a href="/tags/http/" style="font-size: 13.29px;">http</a> <a href="/tags/npm/" style="font-size: 13px;">npm</a> <a href="/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/tags/书籍读后感/" style="font-size: 13.14px;">书籍读后感</a> <a href="/tags/前端性能/" style="font-size: 13px;">前端性能</a> <a href="/tags/编程认知/" style="font-size: 13px;">编程认知</a> <a href="/tags/翻译/" style="font-size: 13.71px;">翻译</a> <a href="/tags/问题反思/" style="font-size: 13px;">问题反思</a> <a href="/tags/面试/" style="font-size: 13.14px;">面试</a> <a href="/tags/飞盘/" style="font-size: 13px;">飞盘</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/14/vue知识点梳理/" class="title">vue知识点梳理</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-14T13:08:43.000Z" itemprop="datePublished">2020-05-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/13/Typora简单指南/" class="title">Typora简单指南</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-13T07:19:12.000Z" itemprop="datePublished">2020-05-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/17/浏览器揭秘/" class="title">浏览器揭秘</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-16T23:19:51.000Z" itemprop="datePublished">2020-04-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/13/http知识点梳理/" class="title">http知识点梳理</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-13T04:27:21.000Z" itemprop="datePublished">2020-04-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/技术总结/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/13/Axios知识点梳理/" class="title">Axios知识点梳理</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-13T00:16:23.000Z" itemprop="datePublished">2020-04-13</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-vue知识点梳理" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue知识点梳理
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/05/14/vue知识点梳理/" class="article-date">
+	  <time datetime="2020-05-14T13:08:43.000Z" itemprop="datePublished">2020-05-14</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/技术总结/">技术总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Vue/">Vue</a>, <a class="article-tag-link" href="/tags/面试/">面试</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/14/vue知识点梳理/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.7k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 11(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="vue-原理"><a href="#vue-原理" class="headerlink" title="vue 原理"></a>vue 原理</h2><p>vue是一MVVM渐进式框架，在vue框架中数据会自动驱动视图。</p>
+<h3 id="MVVM设计模式"><a href="#MVVM设计模式" class="headerlink" title="MVVM设计模式"></a>MVVM设计模式</h3><p><img src="\image\MVVM.png" alt="MVVM"></p>
+<ul>
+<li>View：视图，即DOM，UI组件，负责将数据转换成UI展示</li>
+<li>Model：模型，是vue组件里的data，或者vuex里数据</li>
+<li>ViewModel：视图模型，负责监听数据变化，控制视图行为，处理用户交互。</li>
+</ul>
+<p>View和Model之间无直接联系，而是通过ViewModel进行交互，ViewModel通过双向数据绑定把View和Model连接起来，iewModel通常要实现一个observer观察者，当数据发生变化，ViewModel能够监听到数据的这种变化，然后通知到对应的视图做自动更新，而当用户操作视图，ViewModel也能监听到视图的变化，然后通知数据做改动，因此，<strong>开发者只需关注业务逻辑，不需手动操作DOM，也不需关注数据状态的同步问题，vue是响应式的</strong></p>
+<h3 id="响应式"><a href="#响应式" class="headerlink" title="响应式"></a>响应式</h3><p>Vue的响应式原理：通过<code>Object.defindeProperty</code>中访问器属性中<code>get</code>和<code>set</code>方法。<code>data</code>中声明的属性都被添加了访问器属性，当读取data中数据时调用<code>get</code>方法，当修改data中数据时，自动调用<code>set</code>方法，在检测到数据变化，会通知观察者Watcher,观察者Watcher会触发 重新渲染当前组件，生成新的虚拟DOM树，Vue遍历并对比新旧虚拟DOM树不同，并记录下来，最后，重新渲染视图，将局部修改到真实DOM树上。</p>
+<h2 id="Vue-生命周期"><a href="#Vue-生命周期" class="headerlink" title="Vue  生命周期"></a>Vue  生命周期</h2><p><img src="\image\lifecycle2.png" alt="lifecycle2"></p>
+<p>Vue在整个生命周期中会有8个钩子函数供我们在不同时刻进行操作。<strong>注意，最后不要在生命周期钩子函数内使用箭头函数，因为箭头函数并没有<code>this</code>,<code>this</code>会作为变量一直向上级词法作用域查找，直至找到为止。在普通函数内部，<code>this</code>就是该Vue 实例</strong></p>
+<h3 id="Creation-Initialization"><a href="#Creation-Initialization" class="headerlink" title="Creation   (Initialization)"></a>Creation   (Initialization)</h3><p>创建钩子 在Vue实例开始初始化过程中运行，它允许我们在 将Vue实例添加到 DOM之前执行操作。同其他钩子不同，<strong>创建钩子也是在服务器呈现*期间运行的,在此期间，不能访问DOM或<code>this.$el</code></strong></p>
+<ul>
+<li>beforeCreate： <code>data</code>未被激活，<code>events</code>还没被设置</li>
+<li>created：vue实例已经初始化完成，<code>data</code>,<code>computed</code>,<code>watch</code>,<code>methods</code>,<code>events</code>,已激活。<strong>常用于，通过网络请求，为组件获取一些必要数据</strong></li>
+</ul>
+<h3 id="Mounting-（DOM-Insertion-）"><a href="#Mounting-（DOM-Insertion-）" class="headerlink" title="Mounting  （DOM Insertion ）"></a>Mounting  （DOM Insertion ）</h3><p>将vue实例挂载到 指定元素时运行（即组件第一次渲染呈现之前、之后运行）。常用于在组件初始呈现之前或之后立即访问或修改组件中的DOM</p>
+<ul>
+<li>beforeMount： vue实例挂载到DOM之前以及模板或render函数已经编译好之后，此时，不能操作DOM，<code>this.$el</code>仍不可用，页面还是旧的。</li>
+<li>mounted：vue实例已被挂载，可以访问组件、模板和DOM，<strong>常用于操作DOM和集成非Vue库</strong></li>
+</ul>
+<h3 id="Updating-（Diff-amp-Re-render）"><a href="#Updating-（Diff-amp-Re-render）" class="headerlink" title="Updating  （Diff  &amp;  Re-render）"></a>Updating  （Diff  &amp;  Re-render）</h3><p>每当组件使用的响应数据发生更改，或其他原因导致其重新渲染时，就会调用更新钩子函数。</p>
+<p>可使用： 想要知道组件何时重新渲染（re-redner），可能用于调试或分析</p>
+<p>不可使用：想知道组件内的data数据时何时更改的，建议用<code>computed</code>或`watch 替代</p>
+<ul>
+<li>beforeUpdate： 组件中data数据更改之后，修补和重新渲染DOM（patched and re-redner）之前运行。此时 data数据是最新的，但页面中尚未和最新数据同步</li>
+<li>updated： vue实例中数据更改和DOM也重新渲染呈现 之后运行。<strong>如果需要在属性更改后访问DOM，这里是最安全的</strong></li>
+</ul>
+<h3 id="Destruction-（Teardown）"><a href="#Destruction-（Teardown）" class="headerlink" title="Destruction （Teardown）"></a>Destruction （Teardown）</h3><p>销毁钩子允许在组件被消耗是执行操作，例如清理或分析发送。当组件被拆下并从DOM中移除是时，它们会触发。</p>
+<ul>
+<li>beforeDestroy： 在销毁实例之前触发，此阶段，该实例和其所有功能仍然可用，<strong>常用于执行资源管理，删除变量，清理事件、取消订阅等</strong>。</li>
+<li>destroyed： 实例别销毁，此阶段，所有的子vue实例也已经被销毁，事件监听器，所有指令都被解除绑定。调用<code>vm.$destroy()</code>会触发</li>
+</ul>
+<h2 id="render-函数"><a href="#render-函数" class="headerlink" title="render  函数"></a>render  函数</h2><p>每一个vue组件都会实现一个render函数，大多数情况下，该函数由vue编译器创建。当在组件上指定一个模板（<code>template</code>），该模板的内容将被vue编译器处理，并返回一个redner函数。<strong>render函数实际上会返回一个虚拟DOM节点</strong>，并由vue在浏览器DOM中呈现。再结合vue响应系统，vue能够智能的计算处最少需要重新渲染多少组件，并把 DOM操作次数减到最少。</p>
+<p><strong>每当组件的响应性属性更像时，都会再次调用redner函数</strong></p>
+<hr>
+<h3 id="虚拟DOM"><a href="#虚拟DOM" class="headerlink" title="虚拟DOM"></a>虚拟DOM</h3><p>Vue通过渲染函数返回的<strong>虚拟DOM节点（在vue中通常成为VNode,包含vue所需的所有信息）</strong>建立起一个<strong>虚拟DOM</strong>，并用其来追踪自己要如何改变真实DOM。当vue要更新真实DOM时，vue会将更新后的虚拟DOM与之前的DOM进行比较，并仅使用修改的部分来更新真实DOM，这意味较少的元素被修改，从而提高性能。</p>
+<p><img src="\image\vuegraph.jpg" alt="vuegraph"></p>
+<h3 id="createElement"><a href="#createElement" class="headerlink" title="createElement"></a>createElement</h3><p><strong>在Vue生态中通常使用<code>h</code>作为<code>createElement</code>的别名</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'anchored-heading'</span>, &#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(</span><br><span class="line">      <span class="string">'h'</span> + <span class="keyword">this</span>.level,   <span class="comment">// 标签名称</span></span><br><span class="line">      <span class="keyword">this</span>.$slots.default <span class="comment">// 子节点数组</span></span><br><span class="line">    )</span><br><span class="line">  &#125;,</span><br><span class="line">  props: &#123;</span><br><span class="line">    level: &#123;</span><br><span class="line">      type: <span class="built_in">Number</span>,</span><br><span class="line">      required: <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>createElement</code>，更准确的名字可能是<code>createNodeDescription</code>,因为它返回<code>VNode</code>，就是节点的描述信息。<code>createElement</code>接受3个参数</p>
+<ul>
+<li><p>HTML标签名，组件的选项对象，或 resolve 了 二者中 任一种的 一个的 async函数  <code>{String | Object | Function}</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  组件的选择对象  </span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">"./App.vue"</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;).$mount(<span class="string">"#app"</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一个与模板中 attribute 对应 的 数据对象 <code>{Object}</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"> &#123;</span><br><span class="line">  <span class="comment">// v-bind:class</span></span><br><span class="line">  class: &#123;</span><br><span class="line">    foo: <span class="literal">true</span>,</span><br><span class="line">    bar: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// v-bind:style</span></span><br><span class="line">  style: &#123;</span><br><span class="line">    fontSize: <span class="string">"20px"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 普通 HTML  attribute</span></span><br><span class="line">  attrs: &#123;</span><br><span class="line">    id: <span class="string">"app"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件 prop</span></span><br><span class="line">  props: &#123;</span><br><span class="line">    myProp: <span class="string">"bar"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// DOM property</span></span><br><span class="line">  domProps: &#123;</span><br><span class="line">    innerHTML: <span class="string">"bar"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 事件监听器，vue内事件</span></span><br><span class="line">  on: &#123;</span><br><span class="line">    click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 监听js原生事件，`vm.$emit()`不会触发</span></span><br><span class="line">  nativeOn: &#123;</span><br><span class="line">    click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 自定义 组件</span></span><br><span class="line">  <span class="comment">// `v-myDirective:arg.bar="1+1"`</span></span><br><span class="line">  directives: [</span><br><span class="line">    &#123;</span><br><span class="line">      name: <span class="string">"myDirective"</span>,  <span class="comment">// 指令名</span></span><br><span class="line">      value: <span class="string">"2"</span>,  <span class="comment">// 指令绑定的值</span></span><br><span class="line">      expression: <span class="string">" 1+ 1"</span>, <span class="comment">// 指令表达式</span></span><br><span class="line">      arg: <span class="string">"foo"</span>,  <span class="comment">// 传给指令的参数</span></span><br><span class="line">      modifiers: &#123;  <span class="comment">// 修改符</span></span><br><span class="line">        bar: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 作用域插槽</span></span><br><span class="line">  <span class="comment">// &#123;name: props =&gt; Vnode | Array&lt;VNode&gt;&#125;</span></span><br><span class="line">  scopedSlots: &#123;</span><br><span class="line">    <span class="keyword">default</span>: <span class="function"><span class="params">props</span> =&gt;</span> createElement(<span class="string">"span"</span>, props.text)</span><br><span class="line">  &#125;,</span><br><span class="line">  slot: <span class="string">"name-of-slot"</span>,</span><br><span class="line">  key: <span class="string">"myKey"</span>,</span><br><span class="line">  ref: <span class="string">"myRef"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>子级虚拟节点 列表（VNodes），也是由<code>createElement()</code>构建而成，使用字符串直接生成”文本虚拟节点”  <code>{Array | String }</code></li>
+</ul>
+<h3 id="模板功能的替代"><a href="#模板功能的替代" class="headerlink" title="模板功能的替代"></a>模板功能的替代</h3><h4 id="v-if-和-v-for"><a href="#v-if-和-v-for" class="headerlink" title="v-if   和 v-for"></a>v-if   和 v-for</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">v-if</span>=<span class="string">"items.length"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span>&#123;&#123; item.name &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-else</span>&gt;</span>No items found.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="string">'items'</span>],</span><br><span class="line">render: <span class="function"><span class="params">h</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> self = <span class="keyword">this</span>;</span><br><span class="line">  <span class="keyword">if</span>(self.items.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> h(<span class="string">'ul'</span>, self.items.map(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> h(<span class="string">'li'</span>, item.name)</span><br><span class="line">    &#125;))</span><br><span class="line">  &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> h(<span class="string">'p'</span>, <span class="string">'No items found.'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="v-model"><a href="#v-model" class="headerlink" title="v-model"></a>v-model</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">v-model</span>=<span class="string">"bar"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="string">'value'</span>],</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> self = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">return</span> h(<span class="string">'input'</span>, &#123;</span><br><span class="line">      domProps: &#123;</span><br><span class="line">        value: self.value</span><br><span class="line">      &#125;,</span><br><span class="line">      on: &#123;</span><br><span class="line">        input: <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">          self.$emit(<span class="string">'input'</span>, event.target.value)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="事件-amp-按键-修饰符"><a href="#事件-amp-按键-修饰符" class="headerlink" title="事件&amp;按键  修饰符"></a>事件&amp;按键  修饰符</h4><p><code>.passive</code>、<code>capture</code>、<code>once</code>这些事件修饰符，vue提供了对应的前缀可用于<code>on</code></p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>前缀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.passive</code>   (滚动事件默认行为（滚动行为），立即触发，而非等待‘onScroll 完成)</td>
+<td>&amp;</td>
+</tr>
+<tr>
+<td><code>.capture</code></td>
+<td>!</td>
+</tr>
+<tr>
+<td><code>.once</code></td>
+<td>~</td>
+</tr>
+<tr>
+<td><code>.capture.once</code> 或 <code>.once.capture</code></td>
+<td>~!</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">on: &#123;</span><br><span class="line">  <span class="string">'!click'</span>: <span class="keyword">this</span>.doThisInCapturingMode,</span><br><span class="line">   <span class="string">'~keyup'</span>: <span class="keyword">this</span>.doThisOnce,</span><br><span class="line">   <span class="string">'~!mouseover'</span>: <span class="keyword">this</span>.doThisOnceInCapturingMode </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其他修饰符，不需前缀，可在事件处理函数中找到等价的操作</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>处理函数中等价操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.stop</code></td>
+<td>event.stopPropagation()</td>
+</tr>
+<tr>
+<td><code>.prevent</code></td>
+<td>event.preventDefault()</td>
+</tr>
+<tr>
+<td><code>.self</code></td>
+<td>if (event.target !== event.curentTarget) return</td>
+</tr>
+<tr>
+<td>按键：<code>.enter</code>,<code>.12</code></td>
+<td>if (event.keyCode !== 12)  return</td>
+</tr>
+<tr>
+<td>修饰键：<code>.ctrl</code>、<code>.alt</code>、<code>.shift</code>、<code>meta</code></td>
+<td>if (!event.ctrlKey) return     // altKey   shiftKey  metaKey</td>
+</tr>
+</tbody>
+</table>
+<h4 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h4><ul>
+<li><p>通过<code>this.$slots</code>访问静态 插槽，<code>{[name: string]: ?Array&lt;VNode&gt;}</code>,每个插槽都是一个VNode数组。每个具名插槽有其相对应的<code>property</code>，例如， <code>v-slot:foo</code>中的内容，在<code>this.$slots.foo</code>中， <code>this.$slots.defalut</code>内容为  所有没有名字插槽中的节点</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">blog-post</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Header<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>content 1<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Footer<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>content 2<span class="tag">&lt;/<span class="name">p</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">blog-post</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'blog-post'</span>, &#123;</span><br><span class="line">  redner: <span class="function"><span class="params">h</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> header = <span class="keyword">this</span>.$slots.header</span><br><span class="line">    <span class="keyword">let</span> footer = <span class="keyword">this</span>.$slots.footer</span><br><span class="line">    <span class="keyword">let</span> body = <span class="keyword">this</span>.$slots.default</span><br><span class="line">    <span class="keyword">return</span> h(<span class="string">'div'</span>, [</span><br><span class="line">      h(<span class="string">'header'</span>, header),</span><br><span class="line">      h(<span class="string">'main'</span>, body),</span><br><span class="line">      h(<span class="string">'footer'</span>, footer)</span><br><span class="line">    ])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过<code>this.$scopedSlots</code>访问作用域插槽，<code>{[name:string]: props =&gt; Array&lt;VNode&gt;  | undefined}</code>,每个作用域插槽都是一个返回若干 VNode 的函数</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="string">'message'</span>],</span><br><span class="line"> render: <span class="function"><span class="params">h</span> =&gt;</span> &#123;</span><br><span class="line">   cosnt slef = <span class="keyword">this</span></span><br><span class="line">   <span class="comment">//  `&lt;div&gt;&lt;slot :text="message"&gt;&lt;/slot&gt;&lt;/div&gt;`</span></span><br><span class="line">   <span class="keyword">return</span> h(<span class="string">'div'</span>, [</span><br><span class="line">     slef.$scopedSlots.defalut(&#123;</span><br><span class="line">       text: <span class="keyword">this</span>.message</span><br><span class="line">     &#125;)</span><br><span class="line">   ])</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>从2.6.0开始，所有<code>$slots</code>都会作为函数暴露<code>$scopedSlots</code>中 。所有在使用render函数，不论当前插槽是否带有作用域，都始终通过<code>$scopedSlots</code>访问它们</strong></p>
+<h2 id="Slot-插槽"><a href="#Slot-插槽" class="headerlink" title="Slot  插槽"></a>Slot  插槽</h2><p>在2.6.0后，具名插槽和作用域插槽使用统一语法: <code>v-slot</code>指令，它取代了<code>slot</code>和<code>slot-scope</code>的attribute</p>
+<p><strong>父级模板里的所有内容都在父级作用域中编译，同理，子模版亦是如此。</strong></p>
+<h3 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h3><p>当需要向组件添加多个插槽时，则插槽需要有名称，可使用<code>&lt;slot&gt;</code>元素的一个特殊的attribute: <code>name</code>来定义。一个不带<code>name</code>的<code>&lt;slot&gt;</code>，<code>name</code>默认为<code>default</code>        </p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span> <span class="attr">name</span>=<span class="string">"header"</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">main</span>&gt;</span></span><br><span class="line">  	<span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在向具名插槽提供内容时，可在一个<code>&lt;template&gt;</code>元素上使用<code>v-slot</code>指令，用以<code>v-slot</code>参数的形式 指定插槽名称</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">base-layout</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:header</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span> page title<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:defalut</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>the main content<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">base-layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h3><p>作用域插槽，<strong>可让插槽内容访问子组件中的数据</strong>。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">slot</span> <span class="attr">v-bind:user</span>=<span class="string">"user"</span>&gt;</span></span><br><span class="line">    &#123;&#123;user.lastName&#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">slot</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>想替换备用的内容，用 firstName 而不是 lastName 。<strong>因只有在<code>&lt;current-user&gt;</code>组件内部才可以访问到<code>user</code>,为了让<code>user</code>在父级的插槽内容中可用 ，需要将<code>user</code>作为<code>&lt;slot&gt;</code>元素的一个 attrubute 绑定 </strong></p>
+<p>绑定在<code>&lt;slot&gt;</code>元素上的  attrubute 称为 <code>插槽prop</code>，这样就可以暴露给 插槽内容 。 现在 在父级作用域中，可以使用带值的<code>v-slot</code>来定义<code>插槽prop</code> 对象 的名字，从而接收  <code>插槽prop</code>内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">current-user</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span> <span class="attr">v-slot:default</span>=<span class="string">"slotProps"</span>&gt;</span></span><br><span class="line">    &#123;&#123; slotProps.user.firstName &#125;&#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">current-user</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在上例中，将包含所有<code>插槽prop</code>的对象命名为<code>slotProps</code></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://better-jiang.github.io/2020/05/14/vue知识点梳理/" title="vue知识点梳理" target="_blank" rel="external">https://better-jiang.github.io/2020/05/14/vue知识点梳理/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Better-Jiang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt>
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Better-Jiang" target="_blank"><span class="text-dark">爱学兮的小江</span><small class="ml-1x">Web前端 &amp; Vue</small></a></h3>
+        <div>前端狗，爱思考，爱码字</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/05/13/Typora简单指南/" title="Typora简单指南"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="wechat" data-mobile-sites></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫">
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class>
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle="tooltip" data-placement="top"><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c9348a5e84eb5050ec8',
+    clientSecret: 'b92d8dd66f66bbe04d870af0e612ff74a00546da',
+    repo: 'Better-Jiang.github.io',
+    owner: 'Better-Jiang',
+    admin: ['Better-Jiang'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>
