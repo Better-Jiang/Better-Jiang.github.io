@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="爱学兮的小江">
 <meta property="og:description" content="用Vue + Vue Router创建单页面应用是非常简单的，其原理就是 将组件映射到路由，然后使用&amp;lt;router-view&amp;gt;告诉Vue Router 在哪里渲染它们。具体  定义组件 定义路由 创建路由实例 将路由事件挂载到vue根实例  123456789101112131415161718192021222324252627// 0. 如果使用模块化机制编程，导入Vue和VueR">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-17T22:43:39.068Z">
+<meta property="og:updated_time" content="2020-05-21T23:44:43.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue-router梳理">
 <meta name="twitter:description" content="用Vue + Vue Router创建单页面应用是非常简单的，其原理就是 将组件映射到路由，然后使用&amp;lt;router-view&amp;gt;告诉Vue Router 在哪里渲染它们。具体  定义组件 定义路由 创建路由实例 将路由事件挂载到vue根实例  123456789101112131415161718192021222324252627// 0. 如果使用模块化机制编程，导入Vue和VueR">
@@ -379,7 +379,7 @@
 <li>将路由事件挂载到vue根实例</li>
 </ol>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0. 如果使用模块化机制编程，导入Vue和VueRouter，要调用 Vue.use(VueRouter)</span></span><br><span class="line"><span class="comment">// 1. 定义 (路由) 组件。</span></span><br><span class="line"><span class="comment">// 可以从其他文件 import 进来</span></span><br><span class="line"><span class="keyword">const</span> Foo = &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;foo&lt;/div&gt;'</span> &#125;</span><br><span class="line"><span class="keyword">const</span> Bar = &#123; <span class="attr">template</span>: <span class="string">'&lt;div&gt;bar&lt;/div&gt;'</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 定义路由</span></span><br><span class="line"><span class="comment">// 每个路由应该映射一个组件。 其中"component" 可以是</span></span><br><span class="line"><span class="comment">// 通过 Vue.extend() 创建的组件构造器，</span></span><br><span class="line"><span class="comment">// 或者，只是一个组件配置对象。</span></span><br><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/foo'</span>, <span class="attr">component</span>: Foo &#125;,</span><br><span class="line">  &#123; <span class="attr">path</span>: <span class="string">'/bar'</span>, <span class="attr">component</span>: Bar &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 创建 router 实例，然后传 `routes` 配置</span></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes <span class="comment">// (缩写) 相当于 routes: routes</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 创建和挂载根实例。</span></span><br><span class="line"><span class="comment">// 记得要通过 router 配置参数注入路由，</span></span><br><span class="line"><span class="comment">// 从而让整个应用都有路由功能</span></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  router</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br><span class="line"><span class="comment">// 现在，应用已经启动了！</span></span><br></pre></td></tr></table></figure>
-<p>通过注入路由器，可在任何组件内通过<code>this.$router</code>访问路由器，通过<code>this.route</code>访问当前路由</p>
+<p>通过注入路由器，可在任何组件内通过<code>this.$router</code>访问路由器，通过<code>this.$route</code>访问当前路由</p>
 <h2 id="动态路由匹配"><a href="#动态路由匹配" class="headerlink" title="动态路由匹配"></a>动态路由匹配</h2><p>把某种模式匹配到所有路由，全部映射到同个组件。在路由路径中使用<strong>动态路径参数，以冒号<code>:</code>标记</strong>。当匹配 到一个路由时，参数值会被 设置到<code>$route.params</code>，多段的路径参数，对应的值也会被设置到<code>$route.params</code>。例如：</p>
 <table>
 <thead>
@@ -416,7 +416,7 @@
 </ol>
 <h3 id="捕获-所有路由-404-路由"><a href="#捕获-所有路由-404-路由" class="headerlink" title="捕获 所有路由 / 404 路由"></a>捕获 所有路由 / 404 路由</h3><p>使用通配符（<code>*</code>）,可匹配任意路径。</p>
 <p><strong>当使用通配符路由时，要确保路由的顺序，应该将其放在最后</strong>。</p>
-<p>当使用一个通配符时，<code>$route.params</code>内会自动添加一个名名为<code>pathMath</code>参数</p>
+<p>当使用一个通配符时，<code>$route.params</code>内会自动添加一个名名为<code>pathMatch</code>参数</p>
 <table>
 <thead>
 <tr>
@@ -461,17 +461,17 @@
 <h2 id="编程式的导航"><a href="#编程式的导航" class="headerlink" title="编程式的导航"></a>编程式的导航</h2><p>除了<code>&lt;router-link&gt;</code>创建a标签来定义导航链接，还可以借助<code>$router</code>的实例方法，通过编写代码来实现</p>
 <ul>
 <li><code>$router.push(location,onComplete?, onAbort?)</code>,向history栈中添加一个新的记录</li>
-<li>`$router.replace(location,nComplete?, onAbort?),替换掉当前的history记录</li>
+<li><code>$router.replace(location,nComplete?, onAbort?)</code>,替换掉当前的history记录</li>
 <li><code>$router.go(n)</code>,在history记录中向前，或后退多少步</li>
 </ul>
 <p><strong>以上的方法是效仿<code>window.history</code> API的，<code>window.history.pushState</code>,<code>window.history.replaceState</code>,<code>window.history.go</code></strong></p>
 <h2 id="H5-History-模式"><a href="#H5-History-模式" class="headerlink" title="H5 History 模式"></a>H5 History 模式</h2><p><code>vue-router</code>默认 <strong>hash 模式</strong>，使用URL的 hash 来模拟一个完整的URL，所以当URL改变时，页面不会重新加载</p>
-<p><strong>hisory 模式</strong> 是利用<code>history.pushState</code>API 来完成URL跳转，而无须重新加载页面。<strong>但需要后台配置支持，因为应用是单页面的，如果后台没有给正确的配置，当用户在浏览器直接访问<code>http://oursite.com/user/id</code>,就会返回404 .所以服务器需要增加一个覆盖所有情况的候选资源。在URL匹配不到任何静态资源，返回同一个<code>index.html</code>页面 ； 同时 在Vue 的 路由配置中，添加覆盖所有的路由情况，并给返回404页面 </strong></p>
+<p><strong>history 模式</strong> 是利用<code>history.pushState</code>API 来完成URL跳转，而无须重新加载页面。<strong>但需要后台配置支持，因为应用是单页面的，如果后台没有给正确的配置，当用户在浏览器直接访问<code>http://oursite.com/user/id</code>,就会返回404 .所以服务器需要增加一个覆盖所有情况的候选资源。在URL匹配不到任何静态资源，返回同一个<code>index.html</code>页面 ； 同时 在Vue 的 路由配置中，添加覆盖所有的路由情况，并给返回404页面 </strong></p>
 <h2 id="导航守卫"><a href="#导航守卫" class="headerlink" title="导航守卫"></a>导航守卫</h2><p>”导航“表示路由正发生改变，导航守卫，通过跳转、取消的方式守卫导航。</p>
 <p><strong>参数或查询的改变不会触发进入/离开的导航守卫</strong>，2种解决方法</p>
 <ol>
 <li>通过 watch <code>$route</code>对象来应对改变化</li>
-<li>使用组件内的导航守卫 <code>beforeUpdate</code></li>
+<li>使用组件内的导航守卫 <code>beforeRouteUpdate</code></li>
 </ol>
 <h3 id="守卫方法接受的参数"><a href="#守卫方法接受的参数" class="headerlink" title="守卫方法接受的参数"></a>守卫方法接受的参数</h3><p>守卫方法可接受三个参数”</p>
 <ul>
@@ -480,7 +480,7 @@
 <li><code>next</code>， 一个函数，<strong>一定要调用该函数来 resolve  该钩子</strong>，执行效果由<code>next</code>函数的调用参数决定<ul>
 <li><code>next()</code>，进行下一个守卫钩子。如果全部的钩子执行完，则导航的状态就是 confirmed（确认的）</li>
 <li><code>next(false)</code>，中断当前的导航，URL地址重置到<code>from</code>路由对应的地址</li>
-<li>next(location)， 跳转到一个不同的地址。当前导航中断，然后进入一个新的导航</li>
+<li><code>next(location)</code>， 跳转到一个不同的地址。当前导航中断，然后进入一个新的导航</li>
 </ul>
 </li>
 </ul>
