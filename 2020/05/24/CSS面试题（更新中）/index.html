@@ -28,10 +28,21 @@
 <meta property="og:site_name" content="爱学兮的小江">
 <meta property="og:description" content="选择器，优先级优先级：!important &amp;gt; 内联样式 style &amp;gt; ID 选择器 &amp;gt; 伪类选择器 = 属性选择器 = class 选择器 &amp;gt; 伪元素 = 元素(类型)选择器 = 关系选择器 &amp;gt; 通配符选择器 5 中类型：基本选择器、组合选择器、属性选择器、伪类选择器、伪元素选择器 1 基本选择器    选择器 示例 示例说明     .class （类选择器）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-24T01:26:26.916Z">
+<meta property="og:image" content="https://better-jiang.github.io/image/CSS3-Flexbox-Model.jpg">
+<meta property="og:image" content="https://better-jiang.github.io/image/chrome_7j53vPxJ7f.png">
+<meta property="og:image" content="https://better-jiang.github.io/image/flex-wrap.png">
+<meta property="og:image" content="https://better-jiang.github.io/image/justify-content.svg">
+<meta property="og:image" content="https://better-jiang.github.io/image/align-items.svg">
+<meta property="og:image" content="https://better-jiang.github.io/image/align-content.svg">
+<meta property="og:image" content="https://better-jiang.github.io/image/order.svg">
+<meta property="og:image" content="https://better-jiang.github.io/image/flex-grow.svg">
+<meta property="og:image" content="https://better-jiang.github.io/image/flex-shrink.png">
+<meta property="og:image" content="https://better-jiang.github.io/image/align-self.svg">
+<meta property="og:updated_time" content="2020-05-24T11:00:55.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS面试题（更新中）">
 <meta name="twitter:description" content="选择器，优先级优先级：!important &amp;gt; 内联样式 style &amp;gt; ID 选择器 &amp;gt; 伪类选择器 = 属性选择器 = class 选择器 &amp;gt; 伪元素 = 元素(类型)选择器 = 关系选择器 &amp;gt; 通配符选择器 5 中类型：基本选择器、组合选择器、属性选择器、伪类选择器、伪元素选择器 1 基本选择器    选择器 示例 示例说明     .class （类选择器）">
+<meta name="twitter:image" content="https://better-jiang.github.io/image/CSS3-Flexbox-Model.jpg">
   <!-- Canonical links -->
   <link rel="canonical" href="https://better-jiang.github.io/2020/05/24/CSS面试题（更新中）/index.html">
   
@@ -361,10 +372,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/24/CSS面试题（更新中）/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.3k(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 3.1k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 5(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 12(分)</span>
 	
 
       </div>
@@ -453,40 +464,38 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="简单的属性选择器">attribute</a></td>
+<td>[attribute] 简单的属性选择器</td>
 <td>[href][title]</td>
 <td>选择同时带有 href 和 title 属性的元素</td>
 </tr>
 <tr>
-<td><a href="根据具体属性值选择">attribute=value</a></td>
-<td>[href=”<a href="http://www.betterjiang.com&quot;][title=&quot;刘振江博客&quot;]" target="_blank" rel="noopener">www.betterjiang.com&quot;][title=&quot;刘振江博客&quot;]</a></td>
-<td>选择 href 属性值为 <a href="http://www.betterjiang.com，并且" target="_blank" rel="noopener">www.betterjiang.com，并且</a> title 属性值为刘振江博客的所有元素</td>
+<td>[attribute=value] 根据具体属性值选择</td>
+<td><code>[href=&quot;www.betterjiang.com&quot;][title=&quot;刘振江博客&quot;]</code></td>
+<td>选择 href 属性值为 <a href="http://www.betterjiang.com,并且" target="_blank" rel="noopener">www.betterjiang.com,并且</a> title 属性值为刘振江博客的所有元素</td>
 </tr>
 <tr>
-<td><a href="包含">attribute~=value</a></td>
+<td>[attribute~=value] 包含</td>
 <td>p[class~=”warning”]</td>
 <td>选择 class 属性值中包含 warning 的 p 元素</td>
 </tr>
 <tr>
-<td><a href="开头">attribute^=value</a></td>
+<td>[attribute^=value] 开头</td>
 <td>img[src^=”person”]</td>
 <td>选择 src 属性值以“person”开头的 img 元素</td>
 </tr>
 <tr>
-<td><a href="结尾">attribute\$=value</a></td>
+<td>[attribute$=value] 结尾</td>
 <td>img[src$=”.png”]</td>
 <td>选择 src 属性值以”.png”结尾的 img 元素</td>
 </tr>
 <tr>
-<td><a href="包含">attribute*=value</a></td>
+<td>[attribute*=value] 包含</td>
 <td>img[src*=”dog”]</td>
 <td>选择 src 属性值中包含子串”dog”的 img 元素</td>
 </tr>
 <tr>
-<td>[attribute\</td>
-<td>=value] (等于 或以 value- 开头)</td>
-<td>img[src\</td>
-<td>=”dog”]</td>
+<td>[attribute &#124; =value] 等于 或以 value- 开头</td>
+<td>img[src &#124; =”dog”]</td>
 <td>选择 src 属性值等于”dog”或以”dog-“开头的 img 元素</td>
 </tr>
 </tbody>
@@ -724,7 +733,188 @@
 </tr>
 </tbody>
 </table>
-<h3 id="弹性盒子（flex）-布局"><a href="#弹性盒子（flex）-布局" class="headerlink" title="弹性盒子（flex） 布局"></a>弹性盒子（flex） 布局</h3><h3 id="浮动、定位"><a href="#浮动、定位" class="headerlink" title="浮动、定位"></a>浮动、定位</h3><h3 id="BFC-块格式化上下文"><a href="#BFC-块格式化上下文" class="headerlink" title="BFC(块格式化上下文)"></a>BFC(块格式化上下文)</h3>
+<h3 id="弹性盒子（Flexbox）-布局"><a href="#弹性盒子（Flexbox）-布局" class="headerlink" title="弹性盒子（Flexbox） 布局"></a>弹性盒子（Flexbox） 布局</h3><p>Flexbox 布局是 CSS3 中新增的布局模块，它改进了在容器中元素的对齐、方向、顺序，即使元素的尺寸是动态的，甚至是未知的。flex 容器的只要特征就是<strong>可以修改其内子容器的高、宽度，以在不同屏幕大小使用最佳方式填充可利用的空间</strong>。</p>
+<p><strong>flex 布局由父容器（flex container）和它内包含的项目（flex items）组成。</strong></p>
+<p><img src="\image\CSS3-Flexbox-Model.jpg" alt="CSS3-Flexbox-Model"></p>
+<h4 id="flex-container（父容器）-属性-6-个"><a href="#flex-container（父容器）-属性-6-个" class="headerlink" title="flex container（父容器） 属性 (6 个)"></a>flex container（父容器） 属性 (6 个)</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>属性值</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flex-direction</td>
+<td>定义 主轴（main axis）方向</td>
+<td>row &#124; row-reverse &#124; column &#124; column-reverse</td>
+<td><img src="\image\chrome_7j53vPxJ7f.png" alt="chrome_7j53vPxJ7f"></td>
+</tr>
+<tr>
+<td>flex-wrap</td>
+<td>项目在一条轴线上排不下，如何换行？</td>
+<td>nowrap &#124; wrap &#124; wrap-reverse(第一行在下方)</td>
+<td><img src="\image\flex-wrap.png" alt="flex-wrap"></td>
+</tr>
+<tr>
+<td>flex-flow</td>
+<td>flex-direction 和 flex-wrap 简写形式</td>
+<td>&lt;flex-direction> &#124;&#124; &lt;flex-wrap></td>
+<td></td>
+</tr>
+<tr>
+<td>justify-content</td>
+<td>项目在主轴上的对齐方式</td>
+<td>flex-start &#124; flex-end &#124; center &#124; space-between &#124; space-around &#124; space-evenly</td>
+<td><img src="\image\justify-content.svg" alt="justify-content"></td>
+</tr>
+<tr>
+<td>align-items</td>
+<td>项目在交叉轴（cross axis）上如何对齐</td>
+<td>flex-start &#124; flex-end &#124; center &#124; baseline &#124; stretch</td>
+<td><img src="\image\align-items.svg" alt="align-items"></td>
+</tr>
+<tr>
+<td>align-content</td>
+<td><strong>多根轴线</strong>的对齐方式，如果项目只有一根轴线，该属性无效</td>
+<td>flex-start &#124; flex-end &#124; center &#124; space-between &#124; space-around</td>
+<td><img src="\image\align-content.svg" alt="align-content"></td>
+</tr>
+</tbody>
+</table>
+<h4 id="项目（flex-items）的属性-（6-个）"><a href="#项目（flex-items）的属性-（6-个）" class="headerlink" title="项目（flex items）的属性 （6 个）"></a>项目（flex items）的属性 （6 个）</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>属性值</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>order</td>
+<td>定义项目的排列顺序，默认为 0，数值越小，越靠前</td>
+<td>&lt;integer></td>
+<td><img src="\image\order.svg" alt="order"></td>
+</tr>
+<tr>
+<td>flex-grow</td>
+<td>项目的放大比例，如果有剩余空间。默认为 0</td>
+<td>&lt;integer></td>
+<td><img src="\image\flex-grow.svg" alt="flex-grow"></td>
+</tr>
+<tr>
+<td>flex-shrink</td>
+<td>项目的缩小比例，如果空间不足。默认为 1</td>
+<td></td>
+<td><img src="\image\flex-shrink.png" alt="flex-shrink"></td>
+</tr>
+<tr>
+<td>flex-basis</td>
+<td>在分配多余空间之前，项目占据主轴的空间大小。默认为 auto</td>
+<td>&lt;length> &#124; auto</td>
+<td></td>
+</tr>
+<tr>
+<td>flex</td>
+<td>flex-grow, flex-shrink, flex-basis 的简写 默认值为 0 1 auto</td>
+<td>[&lt;flex-grow> &lt;flex-shrink> &#124;&#124; &lt;flex-basis>] &#124; none &#124; auto</td>
+<td></td>
+</tr>
+<tr>
+<td>align-self</td>
+<td>设置单独项目的对齐方式，可与其它项目不同。覆盖 align-items 属性</td>
+<td>auto &#124; flex-start &#124; flex-end &#124; center &#124;baseline &#124; stretch</td>
+<td><img src="\image\align-self.svg" alt="align-self"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="浮动、定位"><a href="#浮动、定位" class="headerlink" title="浮动、定位"></a>浮动、定位</h3><h4 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h4><ul>
+<li>所有元素都可以浮动，且浮动元素会脱离文档流，但浮动元素依然位于父元素之内。<strong>浮动元素周围的外边距不会合并</strong></li>
+<li><strong>浮动元素会生成一个块级框，不论这个元素本身是什么</strong>。 <strong>浮动元素的包含块就是其最近的块级祖先元素</strong>。</li>
+<li>浮动元素左/右外边界不能超过其包含块的左/右内边界，浮动元素不可彼此重叠</li>
+<li>当行内框与浮动元素重叠时，其边框、背景、内容都会在浮动元素 <strong>之上</strong></li>
+<li>当块级框与浮动元素重叠时，其边框、背景在浮动元素<strong>之下</strong>显示，而<strong>内容在浮动元素之上显示</strong></li>
+<li><code>clear</code>属性会清楚浮动，<code>h3{clear:left}</code>，<strong>确保 h3 的左边没有浮动元素</strong>。其工作原理: <strong>会增加元素的上外边距，使之最后落在浮动元素的下面，这实际上 会 忽略清除元素原先设置的上外边距。 </strong>，所有要确保一个清除元素的顶端和一个浮动元素的底端之间有一定的空间，可以为浮动元素本身设置一个下外边距。</li>
+</ul>
+<h4 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h4><p>为什么要清除浮动？因为 子元素浮动引起父元素的内部高度为 0<strong>（高度塌陷）</strong>。清除浮动方法：</p>
+<table>
+<thead>
+<tr>
+<th>清除浮动方法</th>
+<th>优势</th>
+<th>劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>设置父元素高度</td>
+<td>极其简单</td>
+<td>必须要知道父元素高度</td>
+</tr>
+<tr>
+<td>在父元素中，追加一个空元素，设置 <code>clear:both;</code></td>
+<td>简单</td>
+<td>添加无意义的空标签，破坏文档结构</td>
+</tr>
+<tr>
+<td>设置父元素也浮动（因为 浮动元素会延伸，从而包含其所有的后代浮动元素）</td>
+<td>简单，代码量少，没有结构和语义化问题</td>
+<td>对后续元素有影响</td>
+</tr>
+<tr>
+<td>为父元素设置 overflow 属性 hidden,或 auto （因为会触发<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context" target="_blank" rel="noopener">BFC</a>，从而实现清除）</td>
+<td>简单，代码简洁</td>
+<td>可能会无法显示要溢出的元素</td>
+</tr>
+<tr>
+<td>【最优解】 使用伪类，生成空内容的方式 <code>.clearfinx:{content: &#39;&#39;; dislay: block; clear:both;}</code></td>
+<td>不破坏文档结构，无副作用</td>
+<td>代码量多</td>
+</tr>
+</tbody>
+</table>
+<h4 id="元素的定位-（position）"><a href="#元素的定位-（position）" class="headerlink" title="元素的定位 （position）"></a>元素的定位 （position）</h4><ul>
+<li><p><strong>static （默认值）</strong>：元素在文档常规流中当前的布局位置，此时 <code>top</code>,<code>right</code>,<code>z-index</code>等属性无效。</p>
+</li>
+<li><p><strong>relative（相对定位）</strong>：相对于自身在文档流中所处的位置进行定位，<strong>参照物为自身，且仍处于文档流中，原先占有的空间仍保留</strong>，<strong>常作为绝对定位的参照物</strong></p>
+</li>
+<li><p><strong>absolute（绝对定位）</strong>： <strong>元素脱离文档流，不会为元素留空间，后面的元素会其原来的位置布局</strong>。其参照物是<strong>第一个属性不是 static 的祖先元素</strong>。<strong>绝对定位之后会产生块级框，通过<code>top</code>,<code>left</code>等属性进行定位</strong></p>
+</li>
+<li><p><strong>fixed（固定定位）</strong>： <strong>元素脱离文档流，定位参照物为屏幕视口，元素的位置在屏幕滚动时 不会改变。</strong></p>
+</li>
+<li><p><strong>sticky （粘性定位）</strong>： 元素根据正常文档流进行定位，然后相对它的<strong>最近滚动祖先</strong>进行偏移。一个 sticky 元素会”固定“在离它最近的一个拥有”滚动机制“的祖先上（及祖先的 overflow 是 hidden,scroll,auto,overlay）。<strong>简单说，祖先元素在滚动时，某个元素在 距其祖先元素的距离 达到 sticky 定位的要求时， 就会固定，不在滚动了 </strong></p>
+<iframe class="live-sample-frame sample-code-frame" frameborder="0" id="frame_Sticky_positioning" src="https://mdn.mozillademos.org/zh-CN/docs/Web/CSS/position$samples/Sticky_positioning?revision=1595767"></iframe>
+
+</li>
+</ul>
+<h3 id="BFC-块格式化上下文"><a href="#BFC-块格式化上下文" class="headerlink" title="BFC(块格式化上下文)"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context" target="_blank" rel="noopener">BFC(块格式化上下文)</a></h3><p>BFC（Block Formatting Context）,它是一个独立的渲染区域，是块级盒子（Block box）的布局过程发生的区域，它规定了内部的 Block Box 如何布局，并且于这个区域外部毫不相干。</p>
+<h4 id="盒子（Box）"><a href="#盒子（Box）" class="headerlink" title="盒子（Box）"></a>盒子（Box）</h4><p>Box 是 CSS 布局的对象和基本单位，即一个页面是由多个盒子组成的。元素的类型和 display 属性，决定了盒子的类型。不同的盒子，会参与不同的 Formatting Context（格式化上下文）</p>
+<ul>
+<li>block-level box (块级盒子): display 属性值为 <code>block</code>,<code>list-item</code>,<code>table</code>的元素，会生成块级盒子，参与 block formatting context;</li>
+<li>inline-level box (行内盒子)： display 属性值为 <code>inline</code>,<code>inline-block</code>,<code>inline-table</code>的元素，会生成行内盒子，参与 inline formatting context;</li>
+</ul>
+<h4 id="格式化上下文-（Formatting-Context）"><a href="#格式化上下文-（Formatting-Context）" class="headerlink" title="格式化上下文 （Formatting Context）"></a>格式化上下文 （Formatting Context）</h4><p>它是页面中的一块渲染区域，并且由一套渲染规则，决定了其内子元素如何定位、以及和其他元素的关系和相互作用。 最常见的 由 BFC（Block Formatting Context） 和 IFC （Inline Formatting Context）</p>
+<h4 id="BFC-布局规则"><a href="#BFC-布局规则" class="headerlink" title="BFC 布局规则"></a>BFC 布局规则</h4><ol>
+<li>内部的 块级盒子 会在垂直方向，一个接一个的排列</li>
+<li>同一 BFC 内的 两个相邻 的 块级盒子 的 margin <strong>会发生重叠，取最大值</strong></li>
+<li>每个盒子（块级或行内）的 左/右 外边届 与 其包含块 的 左/右 内边距 相接触，浮动元素也是如此。</li>
+<li>BFC 区域 不会 与 浮动元素 重叠，即 浮动元素 外边距不 重叠</li>
+<li>BFC 是一个独立容器，容器内的子元素不会影响到外面的元素，反之亦然</li>
+<li><strong>计算 BFC 的高度，浮动元素也参与计算</strong> 通过 设置<code>overflow</code>属性，创建了 BFC，并计算高度，浮动元素参与计算，达到清除浮动的效果。</li>
+</ol>
+<h4 id="创建-BFC"><a href="#创建-BFC" class="headerlink" title="创建 BFC"></a>创建 BFC</h4><ol>
+<li>根元素</li>
+<li>浮动元素 （元素的 <code>float</code>属性值不为 none）</li>
+<li>决定定位元素 （元素的 <code>position</code> 属性值 为 <code>absolute</code>或<code>fixed</code>）</li>
+<li>行内块元素 (<code>display : inline-block</code>)</li>
+<li><code>overflow</code>值不为<code>visible</code>的块元素</li>
+<li>弹性元素 （<code>display:flex</code>元素 的 直接子元素）</li>
+</ol>
+
       
     </div>
     <div class="article-footer">
