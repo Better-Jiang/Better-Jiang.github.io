@@ -28,7 +28,7 @@
 <meta property="og:site_name" content="爱学兮的小江">
 <meta property="og:description" content="background background-position：设置背景图片的起始位置 background-attachment：背景图是否在视口内固定，或者随它的包含块一起滚动（scroll，fixed） background-size：设置背景图片大小，（auto，cover，contain， width height）  margin margin 的 百分比值，是按其包含元素的宽度计算">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-06-01T04:17:05.265Z">
+<meta property="og:updated_time" content="2020-06-01T14:22:36.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS查缺补漏">
 <meta name="twitter:description" content="background background-position：设置背景图片的起始位置 background-attachment：背景图是否在视口内固定，或者随它的包含块一起滚动（scroll，fixed） background-size：设置背景图片大小，（auto，cover，contain， width height）  margin margin 的 百分比值，是按其包含元素的宽度计算">
@@ -361,10 +361,10 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/01/CSS查缺补漏/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 348(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 871(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
 	
 
       </div>
@@ -394,6 +394,56 @@
 </li>
 </ul>
 <p><strong>以上边距折叠，只发生在 Block-Level 的元素，浮动元素或绝对定位元素（脱离了正常文档流，且会生成块级的框，变成<code>inline-block</code>元素）不会。</strong></p>
+<h5 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h5><ul>
+<li>text-transform: 设置文本的大小写形式，uppercase, lowercase, capitalize(首字母大写)</li>
+<li>text-indent：设置文本第一行的缩进</li>
+<li>letter-spacing：字符之间的距离</li>
+<li>word-spacing：单词之间的距离</li>
+<li>white-spacing：如何处理 内部的空白？</li>
+<li>text-shadow： 字体阴影效果</li>
+<li>text-overflow：如何处理未显示的溢出内容？显示一个省略号，或一个自定义字符串 <code>text-overflow:clip | ellipsis | initial | inherit</code></li>
+</ul>
+<iframe src="https://codesandbox.io/embed/naughty-clarke-7h3h5?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="CSS-文本相关属性" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+<h5 id="Font"><a href="#Font" class="headerlink" title="Font"></a>Font</h5><ul>
+<li><p><code>@font-face</code>： 引入外部字体（本地或在线）</p>
+<iframe src="https://codesandbox.io/embed/cssyinrubendizitizaixianziti-rerys?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="CSS引入本地字体、在线字体" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+</li>
+</ul>
+<h5 id="Display-，visibility"><a href="#Display-，visibility" class="headerlink" title="Display ，visibility"></a>Display ，visibility</h5><p><strong><code>display:none</code></strong>，从 DOM 删除元素，该元素不再占据空间</p>
+<p><strong><code>visiblity: hidden</code></strong>,隐藏元素，但该元素仍在布局中占据空间</p>
+<iframe src="https://codesandbox.io/embed/bold-cache-w9cnc?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="CSS display与visibility设置元素隐藏的不同之处" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+<h5 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h5><p>在 CSS 中所有的盒模型元素都处于三维坐标系中，除了常用的横坐标和纵坐标，还可以沿着”在轴”层叠摆放，使用<code>z-index</code>属性来指定，当前层在 z 轴的位置。具体规则如下</p>
+<ul>
+<li><p>不含 z-index 属性，默认的摆放规则（<strong>从底到顶顺序</strong>）</p>
+<ol>
+<li>根元素的背景和边界</li>
+<li>普通文档流里的块元素（无 position,或者 position: static）,按照 HTML 中的出现顺序堆叠</li>
+<li>定位元素按 HTML 中的出现顺序堆叠</li>
+</ol>
+<iframe src="https://codesandbox.io/embed/quizzical-bird-d0xyy?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="CSS-不含z-index属性的堆叠" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+</li>
+<li><p>浮动元素的摆放规则</p>
+<iframe src="https://codesandbox.io/embed/mystifying-tdd-pw7s3?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="CSS-有 浮动元素的层叠" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+</li>
+<li><p>使用 z-index 改变层叠顺序</p>
+<p>在使用 z-index 属性时，只有定位元素，且 z-index 不等于 auto 时（即<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/position" target="_blank" rel="noopener"><code>position</code></a> 值为 <code>absolute</code>（绝对定位）或 <code>relative</code>（相对定位）且 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index" target="_blank" rel="noopener"><code>z-index</code></a> 值不为 <code>auto</code> 的元素），才会创建层叠上下文。</p>
+<p>当没有指定 z-index 时，默认为 0，所有元素被渲染在默认层（0 层）</p>
+<iframe src="https://codesandbox.io/embed/awesome-boyd-rev5q?fontsize=14&hidenavigation=1&theme=dark" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" title="awesome-boyd-rev5q" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-autoplay allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"></iframe>
+
+</li>
+</ul>
+<h5 id="层叠上下文"><a href="#层叠上下文" class="headerlink" title="层叠上下文"></a>层叠上下文</h5><p>层叠上下文的形成条件：</p>
+<ul>
+<li>文档根元素</li>
+<li>position 值为 absolute 或 relative，且 z-index 的值部位 auto 的元素</li>
+<li>position 值为 fixed 或 sticky 的元素</li>
+<li>flex 容器的子元素，且 z-index 值不为 auto</li>
+<li>opacity 属性值小于 1 的元素</li>
+</ul>
+<p><strong>子级层叠上下文被视为其父级层叠上下文的一个独立单元，子级层叠上下文的 z-index 值只在父级中才意义，即比较 z-index 时，先比较父级的 z-index</strong></p>
 
       
     </div>
