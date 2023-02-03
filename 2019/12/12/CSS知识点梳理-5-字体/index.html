@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- google 广告 -->
+  <script data-ad-client="ca-pub-7070857500305563" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>CSS知识点梳理(5)-字体 | better-jiang</title>
+  <meta name="description" content="字体系列（Font Families）5 种通用字体系列  Serif fonts：字体成比例（即，所有的字符由于大小不同而具有不同的宽度）且有衬线（即，字符笔画末端的描边修饰）。Times,Gergia,New Century Schoolbook. Sans-serif fonts: 字体成比例但没有衬线。Helvetica,Geneva,&#96;&#96;Arial,Univers&#96;. Monospace">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS知识点梳理(5)-字体">
+<meta property="og:url" content="https://better-jiang.github.io/2019/12/12/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-5-%E5%AD%97%E4%BD%93/index.html">
+<meta property="og:site_name" content="爱学兮的小江">
+<meta property="og:description" content="字体系列（Font Families）5 种通用字体系列  Serif fonts：字体成比例（即，所有的字符由于大小不同而具有不同的宽度）且有衬线（即，字符笔画末端的描边修饰）。Times,Gergia,New Century Schoolbook. Sans-serif fonts: 字体成比例但没有衬线。Helvetica,Geneva,&#96;&#96;Arial,Univers&#96;. Monospace">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-12T08:06:17.000Z">
+<meta property="article:modified_time" content="2023-02-03T12:14:22.417Z">
+<meta property="article:author" content="刘振江">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://better-jiang.github.io/2019/12/12/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-5-%E5%AD%97%E4%BD%93/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Better-Jiang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">爱学兮的小江</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web前端 &amp; Vue</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%8A%E7%8F%AD%E6%91%B8%E9%B1%BC%E5%86%99%E6%95%A3%E6%96%87/">上班摸鱼写散文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%B1%E8%A6%81%E8%A1%A8%E8%BE%BE/">就要表达</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%88%90%E9%95%BF%E5%B0%8F%E8%AE%B0/">成长小记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a><span class="category-list-count">85</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%83%82%E7%AC%94%E5%A4%B4/">烂笔头</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%B1%E8%AF%AD%E6%8B%BE%E9%81%97/">英语拾遗</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94%E6%84%9F%E6%82%9F/">随笔感悟</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%89%88/" rel="tag">CSS权威指南-第四版</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESLint/" rel="tag">ESLint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/axios/" rel="tag">axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/" rel="tag">grunt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pnpm/" rel="tag">pnpm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%80%E7%A2%97%E9%B8%A1%E6%B1%A4/" rel="tag">一碗鸡汤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6%E7%B1%8D%E8%AF%BB%E5%90%8E%E6%84%9F/" rel="tag">书籍读后感</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/" rel="tag">前端性能</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E6%80%9D%E6%80%AA/" rel="tag">反思怪</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" rel="tag">团队协作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E9%95%BF%E5%B0%8F%E8%AE%B0/" rel="tag">成长小记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/" rel="tag">技术总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%82%E7%AC%94%E5%A4%B4/" rel="tag">烂笔头</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AE%A4%E7%9F%A5/" rel="tag">编程认知</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95/" rel="tag">语法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A3%9E%E7%9B%98/" rel="tag">飞盘</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%89%88/" style="font-size: 13.57px;">CSS权威指南-第四版</a> <a href="/tags/ESLint/" style="font-size: 13px;">ESLint</a> <a href="/tags/axios/" style="font-size: 13px;">axios</a> <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/eslint/" style="font-size: 13px;">eslint</a> <a href="/tags/git/" style="font-size: 13.71px;">git</a> <a href="/tags/grunt/" style="font-size: 13px;">grunt</a> <a href="/tags/http/" style="font-size: 13.43px;">http</a> <a href="/tags/javascript/" style="font-size: 13.86px;">javascript</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/npm/" style="font-size: 13px;">npm</a> <a href="/tags/pnpm/" style="font-size: 13px;">pnpm</a> <a href="/tags/redis/" style="font-size: 13px;">redis</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/vite/" style="font-size: 13px;">vite</a> <a href="/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/tags/vue/" style="font-size: 13.71px;">vue</a> <a href="/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/tags/%E4%B8%80%E7%A2%97%E9%B8%A1%E6%B1%A4/" style="font-size: 13px;">一碗鸡汤</a> <a href="/tags/%E4%B9%A6%E7%B1%8D%E8%AF%BB%E5%90%8E%E6%84%9F/" style="font-size: 13.14px;">书籍读后感</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/" style="font-size: 13px;">前端性能</a> <a href="/tags/%E5%8F%8D%E6%80%9D%E6%80%AA/" style="font-size: 13.29px;">反思怪</a> <a href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" style="font-size: 13px;">团队协作</a> <a href="/tags/%E6%88%90%E9%95%BF%E5%B0%8F%E8%AE%B0/" style="font-size: 13px;">成长小记</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/" style="font-size: 13px;">技术总结</a> <a href="/tags/%E7%83%82%E7%AC%94%E5%A4%B4/" style="font-size: 13px;">烂笔头</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AE%A4%E7%9F%A5/" style="font-size: 13.14px;">编程认知</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 13.14px;">网络</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 13.71px;">翻译</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 13.29px;">语法</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.57px;">面试</a> <a href="/tags/%E9%A3%9E%E7%9B%98/" style="font-size: 13.29px;">飞盘</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E4%B8%8A%E7%8F%AD%E6%91%B8%E9%B1%BC%E5%86%99%E6%95%A3%E6%96%87/">上班摸鱼写散文</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/02/03/%E7%BB%A7%E7%BB%AD%E7%94%9F%E6%B4%BB/" class="title">继续生活</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-02-03T12:19:45.000Z" itemprop="datePublished">2023-02-03</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/08/20/js%E7%96%91%E9%9A%BE%E6%B2%BB%E6%84%88/" class="title">js疑难治愈</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-08-20T00:50:12.000Z" itemprop="datePublished">2022-08-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%83%82%E7%AC%94%E5%A4%B4/">烂笔头</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/08/13/%E5%B0%8F%E7%99%BD%E7%AC%94%E8%AE%B0-grunt/" class="title">小白笔记-grunt</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-08-13T01:56:40.000Z" itemprop="datePublished">2022-08-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/08/04/%E5%8E%BB%E4%BA%86%E8%A7%A3ESLint%E5%90%A7/" class="title">去了解ESLint吧</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-08-04T06:09:15.000Z" itemprop="datePublished">2022-08-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/07/27/%E7%BC%BA%E9%99%B7%E6%8E%A7%E5%88%B6/" class="title">缺陷控制</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-07-27T07:06:01.000Z" itemprop="datePublished">2022-07-27</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-CSS知识点梳理-5-字体" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      CSS知识点梳理(5)-字体
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/12/12/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-5-%E5%AD%97%E4%BD%93/" class="article-date">
+	  <time datetime="2019-12-12T08:06:17.000Z" itemprop="datePublished">2019-12-12</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/css/" rel="tag">css</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/12/12/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-5-%E5%AD%97%E4%BD%93/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1.8k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h3 id="字体系列（Font-Families）"><a href="#字体系列（Font-Families）" class="headerlink" title="字体系列（Font Families）"></a>字体系列（Font Families）</h3><p>5 种通用字体系列</p>
+<ol>
+<li>Serif fonts：字体成比例（即，所有的字符由于大小不同而具有不同的宽度）且有衬线（即，字符笔画末端的描边修饰）。<code>Times</code>,<code>Gergia</code>,<code>New Century Schoolbook</code>.</li>
+<li>Sans-serif fonts: 字体成比例但没有衬线。<code>Helvetica</code>,<code>Geneva</code>,``Arial<code>,</code>Univers`.</li>
+<li>Monospace fonts: 字体不成比例，等宽。通常用于显示编程代码和表格数据。<code>Courier</code>,<code>Courier New</code>,<code>Consolas</code>.</li>
+<li>Cursive fonts: 模拟人手写或书写。通常有流动的曲线组成，具有超过衬线的描边修饰。<code>Zapf Chancery</code>,<code>Comic Sans</code>.</li>
+<li>Fantasy fonts： 不属于以上 4 类的字体。</li>
+</ol>
+<h4 id="使用通用字体系列"><a href="#使用通用字体系列" class="headerlink" title="使用通用字体系列"></a>使用通用字体系列</h4><p>如果想使用<code>sans-serif</code>无衬线字体，但并不在乎具体哪一个，可以这样声明：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: sans-serif;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: serif;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">code</span>, pre, tt, <span class="selector-tag">kbd</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: monospace;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-class">.signature</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: cursive;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="指定字体系列"><a href="#指定字体系列" class="headerlink" title="指定字体系列"></a>指定字体系列</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">h1</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: Georgia, serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>Georgia</code>字体（如果可用），如果不可用，则使用<code>serif</code>通用字体。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: Times, <span class="string">&#x27;Times New Roman&#x27;</span>,<span class="string">&#x27;New Century Schoolbook&#x27;</span>, serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>浏览器将按字体的列出的顺序查找字体，如果列出的字体不可用，则使用<code>serif</code>通用字体。</p>
+<p>如果指定的字体名称包含空格或者<code>#</code>,<code>$</code>等符号，或者名称同通用字体相同时，需要使用引号包裹。</p>
+<h3 id="使用-font-face"><a href="#使用-font-face" class="headerlink" title="使用@font-face"></a>使用<code>@font-face</code></h3><p><code>@font-face</code>允许我们自定义特定的字体。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;jiangjiang&quot;</span>;</span><br><span class="line">  <span class="attribute">src</span>: <span class="built_in">local</span>(<span class="string">&quot;jiangjiang&quot;</span>), <span class="comment">/* 在本地安装的字体寻找 */</span> <span class="built_in">url</span>(<span class="string">&quot;jiangjiang.eot&quot;</span>), <span class="comment">/*浏览器支持EOT文件，IE6-IE9 兼容模式下 */</span></span><br><span class="line">      <span class="built_in">url</span>(<span class="string">&quot;jiangjiang.eot?#iefix&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;embedded-opentype&quot;</span>),</span><br><span class="line">    <span class="comment">/* IE6-IE8 */</span> <span class="built_in">url</span>(<span class="string">&quot;jiangjiang.woff&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;woff&quot;</span>), <span class="comment">/* wpff文件，大部分现在浏览器都支持，桌面用户 */</span></span><br><span class="line">      <span class="built_in">url</span>(<span class="string">&quot;jiangjiang.ttf&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;turetype&quot;</span>),</span><br><span class="line">    <span class="comment">/* 大部分IOS和安卓设备 */</span> <span class="built_in">url</span>(<span class="string">&quot;jiangjiang.svg#jiangjiang&quot;</span>) <span class="built_in">format</span>(<span class="string">&quot;svg&quot;</span>); <span class="comment">/* 老旧的IOS设备 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: jiangjiang, Helvetica, sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上示例：自定义字体名称<code>jiangjiang</code>,先在本地安装的字体寻找.如果没有，则使用<code>url()</code>按顺序尝试下载远端的字体。定义好之后就可以使用该字体了。<code>format()</code>告诉浏览器所使用的字体类型，跳过不支持的格式文件的下载，从而降低带宽提高加载速度。<code>src()</code>中的 URL 是有同源策略限制，不能跨域下载字体文件。解决方法:1.将字体文件拷贝到自己的服务器 2.使用同时提供样式表和字体文件的字体托管服务。</p>
+<p>识别的字体格式值(<code>format()</code>)</p>
+<table>
+<thead>
+<tr>
+<th align="center">Value</th>
+<th align="center">Format</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">opentype</td>
+<td align="center">OTF(OpenType)</td>
+</tr>
+<tr>
+<td align="center">embedded-opentype</td>
+<td align="center">ETO(Embedded OpenType)</td>
+</tr>
+<tr>
+<td align="center">svg</td>
+<td align="center">SVG(Scalable Vetor Graphics)</td>
+</tr>
+<tr>
+<td align="center">truetype</td>
+<td align="center">TTF(TrueType Format)</td>
+</tr>
+<tr>
+<td align="center">woff</td>
+<td align="center">WOFF(Web Open Font Format)</td>
+</tr>
+</tbody></table>
+<h3 id="font-weight"><a href="#font-weight" class="headerlink" title="font-weight"></a>font-weight</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Values:        normal|bold|bolder|lighter|100-900</span><br><span class="line">Initial value: normal</span><br><span class="line">Applies to: All elements</span><br><span class="line">Inherited:  Yes</span><br><span class="line">Animatable: No</span><br></pre></td></tr></table></figure>
+
+<p>常见的字重数值<strong>大致对应</strong>的自重描述词，有些字体可能有差别</p>
+<table>
+<thead>
+<tr>
+<th align="center">font-weight</th>
+<th align="center">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">100</td>
+<td align="center">Thin</td>
+</tr>
+<tr>
+<td align="center">200</td>
+<td align="center">Extra Light(Ultra Light)</td>
+</tr>
+<tr>
+<td align="center">300</td>
+<td align="center">Light</td>
+</tr>
+<tr>
+<td align="center">400</td>
+<td align="center">Regular(Normal)</td>
+</tr>
+<tr>
+<td align="center">500</td>
+<td align="center">Medium</td>
+</tr>
+<tr>
+<td align="center">600</td>
+<td align="center">Semi Bold(Demi Bold)</td>
+</tr>
+<tr>
+<td align="center">700</td>
+<td align="center">Bold</td>
+</tr>
+<tr>
+<td align="center">800</td>
+<td align="center">Extra Bold(Ultra Bold)</td>
+</tr>
+<tr>
+<td align="center">900</td>
+<td align="center">Black(Heavy)</td>
+</tr>
+</tbody></table>
+<p>通常字体至少必备 400(normal)和 700(bold)这两个字重值。如果出现指定的字重值在字体中找不到直接对应的字重，则按一些规则：</p>
+<ul>
+<li>指定字重小于 400,首先降序查找小于指定字重的各个字重，之后升序查找大于指定字重的各个字重，直到找到匹配的字重。</li>
+<li>指定字重大于 500，首先升序查找大于指定字重的各个字重，之后降序查找小于指定字重的各个字重，直到找到匹配的字重。</li>
+<li>指定字重等于 400，先匹配 500 对应的字重，若没有，则执行第一条小于 400 的规则。</li>
+<li>指定字重等于 500，先匹配 400 对应的字重，若没有，则执行第一条小于 400 的规则。</li>
+</ul>
+<p>假设某字体库内字重分 3 阶(400,700,900)</p>
+<table>
+<thead>
+<tr>
+<th align="center">字体库内直接匹配的字重</th>
+<th align="center">通过规则计算间接匹配的字重</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">400</td>
+<td align="center">300,200,100,500</td>
+</tr>
+<tr>
+<td align="center">700</td>
+<td align="center">600</td>
+</tr>
+<tr>
+<td align="center">900</td>
+<td align="center">800</td>
+</tr>
+</tbody></table>
+<p>举例<code>font-weight:300</code>，字体库没有直接匹配的字重，且小于 400，根据第一条规则，先降序查找匹配，都没有，在升序查找到 400，则可以匹配。</p>
+<p><code>lighter</code>,<code>bolder</code>,与从<strong>父元素继承</strong>而来的<code>font-weight</code>值进行比较。</p>
+<h3 id="font-size"><a href="#font-size" class="headerlink" title="font-size"></a>font-size</h3><h4 id="绝对大小"><a href="#绝对大小" class="headerlink" title="绝对大小"></a>绝对大小</h4><table>
+<thead>
+<tr>
+<th align="center">keyword</th>
+<th align="center">CSS1</th>
+<th align="center">CSS2</th>
+<th align="center">CSS3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">xx-small</td>
+<td align="center">5px</td>
+<td align="center">9px</td>
+<td align="center">10px</td>
+</tr>
+<tr>
+<td align="center">x-small</td>
+<td align="center">7px</td>
+<td align="center">11px</td>
+<td align="center">12px</td>
+</tr>
+<tr>
+<td align="center">small</td>
+<td align="center">11px</td>
+<td align="center">13px</td>
+<td align="center">14px</td>
+</tr>
+<tr>
+<td align="center">medium</td>
+<td align="center">16px</td>
+<td align="center">16px</td>
+<td align="center">16px</td>
+</tr>
+<tr>
+<td align="center">large</td>
+<td align="center">24px</td>
+<td align="center">19px</td>
+<td align="center">19px</td>
+</tr>
+<tr>
+<td align="center">x-large</td>
+<td align="center">36px</td>
+<td align="center">23px</td>
+<td align="center">24px</td>
+</tr>
+<tr>
+<td align="center">xx-large</td>
+<td align="center">54px</td>
+<td align="center">28px</td>
+<td align="center">32px</td>
+</tr>
+</tbody></table>
+<h4 id="相对大小"><a href="#相对大小" class="headerlink" title="相对大小"></a>相对大小</h4><p><code>larger</code>,<code>smaller</code>，相对于父元素，使用相同的比例因子（通常 1.2）来计算绝对大小，并在绝对大小范围内向上或向下移动</p>
+<h4 id="百分比"><a href="#百分比" class="headerlink" title="百分比"></a>百分比</h4><p>根据从父元素继承的大小来计算</p>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p><code>font-size</code>继承的是计算值，不是百分比。字体的相对大小、百分比在继承时是累加的。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;ie=edge&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.one</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">20px</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.two</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: larger;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.three</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">200%</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">      <span class="selector-class">.four</span> &#123;</span></span><br><span class="line"><span class="language-css">        <span class="attribute">font-size</span>: <span class="number">25%</span>;</span></span><br><span class="line"><span class="language-css">      &#125;</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;one&quot;</span>&gt;</span></span><br><span class="line">      1</span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;two&quot;</span>&gt;</span></span><br><span class="line">        2</span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;three&quot;</span>&gt;</span></span><br><span class="line">          3</span><br><span class="line">          <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;four&quot;</span>&gt;</span>4<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>one： 20px;</li>
+<li>two: 20px 的在 CSS3 中绝对大小的更大一级 是<code>x-larger</code>，24px</li>
+<li>three: <code>24px * 200% = 48px</code></li>
+<li>four: <code>48px * 25% = 12px</code></li>
+</ul>
+<h3 id="font-style"><a href="#font-style" class="headerlink" title="font-style"></a>font-style</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Values:         italic | oblique | normal</span><br><span class="line">Initial value:  normal</span><br><span class="line">Inherited:  Yes</span><br><span class="line">Animatable: No</span><br></pre></td></tr></table></figure>
+
+<h3 id="font-stretch"><a href="#font-stretch" class="headerlink" title="font-stretch"></a>font-stretch</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Values:     normal | ultra-condensed | extra-condensed | condensed</span><br><span class="line">            | semicondensed  | semi-expanded | expanded</span><br><span class="line">            | extra-expanded | ultraexpanded</span><br><span class="line">Initial value: normal</span><br><span class="line">Inherited:    Yes</span><br><span class="line">Animatable:   No</span><br></pre></td></tr></table></figure>
+
+<p>只要在使用的字体系列定义了更宽或更窄的字体时，这个属性才会其作用，但大多数情况下并不是。</p>
+<h3 id="font-variant"><a href="#font-variant" class="headerlink" title="font variant"></a>font variant</h3><p>字体变体，对应的 CSS 属性<code>font-variation-*</code>,包括<code>链接（ligatures）</code>,<code>大写（caps）</code>,<code>数字（numerals）</code>,<code>替代字形（alternate glyphs）</code>。使用<code>@supports</code>特性查询来判断浏览器是否支持。使用<code>font-feature-settings</code>来兼容低版本。</p>
+<ul>
+<li><code>font-variant-ligatures</code>:字母的连接样式，防止难看的字母碰撞<ul>
+<li>common-ligatures， 激活连接</li>
+<li>no-common-ligatures，禁用连接</li>
+</ul>
+</li>
+<li><code>font-variant-positon</code>: 实现 sub 和 sup 效果。<ul>
+<li>sub, 下标</li>
+<li>supper,上标</li>
+</ul>
+</li>
+<li><code>font-variant-caps</code>: 控制字母大写<ul>
+<li>small-caps, 替换小写字母为小的大写字母，原来的大写字母不变。</li>
+<li>all-small-caps，将所有字母都变成小的大写字母。</li>
+</ul>
+</li>
+<li><code>font-variant-numeric</code>: 对数字类型的处理。<ul>
+<li>lining-nums，默认值。数字近似大写字母，高度一致。用于标题或表格中的数字。</li>
+<li>oldstyle-nums,更类似于小写字母,有不同的高度和对其方式</li>
+<li>tabular-nums,在数据表格中使用，以允许数字垂直对齐</li>
+<li>proportional-nums,数字具有可变的间距，并于水平文本融合。</li>
+<li>diagonal-fractions,分数以小数的形式显示</li>
+<li>ordinal，像<code>1st</code>,<code>2nd</code>,<code>3rd</code>,<code>4th</code>一样，以序号显示，标准的小写字母</li>
+<li>slashed-zero,用带斜线的 0，来替换 0 字符</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://better-jiang.github.io/2019/12/12/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-5-%E5%AD%97%E4%BD%93/" title="CSS知识点梳理(5)-字体" target="_blank" rel="external">https://better-jiang.github.io/2019/12/12/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-5-%E5%AD%97%E4%BD%93/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Better-Jiang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Better-Jiang" target="_blank"><span class="text-dark">爱学兮的小江</span><small class="ml-1x">Web前端 &amp; Vue</small></a></h3>
+        <div>前端菜狗，偶尔思考，间歇式码字</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2019/12/13/webpack%E6%A2%B3%E7%90%86/" title="webpack梳理"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2019/12/10/CSS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-4-%E5%80%BC%E5%92%8C%E5%8D%95%E4%BD%8D/" title="CSS知识点梳理(4)-值和单位"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="wechat" data-mobile-sites=""></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c9348a5e84eb5050ec8',
+    clientSecret: 'b92d8dd66f66bbe04d870af0e612ff74a00546da',
+    repo: 'Better-Jiang.github.io',
+    owner: 'Better-Jiang',
+    admin: ['Better-Jiang'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>

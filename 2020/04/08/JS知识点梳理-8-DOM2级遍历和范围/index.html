@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- google 广告 -->
+  <script data-ad-client="ca-pub-7070857500305563" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>JS知识点梳理(8)-DOM2级遍历和范围 | better-jiang</title>
+  <meta name="description" content="DOM 遍历“DOM2 级遍历和范围”模块定义了 2 个用于遍历 DOM 结构的类型：NodeIterator和TreeWalker。它们都是基于给定的起点对 DOMM 结构执行深度优先的遍历操作。 NodeIterator使用document.createNodeIterator(root,whatToShow,filter)方法创建.  root,创建NodeIterator时指定的根节点，即">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS知识点梳理(8)-DOM2级遍历和范围">
+<meta property="og:url" content="https://better-jiang.github.io/2020/04/08/JS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-8-DOM2%E7%BA%A7%E9%81%8D%E5%8E%86%E5%92%8C%E8%8C%83%E5%9B%B4/index.html">
+<meta property="og:site_name" content="爱学兮的小江">
+<meta property="og:description" content="DOM 遍历“DOM2 级遍历和范围”模块定义了 2 个用于遍历 DOM 结构的类型：NodeIterator和TreeWalker。它们都是基于给定的起点对 DOMM 结构执行深度优先的遍历操作。 NodeIterator使用document.createNodeIterator(root,whatToShow,filter)方法创建.  root,创建NodeIterator时指定的根节点，即">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-08T09:28:11.000Z">
+<meta property="article:modified_time" content="2023-02-03T12:14:22.420Z">
+<meta property="article:author" content="刘振江">
+<meta property="article:tag" content="javascript">
+<meta name="twitter:card" content="summary">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://better-jiang.github.io/2020/04/08/JS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-8-DOM2%E7%BA%A7%E9%81%8D%E5%8E%86%E5%92%8C%E8%8C%83%E5%9B%B4/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="爱学兮的小江" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center theme-purple" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Better-Jiang" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">爱学兮的小江</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web前端 &amp; Vue</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Shenzhen, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%8A%E7%8F%AD%E6%91%B8%E9%B1%BC%E5%86%99%E6%95%A3%E6%96%87/">上班摸鱼写散文</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B0%B1%E8%A6%81%E8%A1%A8%E8%BE%BE/">就要表达</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%88%90%E9%95%BF%E5%B0%8F%E8%AE%B0/">成长小记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a><span class="category-list-count">85</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%83%82%E7%AC%94%E5%A4%B4/">烂笔头</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%8B%B1%E8%AF%AD%E6%8B%BE%E9%81%97/">英语拾遗</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%9A%8F%E7%AC%94%E6%84%9F%E6%82%9F/">随笔感悟</a><span class="category-list-count">11</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%89%88/" rel="tag">CSS权威指南-第四版</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ESLint/" rel="tag">ESLint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/axios/" rel="tag">axios</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/" rel="tag">css</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/eslint/" rel="tag">eslint</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/grunt/" rel="tag">grunt</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/" rel="tag">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pnpm/" rel="tag">pnpm</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%80%E7%A2%97%E9%B8%A1%E6%B1%A4/" rel="tag">一碗鸡汤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6%E7%B1%8D%E8%AF%BB%E5%90%8E%E6%84%9F/" rel="tag">书籍读后感</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/" rel="tag">前端性能</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E6%80%9D%E6%80%AA/" rel="tag">反思怪</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" rel="tag">团队协作</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%88%90%E9%95%BF%E5%B0%8F%E8%AE%B0/" rel="tag">成长小记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/" rel="tag">技术总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%83%82%E7%AC%94%E5%A4%B4/" rel="tag">烂笔头</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%AE%A4%E7%9F%A5/" rel="tag">编程认知</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BF%BB%E8%AF%91/" rel="tag">翻译</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%AD%E6%B3%95/" rel="tag">语法</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A3%9E%E7%9B%98/" rel="tag">飞盘</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/CSS%E6%9D%83%E5%A8%81%E6%8C%87%E5%8D%97-%E7%AC%AC%E5%9B%9B%E7%89%88/" style="font-size: 13.57px;">CSS权威指南-第四版</a> <a href="/tags/ESLint/" style="font-size: 13px;">ESLint</a> <a href="/tags/axios/" style="font-size: 13px;">axios</a> <a href="/tags/css/" style="font-size: 14px;">css</a> <a href="/tags/eslint/" style="font-size: 13px;">eslint</a> <a href="/tags/git/" style="font-size: 13.71px;">git</a> <a href="/tags/grunt/" style="font-size: 13px;">grunt</a> <a href="/tags/http/" style="font-size: 13.43px;">http</a> <a href="/tags/javascript/" style="font-size: 13.86px;">javascript</a> <a href="/tags/linux/" style="font-size: 13px;">linux</a> <a href="/tags/npm/" style="font-size: 13px;">npm</a> <a href="/tags/pnpm/" style="font-size: 13px;">pnpm</a> <a href="/tags/redis/" style="font-size: 13px;">redis</a> <a href="/tags/shell/" style="font-size: 13px;">shell</a> <a href="/tags/vite/" style="font-size: 13px;">vite</a> <a href="/tags/vscode/" style="font-size: 13px;">vscode</a> <a href="/tags/vue/" style="font-size: 13.71px;">vue</a> <a href="/tags/webpack/" style="font-size: 13px;">webpack</a> <a href="/tags/%E4%B8%80%E7%A2%97%E9%B8%A1%E6%B1%A4/" style="font-size: 13px;">一碗鸡汤</a> <a href="/tags/%E4%B9%A6%E7%B1%8D%E8%AF%BB%E5%90%8E%E6%84%9F/" style="font-size: 13.14px;">书籍读后感</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD/" style="font-size: 13px;">前端性能</a> <a href="/tags/%E5%8F%8D%E6%80%9D%E6%80%AA/" style="font-size: 13.29px;">反思怪</a> <a href="/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" style="font-size: 13px;">团队协作</a> <a href="/tags/%E6%88%90%E9%95%BF%E5%B0%8F%E8%AE%B0/" style="font-size: 13px;">成长小记</a> <a href="/tags/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/" style="font-size: 13px;">技术总结</a> <a href="/tags/%E7%83%82%E7%AC%94%E5%A4%B4/" style="font-size: 13px;">烂笔头</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AE%A4%E7%9F%A5/" style="font-size: 13.14px;">编程认知</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 13.14px;">网络</a> <a href="/tags/%E7%BF%BB%E8%AF%91/" style="font-size: 13.71px;">翻译</a> <a href="/tags/%E8%AF%AD%E6%B3%95/" style="font-size: 13.29px;">语法</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 13.57px;">面试</a> <a href="/tags/%E9%A3%9E%E7%9B%98/" style="font-size: 13.29px;">飞盘</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/02/">二月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">八月 2022</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">七月 2022</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">六月 2022</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">三月 2022</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">18</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">三月 2019</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E4%B8%8A%E7%8F%AD%E6%91%B8%E9%B1%BC%E5%86%99%E6%95%A3%E6%96%87/">上班摸鱼写散文</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/02/03/%E7%BB%A7%E7%BB%AD%E7%94%9F%E6%B4%BB/" class="title">继续生活</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-02-03T12:19:45.000Z" itemprop="datePublished">2023-02-03</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/08/20/js%E7%96%91%E9%9A%BE%E6%B2%BB%E6%84%88/" class="title">js疑难治愈</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-08-20T00:50:12.000Z" itemprop="datePublished">2022-08-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E7%83%82%E7%AC%94%E5%A4%B4/">烂笔头</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/08/13/%E5%B0%8F%E7%99%BD%E7%AC%94%E8%AE%B0-grunt/" class="title">小白笔记-grunt</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-08-13T01:56:40.000Z" itemprop="datePublished">2022-08-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/08/04/%E5%8E%BB%E4%BA%86%E8%A7%A3ESLint%E5%90%A7/" class="title">去了解ESLint吧</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-08-04T06:09:15.000Z" itemprop="datePublished">2022-08-04</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a>
+              </p>
+              <p class="item-title">
+                <a href="/2022/07/27/%E7%BC%BA%E9%99%B7%E6%8E%A7%E5%88%B6/" class="title">缺陷控制</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2022-07-27T07:06:01.000Z" itemprop="datePublished">2022-07-27</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-JS知识点梳理-8-DOM2级遍历和范围" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS知识点梳理(8)-DOM2级遍历和范围
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/04/08/JS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-8-DOM2%E7%BA%A7%E9%81%8D%E5%8E%86%E5%92%8C%E8%8C%83%E5%9B%B4/" class="article-date">
+	  <time datetime="2020-04-08T09:28:11.000Z" itemprop="datePublished">2020-04-08</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E6%80%BB%E7%BB%93/">技术总结</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/javascript/" rel="tag">javascript</a>
+  </span>
+
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/08/JS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-8-DOM2%E7%BA%A7%E9%81%8D%E5%8E%86%E5%92%8C%E8%8C%83%E5%9B%B4/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 1k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="DOM-遍历"><a href="#DOM-遍历" class="headerlink" title="DOM 遍历"></a>DOM 遍历</h2><p>“DOM2 级遍历和范围”模块定义了 2 个用于遍历 DOM 结构的类型：<code>NodeIterator</code>和<code>TreeWalker</code>。它们都是基于给定的起点对 DOMM 结构执行深度优先的遍历操作。</p>
+<h3 id="NodeIterator"><a href="#NodeIterator" class="headerlink" title="NodeIterator"></a>NodeIterator</h3><p>使用<code>document.createNodeIterator(root,whatToShow,filter)</code>方法创建.</p>
+<ul>
+<li><code>root</code>,创建<code>NodeIterator</code>时指定的根节点，即搜索的起点</li>
+<li><code>whatToShow</code>,表示要呈现的 Node 类型，由常量构成的位掩码。不匹配的节点被跳过。该参数的值以常量形式在 NodeFilter 类型中定义，如下所示<ul>
+<li><code>NodeFilter.SHOW_ALL</code>:显示所有类型的节点</li>
+<li><code>NodeFilter.SHOW_ELEMENT</code>:显示元素节点</li>
+<li><code>NodeFilter.SHOW_TEXT</code>:显示文本节点</li>
+<li><code>NodeFilter.SHOW_DOCUMENT</code>:显示文档节点</li>
+<li><code>NodeFilter.SHOW_COMMENT</code>:显示注释节点</li>
+</ul>
+</li>
+<li><code>filter</code>,用来指定自定义的 NodeFilter 对象，或者指定一个功能类似节点过滤器的函数。每个 NodeFilter 对象只有一个方法，即<code>acceptNode()</code>,如果应该访问给定节点，该方法返回<code>NodeFilter.FILTER_ACCEPT</code>,如果不应该访问给定节点，则返回<code>NodeFilter.FILTER_SKIP</code>,如果不指定，则传入<code>null</code></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 只显示&lt;p&gt;元素的节点迭代器</span></span><br><span class="line"> <span class="keyword">var</span> filterObj = &#123;</span><br><span class="line">     <span class="attr">acceptNode</span>: <span class="keyword">function</span> (<span class="params">node</span>) &#123;</span><br><span class="line">       <span class="keyword">return</span> node.<span class="property">nodeType</span> === <span class="title class_">Node</span>.<span class="property">ELEMENT_NODE</span> &amp;&amp;</span><br><span class="line">         node.<span class="property">tagName</span>.<span class="title function_">toLowerCase</span>() === <span class="string">&quot;p&quot;</span></span><br><span class="line">         ? <span class="title class_">NodeFilter</span>.<span class="property">FILTER_ACCEPT</span></span><br><span class="line">         : <span class="title class_">NodeFilter</span>.<span class="property">FILTER_SKIP</span>;</span><br><span class="line">     &#125;,</span><br><span class="line"> &#125;;</span><br><span class="line"> <span class="keyword">var</span> iterator = <span class="variable language_">document</span>.<span class="title function_">createNodeIterator</span>(</span><br><span class="line">     <span class="variable language_">document</span>.<span class="property">body</span>,</span><br><span class="line">     <span class="title class_">NodeFilter</span>.<span class="property">SHOW_ALL</span>,</span><br><span class="line">     filterObj</span><br><span class="line"> );</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> filterFn = <span class="keyword">function</span> (<span class="params">node</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;filterFn node&quot;</span>, node);</span><br><span class="line">   <span class="keyword">return</span> node.<span class="property">tagName</span>.<span class="title function_">toLowerCase</span>() === <span class="string">&quot;p&quot;</span></span><br><span class="line">     ? <span class="title class_">NodeFilter</span>.<span class="property">FILTER_ACCEPT</span></span><br><span class="line">     : <span class="title class_">NodeFilter</span>.<span class="property">FILTER_SKIP</span>;</span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> iterator2 = <span class="variable language_">document</span>.<span class="title function_">createNodeIterator</span>(</span><br><span class="line">   <span class="variable language_">document</span>.<span class="property">body</span>,</span><br><span class="line">   <span class="title class_">NodeFilter</span>.<span class="property">SHOW_ELEMENT</span>,</span><br><span class="line">   filterFn</span><br><span class="line"> );</span><br></pre></td></tr></table></figure>
+
+<p><code>NodeIterator</code>类型有 2 个方法</p>
+<ul>
+<li><code>nextNode()</code>,返回下一个节点，不存在返回<code>null</code></li>
+<li><code>previousNode()</code>,返回前一个节点，不存在返回<code>null</code></li>
+</ul>
+<h3 id="TreeWalker"><a href="#TreeWalker" class="headerlink" title="TreeWalker"></a>TreeWalker</h3><p>TreeWalker 是 NodeIterator 的更高级版本。使用<code>document.createTreeWalker(root,whatToSHow,filter)</code>，参数同<code>doucument.createNodeIterator()</code>方法相同.但 filter 可以返回的值不同。可以使用<code>NodeFilter.FILTER_REJECT</code></p>
+<ul>
+<li><p>在使用<code>NodeIterator</code>对象时，<code>NodeFilter.FILTER_REJECT</code>与<code>NodeFilter.FILTER_SKIP</code>的作用相同</p>
+</li>
+<li><p>在使用<code>TreeWalker</code>对象时，<code>NodeFilter.FILTER_SKIP</code>会跳过相应节点并前进到子树的下一个节点，而<code>NodeFilter.FILTER_REJECT</code>会跳过相应节点以及该节点的整个子树。<br>除了包含<code>nextNode()</code>，<code>previousNode()</code>方法外，还提供了用于不同方向上的遍历方法</p>
+</li>
+<li><p><code>parentNode()</code>,遍历到当前节点的父节点</p>
+</li>
+<li><p><code>firstChild()</code>,遍历到当前节点的第一个子节点</p>
+</li>
+<li><p><code>lastChild()</code>,遍历到当前节点的最后一个子节点</p>
+</li>
+<li><p><code>nextSibling()</code>,遍历到当前节点的下一个同辈节点</p>
+</li>
+<li><p><code>previousSibling()</code>,遍历到当前节点的上一个同辈节点</p>
+</li>
+</ul>
+<h2 id="DOM-范围"><a href="#DOM-范围" class="headerlink" title="DOM 范围"></a>DOM 范围</h2><p>“DOM2 级遍历和范围”中定义了范围（Range）接口，通过该接口可以选择文档中的一个区域，而不必考虑节点的界限。可以<code>Document</code>对象中的<code>creanteRange()</code>方法创建 Range。每一个范围由一个 Range 类型的实例表示</p>
+<h3 id="Range-属性"><a href="#Range-属性" class="headerlink" title="Range 属性"></a>Range 属性</h3><ul>
+<li><code>startContainer</code>,包含范围起点的节点</li>
+<li><code>startOffset</code>,范围在<code>startContainer</code>中起点的偏移量</li>
+<li><code>endContainer</code>,包含范围终点的节点</li>
+<li><code>endOffset</code>,范围在<code>endContainer</code>中终点的偏移量</li>
+<li><code>commonAncestorContainer</code>,包含整个<code>startContainer</code>和<code>endContainer</code>的共同的祖先节点</li>
+</ul>
+<h3 id="Range-方法"><a href="#Range-方法" class="headerlink" title="Range 方法"></a>Range 方法</h3><h4 id="简单的范围-定位方法"><a href="#简单的范围-定位方法" class="headerlink" title="简单的范围 定位方法"></a>简单的范围 定位方法</h4><ul>
+<li><code>selectNode(node)</code>,范围设置为包含整个给定的 node 节点（包括节点本身及其内容），此时范围的<code>startContainer</code>和<code>endContainer</code>属性是 node 节点的父节点</li>
+<li><code>seletNodeContents(node)</code>，范围设置为包含给定 node 节点的内容。此时范围的<code>startContainer</code>和<code>endContainer</code>属性就是给定 node 节点，<code>startOffset</code>为 0，<code>endOffset</code>为 node 节点的字符数或子节点个数</li>
+</ul>
+<h4 id="复杂的范围-定位方法"><a href="#复杂的范围-定位方法" class="headerlink" title="复杂的范围 定位方法"></a>复杂的范围 定位方法</h4><ul>
+<li><code>setStart(startNode, startOffset)</code>,设置范围的起始位置，参照节点<code>startNode</code>变成范围<code>startContainer</code>属性的值，偏移量<code>startOffset</code>变成范围<code>startOffset</code>属性的值。</li>
+<li><code>setend(endNode,endOffset)</code>，设置范围的终点。</li>
+</ul>
+<h4 id="范围-编辑方法"><a href="#范围-编辑方法" class="headerlink" title="范围 编辑方法"></a>范围 编辑方法</h4><ul>
+<li><code>deleteContents()</code>,从文档中移除 范围中的内容</li>
+<li><code>extractContents()</code>,把范围中的内容从文档移动到一个文档片段中</li>
+<li><code>cloneContents()</code>,返回一个包含范围中内容的文档片段</li>
+<li><code>insertNode(newNode)</code>,在范围的起始位置插入给定节点</li>
+<li><code>cloneRange()</code>,复制范围，返回一个克隆的范围 对象。</li>
+<li><code>detach()</code>,清理范围，在使用完范围后，最后调用<code>detach()</code>方法，以便从创建范围的文档中分离处该范围，同时要解除对范围的引用（设置为 null），从而回收内存</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://better-jiang.github.io/2020/04/08/JS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-8-DOM2%E7%BA%A7%E9%81%8D%E5%8E%86%E5%92%8C%E8%8C%83%E5%9B%B4/" title="JS知识点梳理(8)-DOM2级遍历和范围" target="_blank" rel="external">https://better-jiang.github.io/2020/04/08/JS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-8-DOM2%E7%BA%A7%E9%81%8D%E5%8E%86%E5%92%8C%E8%8C%83%E5%9B%B4/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Better-Jiang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Better-Jiang" target="_blank"><span class="text-dark">爱学兮的小江</span><small class="ml-1x">Web前端 &amp; Vue</small></a></h3>
+        <div>前端菜狗，偶尔思考，间歇式码字</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/04/09/JS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-9-%E4%BA%8B%E4%BB%B6/" title="JS知识点梳理(9)-事件"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/04/08/JS%E7%9F%A5%E8%AF%86%E7%82%B9%E6%A2%B3%E7%90%86-7-DOM/" title="JS知识点梳理(7)-DOM"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="wechat" data-mobile-sites=""></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Better-Jiang" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: '3c9348a5e84eb5050ec8',
+    clientSecret: 'b92d8dd66f66bbe04d870af0e612ff74a00546da',
+    repo: 'Better-Jiang.github.io',
+    owner: 'Better-Jiang',
+    admin: ['Better-Jiang'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>
